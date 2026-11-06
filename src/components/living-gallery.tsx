@@ -80,7 +80,7 @@ export function LivingGallery({
       },
       {
         request: (fn) => {
-          el.dataset.moving = "true";
+          if (!el.hasAttribute("data-moving")) el.dataset.moving = "true";
           return requestAnimationFrame(fn);
         },
         cancel: (id) => {

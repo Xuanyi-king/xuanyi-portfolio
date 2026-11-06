@@ -19,6 +19,7 @@ export function bindGalleryInput(
     const id = pointer;
     pointer = null;
     delete stage.dataset.dragging;
+    delete stage.dataset.holding;
     if (id !== null && stage.hasPointerCapture(id))
       stage.releasePointerCapture(id);
   };
@@ -31,6 +32,7 @@ export function bindGalleryInput(
     )
       return;
     pointer = e.pointerId;
+    stage.dataset.holding = "true";
     startX = e.clientX;
     startY = e.clientY;
     started = lastTime = performance.now();
@@ -95,6 +97,7 @@ export function bindGalleryInput(
   stage.addEventListener("pointermove", move, { passive: false });
   stage.addEventListener("click", click, true);
   stage.addEventListener("dragstart", preventDrag);
+  stage.addEventListener("lostpointercapture", up);
   window.addEventListener("pointerup", up);
   window.addEventListener("pointercancel", up);
   window.addEventListener("blur", cancel);
@@ -106,6 +109,7 @@ export function bindGalleryInput(
       stage.removeEventListener("pointermove", move);
       stage.removeEventListener("click", click, true);
       stage.removeEventListener("dragstart", preventDrag);
+      stage.removeEventListener("lostpointercapture", up);
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointercancel", up);
       window.removeEventListener("blur", cancel);

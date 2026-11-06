@@ -10,7 +10,9 @@
     "test": "tsx --test tests/*.test.ts",
     "check:export": "node scripts/check-export.mjs",
     "check:browser": "node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs && node scripts/check-canvas.mjs",
-    "generate:identity": "tsx scripts/generate-identity.tsx"
+    "generate:identity": "tsx scripts/generate-identity.tsx",
+    "measure:canvas": "node scripts/measure-canvas.mjs",
+    "check:strict": "node scripts/check-strict.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

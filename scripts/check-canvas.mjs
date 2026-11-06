@@ -279,12 +279,27 @@ try {
           const s = p.locator(".gallery-stage");
           await s.focus();
           const original = await value(p);
+          await p.evaluate(() => {
+            window.__movingWrites = 0;
+            window.__movingObserver = new MutationObserver(
+              (entries) => (window.__movingWrites += entries.length),
+            );
+            window.__movingObserver.observe(
+              document.querySelector(".gallery-stage"),
+              { attributes: true, attributeFilter: ["data-moving"] },
+            );
+          });
           await p.keyboard.press("ArrowRight");
           await settle(p);
           assert.equal(await value(p), original + 1);
           await p.keyboard.press("ArrowLeft");
           await settle(p);
           assert.equal(await value(p), original);
+          const movingWrites = await p.evaluate(() => {
+            window.__movingObserver.disconnect();
+            return window.__movingWrites;
+          });
+          assert.ok(movingWrites <= 4, "Motion flags change at start/end only");
           if (width === 1440) {
             for (let i = 0; i < 100; i++) await p.keyboard.press("ArrowRight");
             await settle(p);
@@ -292,6 +307,61 @@ try {
             for (let i = 0; i < 100; i++) await p.keyboard.press("ArrowLeft");
             await settle(p);
             assert.equal(await value(p), original);
+            const captureBox = await s.boundingBox();
+            await s.evaluate((el) =>
+              el.addEventListener(
+                "gotpointercapture",
+                (event) => (window.__captureId = event.pointerId),
+                { once: true },
+              ),
+            );
+            await p.mouse.move(
+              captureBox.x + captureBox.width / 2,
+              captureBox.y + 130,
+            );
+            await p.mouse.down();
+            await p.mouse.move(
+              captureBox.x + captureBox.width / 2 - 40,
+              captureBox.y + 131,
+              { steps: 8 },
+            );
+            await s.evaluate((el) =>
+              el.releasePointerCapture(window.__captureId),
+            );
+            await p.mouse.move(
+              captureBox.x + captureBox.width / 2 - 42,
+              captureBox.y + 132,
+            );
+            await p.waitForFunction(
+              () =>
+                !document
+                  .querySelector(".gallery-stage")
+                  .hasAttribute("data-holding"),
+            );
+            await p.mouse.up();
+            await settle(p);
+            await button(p, 1);
+            await p.locator(".gallery-card[data-gallery-active=true]").hover();
+            await p.waitForFunction(() => {
+              const v = document.querySelector(".film-preview-video");
+              return v && !v.paused && v.currentTime > 0.1;
+            });
+            const filmBox = await p
+              .locator(".gallery-card[data-gallery-active=true]")
+              .boundingBox();
+            await p.mouse.move(filmBox.x + filmBox.width / 2, filmBox.y + 120);
+            await p.mouse.down();
+            await p.waitForFunction(
+              () => document.querySelector(".film-preview-video").paused,
+            );
+            await p.mouse.move(
+              filmBox.x + filmBox.width / 2 - 24,
+              filmBox.y + 120,
+              { steps: 4 },
+            );
+            await p.mouse.up();
+            await settle(p);
+            await p.mouse.move(10, 10);
             const r = await s.boundingBox(),
               x = r.x + r.width * 0.5,
               y = r.y + 130;

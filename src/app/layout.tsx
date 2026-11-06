@@ -38,13 +38,15 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+// The pre-hydration bootstrap intentionally changes only root attributes/CSS variables.
+// Suppress this one element; child content still hydrates normally.
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN" data-scroll-behavior="smooth">
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

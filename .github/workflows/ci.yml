@@ -32,6 +32,8 @@ jobs:
       - run: npm run check:browser
         env:
           BROWSER_EVIDENCE_DIR: artifacts/browser
+      - run: npm run measure:canvas
+      - run: npm run check:strict
       - uses: actions/upload-artifact@v4
         if: always()
         with:
