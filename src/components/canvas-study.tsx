@@ -76,7 +76,7 @@ export function GalleryStudy() {
       <h2>
         The Living <em>Gallery.</em>
       </h2>
-      <p>真实作品的空间研究。正式作品只有这三个。</p>
+      <p>真实作品的空间研究。本研究只使用当前三个精选项目。</p>
       <div className="study-toolbar">
         <div>
           {[1, 2, 3].map((n) => (

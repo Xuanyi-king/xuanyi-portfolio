@@ -193,7 +193,13 @@ async function recordings(browser) {
     ["desktop", 1440, 900],
     ["mobile", 390, 844],
   ]) {
-    const c = await browser.newContext({ viewport: { width, height } }),
+    const c = await browser.newContext({
+        viewport: { width, height },
+        recordVideo: {
+          dir: path.join(dir, ".recordings"),
+          size: { width, height },
+        },
+      }),
       p = await c.newPage();
     await p.goto(base + "/lab/canvas-study/");
     await p.evaluate(() => document.fonts.ready);
@@ -221,7 +227,10 @@ async function recordings(browser) {
     await p
       .locator(".x-rail-study")
       .screenshot({ path: path.join(dir, `${name}-x-rail-study.png`) });
+    const video = p.video();
     await c.close();
+    await video.saveAs(path.join(dir, `${name}-materials.webm`));
+    await fs.rm(await video.path(), { force: true });
   }
 }
 try {
@@ -301,6 +310,45 @@ try {
           });
           assert.ok(movingWrites <= 4, "Motion flags change at start/end only");
           if (width === 1440) {
+            const resizeBox = await s.boundingBox();
+            const resizeStart = await value(p);
+            await p.mouse.move(
+              resizeBox.x + resizeBox.width / 2,
+              resizeBox.y + 120,
+            );
+            await p.mouse.down();
+            await p.mouse.move(
+              resizeBox.x + resizeBox.width / 2 - 200,
+              resizeBox.y + 120,
+              { steps: 12 },
+            );
+            await p.setViewportSize({ width: 768, height: 1024 });
+            await p.waitForFunction(
+              () =>
+                !document
+                  .querySelector(".gallery-stage")
+                  .hasAttribute("data-holding"),
+            );
+            await p.mouse.move(
+              resizeBox.x + resizeBox.width / 2 - 201,
+              resizeBox.y + 120,
+            );
+            await p.mouse.up();
+            await settle(p);
+            assert.equal(
+              await value(p),
+              resizeStart,
+              "Resize cancels the gesture without selecting a neighbor",
+            );
+            assert.equal(
+              p.url(),
+              base + "/",
+              "Cancelling a held gesture must suppress its release click",
+            );
+            await p.setViewportSize({ width, height });
+            await p.waitForTimeout(400);
+            await s.scrollIntoViewIfNeeded();
+            await s.focus();
             for (let i = 0; i < 100; i++) await p.keyboard.press("ArrowRight");
             await settle(p);
             assert.equal(await value(p), original + 100);
@@ -461,33 +509,40 @@ try {
           await c.close();
         }
       }
-      const nojs = await browser.newContext({
-          viewport: { width: 390, height: 844 },
-          javaScriptEnabled: false,
-        }),
-        n = await nojs.newPage();
-      await n.goto(base);
-      await n.locator(".living-gallery").scrollIntoViewIfNeeded();
-      for (let i = 0; i < 3; i++) {
-        assert.equal(
-          await n
-            .locator(".gallery-card")
-            .nth(i)
-            .evaluate((e) => getComputedStyle(e).position),
-          "static",
-        );
-        assert.equal(
-          await n
-            .locator(".gallery-card .project-meta")
-            .nth(i)
-            .evaluate((e) => getComputedStyle(e).visibility),
-          "visible",
-        );
+      for (const reducedMotion of ["no-preference", "reduce"]) {
+        const nojs = await browser.newContext({
+            viewport: { width: 390, height: 844 },
+            javaScriptEnabled: false,
+            reducedMotion,
+          }),
+          n = await nojs.newPage();
+        await n.goto(base);
+        await n.locator(".living-gallery").scrollIntoViewIfNeeded();
+        for (let i = 0; i < 3; i++) {
+          const card = n.locator(".gallery-card").nth(i);
+          assert.equal(
+            await card.evaluate((e) => getComputedStyle(e).position),
+            "static",
+          );
+          assert.equal(
+            await card.evaluate((e) => getComputedStyle(e).opacity),
+            "1",
+            "All projects stay visible without JS even with reduced motion",
+          );
+          assert.equal(
+            await card
+              .locator(".project-meta")
+              .evaluate((e) => getComputedStyle(e).visibility),
+            "visible",
+          );
+        }
+        await n.screenshot({
+          path: path.join(dir, `no-js-${reducedMotion}.png`),
+        });
+        await n.locator(".gallery-link").nth(1).click();
+        await n.waitForURL("**/work/knowledge-film/");
+        await nojs.close();
       }
-      await n.screenshot({ path: path.join(dir, "no-js.png") });
-      await n.locator(".gallery-link").nth(1).click();
-      await n.waitForURL("**/work/knowledge-film/");
-      await nojs.close();
       if (name === "chromium" && process.env.CANVAS_RECORDINGS !== "0")
         await recordings(browser);
       console.log(

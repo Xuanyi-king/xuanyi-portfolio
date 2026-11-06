@@ -11,7 +11,7 @@ import { frameFor, frameTransform } from "@/motion/gallery-model";
 import { bindGalleryInput } from "@/motion/gallery-input";
 import { galleryStateKey, readGalleryState } from "@/motion/gallery-state";
 import { XMark } from "./x-mark";
-const fallback = `.living-gallery .gallery-stage{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;height:auto!important;perspective:none!important;padding:0!important}.living-gallery .gallery-card{position:static!important;width:auto!important;transform:none!important;opacity:1!important;pointer-events:auto!important;visibility:visible!important}.living-gallery .gallery-card .project-meta{opacity:1!important;visibility:visible!important}.living-gallery .gallery-controls,.living-gallery .gallery-hint{display:none!important}.living-gallery .gallery-viewport{overflow:visible!important}@media(max-width:760px){.living-gallery .gallery-stage{grid-template-columns:1fr;gap:44px}}`;
+const fallback = `.living-gallery .gallery-stage{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;height:auto!important;perspective:none!important;padding:0!important}.living-gallery .gallery-stage .gallery-card{position:static!important;width:auto!important;transform:none!important;opacity:1!important;pointer-events:auto!important;visibility:visible!important}.living-gallery .gallery-stage .gallery-card .project-meta{opacity:1!important;visibility:visible!important}.living-gallery .gallery-controls,.living-gallery .gallery-hint{display:none!important}.living-gallery .gallery-viewport{overflow:visible!important}@media(max-width:760px){.living-gallery .gallery-stage{grid-template-columns:1fr;gap:44px}}`;
 export function LivingGallery({
   projects,
   rail = false,
@@ -94,6 +94,7 @@ export function LivingGallery({
     input.current = bindGalleryInput(el, engine);
     const resize = () => {
         width = innerWidth;
+        if (el.hasAttribute("data-holding")) input.current?.cancel();
         engine.redraw();
       },
       preference = () => {

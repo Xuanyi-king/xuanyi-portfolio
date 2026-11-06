@@ -31,6 +31,7 @@ export function bindGalleryInput(
       (e.target as Element).closest("button,input")
     )
       return;
+    blockUntil = 0;
     pointer = e.pointerId;
     stage.dataset.holding = "true";
     startX = e.clientX;
@@ -90,6 +91,7 @@ export function bindGalleryInput(
   };
   const preventDrag = (e: DragEvent) => e.preventDefault();
   const cancel = () => {
+    if (pointer !== null) blockUntil = performance.now() + 350;
     clear();
     engine.cancel();
   };
@@ -97,7 +99,12 @@ export function bindGalleryInput(
   stage.addEventListener("pointermove", move, { passive: false });
   stage.addEventListener("click", click, true);
   stage.addEventListener("dragstart", preventDrag);
-  stage.addEventListener("lostpointercapture", up);
+  // Touch starts with implicit capture on the link. Ignore its bubbled loss
+  // when we deliberately transfer capture to the stage.
+  const lost = (event: PointerEvent) => {
+    if (event.target === stage) up(event);
+  };
+  stage.addEventListener("lostpointercapture", lost);
   window.addEventListener("pointerup", up);
   window.addEventListener("pointercancel", up);
   window.addEventListener("blur", cancel);
@@ -109,7 +116,7 @@ export function bindGalleryInput(
       stage.removeEventListener("pointermove", move);
       stage.removeEventListener("click", click, true);
       stage.removeEventListener("dragstart", preventDrag);
-      stage.removeEventListener("lostpointercapture", up);
+      stage.removeEventListener("lostpointercapture", lost);
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointercancel", up);
       window.removeEventListener("blur", cancel);

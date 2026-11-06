@@ -133,10 +133,9 @@ try {
             p99Ms: f[Math.floor(f.length * 0.99)],
             over50ms: f.filter((x) => x > 50).length,
           },
-          largestObservedInteractionMs: Math.max(
-            0,
-            ...m.events.map((e) => e.duration),
-          ),
+          largestObservedInteractionMs: m.events.length
+            ? Math.max(...m.events.map((e) => e.duration))
+            : null,
           heapAfterActions: performance.memory?.usedJSHeapSize ?? null,
           images: performance
             .getEntriesByType("resource")

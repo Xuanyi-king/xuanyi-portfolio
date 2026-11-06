@@ -1,76 +1,52 @@
 import gsap from "gsap";
-
-export function animateHero(_mode: "enhance" = "enhance") {
+import { foldFrame, type FoldMetrics } from "./folding";
+export function animateHero() {
   const hero = document.querySelector<HTMLElement>(".hero"),
     visual = hero?.querySelector<HTMLElement>(".hero-visual"),
     art = hero?.querySelector<HTMLElement>(".hero-artwork"),
     icon = document.querySelector<SVGSVGElement>(".wordmark > svg");
   if (!hero || !visual || !art || !icon) return;
-  // Measure stationary layout anchors, never the transformed artwork.
-  const distance = () => Math.min(660, hero.offsetHeight * 0.82);
-  const target = () => {
+  let metrics: FoldMetrics;
+  const measure = () => {
     const a = visual.getBoundingClientRect(),
       b = icon.getBoundingClientRect();
-    const start = hero.getBoundingClientRect().top + scrollY;
-    return {
-      x: b.left + b.width / 2 - a.left - a.width / 2,
-      y:
-        b.top +
-        b.height / 2 -
-        (a.top + scrollY + a.height / 2) +
-        start +
-        distance(),
+    metrics = {
+      centerX: a.left + a.width / 2,
+      centerY: a.top + scrollY + a.height / 2,
+      start: hero.getBoundingClientRect().top + scrollY,
+      distance: Math.min(660, hero.offsetHeight * 0.82),
+      navX: b.left + b.width / 2,
+      navY: b.top + b.height / 2,
       scale: b.width / a.width,
+      width: innerWidth,
     };
   };
-  const middleY = () => target().y * 0.5 + (innerWidth <= 760 ? -155 : 30);
+  const paint = (progress: number) => {
+    const f = foldFrame(progress, metrics);
+    art.style.transform = `translate3d(${f.x.toFixed(3)}px,${f.y.toFixed(3)}px,0) rotate(${f.rotation.toFixed(4)}deg) scale(${f.scale.toFixed(6)})`;
+    hero.dataset.foldProgress = progress.toFixed(3);
+  };
+  measure();
+  paint(0);
   const timeline = gsap.timeline({
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: hero,
       start: "top top",
-      end: () => `+=${distance()}`,
+      end: () => `+=${metrics.distance}`,
       scrub: true,
       invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        hero.dataset.foldProgress = self.progress.toFixed(3);
-      },
+      onRefreshInit: measure,
+      onUpdate: (self) => paint(self.progress),
       onRefresh: (self) => {
         hero.dataset.foldStart = String(self.start);
         hero.dataset.foldEnd = String(self.end);
+        paint(self.progress);
       },
     },
   });
+  // Scroll alone owns this outer transform; SVG geometry remains with curve-owner.
   timeline
-    .fromTo(
-      art,
-      { scale: 1 },
-      { scale: () => target().scale, duration: 1, ease: "power1.inOut" },
-      0,
-    )
-    .fromTo(
-      art,
-      { x: 0, rotation: 0 },
-      {
-        x: () => target().x,
-        rotation: 9,
-        duration: 1,
-        // A late, smooth lateral crossing keeps the mark away from the CTA.
-        ease: (t: number) => {
-          const p = Math.max(0, (t - 0.2) / 0.8);
-          return p * p * (3 - 2 * p);
-        },
-        force3D: true,
-      },
-      0,
-    )
-    .fromTo(art, { y: 0 }, { y: middleY, duration: 0.5 }, 0)
-    .fromTo(
-      art,
-      { y: middleY },
-      { y: () => target().y, duration: 0.5, immediateRender: false },
-      0.5,
-    )
     .fromTo(
       hero.querySelector(".hero-title"),
       { y: 0, scale: 1, opacity: 1 },
@@ -109,9 +85,6 @@ export function animateHero(_mode: "enhance" = "enhance") {
     );
   return timeline;
 }
-
-/** Cached App Router pages can retain transformed DOM. Restore only properties
- * owned by folding, so preference changes and remounts start from CSS again. */
 export function resetHero() {
   const hero = document.querySelector<HTMLElement>(".hero");
   if (!hero) return;
@@ -119,9 +92,7 @@ export function resetHero() {
     hero.querySelectorAll(
       ".hero-artwork, .hero-title, .hero-copy, .hero-art-caption, .hero-thread",
     ),
-    {
-      clearProps: "transform,transformOrigin,opacity",
-    },
+    { clearProps: "transform,transformOrigin,opacity" },
   );
   hero.style.removeProperty("--canvas-opacity");
   delete hero.dataset.foldProgress;

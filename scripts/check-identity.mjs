@@ -181,6 +181,21 @@ try {
               initial.transform,
               "The canvas must respond to scrolling",
             );
+            if (width <= 760 && f < 0.95) {
+              const visible = await p
+                .locator(".hero .x-material")
+                .evaluate(
+                  (el) =>
+                    el.getBoundingClientRect().bottom >
+                    document.querySelector("header").getBoundingClientRect()
+                      .bottom +
+                      8,
+                );
+              assert.ok(
+                visible,
+                "Mobile X remains visible until its lateral approach to navigation",
+              );
+            }
             if (f === 1) {
               assert.ok(
                 Math.abs(state.center[0] - state.target[0]) < 2,
