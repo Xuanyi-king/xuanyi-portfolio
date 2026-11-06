@@ -606,6 +606,9 @@ a[href^="#"] {
 }
 .lab-art {
   display: flex;
+  /* Bound the rotated SVG's paint overflow to this preview, including WebKit's
+     expanded filter region. The link's own focus outline remains outside. */
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   min-height: 230px;
