@@ -55,7 +55,11 @@ export function animateHero(_mode: "enhance" = "enhance") {
         x: () => target().x,
         rotation: 9,
         duration: 1,
-        ease: "power2.inOut",
+        // A late, smooth lateral crossing keeps the mark away from the CTA.
+        ease: (t: number) => {
+          const p = Math.max(0, (t - 0.2) / 0.8);
+          return p * p * (3 - 2 * p);
+        },
         force3D: true,
       },
       0,

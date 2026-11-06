@@ -268,7 +268,13 @@ try {
         JSON.stringify({ initialOwner, handoffStep, ...audit }, null, 2),
       );
       await p.mouse.move(700, 50, { steps: 15 });
-      await p.waitForTimeout(1600);
+      await p.waitForFunction(
+        (expected) =>
+          document.querySelector(".hero .x-ribbon-a")?.getAttribute("d") ===
+          expected,
+        rest,
+        { timeout: 5000 },
+      );
       assert.equal(
         await p.locator(".hero .x-ribbon-a").getAttribute("d"),
         rest,

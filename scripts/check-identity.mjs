@@ -40,7 +40,19 @@ async function snapshot(p) {
       a = h.querySelector(".hero-artwork");
     const r = a.getBoundingClientRect(),
       n = document.querySelector(".wordmark > svg").getBoundingClientRect();
+    const ink = h.querySelector(".x-material").getBoundingClientRect(),
+      cta = h
+        .querySelector(".hero-actions .pill-button")
+        .getBoundingClientRect(),
+      headerBottom = document
+        .querySelector("header")
+        .getBoundingClientRect().bottom;
+    const ctaOverlap =
+      Math.min(ink.right, cta.right) > Math.max(ink.left, cta.left) &&
+      Math.min(ink.bottom, cta.bottom) >
+        Math.max(ink.top, cta.top, headerBottom);
     return {
+      ctaOverlap,
       transform: getComputedStyle(a).transform,
       center: [r.x + r.width / 2, r.y + r.height / 2],
       target: [n.x + n.width / 2, n.y + n.height / 2],
@@ -142,7 +154,7 @@ try {
             await p.mouse.move(700, 30, { steps: 15 });
             await delay(p, 1400);
           }
-          for (const f of [0.25, 0.5, 0.75, 1]) {
+          for (const f of [0.25, 0.5, 0.65, 0.7, 0.75, 0.78, 0.8, 0.9, 1]) {
             await position(p, f);
             const state = await snapshot(p);
             assert.ok(
@@ -157,6 +169,11 @@ try {
               state.pinned,
               false,
               "Normal document flow, no pin spacer",
+            );
+            assert.equal(
+              state.ctaOverlap,
+              false,
+              "The folding X keeps clear of the visible primary CTA",
             );
             assert.notEqual(
               state.transform,
@@ -173,9 +190,10 @@ try {
                 "X aligns with the nav brand in y",
               );
             }
-            await p.screenshot({
-              path: path.join(dir, `${label}-fold-${f}.png`),
-            });
+            if ([0.25, 0.5, 0.75, 1].includes(f))
+              await p.screenshot({
+                path: path.join(dir, `${label}-fold-${f}.png`),
+              });
           }
           for (let i = 0; i < 8; i++) {
             await p.mouse.wheel(0, 140);
@@ -233,15 +251,46 @@ try {
               bounds.y + bounds.height / 2,
             );
           await p.waitForURL("**/work/");
+          await p.locator(".project-card").first().waitFor();
           await p.goBack();
           await ready(p);
+          await p.waitForFunction(
+            (expected) => {
+              const progress =
+                document.querySelector(".hero")?.dataset.foldProgress;
+              return (
+                progress !== undefined &&
+                Math.abs(Number(progress) - expected) < 0.08
+              );
+            },
+            Number(beforeNavigation.progress),
+            { timeout: 5000 },
+          );
+          const afterNavigation = await snapshot(p);
           assert.ok(
             Math.abs(
-              Number((await snapshot(p)).progress) -
+              Number(afterNavigation.progress) -
                 Number(beforeNavigation.progress),
             ) < 0.08,
-            "History restores scroll-derived state",
+            `History restores scroll-derived state: before=${JSON.stringify(beforeNavigation)}, after=${JSON.stringify(afterNavigation)}`,
           );
+          await position(p, 0);
+          assert.equal((await snapshot(p)).transform, initial.transform);
+          // Reflow between device widths must refresh anchors, not use old bounds.
+          await p.setViewportSize({
+            width: width === 1440 ? 1280 : width === 390 ? 375 : 390,
+            height,
+          });
+          await delay(p, 400);
+          await position(p, 1);
+          const resized = await snapshot(p);
+          assert.ok(
+            Math.abs(resized.center[0] - resized.target[0]) < 2 &&
+              Math.abs(resized.center[1] - resized.target[1]) < 2,
+            "Resizing recalculates the handoff destination",
+          );
+          await p.setViewportSize({ width, height });
+          await delay(p, 400);
           await position(p, 0);
           assert.equal((await snapshot(p)).transform, initial.transform);
           // A dynamic preference change reverts all scroll-owned transforms.
@@ -264,6 +313,8 @@ try {
             restored: true,
             navAligned: true,
             reducedMotion: true,
+            resize: true,
+            ctaClear: true,
             errors,
           });
         } catch (error) {
