@@ -56,8 +56,40 @@ async function layout(p) {
       .filter((r) => r.right > innerWidth + 1 || r.x < -1)
       .slice(0, 30),
   }));
-  if (dimensions.scroll > dimensions.width)
-    console.log("LAYOUT_DIAGNOSTICS", JSON.stringify(dimensions));
+  if (dimensions.scroll > dimensions.width) {
+    const isolation = await p.evaluate(() => {
+      const measure = () => document.documentElement.scrollWidth;
+      const regions = [
+        ...document.querySelectorAll(
+          "body > header, body > main, body > footer, main > *, footer .container > *, .hero > *, .hero-visual, .hero-thread, .living-x, .about-caption, .lab-art",
+        ),
+      ];
+      return {
+        regions: regions.map((el) => {
+          const saved = el.getAttribute("style");
+          el.style.setProperty("display", "none", "important");
+          const without = measure();
+          if (saved === null) el.removeAttribute("style");
+          else el.setAttribute("style", saved);
+          return { tag: el.tagName, class: el.getAttribute("class"), without };
+        }),
+        scrollers: [...document.querySelectorAll("body *")]
+          .filter((el) => el.scrollWidth > el.clientWidth + 1)
+          .map((el) => ({
+            tag: el.tagName,
+            class: el.getAttribute("class"),
+            scroll: el.scrollWidth,
+            client: el.clientWidth,
+            overflow: getComputedStyle(el).overflow,
+          }))
+          .slice(0, 35),
+      };
+    });
+    console.log(
+      "LAYOUT_DIAGNOSTICS",
+      JSON.stringify({ ...dimensions, isolation }),
+    );
+  }
   assert.equal(
     await p.evaluate(() =>
       [...document.fonts].some(
