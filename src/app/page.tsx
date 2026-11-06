@@ -71,7 +71,7 @@ export default function Home() {
               <em>A little wonder.</em>
             </h2>
             <p className="reveal">
-              你好，我是玄屹。对新的事物保持兴趣，也愿意为细节多花一点时间。喜欢让复杂的事情变清楚，让有趣的想法成为能被使用、被看见的作品。
+              你好，我是玄屹。我把对模型选择的疑问做成插件，用程序动画解释地图的取舍，也尝试让真实经历成为可探索的故事。设计和工程，在这些具体的问题里相遇。
             </p>
             <TextLink href="/about">关于我，和我的好奇心</TextLink>
           </div>

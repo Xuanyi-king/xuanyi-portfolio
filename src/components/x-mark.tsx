@@ -7,98 +7,97 @@ export function XMark({
   decorative?: boolean;
 }) {
   const id = useId().replace(/:/g, "");
-  const a = "M112 110 C258 102 244 366 390 378";
-  const b = "M390 103 C246 112 254 367 110 382";
+  const a = "M112 110 C258 102 244 366 390 378",
+    b = "M390 103 C246 112 254 367 110 382";
   return (
     <svg
-      className={className}
+      className={`x-mark ${className}`}
       viewBox="0 0 500 500"
       fill="none"
       role={decorative ? undefined : "img"}
       aria-label={
-        decorative ? undefined : "XUANYI 原创 X Mark：两条交错的流动曲带"
+        decorative ? undefined : "XUANYI 原创 X Mark：两条交错的流动丝带"
       }
       aria-hidden={decorative ? true : undefined}
     >
       <defs>
         <linearGradient
           id={`${id}a`}
-          x1="110"
-          y1="80"
-          x2="365"
-          y2="405"
+          x1="112"
+          y1="90"
+          x2="390"
+          y2="390"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#b9e3ff" />
-          <stop offset=".31" stopColor="#91c7f5" />
-          <stop offset=".58" stopColor="#468bd4" />
-          <stop offset=".82" stopColor="#85bdf1" />
-          <stop offset="1" stopColor="#b4d8fc" />
+          <stop stopColor="var(--ribbon-a-start, #b6dfee)" />
+          <stop offset=".45" stopColor="var(--ribbon-a-mid, #6caac8)" />
+          <stop offset="1" stopColor="var(--ribbon-a-end, #a8d0e3)" />
         </linearGradient>
         <linearGradient
           id={`${id}b`}
-          x1="384"
+          x1="385"
           y1="100"
-          x2="103"
-          y2="386"
+          x2="110"
+          y2="385"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#c2e5ff" />
-          <stop offset=".36" stopColor="#8ac3f2" />
-          <stop offset=".61" stopColor="#a7d5fb" />
-          <stop offset="1" stopColor="#6da9e6" />
+          <stop stopColor="var(--ribbon-b-start, #ffe3bd)" />
+          <stop offset=".45" stopColor="var(--ribbon-b-mid, #e7aa84)" />
+          <stop offset="1" stopColor="var(--ribbon-b-end, #f6cfac)" />
         </linearGradient>
         <linearGradient
-          id={`${id}light`}
-          x1="200"
-          y1="60"
+          id={`${id}edge`}
+          x1="190"
+          y1="100"
           x2="310"
-          y2="400"
+          y2="390"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" stopOpacity=".65" />
-          <stop offset=".55" stopColor="white" stopOpacity="0" />
-          <stop offset="1" stopColor="white" stopOpacity=".2" />
+          <stop stopColor="#fffaf0" stopOpacity=".8" />
+          <stop offset=".48" stopColor="#fffaf0" stopOpacity=".05" />
+          <stop offset="1" stopColor="#fffaf0" stopOpacity=".55" />
         </linearGradient>
-        <filter id={`${id}s`} x="-50%" y="-50%" width="200%" height="220%">
+        <filter id={`${id}s`} x="-25%" y="-25%" width="150%" height="160%">
           <feDropShadow
             dx="0"
-            dy="17"
-            stdDeviation="13"
-            floodColor="#4079a7"
-            floodOpacity=".13"
+            dy="6"
+            stdDeviation="4"
+            floodColor="#31566b"
+            floodOpacity=".12"
           />
         </filter>
       </defs>
-      <g filter={`url(#${id}s)`} strokeLinecap="round">
-        <path
-          className="x-ribbon x-ribbon-a"
-          data-ribbon="a"
-          d={a}
-          stroke={`url(#${id}a)`}
-          strokeWidth="83"
-        />
-        <path
-          data-ribbon="a"
-          d={a}
-          stroke={`url(#${id}light)`}
-          strokeWidth="66"
-          transform="translate(0 -5)"
-        />
-        <path
-          className="x-ribbon x-ribbon-b"
-          data-ribbon="b"
-          d={b}
-          stroke={`url(#${id}b)`}
-          strokeWidth="83"
-        />
-        <path
-          data-ribbon="b"
-          d={b}
-          stroke={`url(#${id}light)`}
-          strokeWidth="66"
-          transform="translate(0 -5)"
-        />
+      <g className="x-material" filter={`url(#${id}s)`} strokeLinecap="butt">
+        {[
+          ["a", a],
+          ["b", b],
+        ].map(([name, d]) => (
+          <g key={name}>
+            <path
+              className={`x-ribbon x-ribbon-${name}`}
+              data-ribbon={name}
+              d={d}
+              stroke={`url(#${id}${name})`}
+              strokeWidth="58"
+            />
+            <path
+              className="x-selvedge"
+              data-ribbon={name}
+              d={d}
+              stroke={`url(#${id}edge)`}
+              strokeWidth="55"
+              transform="translate(-.8 -1)"
+            />
+            <path
+              className="x-ink-edge"
+              data-ribbon={name}
+              d={d}
+              stroke="#244a62"
+              strokeOpacity=".12"
+              strokeWidth=".8"
+            />
+          </g>
+        ))}
       </g>
     </svg>
   );

@@ -9,6 +9,8 @@ import {
 } from "@/motion/geometry";
 import { reducedQuery } from "@/motion/tokens";
 import { createLivingSpring } from "@/motion/living-spring";
+import { createCurveOwner } from "@/motion/curve-owner";
+import { threadPath } from "@/motion/thread";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
   play = false,
@@ -32,40 +34,85 @@ export function LivingX({
     const paths = ["a", "b"].map((name) =>
       el.querySelectorAll<SVGPathElement>(`[data-ribbon="${name}"]`),
     );
-    const engine = createLivingSpring(
-      (values) => {
-        const geometry = ribbonGeometry(
-          { x: values[0], y: values[1] },
-          { x: values[2], y: values[3] },
-        );
-        paths.forEach((group, i) =>
-          group.forEach((p) => p.setAttribute("d", geometry.paths[i])),
-        );
-        buttons.forEach((button, i) => {
-          const anchor = geometry.anchors[i];
-          button.style.left = `${anchor.x / 5}%`;
-          button.style.top = `${anchor.y / 5}%`;
-        });
-      },
-      {
-        request: (fn) => requestAnimationFrame(fn),
-        cancel: (id) => cancelAnimationFrame(id),
-      },
+    // Inspect BOTH CSS ribbons before the spring can paint, including delayed starts.
+    const entrance = [...el.querySelectorAll(".x-ribbon")].flatMap((path) =>
+      path
+        .getAnimations()
+        .filter(
+          (a) =>
+            "animationName" in a &&
+            String(a.animationName).startsWith("ribbon-unfold-") &&
+            (a.playState === "running" || a.pending),
+        ),
     );
+    el.dataset.curveOwner = entrance.length
+      ? "css"
+      : media.matches
+        ? "static"
+        : "spring";
+    const threads = play
+      ? []
+      : [
+          ...(el
+            .closest(".hero")
+            ?.querySelectorAll<SVGPathElement>("[data-thread]") ?? []),
+        ];
+    const owner = createCurveOwner(entrance.length > 0, (values) => {
+      const geometry = ribbonGeometry(
+        { x: values[0], y: values[1] },
+        { x: values[2], y: values[3] },
+      );
+      paths.forEach((group, i) =>
+        group.forEach((p) => p.setAttribute("d", geometry.paths[i])),
+      );
+      buttons.forEach((button, i) => {
+        const anchor = geometry.anchors[i];
+        button.style.left = `${anchor.x / 5}%`;
+        button.style.top = `${anchor.y / 5}%`;
+      });
+      threads.forEach((path) =>
+        path.setAttribute(
+          "d",
+          threadPath(path.dataset.thread === "mobile", values),
+        ),
+      );
+    });
+    const engine = createLivingSpring(owner.paint, {
+      request: (fn) => requestAnimationFrame(fn),
+      cancel: (id) => cancelAnimationFrame(id),
+    });
     controller.current = engine;
-    const preference = () => engine.setReduced(media.matches);
+    let disposed = false;
+    const complete = () => {
+      if (disposed) return;
+      el.dataset.curveOwner = media.matches ? "static" : "spring";
+      owner.complete();
+    };
+    const preference = () => {
+      if (media.matches) {
+        // Discard an early pointer before the static preference settles immediately.
+        owner.input(() => engine.release());
+        complete();
+        engine.release();
+      } else if (el.dataset.curveOwner === "static")
+        el.dataset.curveOwner = "spring";
+      engine.setReduced(media.matches);
+    };
     preference();
     const surface = play ? el : (el.closest(".hero") ?? el);
+    void Promise.allSettled(entrance.map((a) => a.finished)).then(complete);
     const hover = (event: Event) => {
       const e = event as PointerEvent;
       if (play || media.matches || e.pointerType === "touch") return;
       const r = surface.getBoundingClientRect();
       const x = clamp((e.clientX - r.left) / r.width - 0.5, -0.5, 0.5) * 70,
         y = clamp((e.clientY - r.top) / r.height - 0.5, -0.5, 0.5) * 55;
-      engine.pull(0, x, y);
-      engine.pull(1, -x * 0.8, y * 0.7);
+      owner.input(() => {
+        engine.pull(0, x, y);
+        engine.pull(1, -x * 0.8, y * 0.7);
+      });
     };
-    const reset = () => engine.release();
+    const reset = () => owner.input(() => engine.release());
     const cleanups: (() => void)[] = [],
       cancels: (() => void)[] = [];
     const local = (e: PointerEvent): Point | null => {
@@ -164,6 +211,8 @@ export function LivingX({
     if (!play) surface.addEventListener("pointerleave", reset);
     media.addEventListener("change", preference);
     return () => {
+      disposed = true;
+      owner.dispose();
       cleanups.forEach((fn) => fn());
       engine.dispose();
       controller.current = null;

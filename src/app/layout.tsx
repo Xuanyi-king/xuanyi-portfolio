@@ -5,6 +5,7 @@ import { MotionProvider } from "@/components/motion-provider";
 import { site } from "@/data/site";
 import "./globals.css";
 import "./motion.css";
+import "./identity.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "XUANYI 玄屹 — 好奇的形状", template: "%s · XUANYI" },
@@ -41,6 +42,18 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem('xuanyi-2-1-seen'))document.documentElement.setAttribute('data-xuanyi-returning','true');if(location.pathname==='/')sessionStorage.setItem('xuanyi-2-1-seen','true')}catch{}`,
+          }}
+        />
+        <link
+          rel="preload"
+          href="/fonts/xuanyi-editorial-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preload"
           href="/fonts/manrope-latin.woff2"

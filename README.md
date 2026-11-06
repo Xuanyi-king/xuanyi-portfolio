@@ -130,3 +130,13 @@ npm run check:browser
 检查脚本自行启动静态导出服务，输出截图、WebM 和 results.json；首次安装浏览器时需满足 Playwright 系统依赖（Linux CI 使用 `npx playwright install --with-deps chromium`）。使用系统 Chromium 时设置 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`，并运行 `npx playwright install ffmpeg` 安装录屏依赖。输出目录可用 `BROWSER_EVIDENCE_DIR` 指定，外部服务可用 `BROWSER_BASE_URL` 指定。
 
 GitHub Actions 执行安装、测试、类型、构建、导出检查和 Chromium 浏览器验收；每次运行的截图与录像保存为 `browser-evidence` artifact。
+
+## XUANYI 2.1 美术方向
+
+2.1 从 PR #1 最新 2.0 提交继续开发，保留工程与内容能力。正式视觉为 Editorial Flow + Silk X；浏览器中实际比较了两套 Hero 与三种 SVG 材质，备选只保留为审查证据。
+
+- [设计与取舍](docs/visual-2-1.md)
+- [真实截图、录屏与原型对比](docs/evidence/visual-2-1/README.md)
+- [项目素材来源](docs/project-visual-sources.md)
+- `src/app/tokens.css`：全局色彩、字体与尺寸；`identity.css`：正式版视觉；`src/data/about.ts`：真实项目线索与待补充个人字段。
+- `npm run check:browser` 默认输出到 `docs/evidence/visual-2-1/final`；CI 仍使用独立 artifact 目录。
