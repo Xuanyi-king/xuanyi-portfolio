@@ -4,7 +4,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 const destination = path.resolve(
-  process.env.BROWSER_EVIDENCE_DIR ?? "docs/evidence/pr1-review/after",
+  process.env.BROWSER_EVIDENCE_DIR ?? "docs/evidence/visual-2-1/final",
 );
 await fs.mkdir(destination, { recursive: true });
 await fs.rm(path.join(destination, "failure.txt"), { force: true });
@@ -30,7 +30,8 @@ const browser = await chromium.launch({
   args: ["--no-sandbox"],
 });
 const checks = [],
-  errors = [];
+  errors = [],
+  stableFrames = [];
 async function context(options = {}) {
   const c = await browser.newContext({
     viewport: { width: 1440, height: 900 },
@@ -124,7 +125,42 @@ try {
     await p.keyboard.press("Tab");
     await p.keyboard.press("Tab");
     await shot(p, "keyboard-focus");
+    await p.reload();
+    await ready(p);
+    assert.equal(
+      await p.locator("html").getAttribute("data-xuanyi-returning"),
+      "true",
+    );
+    assert.equal(
+      await p
+        .locator(".hero .x-ribbon-b")
+        .evaluate((el) =>
+          el.getAnimations().some((a) => a.animationName === "ribbon-unfold-b"),
+        ),
+      false,
+    );
     checks.push("1440x900 layout, living curves, keyboard focus");
+  });
+  await record("home-scroll", async (p) => {
+    await p.goto(base);
+    await ready(p);
+    assert.equal(
+      await p.locator(".film-preview-video[src]").count(),
+      0,
+      "No film requested before interaction",
+    );
+    for (let i = 0; i < 4; i++) {
+      await p.mouse.wheel(0, 390);
+      await p.waitForTimeout(650);
+    }
+    await p.locator("#selected-work").scrollIntoViewIfNeeded();
+    await p.waitForTimeout(1300);
+    await shot(p, "selected-work");
+    await p.mouse.wheel(0, 450);
+    await p.waitForTimeout(1200);
+    checks.push(
+      "home scroll composition, readable project titles, no eager video request",
+    );
   });
   await record("project-transition", async (p) => {
     await p.goto(base + "/work/");
@@ -133,6 +169,35 @@ try {
     await card.hover();
     await p.waitForTimeout(800);
     await shot(p, "work-hover");
+    const film = p.locator(".project-card").nth(1),
+      video = film.locator("video");
+    await film.locator(".project-cover").focus();
+    await p.keyboard.press("Tab");
+    await p.waitForTimeout(1400);
+    assert.ok(await video.getAttribute("src"));
+    assert.ok(await video.evaluate((v) => v.currentTime > 0.1));
+    assert.equal(
+      await video.evaluate((v) => v.paused),
+      false,
+      "Keyboard preview must remain playing",
+    );
+    const playingTime = await video.evaluate((v) => v.currentTime);
+    await p.mouse.move(50, 80);
+    await p.waitForTimeout(250);
+    assert.ok(
+      await video.evaluate((v, t) => v.currentTime > t + 0.05, playingTime),
+      "Focused film must continue advancing",
+    );
+    assert.equal(
+      await video.evaluate((v) => v.paused),
+      false,
+      "Pointer exit must preserve focused preview",
+    );
+    await shot(p, "film-preview");
+    await card.focus();
+    await card.hover();
+    await p.waitForTimeout(400);
+    assert.equal(await video.evaluate((v) => v.paused), true);
     await card.click();
     await p.waitForURL("**/work/adaptive-router/");
     await ready(p);
@@ -203,12 +268,21 @@ try {
     );
   });
   for (const [name, width, height] of [
+    ["tablet", 768, 1024],
     ["mobile", 390, 844],
     ["narrow", 375, 812],
     ["small", 320, 740],
   ]) {
     const c = await context({
       viewport: { width, height },
+      ...(width === 390
+        ? {
+            recordVideo: {
+              dir: path.join(destination, ".recordings"),
+              size: { width, height },
+            },
+          }
+        : {}),
       isMobile: true,
       hasTouch: true,
       deviceScaleFactor: 1,
@@ -223,6 +297,11 @@ try {
       true,
     );
     await shot(p, "hero-" + name);
+    const before = await p.screenshot({ animations: "disabled" });
+    await p.waitForTimeout(400);
+    const after = await p.screenshot({ animations: "disabled" });
+    assert.ok(before.equals(after), `Settled ${width}px hero must stop moving`);
+    stableFrames.push(width);
     if (width === 390) {
       await p.goto(base + "/lab/");
       await ready(p);
@@ -253,7 +332,10 @@ try {
     checks.push(
       `${width}x${height} layout${width === 390 ? ", touch capture/cancel/anchor" : ""}`,
     );
+    const recording = p.video();
     await c.close();
+    if (recording)
+      await recording.saveAs(path.join(destination, "lab-touch.webm"));
   }
   const c = await context();
   const p = await c.newPage();
@@ -314,13 +396,18 @@ try {
     window.__hiddenSamples = 0;
     const until = performance.now() + 6000;
     function sample() {
-      const letter = document.querySelector(".hero-letter");
-      if (
-        letter &&
-        letter.getBoundingClientRect().top >
-          document.querySelector(".hero-title").getBoundingClientRect().bottom
-      )
-        window.__hiddenSamples++;
+      const title = document.querySelector(".hero-title");
+      if (title) {
+        const style = getComputedStyle(title),
+          r = title.getBoundingClientRect();
+        if (
+          style.visibility === "hidden" ||
+          Number(style.opacity) < 0.99 ||
+          r.width < 20 ||
+          r.height < 20
+        )
+          window.__hiddenSamples++;
+      }
       if (performance.now() < until) requestAnimationFrame(sample);
     }
     sample();
@@ -334,6 +421,22 @@ try {
   );
   const fallback = await context({ javaScriptEnabled: false });
   const fp = await fallback.newPage();
+  await fp.goto(base);
+  const firstCurve = await fp
+    .locator(".hero .x-ribbon-b")
+    .evaluate((el) => getComputedStyle(el).d);
+  await fp.waitForTimeout(1900);
+  const settledCurve = await fp
+    .locator(".hero .x-ribbon-b")
+    .evaluate((el) => getComputedStyle(el).d);
+  if (await fp.evaluate(() => CSS.supports("d", 'path("M0 0L1 1")')))
+    assert.notEqual(
+      firstCurve,
+      settledCurve,
+      "CSS curve choreography must run without hydration",
+    );
+  await shot(fp, "hero-no-js");
+  assert.ok((await fp.locator("h1").innerText()).includes("Curiosity"));
   await fp.goto(base + "/work/");
   await fp.locator(".project-cover").first().click();
   await fp.waitForURL("**/work/adaptive-router/");
@@ -341,7 +444,9 @@ try {
   await fp.locator(".back-link").click();
   await fp.waitForURL("**/work/");
   await fallback.close();
-  checks.push("no-JS native link fallback to detail and back");
+  checks.push(
+    "no-JS readable brand, CSS curve narrative, native detail/return; repeat visit quiet",
+  );
   assert.deepEqual(errors, [], "Browser runtime errors");
   await fs.writeFile(
     path.join(destination, "results.json"),
@@ -349,7 +454,14 @@ try {
       {
         date: new Date().toISOString(),
         browser: await browser.version(),
-        viewportEvidence: ["1440x900", "390x844", "375x812", "320x740"],
+        viewportEvidence: [
+          "1440x900",
+          "768x1024",
+          "390x844",
+          "375x812",
+          "320x740",
+        ],
+        stableFrames,
         checks,
         errors,
       },

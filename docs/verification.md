@@ -109,3 +109,17 @@
 ### 验证边界
 
 没有实际运行 Firefox、Safari / iOS WebKit 或 Android/iPhone 真机。无 JS 的原生回退已验证，但不等同这些浏览器的完整转场验收。没有测量 FPS、LCP、长任务或移动真机性能；录屏显示的是本次环境的实际操作，不是性能基准。未重新运行上游 Router / Film 项目，详情材料来源和许可见 [project-visual-sources.md](project-visual-sources.md)。PR 保留 Draft，未合并、未部署生产。
+
+## 2026-11-06 · XUANYI 2.1
+
+基于未合并 PR #1 的 `471805f`；2.1 使用独立功能分支，保留前述修复。
+
+- 已执行 `npm ci`、`npm test`（21 项）、`npm run typecheck`、`npm run build`、`npm run check:export`。静态 10 个内容路由、MDX/代码高亮、SEO、RSS/Sitemap、404 和内链保留。
+- 实际 Playwright Chromium 145 检查 12 组场景，0 页面异常，包含 1440×900、768×1024、390×844、375×812、320×740；同会话稳定帧对照；不提前加载视频；键盘影片预览；触摸捕获；详情/返回；SplitText 三次恢复；1500ms 延迟 JS；减少动态效果；无 JS CSS 曲线入场与原生链接；重复访问安静状态。
+- 独立审查通过实际看图选择 Editorial Flow + Silk，修正小图标对比度和平板孤字。发现的视频播放请求竞态已用失败断言复现，再用独立 hover/focus 与幂等 play 修正；强度检查从“时间>0”提高为“未暂停且时间持续增长”。
+- 真正页面 PNG、5 段 UI WebM、材质比较 WebM、两个真实 Hero 原型与结构化结果见 [visual-2-1](evidence/visual-2-1/README.md)。不是生图，不把项目成片当网站录屏。
+- 源图片、影片帧和节选的固定版本、MIT 与第三方边界见 [素材记录](project-visual-sources.md)。没有重新运行上游三个项目或编造个人背景。
+- 未实测 Safari/Firefox、iOS/Android 真机、FPS/LCP/长任务。CSS path 不支持时保持完整静态 X；不把 Chromium 模拟作为其他浏览器或真机证明。审美结论来自独立观察，不来自自动化指标。
+
+
+2.1 性能产物口径：首页 HTML 初始 script 集合 10 个文件，共 615,550 bytes，逐文件 gzip 191,801 bytes；2.0 对应为 611,610 / 190,213 bytes。本轮初始脚本 gzip 约增加 1.6 KB，保留 GSAP/SplitText 按需加载。影片节选 107,633 bytes，首次明确预览才请求。以上不包括 CSS、字体、图片和内联 hydration 数据，不是完整首屏下载量或实测帧率。

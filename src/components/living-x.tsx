@@ -56,9 +56,21 @@ export function LivingX({
     const preference = () => engine.setReduced(media.matches);
     preference();
     const surface = play ? el : (el.closest(".hero") ?? el);
+    const entrance =
+      el
+        .querySelector(".x-ribbon-b")
+        ?.getAnimations()
+        .filter(
+          (a) => "animationName" in a && a.animationName === "ribbon-unfold-b",
+        ) ?? [];
+    let entering = entrance.some((a) => a.playState === "running");
+    void Promise.allSettled(entrance.map((a) => a.finished)).then(() => {
+      entering = false;
+    });
     const hover = (event: Event) => {
       const e = event as PointerEvent;
-      if (play || media.matches || e.pointerType === "touch") return;
+      if (play || entering || media.matches || e.pointerType === "touch")
+        return;
       const r = surface.getBoundingClientRect();
       const x = clamp((e.clientX - r.left) / r.width - 0.5, -0.5, 0.5) * 70,
         y = clamp((e.clientY - r.top) / r.height - 0.5, -0.5, 0.5) * 55;

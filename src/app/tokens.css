@@ -1,4 +1,9 @@
 :root {
+  --display: Georgia, "Noto Serif SC", "Songti SC", serif;
+  --type-small: 12px;
+  --type-body: 15px;
+  --ribbon-ink: #315d72;
+
   --cream: #fafaf6;
   --paper: #f2f2ec;
   --sky: #dceffc;

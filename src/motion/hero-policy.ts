@@ -1,15 +1,13 @@
+// Load timing never decides whether the brand gets its visual narrative: CSS owns that.
 export function heroMode({
-  sincePaint,
   scrollY,
   visible,
   restored,
 }: {
-  sincePaint: number;
+  sincePaint?: number;
   scrollY: number;
   visible: boolean;
   restored: boolean;
 }) {
-  if (!visible || restored || scrollY > 40) return "none";
-  // Fast hydration may reveal text. Late hydration only settles the already-visible artwork.
-  return sincePaint < 200 ? "entrance" : "settle";
+  return visible && !restored && scrollY <= 40 ? "enhance" : "none";
 }

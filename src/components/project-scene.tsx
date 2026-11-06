@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Project } from "@/data/projects";
 import { ProjectPreview } from "./project-preview";
-
-// The complete, visible scene is shared by list and detail. Never name a hidden backing image.
+import { ProjectFilmPreview } from "./project-media";
+// The full visible scene participates in the transition, including preview media.
 export function ProjectScene({
   project,
   priority = false,
@@ -15,11 +15,12 @@ export function ProjectScene({
     <div
       className={`project-scene ${real ? "scene-observatory" : "scene-concept"}`}
       style={{ viewTransitionName: `cover-${project.slug}` }}
+      data-project={project.slug}
     >
       {real && (
         <div className="scene-caption" aria-hidden="true">
-          <span>THE SILVER OBSERVATORY</span>
-          <span>项目实录 / 01</span>
+          <span>知乎平行宇宙</span>
+          <span>真实界面 / ARCHIVE</span>
         </div>
       )}
       <div className="scene-image">
@@ -37,7 +38,43 @@ export function ProjectScene({
         />
         {!real && <ProjectPreview slug={project.slug} />}
       </div>
+      {project.visual && (
+        <div className={`real-project-media media-${project.slug}`}>
+          <div className="media-topline">
+            <span>
+              {project.slug === "knowledge-film"
+                ? "VIBE KNOWLEDGE FILM"
+                : "DSH ADAPTIVE ROUTER"}
+            </span>
+            <span>
+              {project.slug === "knowledge-film"
+                ? "真实成片节选"
+                : "真实设置页 · 局部"}
+            </span>
+          </div>
+          <div className="media-window">
+            <Image
+              src={project.visual.src}
+              alt={project.visual.title}
+              width={project.visual.width}
+              height={project.visual.height}
+              sizes="(max-width: 760px) 100vw, 60vw"
+            />
+            {project.slug === "knowledge-film" && <ProjectFilmPreview />}
+          </div>
+          <p className="media-caption">
+            {project.slug === "knowledge-film"
+              ? "地图是一种选择。 / ATLAS"
+              : "让系统说清楚，正在做什么。"}
+          </p>
+        </div>
+      )}
       {real && <span className="observatory-line" aria-hidden="true" />}
+      {!real && (
+        <span className="scene-kind">
+          概念封面<span> ↗ 悬停 / 聚焦查看真实作品</span>
+        </span>
+      )}
     </div>
   );
 }
