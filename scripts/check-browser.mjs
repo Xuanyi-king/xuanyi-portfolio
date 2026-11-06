@@ -4,7 +4,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 const destination = path.resolve(
-  process.env.BROWSER_EVIDENCE_DIR ?? "docs/evidence/visual-2-1/final",
+  process.env.BROWSER_EVIDENCE_DIR ?? "artifacts/browser",
+  "chromium",
 );
 await fs.mkdir(destination, { recursive: true });
 await fs.rm(path.join(destination, "failure.txt"), { force: true });

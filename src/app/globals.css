@@ -1,5 +1,19 @@
 @import "./tokens.css";
 @font-face {
+  font-family: "Xuanyi Editorial";
+  src: url("/fonts/xuanyi-editorial-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Xuanyi Editorial";
+  src: url("/fonts/xuanyi-editorial-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
   font-family: Manrope;
   src: url("/fonts/manrope-latin.woff2") format("woff2");
   font-style: normal;

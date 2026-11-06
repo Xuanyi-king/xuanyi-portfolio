@@ -65,7 +65,7 @@ export function ProjectFilmPreview() {
     <video
       ref={ref}
       className="film-preview-video"
-      poster="/projects/atlas-frame.jpg"
+      poster="/projects/atlas-preview.jpg"
       preload="none"
       muted
       loop

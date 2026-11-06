@@ -36,6 +36,16 @@ export function ProjectScene({
               : "(max-width: 760px) 100vw, 50vw"
           }
         />
+        {real && (
+          <Image
+            className="multiverse-reveal"
+            src="/projects/multiverse-experience-reveal.jpg"
+            alt="知乎平行宇宙：公开仓库中的体验揭示界面"
+            width={1440}
+            height={900}
+            sizes="(max-width: 760px) 100vw, 50vw"
+          />
+        )}
         {!real && <ProjectPreview slug={project.slug} />}
       </div>
       {project.visual && (
@@ -54,8 +64,16 @@ export function ProjectScene({
           </div>
           <div className="media-window">
             <Image
-              src={project.visual.src}
-              alt={project.visual.title}
+              src={
+                project.slug === "knowledge-film"
+                  ? "/projects/atlas-preview.jpg"
+                  : project.visual.src
+              }
+              alt={
+                project.slug === "knowledge-film"
+                  ? "真实节选起始帧 · 原成片第 8 秒"
+                  : project.visual.title
+              }
               width={project.visual.width}
               height={project.visual.height}
               sizes="(max-width: 760px) 100vw, 60vw"
@@ -65,7 +83,7 @@ export function ProjectScene({
           <p className="media-caption">
             {project.slug === "knowledge-film"
               ? "地图是一种选择。 / ATLAS"
-              : "让系统说清楚，正在做什么。"}
+              : "智能路由 · 模式与候选模型"}
           </p>
         </div>
       )}

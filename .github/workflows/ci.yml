@@ -22,7 +22,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run check:export
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run check:browser
         env:
           BROWSER_EVIDENCE_DIR: artifacts/browser

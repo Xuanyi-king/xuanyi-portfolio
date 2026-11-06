@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { LivingX } from "./living-x";
+import { threadPath } from "@/motion/thread";
 let mountedBefore = false;
 export function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -24,7 +25,8 @@ export function Hero() {
     >
       <div className="hero-kicker">
         <p className="hero-identity">
-          <span className="status-dot" /> XUANYI <span>/ 玄屹</span>
+          <span className="hero-name">XUANYI</span>
+          <span className="hero-han">玄屹</span>
         </p>
         <p className="hero-note">代码里的理性，创作里的好奇。</p>
       </div>
@@ -36,22 +38,37 @@ export function Hero() {
             <span className="sr-only"> — XUANYI 玄屹</span>
           </span>
         </h1>
-        <svg
-          className="hero-thread"
-          viewBox="0 0 1280 560"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            className="thread-base"
-            d="M120 351C310 446 720 263 818 179C949 67 1180 70 1181 249C1183 465 827 503 648 480"
-          />
-          <path
-            className="thread-chase"
-            pathLength="1"
-            d="M120 351C310 446 720 263 818 179C949 67 1180 70 1181 249C1183 465 827 503 648 480"
-          />
-        </svg>
+        {[false, true].map((mobile) => (
+          <svg
+            key={String(mobile)}
+            className={`hero-thread thread-${mobile ? "mobile" : "desktop"}`}
+            viewBox={mobile ? "0 0 360 420" : "0 0 1280 560"}
+            preserveAspectRatio="none"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              className="thread-base"
+              data-thread={mobile ? "mobile" : "desktop"}
+              d={threadPath(mobile)}
+            />
+            <path
+              className="thread-chase"
+              data-thread={mobile ? "mobile" : "desktop"}
+              pathLength="1"
+              d={threadPath(mobile)}
+            />
+            <path
+              className="thread-extension"
+              pathLength="1"
+              d={
+                mobile
+                  ? "M136 324 C115 325 112 338 101 343"
+                  : "M815 472 C745 476 723 515 704 542"
+              }
+            />
+          </svg>
+        ))}
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-artwork">
             <div className="hero-pointer">

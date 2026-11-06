@@ -15,8 +15,8 @@ export default function About() {
       <div className="about-intro">
         <PageIntro
           label="THE PERSON BEHIND / 你好，很高兴认识你"
-          title="Systems,"
-          italic="& stories."
+          title="Systems"
+          italic="& Stories."
           description="我是玄屹，也可以叫我 Xuanyi。这里放着我对 AI 工具、知识影像和交互叙事的具体实践。"
         />
         <AboutArt />

@@ -32,7 +32,7 @@ PR #1 在开始时未合并，最新 head 为 `471805f`。2.1 从该提交建立
 | 0.05—1.50s | 第一条曲带沿自身控制点舒展、轻微越过再回到品牌轮廓 |
 | 0.18—1.63s | 第二条曲带错时舒展，形成交汇 |
 | 0.12—1.92s | 杏色导线顺着版面向 X 行进并自然淡出，留下安静的底线 |
-| 收束后 | 指针弹簧接管曲线；滚动只轻移引导线，阅读区保持平静 |
+| 收束后 | 指针弹簧接管曲线及细线局部；滚动在 Hero 底部只续写一次短线，阅读区保持平静 |
 
 这些初始运动由 CSS 随 HTML 开始，不依赖 GSAP chunk 的到达时刻。主文字没有 opacity=0、遮罩隐藏或延迟再入场。支持 CSS `d:path()` 的浏览器看到曲线舒展，不支持时保留完整静态 X 和线条节奏；减少动态效果关闭装饰运动。一个很小的 head 脚本只记录本标签页访问状态，在首次绘制前为重复访问选择安静状态；无法访问存储时保留普通静态内容与 CSS 运动。客户端有 StrictMode 重放防护。
 
@@ -51,7 +51,21 @@ PR #1 在开始时未合并，最新 head 为 `471805f`。2.1 从该提交建立
 
 移除旧 Hero 巨型名字的主导构图、圆润软胶式厚边、较重阴影、星形与轨道标签、重复的全段淡入/文字再隐藏时间轴、旧 Hero 的数百行断点覆盖。Lab 颜色用明确色板代替整体 hue-rotate，避免把焦点和两条曲带一起染色。
 
-没有新增依赖。现有 GSAP、SVG、CSS 足够表达；不引入 Motion、Three.js、Theatre.js、mo.js 或新的滚动引擎。拒绝全局光标、阻塞片头与大场景。字体继续使用本地 Manrope（OFL）与系统衬线/中文字体。
+没有新增动画依赖。现有 GSAP、SVG、CSS 足够表达；不引入 Motion、Three.js、Theatre.js、mo.js 或新的滚动引擎。拒绝全局光标、阻塞片头与大场景。字体使用本地 Manrope（OFL）、本地 Xuanyi Editorial（Liberation Serif 的 OFL 拉丁子集）与系统中文字体。
+
+## PR #2 · Final Art Direction & Motion Polish
+
+这轮从 PR #2 的 `9287b16` 继续，不改变 Editorial Flow + Silk，不新增页面或设计切换器。
+
+- 实际渲染两套署名：**Author Byline** 将 XUANYI / 玄屹放在主句之前，**Artist Signature** 放在 X 下方。各有 1440×900 与 390×844 的真实截图。前者先回答“谁的作品”，又保留主句的艺术主导权；后者在手机上挤近介绍，更像作品签名，因此选前者。
+- **Living Thread** 从 `shape.` 的句末延伸到 X，杏色追迹与两条曲带错时呼应。收束后的底线只用同一个弹簧的小幅控制点偏移，不再整体随滚动漂移。Hero 底部出现时续写一次短尾，无 sticky。320px 单独校准画布高度与位置，不让线穿过说明。
+- 基线实际审计发现 CSS 入场期间仍有 4 次 JS 路径写入。`curve-owner.ts` 现在在两条 CSS ribbon 都完成之前缓存渲染和最新指针输入；到静态品牌轮廓时一次交给 spring。离开覆盖待处理输入，卸载使待完成 promise 失效，reduced-motion 清空偏移并立即静止。实测 Chromium / Firefox 争抢写入 0、交接帧控制点差值 0；WebKit 不支持 CSS 路径形变，保留静态入场和正常 SVG 指针反馈。
+- Router 基于未改动的原设置页，从源图 (380, 260) 开始裁切，聚焦路由模式与候选模型；完整原图仍在案例中。Film poster 改为真实节选首帧；Multiverse 在原首页与公开的经历揭示截图之间轻量交替。影片只在明确 hover / 键盘焦点时加载并静音播放，退出/失焦/减少动态效果停止。键盘焦点保留时不会因鼠标离开而中断。
+- 跨浏览器实图发现系统衬线回退曾让 Firefox 更宽、WebKit 变成无衬线。通过 CDP 核实原 Chromium 字形为 Liberation Serif 后，将同一字形本地化，避免换一套新字体改变既有构图。About 改为自然的 `Systems & Stories.`。
+
+字体维护：来源为 Liberation Fonts 2.1.5（Debian `fonts-liberation 1:2.1.5-3`）的 `LiberationSerif-Regular.ttf` / `LiberationSerif-Italic.ttf`。用 Python fontTools + brotli，`subset.Subsetter` 保留 U+0020—017F、U+2010—203F，输出 WOFF2；修改 name 表 1/2/3/4/6/16/17 为 Xuanyi Editorial / 对应 Regular 或 Italic，遵守保留名称规定。两种字重均为 400，正常与斜体分别声明；保留源版权与完整 OFL，见 `public/fonts/OFL-Xuanyi-Editorial.txt`。未改动字形设计。斜体预加载，正文继续用 Manrope 与系统中文字体。
+
+两次独立看图复核认可署名选择、真实素材和收束后的构图，指出的 320px 线条问题已修正。最终复核实际查看三浏览器桌面 / 390 / 320 共九张图，无剩余阻塞问题。没有增加粒子、星形、光标或新的动画库。新截图约 608 KiB；本轮未向 Git 添加视频，完整录屏由 CI Artifact 保留。最新证据见 [polish 索引](evidence/visual-2-1/polish/README.md)。
 
 ## 实际参考与边界
 

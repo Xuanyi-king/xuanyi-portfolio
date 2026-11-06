@@ -2,6 +2,8 @@
 
 这里的 PNG 和 WebM 都来自实际运行的页面。`studies` 为真实 DOM/CSS 原型对比，`final` 为正式视觉的浏览器验收；没有生成图。
 
+**PR #2 最新精修证据见 [polish](polish/README.md)**：两套署名比较、最终首屏、曲线关键帧、项目预览及三浏览器结果。下面 `final` 是上一轮保留的原始证据，不作为本轮的新运行结果。脚本现在默认写入忽略的 `artifacts/browser`，完整新录屏通过 Actions Artifact 保存，不覆盖这里的历史文件。
+
 ## 比较后选一
 
 - [Editorial 桌面](studies/editorial-flow-desktop.png) · [手机](studies/editorial-flow-mobile.png)

@@ -123,3 +123,18 @@
 
 
 2.1 性能产物口径：首页 HTML 初始 script 集合 10 个文件，共 615,550 bytes，逐文件 gzip 191,801 bytes；2.0 对应为 611,610 / 190,213 bytes。本轮初始脚本 gzip 约增加 1.6 KB，保留 GSAP/SplitText 按需加载。影片节选 107,633 bytes，首次明确预览才请求。以上不包括 CSS、字体、图片和内联 hydration 数据，不是完整首屏下载量或实测帧率。
+
+## 2026-11-06 · PR #2 Final Polish
+
+从 `9287b16` 在同一 PR 分支继续，保留 Editorial Flow + Silk。此前的“未验证 Firefox/WebKit”是历史状态，本节更新为实际运行结果。
+
+- 执行 `npm ci`、`npm test`（24/24，保留原 21 项并新增 3 项曲线控制权回归）、`npm run typecheck`、`npm run build`、`npm run check:export`。10 个内容路由与 SEO、MDX、高亮、RSS、Sitemap 保留。
+- `npm run check:browser`：原 Chromium 12 组，新增 Chromium / Firefox / WebKit 各 7 组，0 页面异常。真实 1440×900 / 390×844 / 320×740 三引擎图；768×1024 / 375×812、模拟触摸、三次 SplitText 恢复、1500ms 迟 JS、无 JS、稳定相邻帧的原回归保留。
+- 实际逐帧检查 CSS/JS 路径交接，Chromium 与 Firefox 0 次争抢写入，交接帧控制点差值 0。早进入、移出、重复访问和偏好变化有回归。WebKit 26 不支持当前 CSS path，静态入场和 JS 交互正常。Firefox 跨文档转场能力检测为 false，实际原生进入/后退/显式返回正常。
+- 真实影片请求、时间推进、暂停、快速 hover 出入、键盘焦点和减少动态效果均通过三引擎实测。WebKit 媒体偏好事件异步到达，测试等待实际暂停状态，不把同一帧的事件时序当作已停止。
+- 独立图面审查实际查看最终三引擎桌面/390/320 共九张图，确认 320 细线及字体回退问题已修正，没有剩余阻塞问题。审美结论不来自 CI。
+- [最新证据](evidence/visual-2-1/polish/README.md)保留少量 JPEG；本轮完整 PNG/WebM/审计 JSON 写入忽略的 artifacts/browser，CI 上传 browser-evidence（14 天），没有新增视频到 Git，也没有覆盖旧图。
+
+性能范围：首页 10 个初始 script 共 617,092 bytes，逐文件 gzip 193,251 bytes，比精修前增加 1,450 gzip bytes。新增正常/斜体本地字体合计 55,456 bytes，保留原字形，斜体预加载；未增加动画依赖。影片仍 107,633 bytes，明确预览才请求。没有声称真实设备 60 FPS、LCP 或长任务结果。
+
+本地 WebKit 运行库通过无 root 的临时解压安装成功；实际启动、媒体播放、页面交互和截图均完成。远程 CI 使用 Playwright --with-deps 正常安装。Playwright WebKit 不是 macOS Safari / iPhone，尚未进行真机测试。没有部署或合并 PR。

@@ -24,14 +24,21 @@
 .hero-identity {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  letter-spacing: 0.09em;
+  gap: 22px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
 }
-.hero-identity > span:last-child {
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-left: 8px;
+.hero-name {
+  padding-right: 22px;
+  border-right: 1px solid var(--line);
+}
+.hero-han {
+  letter-spacing: 0.12em;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
 }
 .hero-note {
   font-size: 12px;
@@ -119,17 +126,27 @@
   overflow: visible;
   pointer-events: none;
 }
+.thread-mobile {
+  display: none;
+}
 .thread-base {
   stroke: #8eb4c5;
-  stroke-width: 0.8;
-  opacity: 0.45;
+  stroke-width: 0.9;
+  opacity: 0.7;
 }
 .thread-chase {
   stroke: #cc916e;
-  stroke-width: 1.6;
+  stroke-width: 2;
   stroke-dasharray: 0.16 0.84;
   stroke-dashoffset: 1;
   animation: thread-travel 1.8s cubic-bezier(0.23, 0.6, 0.3, 1) 0.12s both;
+}
+.thread-extension {
+  stroke: #8eb4c5;
+  stroke-width: 0.9;
+  opacity: 0.7;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
 }
 .hero-copy {
   grid-area: 2/1;
@@ -272,7 +289,14 @@
     display: none;
   }
   .hero-identity {
-    font-size: 12px;
+    font-size: 28px;
+    gap: 17px;
+  }
+  .hero-name {
+    padding-right: 17px;
+  }
+  .hero-han {
+    font-size: 22px;
   }
   .hero-composition {
     padding-top: 30px;
@@ -301,13 +325,12 @@
     align-self: center;
     margin-right: -27px;
   }
-  .hero-thread {
-    height: 410px;
-    top: 70px;
-    width: 650px;
-    left: -280px;
-    opacity: 0.65;
-    transform: rotate(30deg);
+  .thread-desktop {
+    display: none;
+  }
+  .thread-mobile {
+    display: block;
+    height: 420px;
   }
   .hero-art-caption {
     font-size: 11px;
@@ -359,6 +382,10 @@
   }
 }
 @media (max-width: 370px) {
+  .thread-mobile {
+    height: 370px;
+    left: 12px;
+  }
   .hero-title {
     font-size: 15.8vw;
   }
@@ -386,7 +413,8 @@
   .hero .thread-chase {
     animation: none;
   }
-  .thread-chase {
+  .thread-chase,
+  .thread-extension {
     display: none;
   }
 }
@@ -440,6 +468,9 @@
 }
 .media-knowledge-film {
   background: #eedac4;
+  clip-path: none;
+  opacity: 0;
+  transition: opacity 0.65s var(--ease);
 }
 .media-topline {
   display: flex;
@@ -466,6 +497,15 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+.media-adaptive-router .media-window > img {
+  position: absolute;
+  width: 200%;
+  max-width: none;
+  height: auto;
+  /* Actual screenshot: begin at (380, 260), removing the empty sidebar and
+     plugin header. Keep the unaltered routing controls and status in view. */
+  transform: translate(-26.4%, -14.4%);
 }
 .media-knowledge-film .media-window {
   background: #e8e4d5;
@@ -496,6 +536,21 @@
 .project-card:is(:hover, :focus-within) .real-project-media,
 .detail-cover .real-project-media {
   clip-path: inset(0);
+}
+.project-card:is(:hover, :focus-within) .media-knowledge-film,
+.detail-cover .media-knowledge-film {
+  opacity: 1;
+}
+.scene-observatory .scene-image > .multiverse-reveal {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.project-card:is(:hover, :focus-within) .multiverse-reveal {
+  opacity: 1;
+  transform: none;
 }
 .scene-kind {
   position: absolute;
@@ -572,6 +627,10 @@
 @media (prefers-reduced-motion: reduce) {
   .real-project-media {
     transition: none;
+  }
+  .scene-observatory .scene-image > .multiverse-reveal {
+    transition: none;
+    transform: none;
   }
   .hero .x-ink-edge {
     opacity: 0;
@@ -898,6 +957,9 @@
 .hero[data-returning] [data-ribbon],
 html[data-xuanyi-returning] .hero [data-ribbon],
 html[data-xuanyi-returning] .hero .thread-chase {
+  animation: none;
+}
+.hero .living-x:is([data-curve-owner="spring"], [data-curve-owner="static"]) [data-ribbon] {
   animation: none;
 }
 @media (prefers-reduced-motion: reduce) {

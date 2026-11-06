@@ -49,6 +49,13 @@ export default function RootLayout({
         />
         <link
           rel="preload"
+          href="/fonts/xuanyi-editorial-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
           href="/fonts/manrope-latin.woff2"
           as="font"
           type="font/woff2"

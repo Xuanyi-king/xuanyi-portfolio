@@ -12,6 +12,7 @@
 ## 2.1 补充材料
 
 - `atlas-excerpt.webm`：同一固定版本的 `evidence/atlas/final.mp4`，截取 00:08—00:16，去音频、缩至 960px、24fps、VP9，作为明确标注的静音节选，不冒充完整影片。
+- `atlas-preview.jpg`：直接从上述节选的第一帧提取（`ffmpeg -i atlas-excerpt.webm -frames:v 1 -q:v 3 atlas-preview.jpg`），对应原成片第 8 秒。作为卡片静帧和视频 poster，避免用第 10 秒画面切回第 8 秒；没有合成或修改界面。
 - `atlas-sphere.jpg` / `atlas-scale.jpg` / `atlas-area.jpg`：同一成片 3、26、49 秒抽帧（JPEG），没有重绘地图或字幕。原仓库 MIT 与 D3 / Natural Earth 声明继续适用；完整源链接保留在影片案例中。
 - `multiverse-experience-reveal.jpg` / `multiverse-play-act1.jpg`：完整复制自 [zhihu-multiverse 固定版本 2901348 的 public/screenshots](https://github.com/Xuanyi-king/zhihu-multiverse/tree/290134821dceb9a41d41925f0b8c0f469d95b211/public/screenshots)，对应 `experience-reveal.jpg` 和 `play-act1.jpg`。只作为原项目的真实界面档案，不声称本轮重新运行了该项目。
 
