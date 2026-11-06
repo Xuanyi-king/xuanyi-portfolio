@@ -53,6 +53,21 @@ async function layout(p) {
     .locator(".gallery-card .project-scene")
     .evaluateAll((a) => a.map((e) => getComputedStyle(e).viewTransitionName));
   if (!names.includes("")) assert.equal(new Set(names).size, 3);
+  if (p.viewportSize().width <= 1100) {
+    assert.deepEqual(
+      await p
+        .locator('.gallery-card:not([data-gallery-active="true"]) .project-meta')
+        .evaluateAll((a) => a.map((e) => getComputedStyle(e).visibility)),
+      ["hidden", "hidden"],
+      "Tablet and mobile keep side covers without crowding central copy",
+    );
+    assert.equal(
+      await p
+        .locator('.gallery-card[data-gallery-active="true"] .project-meta')
+        .evaluate((e) => getComputedStyle(e).visibility),
+      "visible",
+    );
+  }
 }
 async function drag(p, dx, duration = 600) {
   const box = await p.locator(".gallery-stage").boundingBox(),

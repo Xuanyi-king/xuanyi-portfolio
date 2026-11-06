@@ -10,7 +10,7 @@
 | 之前的 2.1 | [桌面](../visual-2-1/polish/hero-desktop.jpg) · [手机](../visual-2-1/polish/hero-mobile.jpg) |
 | 两套曲面，同一状态比较 | [静止 / 舒展 / 收束与小图标](materials-comparison.jpg) · [手机](materials-mobile.jpg) |
 | 可逆移动端收束 | [25% / 50% / 75% / 90% 实际滚动](folding-mobile.jpg) |
-| Living Gallery | [桌面](gallery-desktop.jpg) · [手机](gallery-mobile.jpg) · [窄屏](gallery-narrow.jpg) |
+| Living Gallery | [桌面](gallery-desktop.jpg) · [平板修正后](gallery-tablet.jpg) · [手机](gallery-mobile.jpg) · [窄屏](gallery-narrow.jpg) |
 | 真实 Router 预览 | [悬停后的实际设置页局部](router-preview.jpg) |
 | 无 JS + 减少动态效果 | [全部项目静态可用](no-js-reduced.jpg) |
 
@@ -39,6 +39,7 @@ GitHub Actions：打开 [PR #3 Checks](https://github.com/Xuanyi-king/xuanyi-por
 - [收束与导航衔接](identity-results.json)：12 组，含反向、resize、reduced 与 CTA 留白。
 - [开发 StrictMode](strict-mode.json)：三次进出、单键一步、按住暂停影片、无运行及 hydration 错误。
 - [性能原始样本](performance.json)：桌面 / 模拟手机，不能当作线上指标、正式 INP 或稳定 60 FPS 保证。
+- [追加 4× CPU 本地样本](performance-cpu4.json)：使用同一脚本实际降速，仍不是物理低端设备。
 
 原有 Chromium 12 组、三引擎各 7 组与全部原始图保留在 Artifact。1 / 2 / 3 项研究页真实布局也有截图；4 / 6 项仅验证控制器，没有增加虚构作品。
 
