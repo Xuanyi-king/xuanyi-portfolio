@@ -382,6 +382,14 @@
   }
 }
 @media (max-width: 370px) {
+  .footer-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .footer-callout .contact-circle {
+    align-self: flex-end;
+  }
   .thread-mobile {
     height: 370px;
     left: 12px;
