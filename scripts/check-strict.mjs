@@ -3,13 +3,14 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
-const base = process.env.STRICT_BASE_URL ?? "http://127.0.0.1:4178";
+const base = process.env.STRICT_BASE_URL ?? "http://localhost:4178";
 const destination = path.resolve(
   process.env.BROWSER_EVIDENCE_DIR ?? "artifacts/browser",
   "living-canvas",
 );
 fs.mkdirSync(destination, { recursive: true });
 let server;
+const originalNextEnv = fs.readFileSync("next-env.d.ts", "utf8");
 try {
   if (!process.env.STRICT_BASE_URL) {
     const log = fs.openSync(path.join(destination, "strict-server.log"), "w");
@@ -30,6 +31,7 @@ try {
     const p = await b.newPage({ viewport: { width: 1440, height: 900 } }),
       errors = [],
       hydration = [];
+    p.setDefaultTimeout(20000);
     p.on("pageerror", (e) => errors.push(e.message));
     p.on("console", (m) => {
       if (
@@ -105,5 +107,13 @@ try {
     await b.close();
   }
 } finally {
-  server?.kill();
+  if (server) {
+    const closed = new Promise((resolve) => server.once("close", resolve));
+    server.kill();
+    await Promise.race([
+      closed,
+      new Promise((resolve) => setTimeout(resolve, 5000)),
+    ]);
+    fs.writeFileSync("next-env.d.ts", originalNextEnv);
+  }
 }
