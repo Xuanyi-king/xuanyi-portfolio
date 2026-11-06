@@ -16,7 +16,7 @@
 ## 最终首屏与作品
 
 - 之前：[桌面](../final/hero-desktop.png) / [手机](../final/hero-mobile.png)。
-- 现在：[1440×900](hero-desktop.jpg) / [390×844](hero-mobile.jpg) / [320×740](hero-narrow.jpg)。
+- 现在：[1440×900](hero-desktop.jpg) / [390×844](hero-mobile.jpg) / [320×740 修正后](hero-narrow-fixed.jpg)。[修正前窄屏](hero-narrow.jpg)保留作历史证据。
 - [Living Thread 实际录屏关键帧](thread-keyframes.jpg)：按时间先上排、后下排，0、0.5、1、1.5、2、2.5 秒。
 - [Router 前后](router-before-after.jpg)：左为旧运行截图，右为新运行截图的同尺寸局部；都来自同一真实设置页，未重绘 UI。
 - [Film 真实节选播放](film-preview.jpg) / [Multiverse 真实经历揭示界面](multiverse-preview.jpg)。

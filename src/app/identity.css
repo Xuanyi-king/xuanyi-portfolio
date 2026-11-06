@@ -399,6 +399,7 @@
   }
   .hero-visual {
     width: 270px;
+    margin-right: -20px;
   }
   .hero-composition {
     grid-template-rows: auto 193px auto;

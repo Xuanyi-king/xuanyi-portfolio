@@ -23,6 +23,12 @@ jobs:
       - run: npm run build
       - run: npm run check:export
       - run: npx playwright install --with-deps chromium firefox webkit
+      - run: node scripts/check-cross-browser.mjs
+        name: WebKit narrow layout smoke
+        env:
+          BROWSER_LAYOUT_ONLY: "1"
+          BROWSER_ENGINES: webkit
+          BROWSER_EVIDENCE_DIR: artifacts/browser
       - run: npm run check:browser
         env:
           BROWSER_EVIDENCE_DIR: artifacts/browser

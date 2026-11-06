@@ -24,6 +24,13 @@ if (!process.env.BROWSER_BASE_URL) {
   }
 }
 const reports = [];
+const layoutOnly = process.env.BROWSER_LAYOUT_ONLY === "1";
+const engines = Object.entries({ chromium, firefox, webkit }).filter(
+  ([name]) =>
+    !process.env.BROWSER_ENGINES ||
+    process.env.BROWSER_ENGINES.split(",").includes(name),
+);
+assert.ok(engines.length, "Choose at least one known browser engine");
 async function ready(p) {
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(2000);
@@ -77,12 +84,43 @@ async function layout(p) {
   );
 }
 try {
-  for (const [name, engine] of Object.entries({ chromium, firefox, webkit })) {
+  for (const [name, engine] of engines) {
     const dir = path.join(destination, name, "polish");
     await fs.mkdir(dir, { recursive: true });
     await fs.rm(path.join(dir, "failure.txt"), { force: true });
     await fs.rm(path.join(dir, "failure.png"), { force: true });
     const browser = await engine.launch({ headless: true });
+    if (layoutOnly) {
+      try {
+        for (const [width, height] of [
+          [390, 844],
+          [320, 740],
+        ]) {
+          const c = await browser.newContext({
+            viewport: { width, height },
+            hasTouch: true,
+          });
+          try {
+            const p = await c.newPage();
+            await p.goto(base);
+            await ready(p);
+            await p.screenshot({ path: path.join(dir, `layout-${width}.png`) });
+            await layout(p);
+          } finally {
+            await c.close();
+          }
+        }
+        reports.push({
+          browser: name,
+          version: browser.version(),
+          checks: ["390px / 320px layout smoke only"],
+        });
+        console.log(`${name}: 390px / 320px layout smoke passed`);
+      } finally {
+        await browser.close();
+      }
+      continue;
+    }
     const errors = [],
       checks = [],
       capabilities = {};
@@ -404,7 +442,10 @@ try {
     }
   }
   await fs.writeFile(
-    path.join(destination, "cross-browser-results.json"),
+    path.join(
+      destination,
+      layoutOnly ? "layout-smoke-results.json" : "cross-browser-results.json",
+    ),
     JSON.stringify({ date: new Date().toISOString(), reports }, null, 2) + "\n",
   );
 } finally {
