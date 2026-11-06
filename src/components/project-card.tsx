@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { cardPointer } from "@/motion/pointer";
-import { ProjectPreview } from "./project-preview";
-import Image from "next/image";
+import { watchMotionPreference } from "@/motion/preference";
+import { ProjectScene } from "./project-scene";
 
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -15,31 +14,27 @@ export function ProjectCard({
 }) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
-    if (ref.current) return cardPointer(ref.current);
+    const card = ref.current;
+    const media = matchMedia(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    );
+    return watchMotionPreference(media, async () => {
+      const { cardPointer } = await import("@/motion/pointer");
+      return () => (card ? cardPointer(card) : () => {});
+    });
   }, []);
   return (
     <article ref={ref} className={`project-card reveal ${project.color}`}>
       <a
-        href={`/work/${project.slug}`}
+        href={`/work/${project.slug}/`}
         className="project-cover"
         aria-label={`查看 ${project.title} 项目详情`}
       >
         <div className="cover-depth">
           <div className="cover-inner">
-            <Image
-              style={{ viewTransitionName: `cover-${project.slug}` }}
-              src={project.cover}
-              alt={`${project.title} ${project.slug === "zhihu-multiverse" ? "公开项目首页截图" : "原创概念封面"}`}
-              width={1200}
-              height={900}
-              sizes="(max-width: 760px) 100vw, 50vw"
-            />
+            <ProjectScene project={project} />
           </div>
-          {project.slug !== "zhihu-multiverse" && (
-            <ProjectPreview slug={project.slug} />
-          )}
         </div>
-        <span className="cover-index">0{index + 1} / SELECTED PROJECT</span>
         <span className="peek-label">
           Explore project
           <ArrowUpRight size={19} />
@@ -50,7 +45,10 @@ export function ProjectCard({
       </a>
       <div className="project-meta">
         <p>
-          {project.category}
+          <span className="project-category">
+            <span className="project-number">0{index + 1} /</span>{" "}
+            {project.category}
+          </span>
           <span>{project.year}</span>
         </p>
         <a href={`/work/${project.slug}/`}>

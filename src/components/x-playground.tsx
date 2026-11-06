@@ -14,7 +14,12 @@ export function XPlayground() {
           EXPERIMENT 002 / CURIOSITY IN MOTION
         </span>
         <div className="playground-x">
-          <LivingX key={generation} play strength={strength} form={form} />
+          <LivingX
+            resetToken={generation}
+            play
+            strength={strength}
+            form={form}
+          />
         </div>
         <p className="stage-help">
           拖动两个小圆点，松开让曲线回到原位。

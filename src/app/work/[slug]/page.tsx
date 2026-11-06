@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { ProjectScene } from "@/components/project-scene";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -47,7 +46,7 @@ export default async function ProjectDetail({
   const next = projects[(index + 1) % projects.length];
   return (
     <article className="container project-detail">
-      <BackLink href="/work">回到所有作品</BackLink>
+      <BackLink href="/work/">回到所有作品</BackLink>
       <header className="project-detail-heading">
         <p className="eyebrow reveal">
           {project.category} / {project.year}
@@ -66,15 +65,7 @@ export default async function ProjectDetail({
         </div>
       </header>
       <div className="detail-cover reveal">
-        <Image
-          style={{ viewTransitionName: `cover-${project.slug}` }}
-          src={project.cover}
-          alt={`${project.title} ${project.slug === "zhihu-multiverse" ? "公开项目首页截图" : "原创图形概念封面"}`}
-          width={1200}
-          height={900}
-          priority
-          sizes="(max-width: 760px) 100vw, 90vw"
-        />
+        <ProjectScene project={project} priority />
       </div>
       <p className="cover-caption">
         {project.slug === "zhihu-multiverse"
@@ -118,11 +109,11 @@ export default async function ProjectDetail({
           </section>
         </div>
       </div>
-      <Link className="next-project" href={`/work/${next.slug}`}>
+      <a className="next-project" href={`/work/${next.slug}/`}>
         <p>NEXT EXPLORATION</p>
         <h2>{next.title}</h2>
         <ArrowUpRight />
-      </Link>
+      </a>
     </article>
   );
 }
