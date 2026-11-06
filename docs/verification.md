@@ -84,3 +84,28 @@
 - 真机帧率、长任务与动画流畅度。
 
 已查看的 `public/covers/zhihu-real.jpg` 是项目素材，不是这次 Portfolio 页面验收截图。Hero 构图和封面包装属于待视觉复核的修改，不能据代码认定已达到最终美术质量。PR 保持 Draft，生产网站未更新。
+
+
+## 2026-11-06 · PR #1 真实浏览器验收与交互复审
+
+本节更新当前状态；前文“浏览器不可用”是之前各轮的历史记录。本轮用户明确要求使用 Playwright；探测发现已安装系统 Chromium 和 Playwright，实际启动成功，随后使用项目锁定的 Playwright 1.58.2 与配套 Chromium 145 完成验收。没有用生成图替代页面证据。
+
+- 安装与工程检查：`npm ci`、`npm test`（21/21）、`npm run typecheck`、`npm run build`、`npm run check:export` 通过。Next 静态路由、MDX、SEO、RSS 保留。
+- `npm run check:browser`：10 组场景通过，捕获页面异常 0。具体项目与浏览器版本记录于 [results.json](evidence/pr1-review/after/results.json)。
+- 1440×900、390×844、375×812、320×740：实际浏览器打开并截图，无横向溢出。鼠标使 Hero 双曲线实际形变，手机标语稳定两行；键盘焦点有截图。
+- Lab：实际鼠标拖动、触摸拖动/取消，手柄中心到独立解析的 SVG 曲线锚点误差小于 1px；测试范围内手柄位移对应指针位移。几何有界，超出边界后不会无限跟随。方向键累加、Esc、预设、重置均通过实际操作；鼠标录屏保留。触摸为 Chromium 移动模拟与 CDP 输入，不是真机测量。
+- 代码复审另发现并修正“回弹途中再次抓住跳回预设”和“力度滑杆被跟手映射抵消”：前者锁定当前值，后者现在实际调节弹簧回弹速度。均有独立状态测试。
+- SplitText：实际通过 SPA 导航离开/回到首页三次，离开后旧标题的 innerHTML 与原始静态 HTML 完全一致，返回后节点数量没有递增。减少动态效果时无 SplitText 包装。显式 restore 会撤销自身 tween/ScrollTrigger 并 revert，外层 GSAP context 随页面清理。
+- 慢加载：对所有 JS chunk 加 1500ms 延迟，采样已显示标题，没有再移入遮罩隐藏。以首个内容绘制后的时间选择完整入场或仅图形 settle，替换以加载开始计时的 800ms 全跳过策略。
+- 项目：实际悬停、进入详情、浏览器后退、显式返回列表；真实素材区域有截图。普通原生链接在禁用 JS 时也实际进入详情并返回。无脚本不启用跨文档转场；减少动态效果也关闭该转场。
+- GitHub Actions 配置执行用户要求的五条命令，另安装匹配 Chromium、运行浏览器检查并上传 `browser-evidence` artifact。远程运行状态以 GitHub Actions 为准，不能拿本地命令替代远程结果。
+
+### 实际证据与独立视觉审查
+
+[证据索引](evidence/pr1-review/README.md)包含桌面、手机、窄屏、Lab、悬停与详情截图，三段 WebM 为运行页面的 Playwright 录屏，不是概念动画。
+
+独立审查者实际查看 before/after 截图后确认：新版手机标语与 X 分组稳定，四档宽度未见拥挤或溢出；桌面标题、标语、X 主次清晰；真实影片帧提高项目可信度。无需继续增加装饰或重排 Hero。提出的悬停 pill 压住封面文字、箭头重复问题已修复：去掉图片上的按钮覆盖，保留封面与项目标题入口。另移除 Hero 手绘线和薄荷点，减少视觉噪声。
+
+### 验证边界
+
+没有实际运行 Firefox、Safari / iOS WebKit 或 Android/iPhone 真机。无 JS 的原生回退已验证，但不等同这些浏览器的完整转场验收。没有测量 FPS、LCP、长任务或移动真机性能；录屏显示的是本次环境的实际操作，不是性能基准。未重新运行上游 Router / Film 项目，详情材料来源和许可见 [project-visual-sources.md](project-visual-sources.md)。PR 保留 Draft，未合并、未部署生产。

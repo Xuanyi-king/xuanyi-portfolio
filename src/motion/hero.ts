@@ -1,6 +1,13 @@
 import gsap from "gsap";
 import { motionTokens as m } from "./tokens";
-export function animateHero() {
+export function animateHero(mode: "entrance" | "settle" = "entrance") {
+  if (mode === "settle") {
+    return gsap.fromTo(
+      ".hero-artwork",
+      { scale: 0.985 },
+      { scale: 1, duration: 0.65, ease: m.ease, clearProps: "transform" },
+    );
+  }
   let repeat = false;
   try {
     repeat = !!sessionStorage.getItem("xuanyi-motion-2");

@@ -24,7 +24,7 @@ export function XPlayground() {
         <p className="stage-help">
           拖动两个小圆点，松开让曲线回到原位。
           <br />
-          键盘：聚焦圆点，用方向键轻推。
+          键盘：方向键逐步轻推，Shift 精调，Esc 复原。
         </p>
       </div>
       <div className="playground-controls">
@@ -54,7 +54,7 @@ export function XPlayground() {
         </div>
         <div>
           <label className="range-label" htmlFor="x-strength">
-            轻一点，还是大胆一点？
+            回弹慢一点，还是利落一点？
           </label>
           <input
             id="x-strength"

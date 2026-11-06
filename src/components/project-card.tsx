@@ -35,13 +35,6 @@ export function ProjectCard({
             <ProjectScene project={project} />
           </div>
         </div>
-        <span className="peek-label">
-          Explore project
-          <ArrowUpRight size={19} />
-        </span>
-        <span className="cover-corner">
-          <ArrowUpRight strokeWidth={1.2} />
-        </span>
       </a>
       <div className="project-meta">
         <p>

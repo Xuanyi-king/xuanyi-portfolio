@@ -1,5 +1,8 @@
-@view-transition {
-  navigation: auto;
+/* Without scripting, navigation remains a plain document load. */
+@media (scripting: enabled) {
+  @view-transition {
+    navigation: auto;
+  }
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -74,14 +77,6 @@
   transition:
     background 0.25s,
     box-shadow 0.25s;
-}
-.handle-0 {
-  left: 44%;
-  top: 34%;
-}
-.handle-1 {
-  left: 54%;
-  top: 65%;
 }
 .x-handle:hover span,
 .x-handle:focus-visible span,
@@ -338,5 +333,62 @@
   }
   .home-projects > .project-card:nth-child(3) .project-meta {
     padding-top: 20px;
+  }
+}
+
+.hero-tagline > span {
+  white-space: nowrap;
+}
+.project-evidence {
+  margin-top: 76px;
+  display: grid;
+  grid-template-columns: 1fr 2.1fr;
+  gap: 80px;
+  align-items: start;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.evidence-heading h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 18px 0;
+}
+.evidence-heading > p:last-child {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.project-evidence figure {
+  min-width: 0;
+}
+.project-evidence figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: contain;
+  background: #eef1ed;
+}
+.project-evidence figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 15px;
+  font-size: 11px;
+}
+.project-evidence figcaption a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .project-evidence {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 42px;
+  }
+}
+@media (max-width: 370px) {
+  .hero-tagline {
+    font-size: 24px;
   }
 }

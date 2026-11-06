@@ -8,6 +8,7 @@ export function createLivingSpring(
   paint: (values: readonly number[]) => void,
   scheduler: SpringScheduler,
 ) {
+  const held = [false, false];
   const values = [0, 0, 0, 0],
     velocity = [0, 0, 0, 0],
     input = [0, 0, 0, 0];
@@ -38,7 +39,8 @@ export function createLivingSpring(
     last = now;
     let moving = false;
     values.forEach((v, i) => {
-      const next = springStep(v, velocity[i], target[i], dt);
+      if (held[Math.floor(i / 2)]) return;
+      const next = springStep(v, velocity[i], target[i], dt, strength);
       values[i] = next.position;
       velocity[i] = next.velocity;
       moving ||=
@@ -59,6 +61,15 @@ export function createLivingSpring(
           ? [-30, 25, 30, -25]
           : [0, 0, 0, 0];
     target = base.map((n, i) => clamp(n + input[i] * strength, -64, 64));
+    if (held.some(Boolean)) {
+      values.forEach((_, i) => {
+        if (held[Math.floor(i / 2)]) {
+          values[i] = target[i];
+          velocity[i] = 0;
+        }
+      });
+      paint([...values]);
+    }
     if (reduced) settle();
     else if (frame === null) {
       last = null;
@@ -69,7 +80,51 @@ export function createLivingSpring(
     configure(next: { form: string; strength: number }, reset = false) {
       form = next.form;
       strength = clamp(next.strength, 0.3, 1.5);
-      if (reset) input.fill(0);
+      if (reset) {
+        input.fill(0);
+        held.fill(false);
+      }
+      aim();
+    },
+    read() {
+      return [...values];
+    },
+    grab(index: number) {
+      if (index !== 0 && index !== 1) return;
+      const base =
+        form === "open"
+          ? [30, -35, -30, 35]
+          : form === "fold"
+            ? [-30, 25, 30, -25]
+            : [0, 0, 0, 0];
+      held[index] = true;
+      for (const axis of [index * 2, index * 2 + 1]) {
+        input[axis] = (values[axis] - base[axis]) / strength;
+        velocity[axis] = 0;
+      }
+      aim();
+    },
+    drag(index: number, x: number, y: number) {
+      if (index !== 0 && index !== 1) return;
+      const base =
+        form === "open"
+          ? [30, -35, -30, 35]
+          : form === "fold"
+            ? [-30, 25, 30, -25]
+            : [0, 0, 0, 0];
+      input[index * 2] = (clamp(x, -64, 64) - base[index * 2]) / strength;
+      input[index * 2 + 1] =
+        (clamp(y, -64, 64) - base[index * 2 + 1]) / strength;
+      aim();
+    },
+    nudge(index: number, x: number, y: number) {
+      if (index !== 0 && index !== 1) return;
+      input[index * 2] = clamp(input[index * 2] + x / strength, -128, 128);
+      input[index * 2 + 1] = clamp(
+        input[index * 2 + 1] + y / strength,
+        -128,
+        128,
+      );
       aim();
     },
     setReduced(value: boolean) {
@@ -84,9 +139,13 @@ export function createLivingSpring(
     },
     release(index?: number) {
       if (index === 0 || index === 1) {
+        held[index] = false;
         input[index * 2] = 0;
         input[index * 2 + 1] = 0;
-      } else input.fill(0);
+      } else {
+        input.fill(0);
+        held.fill(false);
+      }
       aim();
     },
     dispose() {

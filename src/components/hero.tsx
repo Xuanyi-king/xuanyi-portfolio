@@ -50,16 +50,6 @@ export function Hero() {
               fill="currentColor"
             />
           </svg>
-          <span className="floating-dot" />
-          <svg className="pencil-line" viewBox="0 0 170 100">
-            <path
-              d="M5 70C70 93 153 75 125 33c-15-23-56-15-49 10 6 22 55 26 79-6m-18 4 19-7-3 19"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
         </div>
         <div className="hero-copy">
           <p>把好奇心，做成看得见的作品。</p>

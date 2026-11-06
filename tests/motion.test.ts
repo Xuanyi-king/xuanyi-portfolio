@@ -131,3 +131,85 @@ test("reset during motion returns continuously without replacing the spring", ()
   assert.deepEqual(h.latest, [0, 0, 0, 0]);
   assert.equal(h.queued.size, 0);
 });
+
+test("dragging directly positions the grabbed curve; release and reset recover", () => {
+  const h = harness();
+  h.engine.grab(0);
+  h.engine.drag(0, 25, 32);
+  assert.deepEqual(h.latest, [25, 32, 0, 0]);
+  h.frame();
+  assert.deepEqual(h.latest, [25, 32, 0, 0]);
+  h.engine.release(0);
+  for (let i = 0; i < 300; i++) h.frame();
+  assert.deepEqual(h.latest, [0, 0, 0, 0]);
+  h.engine.grab(1);
+  h.engine.drag(1, 300, -300);
+  assert.deepEqual(h.latest, [0, 0, 64, -64]);
+  h.engine.configure({ form: "rest", strength: 1 }, true);
+  for (let i = 0; i < 300; i++) h.frame();
+  assert.deepEqual(h.latest, [0, 0, 0, 0]);
+});
+test("keyboard nudges accumulate across presses instead of replacing the offset", () => {
+  const h = harness();
+  h.engine.nudge(0, 10, 0);
+  h.engine.nudge(0, 10, 0);
+  h.engine.nudge(0, 0, -4);
+  for (let i = 0; i < 300; i++) h.frame();
+  assert.deepEqual(h.latest, [20, -4, 0, 0]);
+});
+import { ribbonGeometry, anchorInfluence } from "../src/motion/geometry";
+test("handle anchors use the same cubic geometry and invert pointer displacement", () => {
+  const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
+  const next = ribbonGeometry({ x: 30, y: 40 }, { x: -25, y: 20 });
+  for (let i = 0; i < 2; i++) {
+    const delta = i === 0 ? { x: 30, y: 40 } : { x: -25, y: 20 };
+    assert.ok(
+      Math.abs(
+        (next.anchors[i].x - rest.anchors[i].x) / anchorInfluence(i) - delta.x,
+      ) < 1e-8,
+    );
+    assert.ok(
+      Math.abs(
+        (next.anchors[i].y - rest.anchors[i].y) / anchorInfluence(i) - delta.y,
+      ) < 1e-8,
+    );
+  }
+});
+
+test("Lab response changes release speed without breaking the pointer's direct position", () => {
+  const soft = harness(),
+    firm = harness();
+  soft.engine.configure({ form: "rest", strength: 0.3 });
+  firm.engine.configure({ form: "rest", strength: 1.5 });
+  for (const h of [soft, firm]) {
+    h.engine.grab(0);
+    h.engine.drag(0, 40, 20);
+    assert.deepEqual(h.latest, [40, 20, 0, 0]);
+    h.engine.release(0);
+    h.frame();
+  }
+  assert.ok(soft.latest[0] > firm.latest[0]);
+  for (let i = 0; i < 600; i++) {
+    soft.frame();
+    firm.frame();
+  }
+  assert.deepEqual(soft.latest, [0, 0, 0, 0]);
+  assert.deepEqual(firm.latest, [0, 0, 0, 0]);
+});
+
+test("grabbing again during recovery holds the current pose without snapping to the preset", () => {
+  const h = harness();
+  h.engine.grab(0);
+  h.engine.drag(0, 40, 20);
+  h.engine.release(0);
+  h.frame();
+  const before = [...h.latest];
+  h.engine.grab(0);
+  h.frame();
+  assert.deepEqual(h.latest, before);
+  h.frame();
+  assert.deepEqual(h.latest, before);
+  h.engine.release(0);
+  for (let i = 0; i < 300; i++) h.frame();
+  assert.deepEqual(h.latest, [0, 0, 0, 0]);
+});

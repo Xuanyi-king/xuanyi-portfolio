@@ -572,47 +572,6 @@ a[href^="#"] {
   height: 100%;
   width: 100%;
 }
-.cover-corner {
-  position: absolute;
-  right: 19px;
-  bottom: 20px;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  background: var(--cream);
-  display: grid;
-  place-items: center;
-  transition: transform 0.6s var(--ease);
-}
-.cover-corner svg {
-  width: 19px;
-}
-.peek-label {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: var(--ink);
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 13px 19px;
-  border-radius: 30px;
-  font-size: 10px;
-  transform: translateY(70px) rotate(5deg);
-  opacity: 0;
-  transition:
-    transform 0.6s var(--ease),
-    opacity 0.4s;
-}
-.project-cover:hover .peek-label,
-.project-cover:focus-visible .peek-label {
-  transform: none;
-  opacity: 1;
-}
-.project-cover:hover .cover-corner {
-  transform: rotate(45deg);
-}
 .project-meta {
   padding-top: 21px;
 }
@@ -1907,7 +1866,7 @@ a[href^="#"] {
     align-items: center;
   }
   .hero-tagline {
-    font-size: clamp(32px, 8.6vw, 58px);
+    font-size: clamp(26px, 7.3vw, 50px);
     letter-spacing: -0.065em;
     line-height: 1.08;
     max-width: none;
@@ -2702,9 +2661,6 @@ a[href^="#"] {
   }
 }
 @media (hover: none) {
-  .peek-label {
-    display: none;
-  }
 }
 .download-mark {
   margin-left: 25px;

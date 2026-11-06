@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { heroMode } from "./hero-policy";
 import { animateSections } from "./reveals";
 export async function preparePageMotion(started: number) {
   const [hero, intro] = await Promise.all([
@@ -13,11 +14,19 @@ export async function preparePageMotion(started: number) {
     if (navigation?.type === "back_forward") return () => {};
     gsap.registerPlugin(ScrollTrigger);
     let active = true;
+    let restoreIntro: (() => void) | undefined;
     const context = gsap.context(() => {
-      // Never hide a title that has already been read while a slow chunk was downloading.
-      if (performance.now() - started < 800 && window.scrollY < 40)
-        hero?.animateHero();
-      intro?.animateIntro();
+      const firstPaint =
+        performance.getEntriesByName("first-contentful-paint")[0]?.startTime ??
+        started;
+      const mode = heroMode({
+        sincePaint: performance.now() - firstPaint,
+        scrollY: window.scrollY,
+        visible: document.visibilityState === "visible",
+        restored: false,
+      });
+      if (mode !== "none") hero?.animateHero(mode);
+      restoreIntro = intro?.animateIntro();
       animateSections();
     });
     void document.fonts.ready.then(() => {
@@ -25,6 +34,7 @@ export async function preparePageMotion(started: number) {
     });
     return () => {
       active = false;
+      restoreIntro?.();
       context.revert();
     };
   };

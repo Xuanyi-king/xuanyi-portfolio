@@ -16,10 +16,28 @@ export type Project = {
   outcome: string;
   status: string;
   credit?: string;
+  visual?: {
+    src: string;
+    width: number;
+    height: number;
+    title: string;
+    caption: string;
+    source: string;
+  };
 };
 export const projects: Project[] = [
   {
     slug: "adaptive-router",
+    visual: {
+      src: "/projects/router-settings.png",
+      width: 1440,
+      height: 1800,
+      title: "原生设置页 · 仓库截图",
+      caption:
+        "公开仓库 s43 验证截图：候选模型、路由配置与本地记录。截图中的离线验证状态不代表线上模型效果。",
+      source:
+        "https://github.com/Xuanyi-king/DSH-Adaptive-Router/blob/c988ce7fcb4cc6b711c13f65a075fcc46a35c61a/docs/screenshots/s43-settings-desktop-light.png",
+    },
     title: "DSH Adaptive Router",
     subtitle: "让每一次思考，找到合适的路径。",
     description:
@@ -44,6 +62,16 @@ export const projects: Project[] = [
   },
   {
     slug: "knowledge-film",
+    visual: {
+      src: "/projects/atlas-frame.jpg",
+      width: 1920,
+      height: 1080,
+      title: "《地图是一种选择》 · 成片第 10 秒",
+      caption:
+        "从公开仓库的真实成片 final.mp4 抽取，非概念示意。影片比较球面与地图投影；基于原项目制作，保留 MIT 与第三方地理素材声明。",
+      source:
+        "https://github.com/Xuanyi-king/vibe-knowledge-film/blob/fa4749548d868a43bd22c9b24ff7a8ae89fdbb5d/evidence/atlas/final.mp4",
+    },
     title: "Vibe Knowledge Film",
     subtitle: "让抽象的道理，在画面里发生。",
     description:

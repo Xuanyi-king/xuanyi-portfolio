@@ -116,4 +116,17 @@ docs/                      计划和实际验证记录
 
 ## XUANYI 2.0 动效分支
 
-实现与调研见 [docs/motion-2.md](docs/motion-2.md)。当前浏览器截图、触摸、帧率与真实转场验收尚未完成，不能以构建通过代替视觉验收。
+实现与调研见 [docs/motion-2.md](docs/motion-2.md)，最新实际检查与限制见 [docs/verification.md](docs/verification.md)。真实浏览器证据保存在 [docs/evidence/pr1-review](docs/evidence/pr1-review)，项目素材来源见 [docs/project-visual-sources.md](docs/project-visual-sources.md)。
+
+本地复现浏览器验收：
+
+```bash
+npm ci
+npm run build
+npx playwright install chromium
+npm run check:browser
+```
+
+检查脚本自行启动静态导出服务，输出截图、WebM 和 results.json；首次安装浏览器时需满足 Playwright 系统依赖（Linux CI 使用 `npx playwright install --with-deps chromium`）。使用系统 Chromium 时设置 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`，并运行 `npx playwright install ffmpeg` 安装录屏依赖。输出目录可用 `BROWSER_EVIDENCE_DIR` 指定，外部服务可用 `BROWSER_BASE_URL` 指定。
+
+GitHub Actions 执行安装、测试、类型、构建、导出检查和 Chromium 浏览器验收；每次运行的截图与录像保存为 `browser-evidence` artifact。
