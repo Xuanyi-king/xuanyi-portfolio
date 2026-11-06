@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-11-06T16:10:23.104372+00:00",
+  "method": "One sequential baseline then selected run on the same otherwise idle Linux host. After fonts and intro: 40 pointer moves, 24 downward then 24 upward native wheel events. rAF intervals and PerformanceObserver longtasks. No CPU throttle. Short samples, first exposure lazy media/sections included; viewport emulation is not mobile hardware; this does not establish sustained 60FPS or a definitive comparative win.",
+  "baselineCommit": "ea6528a42888086ec507e5c7e43aa78d66374e4e",
+  "selectedCommit": "40cd489acb0993da3e1e87e9110985ee96c2ebaa",
+  "baseline": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "engine": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36",
+      "frames": 210,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 50,
+      "over50Ms": 5,
+      "longTasks": [
+        70
+      ],
+      "notes": "Headless desktop host, no CPU throttling; mobile is viewport emulation. Measured only after load/fonts/intro. No real-device FPS claim."
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "engine": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36",
+      "frames": 239,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "over50Ms": 0,
+      "longTasks": [],
+      "notes": "Headless desktop host, no CPU throttling; mobile is viewport emulation. Measured only after load/fonts/intro. No real-device FPS claim."
+    }
+  ],
+  "selected": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "engine": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36",
+      "frames": 237,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 33.30000000000018,
+      "over50Ms": 1,
+      "longTasks": [],
+      "notes": "Headless desktop host, no CPU throttling; mobile is viewport emulation. Measured only after load/fonts/intro. No real-device FPS claim."
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "engine": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36",
+      "frames": 235,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 33.30000000000018,
+      "over50Ms": 1,
+      "longTasks": [
+        103
+      ],
+      "notes": "Headless desktop host, no CPU throttling; mobile is viewport emulation. Measured only after load/fonts/intro. No real-device FPS claim."
+    }
+  ]
+}

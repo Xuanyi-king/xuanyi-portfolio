@@ -26,33 +26,33 @@
 
 Files: `src/motion/geometry.ts`, new `src/motion/surface.ts`, `src/components/x-mark.tsx`, temporary study route, `tests/surface.test.ts`.
 Interface: geometry exposes `curves: Point[][]`; `silkSurface(curve, index, variant)` returns closed outline/face/edge and highlight paths from shared samples.
-- [ ] 先写有限性、端点、宽度起伏、形变跟随的几何测试，运行确认缺失功能失败。
-- [ ] 实现中心线法向轮廓、两种实际宽度/交错关系及简化小图标。
-- [ ] 真实渲染两套正常/形变/图标/手机比较，记录选择，最终移除另一套生产代码。
-- [ ] `npm test`、typecheck 和实际看图；按 AGENTS 核验身份提交。
+- [x] 先写有限性、端点、宽度起伏、形变跟随的几何测试，运行确认缺失功能失败。
+- [x] 实现中心线法向轮廓、两种实际宽度/交错关系及简化小图标。
+- [x] 真实渲染两套正常/形变/图标/手机比较，记录选择，最终移除另一套生产代码。
+- [x] `npm test`、typecheck 和实际看图；按 AGENTS 核验身份提交。
 
 ### Task 2: 单一几何入场与 spring 交接
 
 Files: new `src/motion/identity-intro.ts`, `living-x.tsx`, `hero.tsx`, `identity.css`, `tests/identity-intro.test.ts`.
 Interface: `introPose(elapsedMs)` returns four bounded offsets and a completion flag; existing curve-owner gates spring until the intro renderer ends at rest.
-- [ ] 先验证首尾为静态轮廓、错时曲带、有限偏移和取消清理。
-- [ ] 同一 renderer 更新中心线/轮廓/高光/锚点/细线；移除该模式 CSS d 所有权。
-- [ ] 实际早指针、重复/返回、偏好切换、Lab 拖放；保留完整静态 SSR。
-- [ ] 全套测试和浏览器针对性检查通过后提交。
+- [x] 先验证首尾为静态轮廓、错时曲带、有限偏移和取消清理。
+- [x] 同一 renderer 更新中心线/轮廓/高光/锚点/细线；移除该模式 CSS d 所有权。
+- [x] 实际早指针、重复/返回、偏好切换、Lab 拖放；保留完整静态 SSR。
+- [x] 全套测试和浏览器针对性检查通过后提交。
 
 ### Task 3: Folding Canvas
 
 Files: `src/motion/hero.ts`, `page.ts`, `tokens.ts`, `identity.css`, `nav.tsx`.
 Interface: ScrollTrigger owns only outer `.hero-artwork`, title/copy/thread transforms; geometry renderer never reads/writes those transforms.
-- [ ] 浏览器先记录现有不收束行为，建立正向/反向/快速滚动检查。
-- [ ] Header 原生 sticky；X 先缩再向导航区移动；标题轻微后退，CTA 保持可点；不 pin。
-- [ ] 对 1440/390/320 的展开、中间、作品、回滚帧进行视觉比较，主动删不舒服的运动。
-- [ ] 检查历史/resize/reduced/no-JS，测试通过再提交。
+- [x] 浏览器先记录现有不收束行为，建立正向/反向/快速滚动检查。
+- [x] Header 原生 sticky；X 先缩再向导航区移动；标题轻微后退，CTA 保持可点；不 pin。
+- [x] 对 1440/390/320 的展开、中间、作品、回滚帧进行视觉比较，主动删不舒服的运动。
+- [x] 检查历史/resize/reduced/no-JS，测试通过再提交。
 
 ### Task 4: 完整验收与交付
 
 Files: browser scripts, CI, docs/evidence/living-identity, identity assets.
-- [ ] 更新静态 SVG/Favicon，删除临时研究路由/切换器，最终只有一个曲面。
-- [ ] npm ci/test/typecheck/build/check:export/check:browser，保留既有回归并补滚动关键路径。
-- [ ] 三引擎真截图、完整滚动/回滚录屏、真实几何/性能数据，少量关键图进 Git。
-- [ ] Fresh whole-branch code/visual review，修复阻塞问题后推送独立分支，保持 PR #2 不动。
+- [x] 更新静态 SVG/Favicon，删除临时研究路由/切换器，最终只有一个曲面。
+- [x] npm ci/test/typecheck/build/check:export/check:browser，保留既有回归并补滚动关键路径。
+- [x] 三引擎真截图、完整滚动/回滚录屏、真实几何/性能数据，少量关键图进 Git。
+- [x] Fresh whole-branch code/visual review，修复阻塞问题后推送独立分支，保持 PR #2 不动。

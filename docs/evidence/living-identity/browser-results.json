@@ -1,0 +1,185 @@
+{
+  "sourceCommit": "40cd489acb0993da3e1e87e9110985ee96c2ebaa",
+  "recordedAt": "2026-11-06T16:08:25.082870+00:00",
+  "environment": "Actual headless Playwright engines on Linux; mobile/tablet are viewport emulation, not physical devices.",
+  "originalChromium": {
+    "date": "2026-11-06T16:03:01.105Z",
+    "browser": "145.0.7632.6",
+    "viewportEvidence": [
+      "1440x900",
+      "768x1024",
+      "390x844",
+      "375x812",
+      "320x740"
+    ],
+    "stableFrames": [
+      768,
+      390,
+      375,
+      320
+    ],
+    "checks": [
+      "1440x900 layout, living curves, keyboard focus",
+      "home scroll composition, readable project titles, no eager video request",
+      "hover, named scene, detail, browser back, explicit return, real project media",
+      "Lab drag/anchor <1px, keyboard increments, Escape, presets, reset",
+      "768x1024 layout",
+      "390x844 layout, touch capture/cancel/anchor",
+      "375x812 layout",
+      "320x740 layout",
+      "SplitText 3 SPA exit/return cycles restore exact original HTML, no nested residue",
+      "reduced motion: static text, no SplitText wrappers, direct Lab state",
+      "1500ms delayed JS: title never moved behind its mask after first paint",
+      "no-JS readable brand, complete static surface, native detail/return; repeat visit quiet"
+    ],
+    "errors": []
+  },
+  "crossBrowser": [
+    {
+      "browser": "chromium",
+      "version": "145.0.7632.6",
+      "capabilities": {
+        "cssPath": true,
+        "crossDocumentTransitions": true
+      },
+      "checks": [
+        "single curve owner, retained early input, continuous handoff, static title, pointer recovery",
+        "reduced-motion toggle cancels CSS, spring offsets and decorative motion",
+        "real UI crop, lazy muted film playback, pointer exit, rapid re-entry, keyboard preview, reduced motion, verified alternate archive",
+        "all three native detail links, one named scene, browser back, explicit return; transitions optional",
+        "return visit never replays the curve introduction",
+        "390x844 and 320x740 readable brand/CTA, no overflow, keyboard Lab recovery (emulated viewports)",
+        "no-JS complete brand, static fallback and native project navigation"
+      ],
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "146.0.1",
+      "capabilities": {
+        "cssPath": true,
+        "crossDocumentTransitions": false
+      },
+      "checks": [
+        "single curve owner, retained early input, continuous handoff, static title, pointer recovery",
+        "reduced-motion toggle cancels CSS, spring offsets and decorative motion",
+        "real UI crop, lazy muted film playback, pointer exit, rapid re-entry, keyboard preview, reduced motion, verified alternate archive",
+        "all three native detail links, one named scene, browser back, explicit return; transitions optional",
+        "return visit never replays the curve introduction",
+        "390x844 and 320x740 readable brand/CTA, no overflow, keyboard Lab recovery (emulated viewports)",
+        "no-JS complete brand, static fallback and native project navigation"
+      ],
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.0",
+      "capabilities": {
+        "cssPath": false,
+        "crossDocumentTransitions": true
+      },
+      "checks": [
+        "single curve owner, retained early input, continuous handoff, static title, pointer recovery",
+        "reduced-motion toggle cancels CSS, spring offsets and decorative motion",
+        "real UI crop, lazy muted film playback, pointer exit, rapid re-entry, keyboard preview, reduced motion, verified alternate archive",
+        "all three native detail links, one named scene, browser back, explicit return; transitions optional",
+        "return visit never replays the curve introduction",
+        "390x844 and 320x740 readable brand/CTA, no overflow, keyboard Lab recovery (emulated viewports)",
+        "no-JS complete brand, static fallback and native project navigation"
+      ],
+      "errors": []
+    }
+  ],
+  "foldingCanvas": [
+    {
+      "browser": "chromium",
+      "viewport": "1440x900",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "viewport": "390x844",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "viewport": "320x740",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "1440x900",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "390x844",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "320x740",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "1440x900",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "390x844",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "320x740",
+      "restored": true,
+      "navAligned": true,
+      "reducedMotion": true,
+      "resize": true,
+      "ctaClear": true,
+      "errors": []
+    }
+  ]
+}
