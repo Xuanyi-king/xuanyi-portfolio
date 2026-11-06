@@ -15,7 +15,7 @@ export function ProjectFilmPreview() {
       if (video.readyState) video.currentTime = 0;
     };
     const sync = () => {
-      if (!(hovered || focused) || !media.matches || document.hidden) {
+      if (!(hovered || focused) || !media.matches || document.hidden || (card.closest(".living-gallery") && card.dataset.galleryActive !== "true")) {
         stop();
         return;
       }
@@ -43,6 +43,8 @@ export function ProjectFilmPreview() {
         sync();
       }
     };
+    const observer = new MutationObserver(sync);
+    observer.observe(card, {attributes:true, attributeFilter:["data-gallery-active"]});
     card.addEventListener("pointerenter", enter);
     card.addEventListener("pointerleave", leave);
     card.addEventListener("focusin", focus);
@@ -50,6 +52,7 @@ export function ProjectFilmPreview() {
     media.addEventListener("change", sync);
     document.addEventListener("visibilitychange", sync);
     return () => {
+      observer.disconnect();
       hovered = false;
       focused = false;
       stop();

@@ -41,6 +41,7 @@ export function ribbonGeometry(a: Point, b: Point) {
     ),
   );
   return {
+    curves,
     paths: curves.map(
       (p) =>
         `M${p[0].x} ${p[0].y} C${p[1].x} ${p[1].y} ${p[2].x} ${p[2].y} ${p[3].x} ${p[3].y}`,
