@@ -1,8 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { heroMode } from "./hero-policy";
 import { animateSections } from "./reveals";
-export async function preparePageMotion(started: number) {
+export async function preparePageMotion(_started: number) {
   const [hero, intro] = await Promise.all([
     document.querySelector(".hero") ? import("./hero") : undefined,
     document.querySelector(".intro-statement") ? import("./intro") : undefined,
@@ -11,21 +10,16 @@ export async function preparePageMotion(started: number) {
     // Preserve the browser's restored page and scroll position on history traversal.
     const navigation = performance.getEntriesByType("navigation")[0] as
       PerformanceNavigationTiming | undefined;
-    if (navigation?.type === "back_forward") return () => {};
+    const restored = navigation?.type === "back_forward";
     gsap.registerPlugin(ScrollTrigger);
     let active = true;
     let restoreIntro: (() => void) | undefined;
+    hero?.resetHero();
     const context = gsap.context(() => {
-      const firstPaint =
-        performance.getEntriesByName("first-contentful-paint")[0]?.startTime ??
-        started;
-      const mode = heroMode({
-        sincePaint: performance.now() - firstPaint,
-        scrollY: window.scrollY,
-        visible: document.visibilityState === "visible",
-        restored: false,
-      });
-      if (mode !== "none") hero?.animateHero(mode);
+      // Scroll choreography derives from the current scroll position, including
+      // native history restoration. It never replays the separate X intro.
+      hero?.animateHero();
+      if (restored) return;
       restoreIntro = intro?.animateIntro();
       animateSections();
     });
@@ -36,6 +30,7 @@ export async function preparePageMotion(started: number) {
       active = false;
       restoreIntro?.();
       context.revert();
+      hero?.resetHero();
     };
   };
 }

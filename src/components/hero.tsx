@@ -4,8 +4,9 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { LivingX } from "./living-x";
 import { threadPath } from "@/motion/thread";
+import type { SilkVariant } from "@/motion/surface";
 let mountedBefore = false;
-export function Hero() {
+export function Hero({ variant = "cloud" }: { variant?: SilkVariant } = {}) {
   const root = useRef<HTMLElement>(null);
   const initialized = useRef(false);
   useEffect(() => {
@@ -72,7 +73,7 @@ export function Hero() {
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-artwork">
             <div className="hero-pointer">
-              <LivingX />
+              <LivingX variant={variant} />
             </div>
           </div>
           <div className="hero-art-caption">

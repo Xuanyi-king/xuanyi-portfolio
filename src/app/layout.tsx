@@ -6,6 +6,7 @@ import { site } from "@/data/site";
 import "./globals.css";
 import "./motion.css";
 import "./identity.css";
+import "./surface.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "XUANYI 玄屹 — 好奇的形状", template: "%s · XUANYI" },
@@ -40,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" data-scroll-behavior="smooth">
       <head>
         <script
           dangerouslySetInnerHTML={{

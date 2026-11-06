@@ -209,7 +209,7 @@ try {
     try {
       await p.goto(base, { waitUntil: "domcontentloaded" });
       const living = p.locator(".hero .living-x");
-      await living.locator("[data-ribbon]").first().waitFor();
+      await living.locator("[data-ribbon]").first().waitFor({ state: "attached" });
       await p.waitForFunction(
         () => document.querySelector(".hero .living-x")?.dataset.curveOwner,
       );
@@ -222,7 +222,7 @@ try {
       assert.notEqual(
         await p.locator(".hero .x-ribbon-a").getAttribute("d"),
         rest,
-        "Early input survives CSS-to-spring handoff",
+        "Early input survives intro-to-spring handoff",
       );
       const audit = await p.evaluate(() => window.__curveAudit);
       assert.equal(
@@ -240,7 +240,7 @@ try {
         const a = audit.samples[i - 1],
           b = audit.samples[i];
         if (
-          a.owner === "css" &&
+          a.owner === "intro" &&
           b.owner === "spring" &&
           a.controls &&
           b.controls
