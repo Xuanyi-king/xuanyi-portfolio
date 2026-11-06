@@ -29,6 +29,28 @@ async function ready(p) {
   await p.waitForTimeout(2000);
 }
 async function layout(p) {
+  const dimensions = await p.evaluate(() => ({
+    width: innerWidth,
+    client: document.documentElement.clientWidth,
+    scroll: document.documentElement.scrollWidth,
+    overflow: [...document.querySelectorAll("body *")]
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          tag: el.tagName,
+          class: el.getAttribute("class"),
+          x: r.x,
+          right: r.right,
+          width: r.width,
+          font: getComputedStyle(el).fontFamily,
+          text: el.textContent?.slice(0, 60),
+        };
+      })
+      .filter((r) => r.right > innerWidth + 1 || r.x < -1)
+      .slice(0, 30),
+  }));
+  if (dimensions.scroll > dimensions.width)
+    console.log("LAYOUT_DIAGNOSTICS", JSON.stringify(dimensions));
   assert.equal(
     await p.evaluate(() =>
       [...document.fonts].some(
@@ -314,8 +336,8 @@ try {
         m.on("pageerror", (e) => errors.push(e.message));
         await m.goto(base);
         await ready(m);
-        await layout(m);
         await m.screenshot({ path: path.join(dir, `hero-${width}.png`) });
+        await layout(m);
         await m.goto(base + "/lab/");
         await ready(m);
         const handle = m.locator(".x-handle").first();
