@@ -59,7 +59,7 @@ category: "制作手记"
 - `public/og.png` 与 `public/og.svg`：社交分享图及矢量源文件。
 - `public/fonts/`：自托管 Manrope 字体及 SIL OFL 许可。中文使用系统中文字体。
 
-导航与文章内容直接输出 HTML，无强制片头。GSAP 负责时间轴、滚动揭示与轻量指针回应；实验室支持调色、旋转、可选呼吸动画与重置。支持系统减少动态效果，移动端重新排版，保留原生滚动与键盘焦点。无 WebGL、音效、跟随光圈或持续粒子系统。
+导航与文章内容直接输出 HTML，无强制片头。GSAP 负责时间轴、滚动揭示与轻量指针回应；实验室支持调色、双曲线拖动与方向键操作、形态预设、力度调节和弹簧恢复。支持系统减少动态效果，移动端重新排版，保留原生滚动与键盘焦点。无 WebGL、音效、跟随光圈或持续粒子系统。
 
 ## 部署
 
@@ -113,3 +113,20 @@ src/
 tests/                     内容与筛选测试
 docs/                      计划和实际验证记录
 ```
+
+## XUANYI 2.0 动效分支
+
+实现与调研见 [docs/motion-2.md](docs/motion-2.md)，最新实际检查与限制见 [docs/verification.md](docs/verification.md)。真实浏览器证据保存在 [docs/evidence/pr1-review](docs/evidence/pr1-review)，项目素材来源见 [docs/project-visual-sources.md](docs/project-visual-sources.md)。
+
+本地复现浏览器验收：
+
+```bash
+npm ci
+npm run build
+npx playwright install chromium
+npm run check:browser
+```
+
+检查脚本自行启动静态导出服务，输出截图、WebM 和 results.json；首次安装浏览器时需满足 Playwright 系统依赖（Linux CI 使用 `npx playwright install --with-deps chromium`）。使用系统 Chromium 时设置 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`，并运行 `npx playwright install ffmpeg` 安装录屏依赖。输出目录可用 `BROWSER_EVIDENCE_DIR` 指定，外部服务可用 `BROWSER_BASE_URL` 指定。
+
+GitHub Actions 执行安装、测试、类型、构建、导出检查和 Chromium 浏览器验收；每次运行的截图与录像保存为 `browser-evidence` artifact。

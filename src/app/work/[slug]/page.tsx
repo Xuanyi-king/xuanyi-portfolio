@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next";
+import { ProjectScene } from "@/components/project-scene";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -47,7 +47,7 @@ export default async function ProjectDetail({
   const next = projects[(index + 1) % projects.length];
   return (
     <article className="container project-detail">
-      <BackLink href="/work">回到所有作品</BackLink>
+      <BackLink href="/work/">回到所有作品</BackLink>
       <header className="project-detail-heading">
         <p className="eyebrow reveal">
           {project.category} / {project.year}
@@ -66,18 +66,46 @@ export default async function ProjectDetail({
         </div>
       </header>
       <div className="detail-cover reveal">
-        <Image
-          src={project.cover}
-          alt={`${project.title} 原创图形概念封面`}
-          width={1200}
-          height={900}
-          priority
-          sizes="(max-width: 760px) 100vw, 90vw"
-        />
+        <ProjectScene project={project} priority />
       </div>
       <p className="cover-caption">
-        原创概念封面 · 用图形表达项目思路，非产品界面截图
+        {project.slug === "zhihu-multiverse"
+          ? "项目真实截图 · 来源：Xuanyi-king/zhihu-multiverse/public/screenshots/home.jpg"
+          : "原创概念封面 · 用图形表达项目思路，非产品界面截图"}
       </p>
+      {project.visual && (
+        <section className="project-evidence" aria-label="可核验的项目视觉材料">
+          <div className="evidence-heading">
+            <p className="eyebrow">FROM THE PROJECT</p>
+            <h2>{project.visual.title}</h2>
+            <p>{project.visual.caption}</p>
+          </div>
+          <figure>
+            <a
+              href={project.visual.src}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="在新标签页打开项目原图"
+            >
+              <Image
+                src={project.visual.src}
+                alt={project.visual.title}
+                width={project.visual.width}
+                height={project.visual.height}
+                sizes="(max-width: 760px) 100vw, 80vw"
+              />
+            </a>
+            <figcaption>
+              <a href={project.visual.source} target="_blank" rel="noreferrer">
+                核对来源与固定版本 ↗
+              </a>
+              <a href={project.visual.src} target="_blank" rel="noreferrer">
+                打开完整原图 ↗
+              </a>
+            </figcaption>
+          </figure>
+        </section>
+      )}
       <div className="project-body">
         <aside className="project-sidebar">
           <SectionLabel number={(index + 1).toString().padStart(2, "0")}>
@@ -115,11 +143,11 @@ export default async function ProjectDetail({
           </section>
         </div>
       </div>
-      <Link className="next-project" href={`/work/${next.slug}`}>
+      <a className="next-project" href={`/work/${next.slug}/`}>
         <p>NEXT EXPLORATION</p>
         <h2>{next.title}</h2>
         <ArrowUpRight />
-      </Link>
+      </a>
     </article>
   );
 }

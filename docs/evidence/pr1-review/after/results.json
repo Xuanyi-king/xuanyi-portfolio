@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-06T07:28:11.929Z",
+  "browser": "145.0.7632.6",
+  "viewportEvidence": [
+    "1440x900",
+    "390x844",
+    "375x812",
+    "320x740"
+  ],
+  "checks": [
+    "1440x900 layout, living curves, keyboard focus",
+    "hover, named scene, detail, browser back, explicit return, real project media",
+    "Lab drag/anchor <1px, keyboard increments, Escape, presets, reset",
+    "390x844 layout, touch capture/cancel/anchor",
+    "375x812 layout",
+    "320x740 layout",
+    "SplitText 3 SPA exit/return cycles restore exact original HTML, no nested residue",
+    "reduced motion: static text, no SplitText wrappers, direct Lab state",
+    "1500ms delayed JS: title never moved behind its mask after first paint",
+    "no-JS native link fallback to detail and back"
+  ],
+  "errors": []
+}

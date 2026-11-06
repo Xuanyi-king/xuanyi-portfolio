@@ -57,10 +57,10 @@ export function BackLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link className="back-link" href={href}>
+    <a className="back-link" href={href}>
       <ArrowRight size={17} />
       {children}
-    </Link>
+    </a>
   );
 }
 export function PageIntro({

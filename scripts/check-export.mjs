@@ -15,6 +15,7 @@ const expected = [
   "now",
 ];
 let count = 0;
+const sceneSources = new Map();
 for (const route of expected) {
   const file = path.join(root, route, "index.html");
   assert.ok(fs.existsSync(file), `Missing route: /${route}`);
@@ -43,6 +44,52 @@ for (const route of expected) {
     assert.ok(
       fs.existsSync(local) || fs.existsSync(path.join(local, "index.html")),
       `Missing asset / route: ${target} from ${route}`,
+    );
+  }
+  // Native links remain usable without View Transitions or JavaScript.
+  for (const [, href] of html.matchAll(/<a\b[^>]*href="(\/work\/[^"?#]+)"/g)) {
+    assert.ok(
+      href.endsWith("/"),
+      `Project link must use the exported directory URL: ${href}`,
+    );
+  }
+  const scenes = [
+    ...html.matchAll(
+      /<div class="project-scene ([^"]+)" style="view-transition-name:(cover-[^"]+)"/g,
+    ),
+  ];
+  if (route === "" || route === "work")
+    assert.equal(scenes.length, 3, "All project scenes are present");
+  for (const scene of scenes) {
+    const image = html.slice(scene.index).match(/<img\b[^>]*src="([^"]+)"/);
+    assert.ok(image, `Missing visible scene image: ${scene[2]}`);
+    const known = sceneSources.get(scene[2]);
+    if (known)
+      assert.equal(image[1], known, `List/detail source mismatch: ${scene[2]}`);
+    sceneSources.set(scene[2], image[1]);
+  }
+  assert.equal(
+    new Set(scenes.map((m) => m[2])).size,
+    scenes.length,
+    `Duplicate transition names in ${route}`,
+  );
+  assert.ok(
+    !/<img[^>]*view-transition-name/.test(html),
+    "Never snapshot a covered backing image",
+  );
+  if (route.startsWith("work/")) {
+    const slug = route.slice(5);
+    assert.equal(scenes.length, 1, "One complete detail scene");
+    assert.equal(scenes[0][2], `cover-${slug}`);
+    assert.match(
+      html,
+      /<a class="back-link" href="\/work\/"/,
+      "Native detail return link",
+    );
+    assert.match(
+      html,
+      /<a class="next-project" href="\/work\/[^"/]+\/"/,
+      "Native next-project link",
     );
   }
   count++;

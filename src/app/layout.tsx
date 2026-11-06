@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { MotionProvider } from "@/components/motion-provider";
 import { site } from "@/data/site";
 import "./globals.css";
+import "./motion.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "XUANYI 玄屹 — 好奇的形状", template: "%s · XUANYI" },
