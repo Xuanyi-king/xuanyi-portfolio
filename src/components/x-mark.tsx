@@ -73,11 +73,13 @@ export function XMark({
       <g filter={`url(#${id}s)`} strokeLinecap="round">
         <path
           className="x-ribbon x-ribbon-a"
+          data-ribbon="a"
           d={a}
           stroke={`url(#${id}a)`}
           strokeWidth="83"
         />
         <path
+          data-ribbon="a"
           d={a}
           stroke={`url(#${id}light)`}
           strokeWidth="66"
@@ -85,11 +87,13 @@ export function XMark({
         />
         <path
           className="x-ribbon x-ribbon-b"
+          data-ribbon="b"
           d={b}
           stroke={`url(#${id}b)`}
           strokeWidth="83"
         />
         <path
+          data-ribbon="b"
           d={b}
           stroke={`url(#${id}light)`}
           strokeWidth="66"

@@ -1,60 +1,32 @@
 "use client";
-import { useEffect, useRef } from "react";
+
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, MoveUpRight } from "lucide-react";
-import gsap from "gsap";
-import { XMark } from "./x-mark";
-import { motion } from "@/lib/motion";
+
+import { LivingX } from "./living-x";
+
 export function Hero() {
-  const art = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const target = art.current;
-    return () => {
-      if (target) gsap.killTweensOf(target);
-    };
-  }, []);
-  const move = (e: React.PointerEvent<HTMLElement>) => {
-    if (
-      e.pointerType === "touch" ||
-      matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    gsap.to(art.current, {
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 24,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 18,
-      rotation: ((e.clientX - rect.left) / rect.width - 0.5) * 7,
-      duration: motion.pointer,
-      overwrite: "auto",
-      ease: motion.ease,
-    });
-  };
-  const reset = () => {
-    gsap.to(art.current, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      duration: 1,
-      overwrite: "auto",
-      ease: motion.ease,
-    });
-  };
   return (
-    <section
-      className="hero"
-      aria-label="玄屹，Curiosity Takes Shape"
-      onPointerMove={move}
-      onPointerLeave={reset}
-    >
+    <section className="hero" aria-label="玄屹，Curiosity Takes Shape">
       <div className="hero-kicker">
         <p className="eyebrow">
           <span className="status-dot" />A CURIOUS MIND. AN OPEN CANVAS.
         </p>
-        <span className="edition">PERSONAL SPACE — VOL. 01</span>
+        <span className="edition">CURIOSITY IN MOTION — VOL. 02</span>
       </div>
       <h1 className="hero-title">
         <span>
-          XUANYI<span className="name-dot">.</span>
+          <span className="sr-only">XUANYI.</span>
+          <span aria-hidden="true" className="hero-letters">
+            {Array.from("XUANYI.").map((letter, i) => (
+              <span
+                className={`letter-mask ${i === 6 ? "name-dot" : ""}`}
+                key={i}
+              >
+                <span className="hero-letter">{letter}</span>
+              </span>
+            ))}
+          </span>
         </span>
       </h1>
       <div className="hero-story">
@@ -81,8 +53,8 @@ export function Hero() {
         <div className="visual-orbit" />
         <span className="orbit-label">EXPLORATION × CREATION</span>
         <div className="hero-artwork">
-          <div className="hero-pointer" ref={art}>
-            <XMark />
+          <div className="hero-pointer">
+            <LivingX />
           </div>
         </div>
         <svg className="hero-spark" viewBox="0 0 100 100">

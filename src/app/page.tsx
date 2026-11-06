@@ -49,7 +49,7 @@ export default function Home() {
           </p>
         </div>
         <div className="project-grid home-projects">
-          {projects.slice(0, 2).map((p, i) => (
+          {projects.map((p, i) => (
             <ProjectCard project={p} index={i} key={p.slug} />
           ))}
         </div>

@@ -38,3 +38,17 @@
 ## 后续维护
 
 新的文章或项目修改后重新运行测试、构建与导出验证。若更换正式域名，更新 `src/data/site.ts` 中的 `site.url`，并重新构建以更新 canonical、RSS 和 Sitemap。
+
+## 2026-11-06 · XUANYI 2.0 分支验证
+
+本节对应 `feat/curiosity-in-motion`，不覆盖上面的 1.0 历史记录。
+
+- `npm test`：8/8 通过，新增路径端点／输入限幅与弹簧恢复测试。
+- `npm run typecheck`：通过。
+- `npm run build`：通过，原静态路由、MDX、RSS、SEO 保留。
+- `npm run check:export`：10 个内容路由、内链、资源、目录、代码高亮及搜索引擎资源检查通过。
+- 独立代码审查发现的筛选卡片隐藏问题已修复并复查通过：卡片 ScrollTrigger 入场只应用首页，Work 筛选列表正文始终可见。
+- 全站所有路由产出的 JS 文件合计 795,217 bytes，逐文件 gzip 合计 262,291 bytes；这不是单页首屏下载量，也不是运行性能测试。没有新增 npm 依赖。
+- 新增真实项目截图 137,735 bytes，来源为用户自身公开仓库 `Xuanyi-king/zhihu-multiverse/public/screenshots/home.jpg`。它不是本网站的浏览器验收截图。
+- 1440×900、768×1024、390×844、375×812：四档真实浏览器验收均未执行。浏览器工具仍不可调用，没有伪造截图／视频。FPS、长任务、真实触摸和跨文档转场实际效果均未验证。
+- 技术调研、文件职责与设计取舍详见 `docs/motion-2.md`。PR 保持 Draft，未合并，也未更新生产网站。

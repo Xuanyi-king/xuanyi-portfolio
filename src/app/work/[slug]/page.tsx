@@ -67,8 +67,9 @@ export default async function ProjectDetail({
       </header>
       <div className="detail-cover reveal">
         <Image
+          style={{ viewTransitionName: `cover-${project.slug}` }}
           src={project.cover}
-          alt={`${project.title} 原创图形概念封面`}
+          alt={`${project.title} ${project.slug === "zhihu-multiverse" ? "公开项目首页截图" : "原创图形概念封面"}`}
           width={1200}
           height={900}
           priority
@@ -76,7 +77,9 @@ export default async function ProjectDetail({
         />
       </div>
       <p className="cover-caption">
-        原创概念封面 · 用图形表达项目思路，非产品界面截图
+        {project.slug === "zhihu-multiverse"
+          ? "项目真实截图 · 来源：Xuanyi-king/zhihu-multiverse/public/screenshots/home.jpg"
+          : "原创概念封面 · 用图形表达项目思路，非产品界面截图"}
       </p>
       <div className="project-body">
         <aside className="project-sidebar">

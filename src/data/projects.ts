@@ -75,7 +75,7 @@ export const projects: Project[] = [
     description: "从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。",
     category: "交互体验",
     tags: ["TypeScript", "React", "AI Workflow"],
-    cover: "/covers/multiverse.svg",
+    cover: "/covers/zhihu-real.jpg",
     color: "sky",
     github: "https://github.com/Xuanyi-king/zhihu-multiverse",
     year: "2026",
