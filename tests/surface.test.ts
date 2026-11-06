@@ -5,7 +5,7 @@ import { silkSurface } from "../src/motion/surface";
 
 test("silk is a closed tapered surface, with smooth edges and real width variation", () => {
   const curve = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 }).curves[0];
-  const surface = silkSurface(curve, 0, "cloud");
+  const surface = silkSurface(curve, 0);
   assert.ok(surface.outline.startsWith("M") && surface.outline.endsWith("Z"));
   assert.ok(surface.outline.includes("C"));
   assert.ok(Math.max(...surface.widths) - Math.min(...surface.widths) > 12);
@@ -20,8 +20,8 @@ test("deformation updates all faces without changing the brand centerline endpoi
   for (let i = 0; i < 2; i++) {
     assert.deepEqual(rest.curves[i][0], pulled.curves[i][0]);
     assert.deepEqual(rest.curves[i][3], pulled.curves[i][3]);
-    const a = silkSurface(rest.curves[i], i, "cloud");
-    const b = silkSurface(pulled.curves[i], i, "cloud");
+    const a = silkSurface(rest.curves[i], i);
+    const b = silkSurface(pulled.curves[i], i);
     for (const key of [
       "outline",
       "face",
@@ -33,18 +33,17 @@ test("deformation updates all faces without changing the brand centerline endpoi
   }
 });
 
-test("extreme Lab offsets produce finite bounded surfaces for both prototype profiles", () => {
-  for (const variant of ["cloud", "bias"] as const)
-    for (const x of [-64, 0, 64])
-      for (const y of [-64, 0, 64]) {
-        const geometry = ribbonGeometry({ x, y }, { x: -x, y: -y });
-        geometry.curves.forEach((curve, i) => {
-          const surface = silkSurface(curve, i, variant);
-          for (const key of ["outline", "face", "edge", "highlight"] as const) {
-            assert.ok(!/NaN|Infinity/.test(surface[key]));
-            const numbers = surface[key].match(/-?\d+(?:\.\d+)?/g)!.map(Number);
-            assert.ok(numbers.every((n) => n >= 0 && n <= 500));
-          }
-        });
-      }
+test("extreme Lab offsets produce finite bounded surfaces for the selected Cloud surface", () => {
+  for (const x of [-64, 0, 64])
+    for (const y of [-64, 0, 64]) {
+      const geometry = ribbonGeometry({ x, y }, { x: -x, y: -y });
+      geometry.curves.forEach((curve, i) => {
+        const surface = silkSurface(curve, i);
+        for (const key of ["outline", "face", "edge", "highlight"] as const) {
+          assert.ok(!/NaN|Infinity/.test(surface[key]));
+          const numbers = surface[key].match(/-?\d+(?:\.\d+)?/g)!.map(Number);
+          assert.ok(numbers.every((n) => n >= 0 && n <= 500));
+        }
+      });
+    }
 });

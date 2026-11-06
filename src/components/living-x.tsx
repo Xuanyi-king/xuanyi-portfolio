@@ -11,7 +11,7 @@ import { reducedQuery } from "@/motion/tokens";
 import { createLivingSpring } from "@/motion/living-spring";
 import { createCurveOwner } from "@/motion/curve-owner";
 import { threadPath } from "@/motion/thread";
-import { silkSurface, type SilkVariant } from "@/motion/surface";
+import { silkSurface } from "@/motion/surface";
 import { playIdentityIntro } from "@/motion/identity-intro";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
@@ -19,13 +19,11 @@ export function LivingX({
   strength = 1,
   form = "rest",
   resetToken = 0,
-  variant = "cloud",
 }: {
   play?: boolean;
   strength?: number;
   form?: string;
   resetToken?: number;
-  variant?: SilkVariant;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const controller = useRef<ReturnType<typeof createLivingSpring> | null>(null);
@@ -89,11 +87,7 @@ export function LivingX({
         button.style.top = `${anchor.y / 5}%`;
       });
       geometry.curves.forEach((curve, i) => {
-        const s = silkSurface(
-          curve,
-          i,
-          (svg.dataset.material as SilkVariant) ?? "cloud",
-        );
+        const s = silkSurface(curve, i);
         surfaceNodes[i].forEach(({ key, nodes }) =>
           nodes.forEach((path) => path.setAttribute("d", s[key])),
         );
@@ -276,7 +270,7 @@ export function LivingX({
   }, [resetToken]);
   return (
     <div ref={root} className={`living-x ${play ? "is-playable" : ""}`}>
-      <XMark decorative={!play} variant={variant} />
+      <XMark decorative={!play} />
       {play &&
         rest.anchors.map((p, i) => (
           <button

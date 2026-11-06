@@ -1,4 +1,4 @@
-/** A single writer for SVG d. CSS completes at the canonical rest curve before
+/** A single writer for SVG d. The intro completes at the canonical rest curve before
  * the spring receives the most recent input; canceled/unmounted intros are safe. */
 export function createCurveOwner(
   entering: boolean,

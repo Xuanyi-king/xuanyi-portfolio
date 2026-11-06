@@ -111,9 +111,14 @@ export function animateHero(_mode: "enhance" = "enhance") {
 export function resetHero() {
   const hero = document.querySelector<HTMLElement>(".hero");
   if (!hero) return;
-  gsap.set(hero.querySelectorAll(".hero-artwork, .hero-title, .hero-copy, .hero-art-caption, .hero-thread"), {
-    clearProps: "transform,transformOrigin,opacity",
-  });
+  gsap.set(
+    hero.querySelectorAll(
+      ".hero-artwork, .hero-title, .hero-copy, .hero-art-caption, .hero-thread",
+    ),
+    {
+      clearProps: "transform,transformOrigin,opacity",
+    },
+  );
   hero.style.removeProperty("--canvas-opacity");
   delete hero.dataset.foldProgress;
   delete hero.dataset.foldStart;

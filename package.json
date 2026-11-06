@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "check:export": "node scripts/check-export.mjs",
-    "check:browser": "node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs"
+    "check:browser": "node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs",
+    "generate:identity": "tsx scripts/generate-identity.tsx"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

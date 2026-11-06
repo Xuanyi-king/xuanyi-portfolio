@@ -1,5 +1,4 @@
 import { clamp, type Point } from "./geometry";
-export type SilkVariant = "cloud" | "bias";
 const steps = 28;
 const n = (value: number) => Number(value.toFixed(2));
 const xy = (p: Point) => `${n(p.x)} ${n(p.y)}`;
@@ -14,12 +13,7 @@ function smooth(points: Point[], move = true) {
   }
   return d;
 }
-export function silkSurface(
-  curve: Point[],
-  index: number,
-  variant: SilkVariant = "cloud",
-  compact = false,
-) {
+export function silkSurface(curve: Point[], index: number, compact = false) {
   const [a, b, c, d] = curve;
   const samples = Array.from({ length: steps + 1 }, (_, i) => {
     const t = i / steps,
@@ -49,17 +43,11 @@ export function silkSurface(
       ddy = 6 * u * (c.y - 2 * b.y + a.y) + 6 * t * (d.y - 2 * c.y + b.y),
       curvature = Math.abs(dx * ddy - dy * ddx) / length ** 3;
     let half =
-      variant === "cloud"
-        ? index === 0
-          ? 25 +
-            8 * Math.sin(Math.PI * t) -
-            18 * Math.exp(-(((t - 0.49) / 0.17) ** 2))
-          : 22 + 12 * Math.sin(Math.PI * t) ** 2 + 3 * Math.sin(2 * Math.PI * t)
-        : index === 0
-          ? 24 + 11 * Math.sin(Math.PI * t) ** 2
-          : 27 -
-            17 * Math.exp(-(((t - 0.52) / 0.19) ** 2)) +
-            3 * Math.sin(2 * Math.PI * t);
+      index === 0
+        ? 25 +
+          8 * Math.sin(Math.PI * t) -
+          18 * Math.exp(-(((t - 0.49) / 0.17) ** 2))
+        : 22 + 12 * Math.sin(Math.PI * t) ** 2 + 3 * Math.sin(2 * Math.PI * t);
     // Wide offsets around tight bends can cusp: retain a safe positive radius.
     half = Math.min(half, curvature > 0 ? 0.72 / curvature : half);
     half = clamp(half, 6, 38);
@@ -69,10 +57,8 @@ export function silkSurface(
       Math.sin(Math.PI * t) * (index === 0 ? 0.65 : -0.75);
     return { t, p, normal: { x: -dy / length, y: dx / length }, half, tilt };
   });
-  type Across = number | ((t: number, tilt: number) => number);
-  const side = (fraction: Across) =>
-    samples.map(({ t, p, normal, half, tilt }) => {
-      const s = typeof fraction === "function" ? fraction(t, tilt) : fraction;
+  const side = (s: number) =>
+    samples.map(({ p, normal, half, tilt }) => {
       // Project a shallow curved cross-section. The editable center stays on
       // the cubic, while its edges turn in space rather than staying parallel.
       const across = half * s * Math.cos(tilt),
@@ -82,7 +68,7 @@ export function silkSurface(
         y: p.y + normal.y * across - z * 0.28,
       };
     });
-  const strip = (from: Across, to: Across) => {
+  const strip = (from: number, to: number) => {
     const left = side(from),
       right = side(to).reverse();
     return `${smooth(left)} L${xy(right[0])}${smooth(right, false)} Z`;

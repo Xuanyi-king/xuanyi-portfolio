@@ -1,30 +1,21 @@
 import { useId } from "react";
-import { ribbonGeometry, type Point } from "@/motion/geometry";
-import { silkSurface, type SilkVariant } from "@/motion/surface";
+import { ribbonGeometry } from "@/motion/geometry";
+import { silkSurface } from "@/motion/surface";
 
 export function XMark({
   className = "",
   decorative = true,
   compact = false,
-  variant = "cloud",
-  pose,
 }: {
   className?: string;
   decorative?: boolean;
   compact?: boolean;
-  variant?: SilkVariant;
-  pose?: [Point, Point];
 }) {
   const id = useId().replace(/:/g, "");
-  const geometry = ribbonGeometry(
-    pose?.[0] ?? { x: 0, y: 0 },
-    pose?.[1] ?? { x: 0, y: 0 },
-  );
+  const geometry = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
   const surfaces = geometry.curves.map((curve, i) =>
-    silkSurface(curve, i, variant, compact),
+    silkSurface(curve, i, compact),
   );
-  const front = variant === "cloud" ? 1 : 0,
-    back = 1 - front;
   const layer = (index: number) => {
     const name = index === 0 ? "a" : "b",
       s = surfaces[index];
@@ -77,7 +68,7 @@ export function XMark({
   return (
     <svg
       className={`x-mark silk-form ${className}`}
-      data-material={variant}
+      data-material="cloud"
       data-compact={compact ? "true" : undefined}
       viewBox="0 0 500 500"
       fill="none"
@@ -132,10 +123,7 @@ export function XMark({
           </linearGradient>
         ))}
         <clipPath id={`${id}contact`}>
-          <path
-            data-surface={`${back === 0 ? "a" : "b"}-outline`}
-            d={surfaces[back].outline}
-          />
+          <path data-surface={"a-outline"} d={surfaces[0].outline} />
         </clipPath>
       </defs>
       {geometry.paths.map((d, i) => (
@@ -147,19 +135,19 @@ export function XMark({
         />
       ))}
       <g className="x-material">
-        {layer(back)}
+        {layer(0)}
         {!compact && (
           <g clipPath={`url(#${id}contact)`}>
             <path
-              data-surface={`${front === 0 ? "a" : "b"}-outline`}
-              d={surfaces[front].outline}
+              data-surface={"b-outline"}
+              d={surfaces[1].outline}
               transform="translate(1 3)"
               fill="#335264"
               opacity=".10"
             />
           </g>
         )}
-        {layer(front)}
+        {layer(1)}
       </g>
     </svg>
   );

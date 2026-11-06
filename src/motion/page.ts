@@ -9,7 +9,8 @@ export async function preparePageMotion(_started: number) {
   return () => {
     // Preserve the browser's restored page and scroll position on history traversal.
     const navigation = performance.getEntriesByType("navigation")[0] as
-      PerformanceNavigationTiming | undefined;
+      | PerformanceNavigationTiming
+      | undefined;
     const restored = navigation?.type === "back_forward";
     gsap.registerPlugin(ScrollTrigger);
     let active = true;
