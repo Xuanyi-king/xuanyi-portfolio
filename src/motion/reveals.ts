@@ -50,12 +50,6 @@ export function animateSections() {
       },
     ),
   );
-  const lab = document.querySelector(".lab-art");
-  if (lab)
-    gsap.from(lab, {
-      rotation: -9,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: { trigger: lab, start: "top 90%", once: true },
-    });
+  // Keep the Lab link's hit/focus frame stationary. Its SVG already owns the
+  // hover rotation; rotating this outer frame can widen narrow WebKit pages.
 }

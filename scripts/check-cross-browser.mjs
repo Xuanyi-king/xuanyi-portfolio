@@ -53,7 +53,7 @@ async function layout(p) {
           text: el.textContent?.slice(0, 60),
         };
       })
-      .filter((r) => r.right > innerWidth + 1 || r.x < -1)
+    .filter((r) => r.right > innerWidth || r.x < 0)
       .slice(0, 30),
   }));
   if (dimensions.scroll > dimensions.width) {
