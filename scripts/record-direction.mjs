@@ -1,5 +1,6 @@
 import {chromium} from 'playwright';import fs from 'node:fs/promises';
 const base=process.env.BROWSER_BASE_URL??'http://localhost:3010',dir=(process.env.BROWSER_EVIDENCE_DIR??'artifacts/browser')+'/motion-direction/films';await fs.mkdir(dir,{recursive:true});const b=await chromium.launch();
+for(let i=0;i<100;i++){try{if((await fetch(base)).ok)break}catch{}await new Promise(r=>setTimeout(r,100))}
 for(const [width,height] of [[1440,900],[390,844]])for(const v of ['A','B']){
  const c=await b.newContext({viewport:{width,height},recordVideo:{dir:dir+'/raw',size:{width,height}}}),p=await c.newPage();await p.goto(base+'/lab/motion-direction/');await p.evaluate(()=>document.fonts.ready);await p.getByRole('button',{name:v==='A'?'A · Continuous Thread':'B · Spatial Unfolding',exact:true}).click();await p.getByRole('button',{name:'Play',exact:true}).click();await p.locator('.direction-stage').scrollIntoViewIfNeeded();await p.waitForTimeout(10400);const video=p.video();await c.close();await video.saveAs(`${dir}/${v}-${width}-score.webm`);
 }

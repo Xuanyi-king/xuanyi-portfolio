@@ -5,3 +5,9 @@
 .direction-form{width:52%}.direction-form h1{white-space:nowrap}@media(max-width:760px){.direction-form{width:88%}}
 
 .direction-portal .gallery-hint{display:none}.direction-portal .gallery-stage{height:430px!important}
+
+.direction-stage{height:780px;min-height:780px}.direction-portal .gallery-stage{height:530px!important}.direction-portal{inset:12% 0 0}.direction-gallery-label{font-size:18px;margin-bottom:0}.direction-portal .gallery-controls{padding-top:14px}.mode-scroll .direction-stage{min-height:780px}@media(max-width:760px){.direction-stage{height:780px;min-height:780px}.direction-portal .gallery-stage{height:480px!important}.direction-portal{inset:17% 0 0}}
+
+.direction-intro{top:76%;font-size:24px}.direction-portal{z-index:5}
+/* The guide hands attention to real work, then leaves the reading plane. */
+.direction-guide path{opacity:calc(.65 * (1 - var(--gallery)))}

@@ -18,12 +18,12 @@ for(const [engine,browser] of Object.entries({chromium,firefox,webkit})){
    for(const n of [0,200,250,500,750,900,1000]){
     await p.locator('#direction-progress').evaluate((el,n)=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(el,String(n));el.dispatchEvent(new Event('input',{bubbles:true}))},n);await p.waitForTimeout(120);
     assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),String(n/1000));
-    if(engine==='chromium')await p.locator('.direction-stage').screenshot({path:`${folder}/${v[0]}-${w}-${n}.png`});
+    if(n===1000){const bounds=await p.locator('.direction-stage').evaluate(el=>{const tags=el.querySelector('[data-gallery-active=true] .tags').getBoundingClientRect(),controls=el.querySelector('.gallery-controls').getBoundingClientRect(),canvas=el.getBoundingClientRect();return {clear:tags.bottom+4<=controls.top,inside:controls.bottom<=canvas.bottom}});assert.ok(bounds.clear&&bounds.inside,JSON.stringify(bounds))}if(engine==='chromium')await p.locator('.direction-stage').screenshot({path:`${folder}/${v[0]}-${w}-${n}.png`});
    }
-   await p.locator('.direction-stage .gallery-stage').focus();await p.keyboard.press('ArrowRight');
+   await p.locator('.direction-stage .gallery-stage').focus();await p.keyboard.press('ArrowRight');await p.keyboard.press('ArrowLeft');await p.waitForTimeout(600);
    await p.getByRole('button',{name:'Restart',exact:true}).click();
    await p.getByRole('button',{name:'Play',exact:true}).click();await p.waitForTimeout(350);await p.getByRole('button',{name:'Pause',exact:true}).click();
-   const geometry=await p.locator('.direction-mark [data-ribbon]').first().getAttribute('d');const at=await p.locator('.direction-stage').getAttribute('data-progress');await p.waitForTimeout(180);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),at);assert.equal(await p.locator('.direction-mark [data-ribbon]').first().getAttribute('d'),geometry);
+   const geometry=await p.locator('.direction-mark [data-ribbon]').first().getAttribute('d');await p.emulateMedia({reducedMotion:'reduce'});await p.emulateMedia({reducedMotion:'no-preference'});const at=await p.locator('.direction-stage').getAttribute('data-progress');await p.waitForTimeout(180);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),at);assert.equal(await p.locator('.direction-mark [data-ribbon]').first().getAttribute('d'),geometry);
   }
   await p.getByRole('button',{name:'真实滚动模式',exact:true}).click();await p.mouse.wheel(0,600);await p.waitForTimeout(250);await p.mouse.wheel(0,-600);await p.waitForTimeout(250);
   await p.emulateMedia({reducedMotion:'reduce'});await p.getByRole('button',{name:'切回导演预演',exact:true}).click();await p.getByRole('button',{name:'Restart',exact:true}).click();await p.getByRole('button',{name:'Play',exact:true}).click();await p.waitForTimeout(200);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),'0');
