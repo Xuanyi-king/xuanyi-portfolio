@@ -21,22 +21,22 @@ Spec: docs/superpowers/specs/2026-11-07-canvas-response-design.md
 ### Task 1 — Baseline and gallery response
 Files: scripts/measure-canvas.mjs, motion/gallery-response.ts, components/living-x.tsx, living-gallery.tsx, gallery.css, tests/gallery-response.test.ts.
 Interface: createGalleryResponse returns sample(position,time), reset(), subscribe(listener); listener receives bounded force or zero. LivingX accepts stable drive subscription and compact mode, retaining the same geometry writer.
-- [ ] 构建811a2d4生产快照；记录相同操作的trace/CPU profile与未追踪性能样本。
-- [ ] 先写有界/方向/绕回/归零/取消订阅测试，运行缺失API失败，再实现不含RAF的输入桥。
-- [ ] 接入编号旁小X；真实拖动/点击/纵向/键盘/reduced/返回/StrictMode验证，并检查静止资源。
-- [ ] 全单测/类型/构建通过后核验身份提交，不立即推送。
+- [x] 构建811a2d4生产快照；记录相同操作的trace/CPU profile与未追踪性能样本。
+- [x] 先写有界/方向/绕回/归零/取消订阅测试，运行缺失API失败，再实现不含RAF的输入桥。
+- [x] 接入编号旁小X；真实拖动/点击/纵向/键盘/reduced/返回/StrictMode验证，并检查静止资源。
+- [x] 全单测/类型/构建通过后核验身份提交，不立即推送。
 
 ### Task 2 — Surface candidate and folding
 Files: motion/surface.ts, components/x-mark.tsx, living-x.tsx, canvas-study.tsx, tests/surface*.test.ts; browser evidence.
-- [ ] 为候选随形薄边和扭转的有限闭合轮廓补测试，先失败再实现；旧默认几何不因实验改变。
-- [ ] 同姿态/视口真实A/B静止、舒展、受力及小图标；实际看图决定采用或保留基线，记理由。
-- [ ] 真实捕获25/50/75/90%及反向连续滚动；若发现问题先复现测试再修。
-- [ ] 全单测/类型/构建与针对性浏览器检查通过后提交。
+- [x] 为候选随形薄边和扭转的有限闭合轮廓补测试，先失败再实现；旧默认几何不因实验改变。
+- [x] 同姿态/视口真实A/B静止、舒展、受力及小图标；实际看图决定采用或保留基线，记理由。
+- [x] 真实捕获25/50/75/90%及反向连续滚动；若发现问题先复现测试再修。
+- [x] 全单测/类型/构建与针对性浏览器检查通过后提交。
 
 ### Task 3 — Trace-led optimization and delivery
 Files: trace analysis helper/tests as needed, only evidence-identified hot path source, browser regression, CI, docs/evidence/canvas-response.
-- [ ] 从trace定位具体JS/布局/绘制或自动化测量开销；单一假设验证，先行为/几何回归再优化。
-- [ ] 使用同一脚本/CPU/视口前后多样本复测；保存原始数据和trace，不以一次最好成绩作结论。
-- [ ] npm test/typecheck/build/check:export/check:browser/check:strict；原有回归保留。
-- [ ] 一次新鲜独立终审，Important先RED→GREEN并全套验证；保存前后图/短录屏/明确限制。
+- [x] 从trace定位具体JS/布局/绘制或自动化测量开销；单一假设验证，先行为/几何回归再优化。
+- [x] 使用同一脚本/CPU/视口前后多样本复测；保存原始数据和trace，不以一次最好成绩作结论。
+- [x] npm test/typecheck/build/check:export/check:browser/check:strict；原有回归保留。
+- [x] 一次新鲜独立终审，Important先RED→GREEN并全套验证；保存前后图/短录屏/明确限制。
 - [ ] 作者核验后推送现有PR #3，读取最终CI与Artifact；不合并，真实判断Draft/Ready。
