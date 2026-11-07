@@ -13,7 +13,9 @@
     "generate:identity": "tsx scripts/generate-identity.tsx",
     "measure:canvas": "node scripts/measure-canvas.mjs",
     "compare:canvas": "node scripts/compare-canvas.mjs",
-    "check:strict": "node scripts/check-strict.mjs"
+    "check:strict": "node scripts/check-strict.mjs",
+    "check:direction": "node scripts/check-direction.mjs",
+    "record:direction": "node scripts/record-direction.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

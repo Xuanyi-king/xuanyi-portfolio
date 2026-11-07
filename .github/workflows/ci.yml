@@ -32,9 +32,19 @@ jobs:
       - run: npm run check:browser
         env:
           BROWSER_EVIDENCE_DIR: artifacts/browser
+      - run: npm run check:direction
+      - run: |
+          node node_modules/serve/build/main.js out -l 4188 > /tmp/direction-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          npm run record:direction
+        env:
+          BROWSER_BASE_URL: http://localhost:4188
       - run: npm run measure:canvas
       - run: npm run check:strict
       - run: npm run compare:canvas
+        env:
+          CANVAS_BASELINE_SHA: 75a1e19fe63206c348548b3cfe969355499f7713
         name: Compare verified 2.2 baseline and current canvas with raw traces
       - uses: actions/upload-artifact@v4
         if: always()

@@ -13,6 +13,7 @@ const expected = [
   "about",
   "lab",
   "lab/canvas-study",
+  "lab/motion-direction",
   "now",
 ];
 let count = 0;

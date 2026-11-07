@@ -161,6 +161,10 @@ export function LivingX({
     const unbindDrive = drive?.subscribe((force) =>
       owner.input(() => {
         if (media.matches || document.hidden) return engine.release();
+        if (drive?.direct) {
+          owner.paint([force, force * .32, -force * .8, -force * .2]);
+          return;
+        }
         engine.pull(0, force, force * 0.32);
         engine.pull(1, -force * 0.8, -force * 0.2);
       }),
