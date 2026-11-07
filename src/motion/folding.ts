@@ -7,6 +7,8 @@ export type FoldMetrics = {
   navY: number;
   scale: number;
   width: number;
+  headerBottom?: number;
+  navSize?: number;
 };
 const smooth = (p: number) => {
   const t = Math.max(0, Math.min(1, p));
@@ -70,9 +72,22 @@ export function foldFrame(progress: number, m: FoldMetrics) {
   }
   const easing = p < 0.5 ? 2 * p * p : 1 - 2 * (1 - p) ** 2,
     middle = targetY * 0.5 + 30;
+  const x = targetX * smooth((p - 0.2) / 0.8);
+  const y =
+    p <= 0.5 ? middle * p * 2 : middle + (targetY - middle) * (p - 0.5) * 2;
+  // Keep the small mark below the header until it overlaps the nav's x lane.
+  // A soft maximum rounds the approach without a clamp kink or a pinned layer.
+  const screenY = m.centerY + y - m.start - m.distance * p;
+  const clearance = (m.headerBottom ?? m.navY * 2) + 32;
+  const blend = Math.max(0, Math.min(1, 0.5 + (clearance - screenY) / 48));
+  const readableY =
+    screenY + (clearance - screenY) * blend + 24 * blend * (1 - blend);
+  const navSize = Math.max(1, m.navSize ?? 24);
+  const lateral = Math.abs(m.centerX + x - m.navX);
+  const open = smooth((lateral - navSize * 0.35) / navSize);
   return {
-    x: targetX * smooth((p - 0.2) / 0.8),
-    y: p <= 0.5 ? middle * p * 2 : middle + (targetY - middle) * (p - 0.5) * 2,
+    x,
+    y: y + (readableY - screenY) * open,
     scale: 1 + (m.scale - 1) * easing,
     rotation: 9 * smooth((p - 0.2) / 0.8),
   };

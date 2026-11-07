@@ -51,8 +51,15 @@ async function snapshot(p) {
       Math.min(ink.right, cta.right) > Math.max(ink.left, cta.left) &&
       Math.min(ink.bottom, cta.bottom) >
         Math.max(ink.top, cta.top, headerBottom);
+    const inkVisible =
+      Math.max(0, ink.bottom - Math.max(ink.top, headerBottom)) / ink.height;
     return {
       ctaOverlap,
+      inkVisible,
+      lateralDistance: Math.abs(
+        (ink.left + ink.right) / 2 - (n.left + n.width / 2),
+      ),
+      navSize: n.width,
       transform: getComputedStyle(a).transform,
       center: [r.x + r.width / 2, r.y + r.height / 2],
       target: [n.x + n.width / 2, n.y + n.height / 2],
@@ -198,6 +205,15 @@ try {
                 "Mobile X remains visible until its lateral approach to navigation",
               );
             }
+            if (
+              [0.25, 0.5, 0.75, 0.9].includes(f) &&
+              state.lateralDistance > state.navSize
+            ) {
+              assert.ok(
+                state.inkVisible >= 0.9,
+                "The folding mark remains readable until lateral arrival, including desktop 90%",
+              );
+            }
             if (f === 1) {
               assert.ok(
                 Math.abs(state.center[0] - state.target[0]) < 2,
@@ -225,6 +241,11 @@ try {
               "Intermediate fold coordinates must be independent of scroll direction",
             );
             assert.equal(reversed.ctaOverlap, false);
+            if (reversed.lateralDistance > reversed.navSize)
+              assert.ok(
+                reversed.inkVisible >= 0.9,
+                "Reverse intermediate frames retain the visible identity until lateral arrival",
+              );
             await p.screenshot({
               path: path.join(dir, `${label}-reverse-${f}.png`),
             });

@@ -19,6 +19,9 @@ export function animateHero() {
       navY: b.top + b.height / 2,
       scale: b.width / a.width,
       width: innerWidth,
+      headerBottom:
+        icon.closest("header")?.getBoundingClientRect().bottom ?? b.bottom,
+      navSize: b.width,
     };
   };
   const paint = (progress: number) => {

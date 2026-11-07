@@ -35,3 +35,32 @@ test("phone fold keeps its center below header until lateral arrival, and revers
   const mid = foldFrame(0.5, metrics);
   assert.ok(metrics.centerX + mid.x > 300);
 });
+
+test("desktop ninety-percent fold stays below the header until lateral arrival", () => {
+  const m = {
+    centerX: 1064,
+    centerY: 500,
+    start: 106,
+    distance: 660,
+    navX: 89,
+    navY: 53,
+    scale: 0.048,
+    width: 1440,
+    headerBottom: 106,
+    navSize: 24,
+  };
+  const f = foldFrame(0.9, m);
+  const screenY = m.centerY + f.y - m.start - m.distance * 0.9;
+  assert.ok(
+    screenY >= m.headerBottom + 24,
+    "The mark must not vanish forty pixels short of navigation",
+  );
+  for (const p of [0.75, 0.8, 0.9, 0.93, 0.95, 0.99]) {
+    const a = foldFrame(p, m),
+      b = foldFrame(p + 0.000001, m);
+    assert.ok(
+      Math.hypot(a.x - b.x, a.y - b.y) < 0.02,
+      "The approach has no positional discontinuity",
+    );
+  }
+});
