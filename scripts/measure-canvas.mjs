@@ -9,6 +9,8 @@ const base = process.env.BROWSER_BASE_URL ?? "http://127.0.0.1:4177",
   );
 let server;
 const reports = [];
+const traced = process.env.CANVAS_TRACE === "1";
+await fs.mkdir(dir, { recursive: true });
 try {
   if (!process.env.BROWSER_BASE_URL) {
     server = spawn(
@@ -39,6 +41,16 @@ try {
         rate = Number(process.env.CANVAS_CPU_RATE ?? 1);
       if (rate > 1)
         await client.send("Emulation.setCPUThrottlingRate", { rate });
+      if (traced) {
+        await client.send("Profiler.enable");
+        await client.send("Profiler.setSamplingInterval", { interval: 1000 });
+        await client.send("Profiler.start");
+        await client.send("Tracing.start", {
+          categories: "-*,toplevel,devtools.timeline,blink.user_timing,v8,cc,disabled-by-default-devtools.timeline,disabled-by-default-devtools.timeline.stack",
+          transferMode: "ReturnAsStream",
+        });
+      }
+      const mark = (name) => p.evaluate((n) => performance.mark(n), `canvas:${name}`);
       await p.addInitScript(() => {
         window.__canvasMetrics = { lcp: 0, cls: 0, events: [], longTasks: [] };
         for (const type of [
@@ -67,8 +79,10 @@ try {
         }
       });
       await p.goto(base);
+      await mark("loaded");
       await p.evaluate(() => document.fonts.ready);
       await p.waitForTimeout(2000);
+      await mark("interactive-start");
       const before = await p.evaluate(
         () => performance.memory?.usedJSHeapSize ?? null,
       );
@@ -88,8 +102,10 @@ try {
           await p.mouse.move(800 + i * 12, 300 + Math.sin(i / 4) * 100);
           await p.waitForTimeout(20);
         }
+      await mark("scroll-to-gallery");
       await p.locator(".living-gallery").scrollIntoViewIfNeeded();
       await p.waitForTimeout(300);
+      await mark("buttons");
       for (const name of ["下一个作品", "下一个作品", "上一个作品"]) {
         if (width < 500) {
           const r = await p
@@ -105,6 +121,7 @@ try {
         );
       }
       if (width > 760) {
+        await mark("drag");
         const r = await p.locator(".gallery-stage").boundingBox();
         await p.mouse.move(r.x + r.width * 0.6, r.y + 120);
         await p.mouse.down();
@@ -149,6 +166,22 @@ try {
           ).length,
         };
       });
+      await mark("interactive-end");
+      if (traced) {
+        const complete = new Promise((resolve) => client.once("Tracing.tracingComplete", resolve));
+        await client.send("Tracing.end");
+        const { stream } = await complete;
+        const chunks = [];
+        for (;;) {
+          const chunk = await client.send("IO.read", { handle: stream });
+          chunks.push(Buffer.from(chunk.data, chunk.base64Encoded ? "base64" : "utf8"));
+          if (chunk.eof) break;
+        }
+        await client.send("IO.close", { handle: stream });
+        const { profile } = await client.send("Profiler.stop");
+        await fs.writeFile(path.join(dir, `trace-${width}.json`), Buffer.concat(chunks));
+        await fs.writeFile(path.join(dir, `cpu-${width}.cpuprofile`), JSON.stringify(profile));
+      }
       for (let i = 0; i < 3; i++) {
         await p.goto(base + "/notes/");
         await p.goto(base);
@@ -173,10 +206,11 @@ try {
   }
   await fs.mkdir(dir, { recursive: true });
   await fs.writeFile(
-    path.join(dir, "performance.json"),
+    path.join(dir, traced ? "performance-traced.json" : "performance.json"),
     JSON.stringify(
       {
         recordedAt: new Date().toISOString(),
+        traced,
         method:
           "Fresh production static context; buffered LCP/CLS/EventTiming/longtask observers, then RAF intervals after fonts and intro while pointer/scroll/three steps/drag run. Three navigations and a browser GC request for approximate JS heap. Short samples, no field INP, no sustained FPS guarantee, no physical mobile device. CANVAS_CPU_RATE=4 enables reproducible CPU throttling; BROWSER_BASE_URL selects an existing static server.",
         reports,

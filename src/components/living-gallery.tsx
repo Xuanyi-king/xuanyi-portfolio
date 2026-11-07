@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { ProjectScene } from "./project-scene";
@@ -11,6 +11,8 @@ import { frameFor, frameTransform } from "@/motion/gallery-model";
 import { bindGalleryInput } from "@/motion/gallery-input";
 import { galleryStateKey, readGalleryState } from "@/motion/gallery-state";
 import { XMark } from "./x-mark";
+import { LivingX } from "./living-x";
+import { createGalleryResponse } from "@/motion/gallery-response";
 const fallback = `.living-gallery .gallery-stage{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;height:auto!important;perspective:none!important;padding:0!important}.living-gallery .gallery-stage .gallery-card{position:static!important;width:auto!important;transform:none!important;opacity:1!important;pointer-events:auto!important;visibility:visible!important}.living-gallery .gallery-stage .gallery-card .project-meta{opacity:1!important;visibility:visible!important}.living-gallery .gallery-controls,.living-gallery .gallery-hint{display:none!important}.living-gallery .gallery-viewport{overflow:visible!important}@media(max-width:760px){.living-gallery .gallery-stage{grid-template-columns:1fr;gap:44px}}`;
 export function LivingGallery({
   projects,
@@ -27,6 +29,7 @@ export function LivingGallery({
     input = useRef<ReturnType<typeof bindGalleryInput> | null>(null);
   const [active, setActive] = useState(0),
     [enhanced, setEnhanced] = useState(false);
+  const response = useMemo(createGalleryResponse, []);
   useLayoutEffect(() => {
     if (!stage.current) return;
     const el = stage.current,
@@ -53,6 +56,7 @@ export function LivingGallery({
       projects.length,
       {
         frame(position) {
+          response.sample(position, performance.now());
           el.dataset.position = position.toFixed(5);
           cards.forEach((card, i) => {
             const f = frameFor(
@@ -74,6 +78,7 @@ export function LivingGallery({
           el.dataset.active = String(index);
         },
         settled() {
+          response.reset();
           delete el.dataset.moving;
           save();
         },
@@ -95,24 +100,34 @@ export function LivingGallery({
     const resize = () => {
         width = innerWidth;
         if (el.hasAttribute("data-holding")) input.current?.cancel();
+        response.reset();
         engine.redraw();
       },
       preference = () => {
         input.current?.cancel();
+        response.reset();
         engine.setReduced(media.matches);
         engine.redraw();
       };
+    const visibility = () => {
+      if (document.hidden) {
+        input.current?.cancel();
+        response.reset();
+      }
+    };
     preference();
     setEnhanced(true);
     window.addEventListener("pagehide", save);
     window.addEventListener("resize", resize, { passive: true });
     media.addEventListener("change", preference);
+    document.addEventListener("visibilitychange", visibility);
     return () => {
       save();
       window.removeEventListener("pagehide", save);
       input.current?.dispose();
       input.current = null;
       engine.dispose();
+      response.reset();
       controller.current = null;
       cards.forEach((c) => {
         c.style.removeProperty("transform");
@@ -122,8 +137,9 @@ export function LivingGallery({
       });
       window.removeEventListener("resize", resize);
       media.removeEventListener("change", preference);
+      document.removeEventListener("visibilitychange", visibility);
     };
-  }, [projects.length]);
+  }, [projects.length, response]);
   if (!projects.length) return <p>新的作品正在酝酿。</p>;
   const current = projects[active] ?? projects[0];
   return (
@@ -249,9 +265,14 @@ export function LivingGallery({
         >
           <ArrowLeft size={20} />
         </button>
-        <div className="gallery-counter">
+        <div className="gallery-status">
+          <div className="gallery-response" aria-hidden="true">
+            <LivingX drive={response} compact />
+          </div>
+          <div className="gallery-counter">
           <span>{String(active + 1).padStart(2, "0")}</span>
           <span>/ {String(projects.length).padStart(2, "0")}</span>
+          </div>
         </div>
         <button
           type="button"

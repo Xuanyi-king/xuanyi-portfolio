@@ -13,6 +13,7 @@ import { createCurveOwner } from "@/motion/curve-owner";
 import { threadPath } from "@/motion/thread";
 import { silkSurface } from "@/motion/surface";
 import { playIdentityIntro } from "@/motion/identity-intro";
+import type { XDrive } from "@/motion/gallery-response";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
   play = false,
@@ -20,12 +21,16 @@ export function LivingX({
   form = "rest",
   resetToken = 0,
   material = "sculpted",
+  compact = false,
+  drive,
 }: {
   play?: boolean;
   strength?: number;
   form?: string;
   resetToken?: number;
   material?: "sculpted" | "translucent";
+  compact?: boolean;
+  drive?: XDrive;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const controller = useRef<ReturnType<typeof createLivingSpring> | null>(null);
@@ -91,7 +96,7 @@ export function LivingX({
         button.style.top = `${anchor.y / 5}%`;
       });
       geometry.curves.forEach((curve, i) => {
-        const s = silkSurface(curve, i);
+        const s = silkSurface(curve, i, compact);
         surfaceNodes[i].forEach(({ key, nodes }) =>
           nodes.forEach((path) => path.setAttribute("d", s[key])),
         );
@@ -146,6 +151,14 @@ export function LivingX({
           document.visibilityState === "visible",
       );
     preference();
+    const unbindDrive = drive?.subscribe((force) => owner.input(() => {
+      if (media.matches || document.hidden) return engine.release();
+      engine.pull(0, force, force * 0.32);
+      engine.pull(1, -force * 0.8, -force * 0.2);
+    }));
+    const visibility = () => {
+      if (drive && document.hidden) owner.input(() => engine.release());
+    };
     const surface = play ? el : (el.closest(".hero") ?? el);
     const hover = (event: Event) => {
       const e = event as PointerEvent;
@@ -253,11 +266,15 @@ export function LivingX({
       });
     });
     cancelInteractions.current = () => cancels.forEach((fn) => fn());
-    surface.addEventListener("pointermove", hover);
-    if (!play) surface.addEventListener("pointerleave", reset);
+    if (!drive) {
+      surface.addEventListener("pointermove", hover);
+      if (!play) surface.addEventListener("pointerleave", reset);
+    }
+    document.addEventListener("visibilitychange", visibility);
     media.addEventListener("change", preference);
     return () => {
       disposed = true;
+      unbindDrive?.();
       owner.dispose();
       intro?.cancel(false);
       cleanups.forEach((fn) => fn());
@@ -266,9 +283,10 @@ export function LivingX({
       cancelInteractions.current = () => {};
       surface.removeEventListener("pointermove", hover);
       surface.removeEventListener("pointerleave", reset);
+      document.removeEventListener("visibilitychange", visibility);
       media.removeEventListener("change", preference);
     };
-  }, [play]);
+  }, [play, compact, drive]);
   useEffect(() => {
     controller.current?.configure({ form, strength });
   }, [form, strength, play]);
@@ -278,7 +296,7 @@ export function LivingX({
   }, [resetToken]);
   return (
     <div ref={root} className={`living-x ${play ? "is-playable" : ""}`}>
-      <XMark decorative={!play} material={material} />
+      <XMark decorative={!play} material={material} compact={compact} />
       {play &&
         rest.anchors.map((p, i) => (
           <button
