@@ -1,6 +1,8 @@
 import { motionTokens } from "./tokens";
 
 export type XDrive = {
+  /** Director study: deterministic force pose; renderer/curve-owner still owns d. */
+  direct?: boolean;
   subscribe(listener: (force: number) => void): () => void;
 };
 

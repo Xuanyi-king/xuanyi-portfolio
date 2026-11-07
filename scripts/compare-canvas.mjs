@@ -6,7 +6,7 @@ import os from "node:os";
 import { analyzeCanvasTrace } from "./lib/canvas-trace.mjs";
 
 const exec = promisify(execFile),
-  baseline = "811a2d4656bae7c80885211d3e55bec0d9d8f790";
+  baseline = process.env.CANVAS_BASELINE_SHA ?? "811a2d4656bae7c80885211d3e55bec0d9d8f790";
 const directory = path.resolve(
   process.env.BROWSER_EVIDENCE_DIR ?? "artifacts/browser",
   "response-review",
