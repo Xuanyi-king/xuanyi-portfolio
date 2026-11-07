@@ -26,4 +26,4 @@
 |390 layoutMs|53.23|60.63|
 |390 paintMs|168.88|161.48|
 
-样片单样本见 [原始数据](../../evidence/motion-direction-2-3/prototype-performance.json)。记录RAF、LongTask、JS、Layout、RecalcStyle、LCP/CLS；没有单独采集样片Paint。A桌面长尾明显，不据此声称B稳定更快或正式首页整体提速。没有线上INP、真机或长期FPS结论。
+样片单样本见 [原始数据](../evidence/motion-direction-2-3/prototype-performance.json)。记录RAF、LongTask、JS、Layout、RecalcStyle、LCP/CLS；没有单独采集样片Paint。A桌面长尾明显，不据此声称B稳定更快或正式首页整体提速。没有线上INP、真机或长期FPS结论。
