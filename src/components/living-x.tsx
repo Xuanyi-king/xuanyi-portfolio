@@ -14,6 +14,7 @@ import { threadPath } from "@/motion/thread";
 import { silkSurface, type SurfaceProfile } from "@/motion/surface";
 import { playIdentityIntro } from "@/motion/identity-intro";
 import type { XDrive } from "@/motion/gallery-response";
+import { createCompactPoseGate } from "@/motion/compact-pose";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
   play = false,
@@ -85,7 +86,10 @@ export function LivingX({
     );
     const lights =
       svg.querySelectorAll<SVGLinearGradientElement>("[data-light]");
-    const render = (values: readonly number[]) => {
+    const compactPose = createCompactPoseGate();
+    const render = (input: readonly number[]) => {
+      const values = compact ? compactPose(input) : input;
+      if (!values) return;
       const geometry = ribbonGeometry(
         { x: values[0], y: values[1] },
         { x: values[2], y: values[3] },
