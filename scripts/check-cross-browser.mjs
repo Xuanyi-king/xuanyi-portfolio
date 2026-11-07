@@ -53,7 +53,7 @@ async function layout(p) {
           text: el.textContent?.slice(0, 60),
         };
       })
-    .filter((r) => r.right > innerWidth || r.x < 0)
+      .filter((r) => r.right > innerWidth || r.x < 0)
       .slice(0, 30),
   }));
   if (dimensions.scroll > dimensions.width) {
@@ -190,7 +190,7 @@ try {
       function sample() {
         const path = document.querySelector(".hero .x-ribbon-a");
         if (path) {
-          const d = getComputedStyle(path).d || path.getAttribute("d");
+          const d = path.getAttribute("d");
           const n = d.match(/-?\d+(?:\.\d+)?/g)?.map(Number);
           window.__curveAudit.samples.push({
             owner: path.closest(".living-x").dataset.curveOwner,
@@ -209,7 +209,10 @@ try {
     try {
       await p.goto(base, { waitUntil: "domcontentloaded" });
       const living = p.locator(".hero .living-x");
-      await living.locator("[data-ribbon]").first().waitFor();
+      await living
+        .locator("[data-ribbon]")
+        .first()
+        .waitFor({ state: "attached" });
       await p.waitForFunction(
         () => document.querySelector(".hero .living-x")?.dataset.curveOwner,
       );
@@ -222,7 +225,7 @@ try {
       assert.notEqual(
         await p.locator(".hero .x-ribbon-a").getAttribute("d"),
         rest,
-        "Early input survives CSS-to-spring handoff",
+        "Early input survives intro-to-spring handoff",
       );
       const audit = await p.evaluate(() => window.__curveAudit);
       assert.equal(
@@ -240,7 +243,7 @@ try {
         const a = audit.samples[i - 1],
           b = audit.samples[i];
         if (
-          a.owner === "css" &&
+          a.owner === "intro" &&
           b.owner === "spring" &&
           a.controls &&
           b.controls
@@ -251,12 +254,27 @@ try {
           assert.ok(handoffStep < 4, "Handoff must not snap between curves");
         }
       }
+      assert.ok(
+        audit.samples.some((s) => s.owner === "intro"),
+        "First visit must show the geometric intro",
+      );
+      assert.notEqual(
+        handoffStep,
+        null,
+        "Observe the actual intro-to-spring handoff",
+      );
       await fs.writeFile(
         path.join(dir, "curve-audit.json"),
         JSON.stringify({ initialOwner, handoffStep, ...audit }, null, 2),
       );
       await p.mouse.move(700, 50, { steps: 15 });
-      await p.waitForTimeout(1600);
+      await p.waitForFunction(
+        (expected) =>
+          document.querySelector(".hero .x-ribbon-a")?.getAttribute("d") ===
+          expected,
+        rest,
+        { timeout: 5000 },
+      );
       assert.equal(
         await p.locator(".hero .x-ribbon-a").getAttribute("d"),
         rest,

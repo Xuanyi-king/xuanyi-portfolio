@@ -11,17 +11,29 @@ import { reducedQuery } from "@/motion/tokens";
 import { createLivingSpring } from "@/motion/living-spring";
 import { createCurveOwner } from "@/motion/curve-owner";
 import { threadPath } from "@/motion/thread";
+import { silkSurface, type SurfaceProfile } from "@/motion/surface";
+import { playIdentityIntro } from "@/motion/identity-intro";
+import type { XDrive } from "@/motion/gallery-response";
+import { createCompactPoseGate } from "@/motion/compact-pose";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
   play = false,
   strength = 1,
   form = "rest",
   resetToken = 0,
+  material = "sculpted",
+  compact = false,
+  drive,
+  profile = "sculpted",
 }: {
   play?: boolean;
   strength?: number;
   form?: string;
   resetToken?: number;
+  material?: "sculpted" | "translucent";
+  compact?: boolean;
+  drive?: XDrive;
+  profile?: SurfaceProfile;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const controller = useRef<ReturnType<typeof createLivingSpring> | null>(null);
@@ -34,19 +46,18 @@ export function LivingX({
     const paths = ["a", "b"].map((name) =>
       el.querySelectorAll<SVGPathElement>(`[data-ribbon="${name}"]`),
     );
-    // Inspect BOTH CSS ribbons before the spring can paint, including delayed starts.
-    const entrance = [...el.querySelectorAll(".x-ribbon")].flatMap((path) =>
-      path
-        .getAnimations()
-        .filter(
-          (a) =>
-            "animationName" in a &&
-            String(a.animationName).startsWith("ribbon-unfold-") &&
-            (a.playState === "running" || a.pending),
-        ),
-    );
-    el.dataset.curveOwner = entrance.length
-      ? "css"
+    const hero = play ? null : el.closest<HTMLElement>(".hero");
+    const returning = () =>
+      !!hero?.hasAttribute("data-returning") ||
+      document.documentElement.hasAttribute("data-xuanyi-returning");
+    const entering =
+      !!hero &&
+      !media.matches &&
+      !returning() &&
+      scrollY < 80 &&
+      document.visibilityState === "visible";
+    el.dataset.curveOwner = entering
+      ? "intro"
       : media.matches
         ? "static"
         : "spring";
@@ -57,7 +68,28 @@ export function LivingX({
             .closest(".hero")
             ?.querySelectorAll<SVGPathElement>("[data-thread]") ?? []),
         ];
-    const owner = createCurveOwner(entrance.length > 0, (values) => {
+    const surfaceKeys = [
+      "outline",
+      "face",
+      "edge",
+      "sheen",
+      "highlight",
+      "rim",
+    ] as const;
+    const surfaceNodes = ["a", "b"].map((name) =>
+      surfaceKeys.map((key) => ({
+        key,
+        nodes: el.querySelectorAll<SVGPathElement>(
+          `[data-surface="${name}-${key}"]`,
+        ),
+      })),
+    );
+    const lights =
+      svg.querySelectorAll<SVGLinearGradientElement>("[data-light]");
+    const compactPose = createCompactPoseGate();
+    const render = (input: readonly number[]) => {
+      const values = compact ? compactPose(input) : input;
+      if (!values) return;
       const geometry = ribbonGeometry(
         { x: values[0], y: values[1] },
         { x: values[2], y: values[3] },
@@ -70,19 +102,31 @@ export function LivingX({
         button.style.left = `${anchor.x / 5}%`;
         button.style.top = `${anchor.y / 5}%`;
       });
+      geometry.curves.forEach((curve, i) => {
+        const s = silkSurface(curve, i, compact, profile);
+        surfaceNodes[i].forEach(({ key, nodes }) =>
+          nodes.forEach((path) => path.setAttribute("d", s[key])),
+        );
+      });
+      const light = clamp((values[0] - values[2]) * 0.1, -8, 8);
+      lights.forEach((gradient) =>
+        gradient.setAttribute("gradientTransform", `rotate(${light} 250 250)`),
+      );
       threads.forEach((path) =>
         path.setAttribute(
           "d",
           threadPath(path.dataset.thread === "mobile", values),
         ),
       );
-    });
+    };
+    const owner = createCurveOwner(entering, render);
     const engine = createLivingSpring(owner.paint, {
       request: (fn) => requestAnimationFrame(fn),
       cancel: (id) => cancelAnimationFrame(id),
     });
     controller.current = engine;
     let disposed = false;
+    let intro: ReturnType<typeof playIdentityIntro> | undefined;
     const complete = () => {
       if (disposed) return;
       el.dataset.curveOwner = media.matches ? "static" : "spring";
@@ -92,15 +136,39 @@ export function LivingX({
       if (media.matches) {
         // Discard an early pointer before the static preference settles immediately.
         owner.input(() => engine.release());
+        intro?.cancel(true);
         complete();
         engine.release();
       } else if (el.dataset.curveOwner === "static")
         el.dataset.curveOwner = "spring";
       engine.setReduced(media.matches);
     };
+    if (entering)
+      intro = playIdentityIntro(
+        render,
+        complete,
+        {
+          request: (fn) => requestAnimationFrame(fn),
+          cancel: (id) => cancelAnimationFrame(id),
+        },
+        () =>
+          !disposed &&
+          !returning() &&
+          !media.matches &&
+          document.visibilityState === "visible",
+      );
     preference();
+    const unbindDrive = drive?.subscribe((force) =>
+      owner.input(() => {
+        if (media.matches || document.hidden) return engine.release();
+        engine.pull(0, force, force * 0.32);
+        engine.pull(1, -force * 0.8, -force * 0.2);
+      }),
+    );
+    const visibility = () => {
+      if (drive && document.hidden) owner.input(() => engine.release());
+    };
     const surface = play ? el : (el.closest(".hero") ?? el);
-    void Promise.allSettled(entrance.map((a) => a.finished)).then(complete);
     const hover = (event: Event) => {
       const e = event as PointerEvent;
       if (play || media.matches || e.pointerType === "touch") return;
@@ -207,21 +275,27 @@ export function LivingX({
       });
     });
     cancelInteractions.current = () => cancels.forEach((fn) => fn());
-    surface.addEventListener("pointermove", hover);
-    if (!play) surface.addEventListener("pointerleave", reset);
+    if (!drive) {
+      surface.addEventListener("pointermove", hover);
+      if (!play) surface.addEventListener("pointerleave", reset);
+    }
+    document.addEventListener("visibilitychange", visibility);
     media.addEventListener("change", preference);
     return () => {
       disposed = true;
+      unbindDrive?.();
       owner.dispose();
+      intro?.cancel(false);
       cleanups.forEach((fn) => fn());
       engine.dispose();
       controller.current = null;
       cancelInteractions.current = () => {};
       surface.removeEventListener("pointermove", hover);
       surface.removeEventListener("pointerleave", reset);
+      document.removeEventListener("visibilitychange", visibility);
       media.removeEventListener("change", preference);
     };
-  }, [play]);
+  }, [play, compact, drive, profile]);
   useEffect(() => {
     controller.current?.configure({ form, strength });
   }, [form, strength, play]);
@@ -231,7 +305,12 @@ export function LivingX({
   }, [resetToken]);
   return (
     <div ref={root} className={`living-x ${play ? "is-playable" : ""}`}>
-      <XMark decorative={!play} />
+      <XMark
+        decorative={!play}
+        material={material}
+        compact={compact}
+        profile={profile}
+      />
       {play &&
         rest.anchors.map((p, i) => (
           <button

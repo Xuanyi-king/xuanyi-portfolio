@@ -25,6 +25,9 @@ export default function Lab() {
             感性。这个实验从它的形态出发，试着给平静的符号一点回应。
           </p>
           <TextLink href="/notes/making-xuanyi">读读它的制作手记</TextLink>
+          <TextLink href="/lab/canvas-study/">
+            Living Canvas：曲面与空间展廊研究
+          </TextLink>
           <TextLink href="/brand/x-mark.svg" className="download-mark">
             查看 X Mark SVG
           </TextLink>

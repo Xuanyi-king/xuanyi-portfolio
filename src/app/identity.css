@@ -418,49 +418,12 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero .x-ink-edge,
   .hero .thread-chase {
     animation: none;
   }
   .thread-chase,
   .thread-extension {
     display: none;
-  }
-}
-/* Optical correction: the same silhouette, solid and slightly heavier at icon size. */
-.wordmark .x-ribbon {
-  stroke-width: 72;
-}
-.wordmark .x-ribbon-a {
-  stroke: #639bb6;
-}
-.wordmark .x-ribbon-b {
-  stroke: #d59a70;
-}
-.wordmark .x-selvedge,
-.wordmark .x-ink-edge {
-  display: none;
-}
-.wordmark .x-material {
-  filter: none;
-}
-.x-ink-edge {
-  opacity: 0;
-}
-@keyframes selvedge-draw {
-  0% {
-    stroke-dashoffset: 1000;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
   }
 }
 /* Project identity stays visible; a clipped real-media layer opens inside the same named scene. */
@@ -927,54 +890,8 @@
     font-size: 14px;
   }
 }
-/* Each ribbon opens along its own curve. Unsupported path interpolation keeps the static mark. */
-@supports (d: path("M0 0L1 1")) {
-  .hero [data-ribbon="a"] {
-    animation: ribbon-unfold-a 1.45s cubic-bezier(0.2, 0.7, 0.3, 1) 0.05s
-      backwards;
-  }
-  .hero [data-ribbon="b"] {
-    animation: ribbon-unfold-b 1.45s cubic-bezier(0.2, 0.7, 0.3, 1) 0.18s
-      backwards;
-  }
-  .hero .x-ink-edge {
-    animation: none;
-  }
-}
-@keyframes ribbon-unfold-a {
-  0% {
-    d: path("M112 110 C296 82 282 346 390 378");
-  }
-  75% {
-    d: path("M112 110 C254 105 240 369 390 378");
-  }
-  100% {
-    d: path("M112 110 C258 102 244 366 390 378");
-  }
-}
-@keyframes ribbon-unfold-b {
-  0% {
-    d: path("M390 103 C208 132 216 387 110 382");
-  }
-  75% {
-    d: path("M390 103 C250 109 258 364 110 382");
-  }
-  100% {
-    d: path("M390 103 C246 112 254 367 110 382");
-  }
-}
-.hero[data-returning] [data-ribbon],
-html[data-xuanyi-returning] .hero [data-ribbon],
 html[data-xuanyi-returning] .hero .thread-chase {
   animation: none;
-}
-.hero .living-x:is([data-curve-owner="spring"], [data-curve-owner="static"]) [data-ribbon] {
-  animation: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero [data-ribbon] {
-    animation: none !important;
-  }
 }
 .section-label > span {
   white-space: nowrap;

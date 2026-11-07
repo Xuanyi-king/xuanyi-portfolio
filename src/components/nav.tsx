@@ -43,7 +43,7 @@ export function Navigation() {
   return (
     <header className="site-header">
       <Link href="/" className="wordmark" aria-label="xuanyi. 首页">
-        <XMark />
+        <XMark compact />
         <span>
           xuanyi<span className="logo-period">.</span>
         </span>

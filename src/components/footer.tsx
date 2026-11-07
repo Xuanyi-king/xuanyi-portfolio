@@ -33,7 +33,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <Link href="/" className="footer-signature">
-            <XMark />
+            <XMark compact />
             <span>xuanyi.</span>
           </Link>
           <p>© {new Date().getUTCFullYear()} 玄屹 · 用好奇心制作</p>

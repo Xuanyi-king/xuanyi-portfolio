@@ -2,10 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { Navigation } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { MotionProvider } from "@/components/motion-provider";
+import { galleryBootstrap } from "@/motion/gallery-state";
+import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 import "./globals.css";
 import "./motion.css";
 import "./identity.css";
+import "./surface.css";
+import "./gallery.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "XUANYI 玄屹 — 好奇的形状", template: "%s · XUANYI" },
@@ -34,17 +38,21 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+// The pre-hydration bootstrap intentionally changes only root attributes/CSS variables.
+// Suppress this one element; child content still hydrates normally.
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem('xuanyi-2-1-seen'))document.documentElement.setAttribute('data-xuanyi-returning','true');if(location.pathname==='/')sessionStorage.setItem('xuanyi-2-1-seen','true')}catch{}`,
+            __html:
+              `try{if(sessionStorage.getItem('xuanyi-2-1-seen'))document.documentElement.setAttribute('data-xuanyi-returning','true');if(location.pathname==='/')sessionStorage.setItem('xuanyi-2-1-seen','true')}catch{}` +
+              galleryBootstrap(projects.map((p) => p.slug)),
           }}
         />
         <link

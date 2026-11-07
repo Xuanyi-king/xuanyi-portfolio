@@ -430,7 +430,9 @@ try {
   const settledCurve = await fp
     .locator(".hero .x-ribbon-b")
     .evaluate((el) => getComputedStyle(el).d);
-  if (await fp.evaluate(() => CSS.supports("d", 'path("M0 0L1 1")')))
+  if (await fp.locator(".hero .silk-form").count())
+    assert.equal(firstCurve, settledCurve, "Closed surfaces retain their complete SSR silhouette without JS");
+  else if (await fp.evaluate(() => CSS.supports("d", 'path("M0 0L1 1")')))
     assert.notEqual(
       firstCurve,
       settledCurve,
@@ -446,7 +448,7 @@ try {
   await fp.waitForURL("**/work/");
   await fallback.close();
   checks.push(
-    "no-JS readable brand, CSS curve narrative, native detail/return; repeat visit quiet",
+    "no-JS readable brand, complete static surface, native detail/return; repeat visit quiet",
   );
   assert.deepEqual(errors, [], "Browser runtime errors");
   await fs.writeFile(

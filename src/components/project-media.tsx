@@ -7,15 +7,24 @@ export function ProjectFilmPreview() {
     const video = ref.current!,
       card = video.closest<HTMLElement>(".project-card");
     if (!card) return;
+    const stage = card.closest<HTMLElement>(".gallery-stage");
     const media = matchMedia("(prefers-reduced-motion: no-preference)");
     let hovered = false,
       focused = false;
     const stop = () => {
       video.pause();
-      if (video.readyState) video.currentTime = 0;
+      if (video.readyState && video.currentTime !== 0) video.currentTime = 0;
     };
     const sync = () => {
-      if (!(hovered || focused) || !media.matches || document.hidden) {
+      if (
+        !(hovered || focused) ||
+        !media.matches ||
+        document.hidden ||
+        (stage &&
+          (card.dataset.galleryActive !== "true" ||
+            stage.hasAttribute("data-holding") ||
+            stage.hasAttribute("data-moving")))
+      ) {
         stop();
         return;
       }
@@ -43,6 +52,16 @@ export function ProjectFilmPreview() {
         sync();
       }
     };
+    const observer = new MutationObserver(sync);
+    observer.observe(card, {
+      attributes: true,
+      attributeFilter: ["data-gallery-active"],
+    });
+    if (stage)
+      observer.observe(stage, {
+        attributes: true,
+        attributeFilter: ["data-holding", "data-moving"],
+      });
     card.addEventListener("pointerenter", enter);
     card.addEventListener("pointerleave", leave);
     card.addEventListener("focusin", focus);
@@ -50,6 +69,7 @@ export function ProjectFilmPreview() {
     media.addEventListener("change", sync);
     document.addEventListener("visibilitychange", sync);
     return () => {
+      observer.disconnect();
       hovered = false;
       focused = false;
       stop();

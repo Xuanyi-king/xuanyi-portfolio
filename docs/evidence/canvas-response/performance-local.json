@@ -1,0 +1,949 @@
+{
+  "baseline": "811a2d4656bae7c80885211d3e55bec0d9d8f790",
+  "baselineSource": "Exact git archive built in isolation",
+  "sourceCommit": "825577bb5b28ba8eea6f41b475b43220a72e61c7",
+  "cpuThrottle": 4,
+  "runs": 3,
+  "note": "Alternating normal runs on one host. Trace overhead excluded. Short local samples, not physical-device results or field INP.",
+  "scope": "Local 825577b before final desktop folding fix 25b8664. CI reruns on final source. Not field INP, physical phone, or guaranteed FPS.",
+  "samples": {
+    "before": [
+      {
+        "round": 1,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 422,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 50,
+          "over50ms": 4
+        },
+        "largestObservedInteractionMs": 56,
+        "lcp": 300,
+        "cls": 0
+      },
+      {
+        "round": 1,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 242,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999727,
+          "p99Ms": 83.40000000000009,
+          "over50ms": 3
+        },
+        "largestObservedInteractionMs": 80,
+        "lcp": 216,
+        "cls": 0
+      },
+      {
+        "round": 2,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 430,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.80000000000109,
+          "p99Ms": 50,
+          "over50ms": 3
+        },
+        "largestObservedInteractionMs": 72,
+        "lcp": 172,
+        "cls": 0
+      },
+      {
+        "round": 2,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 248,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.40000000000009,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 72,
+        "lcp": 224,
+        "cls": 0
+      },
+      {
+        "round": 3,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 426,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 50,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 72,
+        "lcp": 608,
+        "cls": 0
+      },
+      {
+        "round": 3,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 248,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999727,
+          "p99Ms": 50,
+          "over50ms": 1
+        },
+        "largestObservedInteractionMs": 96,
+        "lcp": 292,
+        "cls": 0
+      }
+    ],
+    "after": [
+      {
+        "round": 1,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 424,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.30000000000018,
+          "p99Ms": 50,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 96,
+        "lcp": 276,
+        "cls": 0
+      },
+      {
+        "round": 1,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 246,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999727,
+          "p99Ms": 33.40000000000009,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 64,
+        "lcp": 244,
+        "cls": 0
+      },
+      {
+        "round": 2,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 414,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.29999999999927,
+          "p99Ms": 33.400000000000546,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 88,
+        "lcp": 368,
+        "cls": 0
+      },
+      {
+        "round": 2,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 248,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.30000000000018,
+          "over50ms": 1
+        },
+        "largestObservedInteractionMs": 96,
+        "lcp": 268,
+        "cls": 0
+      },
+      {
+        "round": 3,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 436,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.40000000000009,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 56,
+        "lcp": 436,
+        "cls": 0
+      },
+      {
+        "round": 3,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "frames": {
+          "count": 248,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 33.30000000000018,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 64,
+        "lcp": 204,
+        "cls": 0
+      }
+    ]
+  },
+  "traces": {
+    "before": {
+      "1440": {
+        "interactiveMs": 7985.773,
+        "frames": 438,
+        "mainTaskMs": 5124.765000000001,
+        "layerizeMs": 953.9189999999987,
+        "layerizePerFrameMs": 2.1778972602739697,
+        "styleMs": 496.32800000000015,
+        "layoutMs": 110.42800000000001,
+        "paintMs": 433.12200000000047,
+        "longTasks": [
+          {
+            "atMs": 1120.55,
+            "durationMs": 50.349
+          },
+          {
+            "atMs": 1836.61,
+            "durationMs": 57.184
+          },
+          {
+            "atMs": 5648.673,
+            "durationMs": 52.874
+          },
+          {
+            "atMs": 5702.346,
+            "durationMs": 56.501
+          },
+          {
+            "atMs": 5918.225,
+            "durationMs": 79.114
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 4649.914000000001
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2469.8649999999975
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 553.8869999999994
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 4070,
+            "selfMs": 188.8860000000002
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 13452,
+            "selfMs": 134.5399999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 13602,
+            "selfMs": 121.80100000000003
+          },
+          {
+            "functionName": "a",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/29-hembvty34v.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 59.795
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 56.92300000000001
+          },
+          {
+            "functionName": "o",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/29-hembvty34v.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 47.019999999999996
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 13242,
+            "selfMs": 41.21699999999999
+          },
+          {
+            "functionName": "iP",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 63481,
+            "selfMs": 25.840000000000003
+          },
+          {
+            "functionName": "p",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/29-hembvty34v.js",
+            "lineNumber": 0,
+            "columnNumber": 26922,
+            "selfMs": 21.700000000000003
+          },
+          {
+            "functionName": "t",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 18.991
+          },
+          {
+            "functionName": "u",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/29-hembvty34v.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 18.248
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 14.296000000000001
+          },
+          {
+            "functionName": "setTimeout",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 13.900999999999998
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/29-hembvty34v.js",
+            "lineNumber": 0,
+            "columnNumber": 26116,
+            "selfMs": 12.834
+          },
+          {
+            "functionName": "tf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 32401,
+            "selfMs": 9.804
+          },
+          {
+            "functionName": "t_",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 35860,
+            "selfMs": 9.367
+          },
+          {
+            "functionName": "up",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 130835,
+            "selfMs": 9.309
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      },
+      "390": {
+        "interactiveMs": 4559.523,
+        "frames": 249,
+        "mainTaskMs": 2277.634999999997,
+        "layerizeMs": 496.0640000000001,
+        "layerizePerFrameMs": 1.992224899598394,
+        "styleMs": 233.9559999999999,
+        "layoutMs": 22.165999999999997,
+        "paintMs": 121.35100000000013,
+        "longTasks": [
+          {
+            "atMs": 1473.621,
+            "durationMs": 195.103
+          },
+          {
+            "atMs": 3595.356,
+            "durationMs": 155.428
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2206.345999999997
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2062.053000000001
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 339.4749999999994
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 4070,
+            "selfMs": 95.92800000000003
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 38.858
+          },
+          {
+            "functionName": "t",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 14100,
+            "selfMs": 29.39
+          },
+          {
+            "functionName": "iP",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 63481,
+            "selfMs": 24.275999999999993
+          },
+          {
+            "functionName": "t",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 19.001
+          },
+          {
+            "functionName": "getExplicitAriaRole",
+            "scriptId": "41",
+            "url": "",
+            "lineNumber": 3073,
+            "columnNumber": 28,
+            "selfMs": 13.324
+          },
+          {
+            "functionName": "tf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 32401,
+            "selfMs": 6.906
+          },
+          {
+            "functionName": "query",
+            "scriptId": "41",
+            "url": "",
+            "lineNumber": 5286,
+            "columnNumber": 20,
+            "selfMs": 6.6739999999999995
+          },
+          {
+            "functionName": "up",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 130835,
+            "selfMs": 6.111
+          },
+          {
+            "functionName": "init",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 66587,
+            "selfMs": 5.715
+          },
+          {
+            "functionName": "e",
+            "scriptId": "29",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/2y05y3a0g2-eh.js",
+            "lineNumber": 0,
+            "columnNumber": 34413,
+            "selfMs": 5.57
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/1ag60-8hrg_6f.js",
+            "lineNumber": 2,
+            "columnNumber": 4024,
+            "selfMs": 4.704
+          },
+          {
+            "functionName": "sw",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 151502,
+            "selfMs": 4.578
+          },
+          {
+            "functionName": "t_",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 35860,
+            "selfMs": 4.469
+          },
+          {
+            "functionName": "InjectedScript",
+            "scriptId": "41",
+            "url": "",
+            "lineNumber": 6596,
+            "columnNumber": 13,
+            "selfMs": 4.437
+          },
+          {
+            "functionName": "rt",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 42148,
+            "selfMs": 3.925
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4180/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 176600,
+            "selfMs": 3.9220000000000006
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    "after": {
+      "1440": {
+        "interactiveMs": 7777.377,
+        "frames": 435,
+        "mainTaskMs": 5279.572000000005,
+        "layerizeMs": 795.6609999999989,
+        "layerizePerFrameMs": 1.8291057471264343,
+        "styleMs": 487.34100000000035,
+        "layoutMs": 215.7909999999999,
+        "paintMs": 411.6679999999998,
+        "longTasks": [
+          {
+            "atMs": 329.278,
+            "durationMs": 83.874
+          },
+          {
+            "atMs": 4390.829,
+            "durationMs": 89.434
+          },
+          {
+            "atMs": 5613.62,
+            "durationMs": 60.392
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 4371.446000000012
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2191.2150000000015
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 739.425999999998
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14558,
+            "selfMs": 329.69100000000014
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14708,
+            "selfMs": 137.33899999999994
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14344,
+            "selfMs": 127.40899999999998
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 122.74600000000004
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 95.68600000000004
+          },
+          {
+            "functionName": "a",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 74.66900000000001
+          },
+          {
+            "functionName": "u",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 70.501
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 29.572999999999993
+          },
+          {
+            "functionName": "o",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 29.198000000000008
+          },
+          {
+            "functionName": "h",
+            "scriptId": "10",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 27015,
+            "selfMs": 28.866000000000007
+          },
+          {
+            "functionName": "iP",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 63481,
+            "selfMs": 18.308
+          },
+          {
+            "functionName": "t",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 16.183999999999997
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14485,
+            "selfMs": 11.934
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 11.418999999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14635,
+            "selfMs": 11.123
+          },
+          {
+            "functionName": "tf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 32401,
+            "selfMs": 10.992
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 10.776000000000002
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      },
+      "390": {
+        "interactiveMs": 4380.118,
+        "frames": 253,
+        "mainTaskMs": 2256.7509999999966,
+        "layerizeMs": 306.83700000000005,
+        "layerizePerFrameMs": 1.2127944664031622,
+        "styleMs": 271.98200000000014,
+        "layoutMs": 49.70799999999997,
+        "paintMs": 159.29700000000008,
+        "longTasks": [
+          {
+            "atMs": 1555.818,
+            "durationMs": 71.422
+          },
+          {
+            "atMs": 3607.018,
+            "durationMs": 95.37
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 1953.3430000000096
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 1891.126999999999
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 381.5829999999998
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14558,
+            "selfMs": 145.84199999999996
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 69.59499999999998
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 57.06599999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14344,
+            "selfMs": 36.165
+          },
+          {
+            "functionName": "iP",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 63481,
+            "selfMs": 25.388
+          },
+          {
+            "functionName": "t",
+            "scriptId": "30",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 17.291
+          },
+          {
+            "functionName": "u",
+            "scriptId": "11",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 11.352
+          },
+          {
+            "functionName": "K",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14161,
+            "selfMs": 9.271
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14529,
+            "selfMs": 8.85
+          },
+          {
+            "functionName": "a",
+            "scriptId": "11",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 7.566
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 7.210999999999999
+          },
+          {
+            "functionName": "tf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 32401,
+            "selfMs": 6.955
+          },
+          {
+            "functionName": "t_",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 35860,
+            "selfMs": 6.622
+          },
+          {
+            "functionName": "o",
+            "scriptId": "11",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/3y3y7rewnrbln.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 6.614
+          },
+          {
+            "functionName": "query",
+            "scriptId": "41",
+            "url": "",
+            "lineNumber": 5286,
+            "columnNumber": 20,
+            "selfMs": 5.79
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:4181/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 176600,
+            "selfMs": 5.346
+          },
+          {
+            "functionName": "getImplicitAriaRole",
+            "scriptId": "41",
+            "url": "",
+            "lineNumber": 2970,
+            "columnNumber": 28,
+            "selfMs": 5.159
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    }
+  }
+}

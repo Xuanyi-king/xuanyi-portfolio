@@ -24,3 +24,13 @@
 - 获准重写时，先在 `.git` 之外备份完整有效文件并校验可恢复性；同时检查其他分支、PR、协作者工作及分支保护。
 - 使用精确旧 SHA 的 `--force-with-lease=refs/heads/main:<已核验的旧 SHA>`，禁止无条件 `--force`。远端发生变化时立即停止，不更新预期旧 SHA 来绕过冲突。
 - 不擅自绕过分支保护，不修改其他仓库，也不删除需要保留的分支或协作者工作。
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

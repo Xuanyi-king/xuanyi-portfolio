@@ -1,0 +1,122 @@
+[
+  {
+    "browser": "chromium",
+    "viewport": "1440x900",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "chromium",
+    "viewport": "768x1024",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "chromium",
+    "viewport": "390x844",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "chromium",
+    "viewport": "320x740",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "viewport": "1440x900",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "viewport": "768x1024",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "viewport": "390x844",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "viewport": "320x740",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "viewport": "1440x900",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "viewport": "768x1024",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "viewport": "390x844",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "viewport": "320x740",
+    "restored": true,
+    "navAligned": true,
+    "reducedMotion": true,
+    "resize": true,
+    "ctaClear": true,
+    "errors": []
+  }
+]

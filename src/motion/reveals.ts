@@ -5,6 +5,7 @@ export function animateSections() {
     if (
       el === heading ||
       el.closest(".project-card") ||
+      el.closest(".living-gallery") ||
       el.classList.contains("detail-cover")
     )
       return;
@@ -17,7 +18,7 @@ export function animateSections() {
     });
   });
   gsap.utils
-    .toArray<HTMLElement>(".home-projects .project-card")
+    .toArray<HTMLElement>(".home-projects:not(.gallery-stage) .project-card")
     .forEach((el) => {
       gsap.from(el.querySelector(".cover-inner"), {
         clipPath: "inset(10% 0 10% 0 round 18px)",

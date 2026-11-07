@@ -1,0 +1,95 @@
+{
+  "reports": [
+    {
+      "browser": "chromium",
+      "viewport": "1440x900",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "viewport": "390x844",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "viewport": "320x740",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "1440x900",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "390x844",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "viewport": "320x740",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "1440x900",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "390x844",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": "320x740",
+      "dragResponse": true,
+      "navUnchanged": true,
+      "recovery": true,
+      "history": true,
+      "reduced": true,
+      "errors": []
+    }
+  ],
+  "nativeTouch": "Existing canvas suite uses Chromium CDP emulation; no physical Android device was attached."
+}

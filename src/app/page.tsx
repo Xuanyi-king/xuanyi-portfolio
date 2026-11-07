@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { SectionLabel, TextLink } from "@/components/ui";
-import { ProjectCard } from "@/components/project-card";
+import { LivingGallery } from "@/components/living-gallery";
 import { AboutArt } from "@/components/about-art";
 import { NoteList } from "@/components/note-list";
 import { XMark } from "@/components/x-mark";
@@ -37,9 +37,9 @@ export default function Home() {
           <div>
             <SectionLabel number="02">Selected work</SectionLabel>
             <h2 className="reveal">
-              Made with
+              The Living
               <br />
-              <em>curiosity.</em>
+              <em>Gallery.</em>
             </h2>
           </div>
           <p className="small-copy">
@@ -48,11 +48,7 @@ export default function Home() {
             也是下一次探索的开始。
           </p>
         </div>
-        <div className="project-grid home-projects">
-          {projects.map((p, i) => (
-            <ProjectCard project={p} index={i} key={p.slug} />
-          ))}
-        </div>
+        <LivingGallery projects={projects} restoreCss />
         <div className="work-end">
           <p>从工具到影像，每一个项目都是一种提问。</p>
           <TextLink href="/work">

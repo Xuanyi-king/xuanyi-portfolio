@@ -12,6 +12,7 @@ const expected = [
   "notes/making-xuanyi",
   "about",
   "lab",
+  "lab/canvas-study",
   "now",
 ];
 let count = 0;

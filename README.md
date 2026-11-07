@@ -14,16 +14,19 @@ npm run dev
 打开 http://localhost:3000 。开发服务器可热更新。
 
 ```bash
-npm test             # 内容与筛选逻辑
+npm test             # 内容、几何、形变、展廊控制器与手势
 npm run typecheck    # TypeScript
 npm run build        # 生产构建，输出 out/
 npm run check:export # 检查生成页面、内链、目录、SEO 与资源
 npm run start        # 在 3000 端口预览生产静态文件
+npm run check:browser # 三引擎生产浏览器回归，截图与实际录屏
+npm run measure:canvas # 短样本性能观测，非线上指标
+npm run check:strict  # 启动真实 dev server，验证 StrictMode 与 hydration
 ```
 
 ## 页面
 
-`/` 首页 · `/work` 作品筛选与搜索 · `/work/[slug]` 项目详情 · `/notes` 手记 · `/notes/[slug]` MDX 阅读页 · `/about` 关于 · `/lab` X Playground · `/now` 近况。另有 RSS、Sitemap、Robots、真实 404 页面。
+`/` 首页 · `/work` 作品筛选与搜索 · `/work/[slug]` 项目详情 · `/notes` 手记 · `/notes/[slug]` MDX 阅读页 · `/about` 关于 · `/lab` X Playground · `/lab/canvas-study` 材质与展廊研究（noindex）· `/now` 近况。另有 RSS、Sitemap、Robots、真实 404 页面。
 
 ## 修改内容
 
@@ -55,7 +58,7 @@ category: "制作手记"
 
 - `public/brand/x-mark.svg`：独立矢量标识，可任意缩放；`src/components/x-mark.tsx` 为带高光的内联版本。
 - `src/app/icon.svg`：小尺寸专用 Favicon。
-- `public/covers/`：三幅原创项目概念封面，详情中已明确非真实界面截图。
+- `public/covers/`：原创 Router / Film 概念封面与已核验的 Multiverse 真实界面，页面明确区分概念与真实材料。
 - `public/og.png` 与 `public/og.svg`：社交分享图及矢量源文件。
 - `public/fonts/`：自托管 Manrope 字体及 SIL OFL 许可。中文使用系统中文字体。
 
@@ -78,9 +81,11 @@ category: "制作手记"
 
 仅展示已经确认公开的 DSH-Adaptive-Router、vibe-knowledge-film、zhihu-multiverse。详情文案依照仓库 README 整理，保留 Vibe Knowledge Film 的上游署名，并注明知乎项目线上体验已下线。没有公开用户未授权的私有仓库内容。
 
-设计研究实际读取了 [haoqi.design](https://haoqi.design/) 的页面文本与样式色板；当前环境未提供浏览器控制工具，未声称观察其真实交互。Codrops 首页请求返回 403。本站未复制参考站的布局、素材或动画代码，也未引入参考仓库代码。
+首版设计研究读取了 [haoqi.design](https://haoqi.design/) 的页面文本与样式色板，当时没有浏览器；后续 2.1 实际浏览与动效研究、素材边界见 [美术记录](docs/visual-2-1.md)。本站未复制参考站的布局、素材或动画代码。
 
 实际验证范围与环境限制见 [docs/verification.md](docs/verification.md)。
+
+2.2 的闭合 SVG 曲面、可逆收束、原生链接无限 CSS3D 展廊与选择理由见 [Living Canvas](docs/living-canvas.md)，真实截图和 Artifact 录屏路径见 [本轮证据](docs/evidence/living-canvas/README.md)。没有新增动画依赖；Work 网格、静态部署与内容系统继续保留。
 
 ## 工程结构
 
