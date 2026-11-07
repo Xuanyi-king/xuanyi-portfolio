@@ -13,7 +13,13 @@ function smooth(points: Point[], move = true) {
   }
   return d;
 }
-export function silkSurface(curve: Point[], index: number, compact = false) {
+export type SurfaceProfile = "sculpted" | "twist";
+export function silkSurface(
+  curve: Point[],
+  index: number,
+  compact = false,
+  profile: SurfaceProfile = "sculpted",
+) {
   const [a, b, c, d] = curve;
   const samples = Array.from({ length: steps + 1 }, (_, i) => {
     const t = i / steps,
@@ -54,7 +60,12 @@ export function silkSurface(curve: Point[], index: number, compact = false) {
     if (compact) half = Math.max(half, 25) * 1.16;
     const tilt =
       (index === 0 ? -0.22 : 0.25) +
-      Math.sin(Math.PI * t) * (index === 0 ? 0.65 : -0.75);
+      Math.sin(Math.PI * t) * (index === 0 ? 0.65 : -0.75) +
+      (profile === "twist" && !compact
+        ? Math.sin(2 * Math.PI * t - 0.4) *
+          Math.sin(Math.PI * t) *
+          (index === 0 ? 0.55 : -0.7)
+        : 0);
     return { t, p, normal: { x: -dy / length, y: dx / length }, half, tilt };
   });
   const side = (s: number) =>
@@ -73,12 +84,37 @@ export function silkSurface(curve: Point[], index: number, compact = false) {
       right = side(to).reverse();
     return `${smooth(left)} L${xy(right[0])}${smooth(right, false)} Z`;
   };
+  const outline = strip(-1, 1);
+  const widths = samples.map((s) => s.half * 2);
+  if (compact)
+    return {
+      outline,
+      face: "",
+      edge: "",
+      sheen: "",
+      highlight: "",
+      widths,
+      rim: "",
+    };
+  const face = strip(-0.98, 0.99);
+  let rim = "";
+  if (profile === "twist") {
+    const rimEdge = side(1);
+    const rimBottom = rimEdge
+      .map((p, i) => ({
+        x: p.x + 0.25 + samples[i].tilt * 0.3,
+        y: p.y + 0.7 + 2.8 * Math.sin(Math.PI * samples[i].t) ** 2,
+      }))
+      .reverse();
+    rim = `${smooth(rimEdge)} L${xy(rimBottom[0])}${smooth(rimBottom, false)} Z`;
+  }
   return {
-    outline: strip(-1, 1),
-    face: strip(-0.98, 0.99),
+    outline,
+    face,
     edge: strip(-1, -0.96),
-    sheen: strip(-0.98, 0.99),
+    sheen: face,
     highlight: smooth(side(0.96).slice(1, -1)),
-    widths: samples.map((s) => s.half * 2),
+    widths,
+    rim,
   };
 }

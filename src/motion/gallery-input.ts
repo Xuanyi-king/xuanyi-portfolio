@@ -44,6 +44,12 @@ export function bindGalleryInput(
   };
   const move = (e: PointerEvent) => {
     if (pointer !== e.pointerId) return;
+    // Some browser/OS combinations miss pointerup outside the window. Do not
+    // turn the next button-free mouse movement into another captured drag.
+    if (e.pointerType === "mouse" && e.buttons === 0) {
+      cancel();
+      return;
+    }
     const now = performance.now(),
       dx = e.clientX - startX,
       dy = e.clientY - startY;

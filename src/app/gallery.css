@@ -42,7 +42,8 @@
   top: 20px;
   width: var(--gallery-width);
   margin: 0 !important;
-  transform-style: preserve-3d;
+  /* Each card is a planar surface inside the stage's genuine 3D camera. */
+  transform-style: flat;
   backface-visibility: hidden;
   opacity: var(--initial-opacity);
   transform: translate3d(
@@ -52,6 +53,9 @@
     )
     rotateY(calc(var(--initial-distance) * -34deg)) scale(var(--initial-scale));
   will-change: transform;
+}
+.gallery-card .cover-depth {
+  transform-style: flat;
 }
 .gallery-card .project-cover {
   display: block;
@@ -147,8 +151,8 @@
   gap: 10px;
 }
 .gallery-response {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   flex: none;
   pointer-events: none;
 }
@@ -157,8 +161,10 @@
   height: 100%;
 }
 @media (max-width: 760px) {
-  .gallery-response { width: 44px; height: 44px; }
-  .gallery-controls { gap: 18px; }
+  .gallery-response {
+    width: 44px;
+    height: 44px;
+  }
 }
 .gallery-counter > span:first-child {
   font-size: 25px;

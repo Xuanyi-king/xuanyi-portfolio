@@ -17,6 +17,7 @@ export default function Study() {
         description="同一条曲线，两种材料。保留静止时的美感，再让它产生生命力。"
       />
       <CanvasStudy />
+      <CanvasStudy depth />
       <GalleryStudy />
     </div>
   );

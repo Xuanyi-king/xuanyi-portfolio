@@ -56,7 +56,9 @@ async function layout(p) {
   if (p.viewportSize().width <= 1100) {
     assert.deepEqual(
       await p
-        .locator('.gallery-card:not([data-gallery-active="true"]) .project-meta')
+        .locator(
+          '.gallery-card:not([data-gallery-active="true"]) .project-meta',
+        )
         .evaluateAll((a) => a.map((e) => getComputedStyle(e).visibility)),
       ["hidden", "hidden"],
       "Tablet and mobile keep side covers without crowding central copy",
@@ -98,6 +100,16 @@ async function touchSwipe(p, c, dx, dy) {
       touchPoints: [{ x: x + (dx * i) / 14, y: y + (dy * i) / 14 }],
     });
     await p.waitForTimeout(20);
+  }
+  if (Math.abs(dx) > Math.abs(dy) * 1.2) {
+    await p.waitForFunction(() => {
+      const d = document
+        .querySelector('.gallery-response [data-ribbon="a"]')
+        ?.getAttribute("d");
+      if (!d) return false;
+      const values = d.match(/-?\d+(?:\.\d+)?/g).map(Number);
+      return Math.abs(values[2] - 258) > 0.05;
+    });
   }
   await session.send("Input.dispatchTouchEvent", {
     type: "touchEnd",
@@ -219,7 +231,10 @@ async function recordings(browser) {
     await p.goto(base + "/lab/canvas-study/");
     await p.evaluate(() => document.fonts.ready);
     for (const state of ["静止", "舒展", "收束"]) {
-      await p.getByRole("button", { name: state, exact: true }).click();
+      await p
+        .locator(".surface-study:not([data-depth-study])")
+        .getByRole("button", { name: state, exact: true })
+        .click();
       await p.waitForTimeout(1300);
       await p.mouse.move(0, 0);
       for (let i = 0; i < 2; i++)

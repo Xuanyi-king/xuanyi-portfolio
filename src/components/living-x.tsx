@@ -11,7 +11,7 @@ import { reducedQuery } from "@/motion/tokens";
 import { createLivingSpring } from "@/motion/living-spring";
 import { createCurveOwner } from "@/motion/curve-owner";
 import { threadPath } from "@/motion/thread";
-import { silkSurface } from "@/motion/surface";
+import { silkSurface, type SurfaceProfile } from "@/motion/surface";
 import { playIdentityIntro } from "@/motion/identity-intro";
 import type { XDrive } from "@/motion/gallery-response";
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
@@ -23,6 +23,7 @@ export function LivingX({
   material = "sculpted",
   compact = false,
   drive,
+  profile = "sculpted",
 }: {
   play?: boolean;
   strength?: number;
@@ -31,6 +32,7 @@ export function LivingX({
   material?: "sculpted" | "translucent";
   compact?: boolean;
   drive?: XDrive;
+  profile?: SurfaceProfile;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const controller = useRef<ReturnType<typeof createLivingSpring> | null>(null);
@@ -71,6 +73,7 @@ export function LivingX({
       "edge",
       "sheen",
       "highlight",
+      "rim",
     ] as const;
     const surfaceNodes = ["a", "b"].map((name) =>
       surfaceKeys.map((key) => ({
@@ -96,7 +99,7 @@ export function LivingX({
         button.style.top = `${anchor.y / 5}%`;
       });
       geometry.curves.forEach((curve, i) => {
-        const s = silkSurface(curve, i, compact);
+        const s = silkSurface(curve, i, compact, profile);
         surfaceNodes[i].forEach(({ key, nodes }) =>
           nodes.forEach((path) => path.setAttribute("d", s[key])),
         );
@@ -151,11 +154,13 @@ export function LivingX({
           document.visibilityState === "visible",
       );
     preference();
-    const unbindDrive = drive?.subscribe((force) => owner.input(() => {
-      if (media.matches || document.hidden) return engine.release();
-      engine.pull(0, force, force * 0.32);
-      engine.pull(1, -force * 0.8, -force * 0.2);
-    }));
+    const unbindDrive = drive?.subscribe((force) =>
+      owner.input(() => {
+        if (media.matches || document.hidden) return engine.release();
+        engine.pull(0, force, force * 0.32);
+        engine.pull(1, -force * 0.8, -force * 0.2);
+      }),
+    );
     const visibility = () => {
       if (drive && document.hidden) owner.input(() => engine.release());
     };
@@ -286,7 +291,7 @@ export function LivingX({
       document.removeEventListener("visibilitychange", visibility);
       media.removeEventListener("change", preference);
     };
-  }, [play, compact, drive]);
+  }, [play, compact, drive, profile]);
   useEffect(() => {
     controller.current?.configure({ form, strength });
   }, [form, strength, play]);
@@ -296,7 +301,12 @@ export function LivingX({
   }, [resetToken]);
   return (
     <div ref={root} className={`living-x ${play ? "is-playable" : ""}`}>
-      <XMark decorative={!play} material={material} compact={compact} />
+      <XMark
+        decorative={!play}
+        material={material}
+        compact={compact}
+        profile={profile}
+      />
       {play &&
         rest.anchors.map((p, i) => (
           <button

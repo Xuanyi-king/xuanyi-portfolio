@@ -7,5 +7,6 @@ export const motionTokens = {
   transition: 0.55,
   spring: { stiffness: 170, damping: 20, precision: 0.04 },
   maxDeformation: 64,
+  galleryResponse: { force: 28, gain: 24, staleMs: 120, minimumStepMs: 8 },
 } as const;
 export const reducedQuery = "(prefers-reduced-motion: reduce)";

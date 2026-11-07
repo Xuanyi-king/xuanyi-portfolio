@@ -9,9 +9,10 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "check:export": "node scripts/check-export.mjs",
-    "check:browser": "node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs && node scripts/check-canvas.mjs",
+    "check:browser": "node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs && node scripts/check-canvas.mjs && node scripts/check-response.mjs",
     "generate:identity": "tsx scripts/generate-identity.tsx",
     "measure:canvas": "node scripts/measure-canvas.mjs",
+    "compare:canvas": "node scripts/compare-canvas.mjs",
     "check:strict": "node scripts/check-strict.mjs"
   },
   "dependencies": {

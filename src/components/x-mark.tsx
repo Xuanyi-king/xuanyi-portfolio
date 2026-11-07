@@ -1,22 +1,24 @@
 import { useId } from "react";
 import { ribbonGeometry } from "@/motion/geometry";
-import { silkSurface } from "@/motion/surface";
+import { silkSurface, type SurfaceProfile } from "@/motion/surface";
 
 export function XMark({
   className = "",
   decorative = true,
   compact = false,
   material = "sculpted",
+  profile = "sculpted",
 }: {
   className?: string;
   decorative?: boolean;
   compact?: boolean;
   material?: "sculpted" | "translucent";
+  profile?: SurfaceProfile;
 }) {
   const id = useId().replace(/:/g, "");
   const geometry = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
   const surfaces = geometry.curves.map((curve, i) =>
-    silkSurface(curve, i, compact),
+    silkSurface(curve, i, compact, profile),
   );
   const layer = (index: number) => {
     const name = index === 0 ? "a" : "b",
@@ -30,9 +32,9 @@ export function XMark({
         {!compact && material === "sculpted" && (
           <path
             data-thickness="true"
-            data-surface={`${name}-outline`}
-            d={s.outline}
-            transform="translate(.6 1.7)"
+            data-surface={`${name}-${profile === "twist" ? "rim" : "outline"}`}
+            d={profile === "twist" ? s.rim : s.outline}
+            transform={profile === "twist" ? undefined : "translate(.6 1.7)"}
             fill={index === 0 ? "#a4c7d4" : "#e7bd9c"}
           />
         )}
@@ -84,6 +86,7 @@ export function XMark({
     <svg
       className={`x-mark silk-form ${className}`}
       data-material={material}
+      data-profile={profile}
       data-compact={compact ? "true" : undefined}
       viewBox="0 0 500 500"
       fill="none"

@@ -10,7 +10,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,6 +34,8 @@ jobs:
           BROWSER_EVIDENCE_DIR: artifacts/browser
       - run: npm run measure:canvas
       - run: npm run check:strict
+      - run: npm run compare:canvas
+        name: Compare verified 2.2 baseline and current canvas with raw traces
       - uses: actions/upload-artifact@v4
         if: always()
         with:

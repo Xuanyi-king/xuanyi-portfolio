@@ -1,9 +1,12 @@
+import { motionTokens } from "./tokens";
+
 export type XDrive = {
   subscribe(listener: (force: number) => void): () => void;
 };
 
 /** An input bridge, not an animator. LivingX owns the spring and all SVG writes. */
 export function createGalleryResponse() {
+  const settings = motionTokens.galleryResponse;
   const listeners = new Set<(force: number) => void>();
   let previous: { position: number; time: number } | undefined;
   let force = 0;
@@ -23,16 +26,25 @@ export function createGalleryResponse() {
       previous = { position, time };
       if (!last) return;
       const elapsed = time - last.time;
-      if (elapsed <= 0 || elapsed > 120) return emit(0);
+      if (elapsed <= 0 || elapsed > settings.staleMs) return emit(0);
       // Match the direction of the dragged canvas, using unwrapped travel.
-      const velocity = ((position - last.position) * 1000) / Math.max(8, elapsed);
-      emit(Math.max(-28, Math.min(28, -velocity * 12)));
+      const velocity =
+        ((position - last.position) * 1000) /
+        Math.max(settings.minimumStepMs, elapsed);
+      emit(
+        Math.max(
+          -settings.force,
+          Math.min(settings.force, -velocity * settings.gain),
+        ),
+      );
     },
     reset,
     subscribe(listener: (force: number) => void) {
       listeners.add(listener);
       listener(force);
-      return () => { listeners.delete(listener); };
+      return () => {
+        listeners.delete(listener);
+      };
     },
   };
 }

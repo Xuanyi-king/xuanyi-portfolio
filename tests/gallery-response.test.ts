@@ -27,8 +27,12 @@ test("fast inputs are bounded and invalid or stale samples cannot produce a spik
 });
 test("settling restores rest and subscribers can leave and remount without duplicate updates", () => {
   const response = createGalleryResponse();
-  let writes = 0, force = 0;
-  const off = response.subscribe((v) => { writes++; force=v; });
+  let writes = 0,
+    force = 0;
+  const off = response.subscribe((v) => {
+    writes++;
+    force = v;
+  });
   response.sample(0, 100);
   response.sample(1, 116);
   assert.notEqual(force, 0);
@@ -39,11 +43,14 @@ test("settling restores rest and subscribers can leave and remount without dupli
   response.sample(5, 132);
   assert.equal(writes, count);
   response.reset();
-  const off2=response.subscribe((v)=>{ writes++; force=v; });
-  assert.equal(force,0);
-  const before=writes;
-  response.sample(5,200);
-  response.sample(5.1,216);
-  assert.equal(writes,before+1);
+  const off2 = response.subscribe((v) => {
+    writes++;
+    force = v;
+  });
+  assert.equal(force, 0);
+  const before = writes;
+  response.sample(5, 200);
+  response.sample(5.1, 216);
+  assert.equal(writes, before + 1);
   off2();
 });

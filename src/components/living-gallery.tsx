@@ -1,5 +1,11 @@
 "use client";
-import { useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import {
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { ProjectScene } from "./project-scene";
@@ -270,8 +276,8 @@ export function LivingGallery({
             <LivingX drive={response} compact />
           </div>
           <div className="gallery-counter">
-          <span>{String(active + 1).padStart(2, "0")}</span>
-          <span>/ {String(projects.length).padStart(2, "0")}</span>
+            <span>{String(active + 1).padStart(2, "0")}</span>
+            <span>/ {String(projects.length).padStart(2, "0")}</span>
           </div>
         </div>
         <button

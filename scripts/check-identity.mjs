@@ -155,9 +155,11 @@ try {
             await p.mouse.move(700, 30, { steps: 15 });
             await delay(p, 1400);
           }
+          const forwardFrames = new Map();
           for (const f of [0.25, 0.5, 0.65, 0.7, 0.75, 0.78, 0.8, 0.9, 1]) {
             await position(p, f);
             const state = await snapshot(p);
+            forwardFrames.set(f, state);
             assert.ok(
               Math.abs(state.headerTop) < 1,
               "Brand navigation remains stationary and usable",
@@ -206,10 +208,26 @@ try {
                 "X aligns with the nav brand in y",
               );
             }
-            if ([0.25, 0.5, 0.75, 1].includes(f))
+            if ([0.25, 0.5, 0.75, 0.9, 1].includes(f))
               await p.screenshot({
                 path: path.join(dir, `${label}-fold-${f}.png`),
               });
+          }
+          for (const f of [0.9, 0.75, 0.5, 0.25]) {
+            await position(p, f);
+            const reversed = await snapshot(p),
+              forward = forwardFrames.get(f);
+            assert.ok(
+              Math.hypot(
+                reversed.center[0] - forward.center[0],
+                reversed.center[1] - forward.center[1],
+              ) < 2,
+              "Intermediate fold coordinates must be independent of scroll direction",
+            );
+            assert.equal(reversed.ctaOverlap, false);
+            await p.screenshot({
+              path: path.join(dir, `${label}-reverse-${f}.png`),
+            });
           }
           for (let i = 0; i < 8; i++) {
             await p.mouse.wheel(0, 140);
