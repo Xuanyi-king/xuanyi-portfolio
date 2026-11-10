@@ -7,7 +7,7 @@ const scrub=(p,n)=>p.locator('#direction-progress').fill(String(n));
 for(const [engine,type] of Object.entries({chromium,firefox,webkit})){
  if(process.env.BROWSER_ENGINES&&!process.env.BROWSER_ENGINES.split(',').includes(engine))continue;
  const b=await type.launch();
- try{for(const [w,h] of [[1440,900],[768,1024],[390,844],[320,740]]){
+ try{const staticContext=await b.newContext({javaScriptEnabled:false}),staticPage=await staticContext.newPage();await staticPage.goto(base+'/lab/motion-direction/');assert.equal(await staticPage.locator('.direction-portal').evaluate(el=>getComputedStyle(el).visibility),'hidden','SSR does not flash Gallery over the hero');await staticContext.close();for(const [w,h] of [[1440,900],[768,1024],[390,844],[320,740]]){
   if(process.env.PASSING_WIDTH&&Number(process.env.PASSING_WIDTH)!==w)continue;
   const c=await b.newContext({viewport:{width:w,height:h}}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
   await p.goto(base+'/lab/motion-direction/');await p.evaluate(()=>document.fonts.ready);await p.getByRole('button',{name:'Director’s Cut · The Passing Curve',exact:true}).click();

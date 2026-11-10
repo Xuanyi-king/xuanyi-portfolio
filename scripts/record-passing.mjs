@@ -6,7 +6,7 @@ for(const [width,height] of [[1440,900],[390,844],[320,740]])for(const mode of [
   await p.locator('.direction-stage').evaluate(el=>scrollTo({top:el.getBoundingClientRect().top+scrollY-(innerWidth<=760?78:110),behavior:'instant'}));await p.getByRole('button',{name:'Play',exact:true}).evaluate(el=>el.click());await p.waitForTimeout(10300);
  }else{
   await p.getByRole('button',{name:'真实滚动模式',exact:true}).click();const y=await p.locator('.direction-scroll').evaluate(el=>el.getBoundingClientRect().top+scrollY);await p.evaluate(y=>scrollTo({top:y-(innerWidth<=760?72:100),behavior:'instant'}),y);await p.waitForTimeout(400);
-  for(const delta of [100,100,100]){await p.mouse.wheel(0,delta);await p.waitForTimeout(400)}await p.waitForTimeout(1000); // a genuine middle hold
+  for(const delta of (width<=760?[80,80,60]:[100,100,100])){await p.mouse.wheel(0,delta);await p.waitForTimeout(400)}await p.waitForTimeout(1000); // a genuine middle hold
   for(const delta of [180,300,-480,420,-650,1000]){await p.mouse.wheel(0,delta);await p.waitForTimeout(330)}
   await p.locator('.direction-portal .gallery-controls').scrollIntoViewIfNeeded();await p.waitForTimeout(500);
  }

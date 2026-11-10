@@ -29,7 +29,7 @@ export function createPassingRenderer(stage:HTMLElement){
    for(const cover of covers)write(cover,'clip-path',f.reveal>=1?'none':`inset(0 ${(100*(1-f.reveal)).toFixed(2)}% 0 0 round 12px)`);
    for(const meta of metas)visible(meta,f.meta);
    for(const card of cards)write(card.querySelector<HTMLElement>('.gallery-link')!,'opacity',f.sides.toFixed(3));
-   visible(label,f.meta);visible(controls,f.sides);
+   visible(label,f.sides);visible(controls,f.sides);
    if(portal.inert!==!f.interactive)portal.inert=!f.interactive;
    write(portal,'pointer-events',f.interactive?'auto':'none');
    // A very slight paper-temperature shift, no full-screen animated gradient.
