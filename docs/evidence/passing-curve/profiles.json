@@ -1,0 +1,1555 @@
+{
+  "note": "Separate profiler runs; nested categories not additive; do not pool these RAFs with normal samples.",
+  "profiles": [
+    {
+      "kind": "baseline",
+      "width": 1440,
+      "height": 900,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 349,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000018,
+      "p99": 50,
+      "over50": 0,
+      "longTasks": [
+        {
+          "start": 3707.2999999998137,
+          "duration": 59
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 148.1999999997206,
+          "duration": 207
+        },
+        {
+          "start": 432.29999999981374,
+          "duration": 148
+        },
+        {
+          "start": 666.3999999999069,
+          "duration": 244
+        },
+        {
+          "start": 917.7999999998137,
+          "duration": 77
+        },
+        {
+          "start": 1339.7999999998137,
+          "duration": 133
+        },
+        {
+          "start": 1569.6999999997206,
+          "duration": 52
+        },
+        {
+          "start": 1701.8999999999069,
+          "duration": 238
+        }
+      ],
+      "lcp": 408,
+      "cls": 0,
+      "ScriptDurationMs": 1021.336,
+      "LayoutDurationMs": 89.45100000000001,
+      "RecalcStyleDurationMs": 312.175,
+      "TaskDurationMs": 3874.216,
+      "analysis": {
+        "interactiveMs": 6383.521,
+        "frames": 0,
+        "mainTaskMs": 3871.4890000000105,
+        "layerizeMs": 698.8329999999986,
+        "layerizePerFrameMs": null,
+        "styleMs": 305.51799999999974,
+        "layoutMs": 67.83899999999997,
+        "paintMs": 248.46799999999996,
+        "longTasks": [
+          {
+            "atMs": 28.876,
+            "durationMs": 59.29
+          },
+          {
+            "atMs": 2155.255,
+            "durationMs": 61.198
+          },
+          {
+            "atMs": 2309.656,
+            "durationMs": 56.502
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2550.107000000003
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2544.6029999999964
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 113.23400000000001
+          },
+          {
+            "functionName": "u",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 113.10799999999995
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 104.11200000000001
+          },
+          {
+            "functionName": "a",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 85.891
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 67.70899999999997
+          },
+          {
+            "functionName": "o",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 57.291000000000004
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 55.775999999999996
+          },
+          {
+            "functionName": "",
+            "scriptId": "26",
+            "url": "http://localhost:4191/_next/static/chunks/2y05y3a0g2-eh.js",
+            "lineNumber": 0,
+            "columnNumber": 1381,
+            "selfMs": 49.23500000000001
+          },
+          {
+            "functionName": "h",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 27015,
+            "selfMs": 30.304000000000002
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 29.874999999999993
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 26.489000000000004
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "13",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 24.613
+          },
+          {
+            "functionName": "iP",
+            "scriptId": "27",
+            "url": "http://localhost:4191/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 63481,
+            "selfMs": 20.538999999999998
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 18.308
+          },
+          {
+            "functionName": "t",
+            "scriptId": "27",
+            "url": "http://localhost:4191/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 17.473000000000003
+          },
+          {
+            "functionName": "query",
+            "scriptId": "36",
+            "url": "",
+            "lineNumber": 5286,
+            "columnNumber": 20,
+            "selfMs": 16.596
+          },
+          {
+            "functionName": "getPropertyValue",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 13.491
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 17457,
+            "selfMs": 11.662999999999998
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "kind": "oldA",
+      "width": 1440,
+      "height": 900,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 348,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000018,
+      "p99": 33.400000000000546,
+      "over50": 3,
+      "longTasks": [
+        {
+          "start": 6264.600000000093,
+          "duration": 51
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 81,
+          "duration": 181
+        },
+        {
+          "start": 334.5,
+          "duration": 60
+        },
+        {
+          "start": 411.10000000009313,
+          "duration": 231
+        },
+        {
+          "start": 828.3999999999069,
+          "duration": 104
+        },
+        {
+          "start": 977.5,
+          "duration": 67
+        },
+        {
+          "start": 2699.5,
+          "duration": 50
+        }
+      ],
+      "lcp": 308,
+      "cls": 0,
+      "finalProgress": "0.8888888888888888",
+      "ScriptDurationMs": 887.3850000000001,
+      "LayoutDurationMs": 108.34300000000002,
+      "RecalcStyleDurationMs": 390.363,
+      "TaskDurationMs": 3373.5920000000006,
+      "analysis": {
+        "interactiveMs": 6326.627,
+        "frames": 0,
+        "mainTaskMs": 3381.947999999995,
+        "layerizeMs": 290.0699999999998,
+        "layerizePerFrameMs": null,
+        "styleMs": 385.7740000000003,
+        "layoutMs": 98.12800000000001,
+        "paintMs": 353.94999999999976,
+        "longTasks": [
+          {
+            "atMs": 2719.833,
+            "durationMs": 51.114
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2979.1180000000018
+          },
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2306.288999999997
+          },
+          {
+            "functionName": "a",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 99.91200000000002
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 95.15300000000005
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 85.18199999999999
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 80.792
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 75.94699999999999
+          },
+          {
+            "functionName": "o",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 61.16299999999998
+          },
+          {
+            "functionName": "u",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 60.326000000000015
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 37.951
+          },
+          {
+            "functionName": "",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 30.317999999999998
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 19.387
+          },
+          {
+            "functionName": "query",
+            "scriptId": "31",
+            "url": "",
+            "lineNumber": 4980,
+            "columnNumber": 16,
+            "selfMs": 16.882
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 12.707
+          },
+          {
+            "functionName": "tB",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 41841,
+            "selfMs": 11.447999999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14485,
+            "selfMs": 11.286
+          },
+          {
+            "functionName": "X",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14161,
+            "selfMs": 11.184000000000001
+          },
+          {
+            "functionName": "M",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 5633,
+            "selfMs": 10.569999999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 176600,
+            "selfMs": 10.465000000000002
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14558,
+            "selfMs": 9.117
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "kind": "cut",
+      "width": 1440,
+      "height": 900,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 308,
+      "p50": 16.699999999999818,
+      "p95": 50,
+      "p99": 100.10000000000036,
+      "over50": 10,
+      "longTasks": [
+        {
+          "start": 4859.100000000093,
+          "duration": 65
+        },
+        {
+          "start": 6077.200000000186,
+          "duration": 120
+        },
+        {
+          "start": 6436.600000000093,
+          "duration": 72
+        },
+        {
+          "start": 7542.200000000186,
+          "duration": 91
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 110.89999999990687,
+          "duration": 109
+        },
+        {
+          "start": 264.8000000002794,
+          "duration": 57
+        },
+        {
+          "start": 387,
+          "duration": 70
+        },
+        {
+          "start": 467.5,
+          "duration": 245
+        },
+        {
+          "start": 1065.5,
+          "duration": 140
+        },
+        {
+          "start": 1270.5,
+          "duration": 64
+        },
+        {
+          "start": 2834,
+          "duration": 71
+        }
+      ],
+      "lcp": 248,
+      "cls": 0,
+      "finalProgress": "1",
+      "ScriptDurationMs": 657.6540000000001,
+      "LayoutDurationMs": 99.79500000000002,
+      "RecalcStyleDurationMs": 270.16499999999996,
+      "TaskDurationMs": 3294.9000000000005,
+      "analysis": {
+        "interactiveMs": 6522.459,
+        "frames": 0,
+        "mainTaskMs": 3313.2419999999947,
+        "layerizeMs": 147.86300000000026,
+        "layerizePerFrameMs": null,
+        "styleMs": 261.8119999999999,
+        "layoutMs": 102.41300000000005,
+        "paintMs": 389.385,
+        "longTasks": [
+          {
+            "atMs": 490.942,
+            "durationMs": 65.382
+          },
+          {
+            "atMs": 1709.137,
+            "durationMs": 121.101
+          },
+          {
+            "atMs": 2068.446,
+            "durationMs": 76.979
+          },
+          {
+            "atMs": 2189.147,
+            "durationMs": 50.717
+          },
+          {
+            "atMs": 2482.537,
+            "durationMs": 161.079
+          },
+          {
+            "atMs": 2938.379,
+            "durationMs": 89.288
+          },
+          {
+            "atMs": 3174.126,
+            "durationMs": 95.673
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 3268.9880000000016
+          },
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2173.249999999998
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 112.38100000000001
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4187/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 65.526
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 63.05800000000002
+          },
+          {
+            "functionName": "fetch",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 57.31100000000001
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 45.458999999999996
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 42.345000000000006
+          },
+          {
+            "functionName": "o",
+            "scriptId": "10",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 37.729
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 34.36600000000001
+          },
+          {
+            "functionName": "a",
+            "scriptId": "10",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 28.468000000000004
+          },
+          {
+            "functionName": "previewNode",
+            "scriptId": "31",
+            "url": "",
+            "lineNumber": 7568,
+            "columnNumber": 13,
+            "selfMs": 21.038
+          },
+          {
+            "functionName": "query",
+            "scriptId": "31",
+            "url": "",
+            "lineNumber": 4980,
+            "columnNumber": 16,
+            "selfMs": 18.973000000000003
+          },
+          {
+            "functionName": "query",
+            "scriptId": "31",
+            "url": "",
+            "lineNumber": 5286,
+            "columnNumber": 20,
+            "selfMs": 18.19
+          },
+          {
+            "functionName": "X",
+            "scriptId": "14",
+            "url": "http://localhost:4187/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14161,
+            "selfMs": 17.145
+          },
+          {
+            "functionName": "ew",
+            "scriptId": "13",
+            "url": "http://localhost:4187/_next/static/chunks/3hcg696yt7n09.js",
+            "lineNumber": 1,
+            "columnNumber": 31162,
+            "selfMs": 16.573999999999998
+          },
+          {
+            "functionName": "tU",
+            "scriptId": "12",
+            "url": "http://localhost:4187/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 41664,
+            "selfMs": 16.352
+          },
+          {
+            "functionName": "ey",
+            "scriptId": "13",
+            "url": "http://localhost:4187/_next/static/chunks/3hcg696yt7n09.js",
+            "lineNumber": 1,
+            "columnNumber": 22399,
+            "selfMs": 15.641
+          },
+          {
+            "functionName": "l",
+            "scriptId": "10",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25808,
+            "selfMs": 14.708000000000002
+          },
+          {
+            "functionName": "n",
+            "scriptId": "13",
+            "url": "http://localhost:4187/_next/static/chunks/3hcg696yt7n09.js",
+            "lineNumber": 1,
+            "columnNumber": 37417,
+            "selfMs": 13.344
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "kind": "baseline",
+      "width": 390,
+      "height": 844,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 350,
+      "p50": 16.699999999999818,
+      "p95": 33.399999999999636,
+      "p99": 66.59999999999945,
+      "over50": 6,
+      "longTasks": [
+        {
+          "start": 8784.19999999972,
+          "duration": 52
+        },
+        {
+          "start": 9839.19999999972,
+          "duration": 65
+        },
+        {
+          "start": 9905.299999999814,
+          "duration": 65
+        },
+        {
+          "start": 9975.19999999972,
+          "duration": 59
+        },
+        {
+          "start": 10035,
+          "duration": 64
+        },
+        {
+          "start": 10189,
+          "duration": 53
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 175.79999999981374,
+          "duration": 138
+        },
+        {
+          "start": 366.10000000009313,
+          "duration": 165
+        },
+        {
+          "start": 575,
+          "duration": 217
+        },
+        {
+          "start": 1016.3999999999069,
+          "duration": 110
+        },
+        {
+          "start": 1204.8999999999069,
+          "duration": 60
+        },
+        {
+          "start": 1333.1999999997206,
+          "duration": 219
+        }
+      ],
+      "lcp": 340,
+      "cls": 0,
+      "ScriptDurationMs": 1132.907,
+      "LayoutDurationMs": 100.16400000000003,
+      "RecalcStyleDurationMs": 401.3479999999999,
+      "TaskDurationMs": 4511.585999999999,
+      "analysis": {
+        "interactiveMs": 6748.55,
+        "frames": 0,
+        "mainTaskMs": 4484.143000000006,
+        "layerizeMs": 804.6389999999997,
+        "layerizePerFrameMs": null,
+        "styleMs": 376.1289999999998,
+        "layoutMs": 88.05599999999998,
+        "paintMs": 372.2789999999999,
+        "longTasks": [
+          {
+            "atMs": 2160.287,
+            "durationMs": 63.02
+          },
+          {
+            "atMs": 2269.891,
+            "durationMs": 69.019
+          },
+          {
+            "atMs": 5272.395,
+            "durationMs": 53.473
+          },
+          {
+            "atMs": 6327.336,
+            "durationMs": 65.513
+          },
+          {
+            "atMs": 6393.429,
+            "durationMs": 65.842
+          },
+          {
+            "atMs": 6463.317,
+            "durationMs": 59.767
+          },
+          {
+            "atMs": 6523.144,
+            "durationMs": 64.743
+          },
+          {
+            "atMs": 6677.175,
+            "durationMs": 53.134
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2997.4099999999994
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2333.9650000000006
+          },
+          {
+            "functionName": "l",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25808,
+            "selfMs": 174.77099999999993
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 131.10900000000004
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 109.58899999999996
+          },
+          {
+            "functionName": "u",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 95.67099999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 75.79200000000002
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 71.013
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 54.941
+          },
+          {
+            "functionName": "",
+            "scriptId": "26",
+            "url": "http://localhost:4191/_next/static/chunks/2y05y3a0g2-eh.js",
+            "lineNumber": 0,
+            "columnNumber": 1381,
+            "selfMs": 52.00599999999999
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 28.889
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 26.577
+          },
+          {
+            "functionName": "h",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 27015,
+            "selfMs": 24.157
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 20.517
+          },
+          {
+            "functionName": "t",
+            "scriptId": "27",
+            "url": "http://localhost:4191/_next/static/chunks/126zx7g966pwo.js",
+            "lineNumber": 0,
+            "columnNumber": 54402,
+            "selfMs": 19.726
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://localhost:4191/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26885,
+            "selfMs": 18.159000000000002
+          },
+          {
+            "functionName": "query",
+            "scriptId": "37",
+            "url": "",
+            "lineNumber": 4980,
+            "columnNumber": 16,
+            "selfMs": 17.975
+          },
+          {
+            "functionName": "evaluate",
+            "scriptId": "18",
+            "url": "",
+            "lineNumber": 283,
+            "columnNumber": 10,
+            "selfMs": 17.738999999999997
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14327,
+            "selfMs": 15.326
+          },
+          {
+            "functionName": "K",
+            "scriptId": "14",
+            "url": "http://localhost:4191/_next/static/chunks/38h3wvgotpwih.js",
+            "lineNumber": 2,
+            "columnNumber": 14161,
+            "selfMs": 13.161000000000001
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "kind": "oldA",
+      "width": 390,
+      "height": 844,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 335,
+      "p50": 16.699999999999818,
+      "p95": 33.399999999999636,
+      "p99": 66.70000000000073,
+      "over50": 5,
+      "longTasks": [
+        {
+          "start": 3958,
+          "duration": 92
+        },
+        {
+          "start": 4258,
+          "duration": 105
+        },
+        {
+          "start": 4709,
+          "duration": 62
+        },
+        {
+          "start": 5375.299999999814,
+          "duration": 77
+        },
+        {
+          "start": 7802,
+          "duration": 52
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 106.5,
+          "duration": 129
+        },
+        {
+          "start": 298,
+          "duration": 109
+        },
+        {
+          "start": 439,
+          "duration": 252
+        },
+        {
+          "start": 921.2000000001863,
+          "duration": 127
+        },
+        {
+          "start": 1104.3999999999069,
+          "duration": 61
+        },
+        {
+          "start": 2848.7000000001863,
+          "duration": 73
+        }
+      ],
+      "lcp": 252,
+      "cls": 0,
+      "finalProgress": "0.9624438360471057",
+      "ScriptDurationMs": 855.4059999999998,
+      "LayoutDurationMs": 92.06,
+      "RecalcStyleDurationMs": 414.18699999999995,
+      "TaskDurationMs": 3474.961,
+      "analysis": {
+        "interactiveMs": 6300.482,
+        "frames": 0,
+        "mainTaskMs": 3480.194000000005,
+        "layerizeMs": 287.6639999999999,
+        "layerizePerFrameMs": null,
+        "styleMs": 413.84200000000004,
+        "layoutMs": 84.70300000000003,
+        "paintMs": 391.6619999999995,
+        "longTasks": [
+          {
+            "atMs": 37.519,
+            "durationMs": 92.576
+          },
+          {
+            "atMs": 337.396,
+            "durationMs": 105.406
+          },
+          {
+            "atMs": 788.419,
+            "durationMs": 62.798
+          },
+          {
+            "atMs": 1454.735,
+            "durationMs": 77.418
+          },
+          {
+            "atMs": 2188.574,
+            "durationMs": 56.719
+          },
+          {
+            "atMs": 3881.424,
+            "durationMs": 52.36
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2862.4529999999963
+          },
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2461.518999999998
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 100.67699999999998
+          },
+          {
+            "functionName": "a",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 97.348
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 88.84800000000001
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 76.519
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 76.17200000000004
+          },
+          {
+            "functionName": "o",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 74.575
+          },
+          {
+            "functionName": "l",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25808,
+            "selfMs": 27.610999999999997
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 176600,
+            "selfMs": 18.843
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14558,
+            "selfMs": 16.534
+          },
+          {
+            "functionName": "frame",
+            "scriptId": "14",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4513,
+            "selfMs": 15.694999999999997
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 14.107999999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 13.556999999999999
+          },
+          {
+            "functionName": "",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 31404,
+            "selfMs": 12.999000000000002
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 11.888
+          },
+          {
+            "functionName": "e",
+            "scriptId": "26",
+            "url": "http://localhost:4189/_next/static/chunks/2y05y3a0g2-eh.js",
+            "lineNumber": 0,
+            "columnNumber": 34413,
+            "selfMs": 11.301
+          },
+          {
+            "functionName": "u",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 10.707
+          },
+          {
+            "functionName": "t",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 43077,
+            "selfMs": 10.481
+          },
+          {
+            "functionName": "tU",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 41664,
+            "selfMs": 10.352
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "kind": "cut",
+      "width": 390,
+      "height": 844,
+      "round": 0,
+      "traced": true,
+      "timed": false,
+      "cpu": 4,
+      "samples": 334,
+      "p50": 16.699999999999818,
+      "p95": 33.29999999999927,
+      "p99": 50,
+      "over50": 2,
+      "longTasks": [
+        {
+          "start": 4242.700000000186,
+          "duration": 58
+        }
+      ],
+      "loadLongTasks": [
+        {
+          "start": 219.20000000018626,
+          "duration": 238
+        },
+        {
+          "start": 511.70000000018626,
+          "duration": 132
+        },
+        {
+          "start": 662.5,
+          "duration": 265
+        },
+        {
+          "start": 1116.2999999998137,
+          "duration": 51
+        },
+        {
+          "start": 1257.5,
+          "duration": 300
+        },
+        {
+          "start": 1558.3999999999069,
+          "duration": 148
+        },
+        {
+          "start": 1740.1000000000931,
+          "duration": 96
+        },
+        {
+          "start": 1856.7000000001863,
+          "duration": 89
+        },
+        {
+          "start": 2175.399999999907,
+          "duration": 59
+        },
+        {
+          "start": 2273.600000000093,
+          "duration": 112
+        },
+        {
+          "start": 2459.7999999998137,
+          "duration": 79
+        }
+      ],
+      "lcp": 480,
+      "cls": 0,
+      "finalProgress": "1",
+      "ScriptDurationMs": 529.714,
+      "LayoutDurationMs": 80.38899999999998,
+      "RecalcStyleDurationMs": 220.02900000000002,
+      "TaskDurationMs": 2447.954,
+      "analysis": {
+        "interactiveMs": 6023.654,
+        "frames": 0,
+        "mainTaskMs": 2455.08399999999,
+        "layerizeMs": 221.13000000000028,
+        "layerizePerFrameMs": null,
+        "styleMs": 220.1279999999999,
+        "layoutMs": 87.26799999999994,
+        "paintMs": 384.56100000000026,
+        "longTasks": [
+          {
+            "atMs": 171.525,
+            "durationMs": 58.72
+          },
+          {
+            "atMs": 2245.129,
+            "durationMs": 64.77
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 3636.116000000001
+          },
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 1730.1330000000007
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 84.82999999999998
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 59.02000000000001
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 55.986000000000004
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4187/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 4589,
+            "selfMs": 44.759
+          },
+          {
+            "functionName": "",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 36.644
+          },
+          {
+            "functionName": "o",
+            "scriptId": "9",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 26.045
+          },
+          {
+            "functionName": "a",
+            "scriptId": "9",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 17.143
+          },
+          {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 16.392
+          },
+          {
+            "functionName": "l",
+            "scriptId": "9",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25808,
+            "selfMs": 15.788
+          },
+          {
+            "functionName": "",
+            "scriptId": "12",
+            "url": "http://localhost:4187/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 176600,
+            "selfMs": 14.801000000000002
+          },
+          {
+            "functionName": "v",
+            "scriptId": "14",
+            "url": "http://localhost:4187/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 3663,
+            "selfMs": 12.836
+          },
+          {
+            "functionName": "getBoundingClientRect",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 10.889
+          },
+          {
+            "functionName": "elementFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 9.426
+          },
+          {
+            "functionName": "evaluate",
+            "scriptId": "18",
+            "url": "",
+            "lineNumber": 283,
+            "columnNumber": 10,
+            "selfMs": 8.693
+          },
+          {
+            "functionName": "tB",
+            "scriptId": "12",
+            "url": "http://localhost:4187/_next/static/chunks/21bzz90g4x-lk.js",
+            "lineNumber": 0,
+            "columnNumber": 41841,
+            "selfMs": 8.061
+          },
+          {
+            "functionName": "query",
+            "scriptId": "32",
+            "url": "",
+            "lineNumber": 4980,
+            "columnNumber": 16,
+            "selfMs": 8.004
+          },
+          {
+            "functionName": "",
+            "scriptId": "14",
+            "url": "http://localhost:4187/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 17546,
+            "selfMs": 7.415000000000001
+          },
+          {
+            "functionName": "",
+            "scriptId": "9",
+            "url": "http://localhost:4187/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 7.268999999999999
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> 2026-11-10：[The Passing Curve 补充审查与最终交付](directors-cut/report.md)。正式2.2保留；下文为上一轮记录。
+
 # Motion Art Direction Audit — 2.2 → 2.3
 
 基线：执行时重新读取 PR #3，OPEN / 未合并，head 75a1e19fe63206c348548b3cfe969355499f7713。独立实验分支 feat/xuanyi-2-3-motion-direction，以 PR #3 head 分支为 base。

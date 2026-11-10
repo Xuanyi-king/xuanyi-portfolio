@@ -1,0 +1,296 @@
+{
+  "visualSource": "3d0a4d96ce3a498edb0234b344470b5672062809",
+  "baseline": "75a1e19fe63206c348548b3cfe969355499f7713",
+  "oldA": "453caa478e157bcf7e4264903c729d1d6ba8c878",
+  "images": "Real browser captures. Whole-page capture clipped to actual stage bounds; JPEG sheets only resize/arrange/label. No generated images.",
+  "stills": [
+    {
+      "file": "stills/baseline-1440-gallery.png",
+      "sha256": "78afcff6bd32f5cc0951ed45beb026ec3960eae96633a87abc513dd8849cf354"
+    },
+    {
+      "file": "stills/baseline-1440-hero.png",
+      "sha256": "061d60fee8e1b2fa808999fe382e1669d7b6ac6722a6842488231d9e0169ef87"
+    },
+    {
+      "file": "stills/baseline-320-gallery.png",
+      "sha256": "b2636781aff082b110f209f3cf539eedc7ebb6f13c0436fa3d32deb95217056a"
+    },
+    {
+      "file": "stills/baseline-320-hero.png",
+      "sha256": "bdbfb23d7dbc20d6765d14bb5958920fe58861cf85d6794cae9f0baedc93c1ee"
+    },
+    {
+      "file": "stills/baseline-390-gallery.png",
+      "sha256": "52552ba97f0a6dab17c0a91229bfdcd112cd13748cc8381dc6ea2c7d03ed5af4"
+    },
+    {
+      "file": "stills/baseline-390-hero.png",
+      "sha256": "45b35f803a391c0467c930cf16430b0ff6b50b4dee3345ee9f8c032f5b9f4b14"
+    },
+    {
+      "file": "stills/baseline-768-gallery.png",
+      "sha256": "ea0f9d3f7127fbc802b44a69dce33e032ebb6bb648160c92fc53ebeba5f505fe"
+    },
+    {
+      "file": "stills/baseline-768-hero.png",
+      "sha256": "349705c52455720a1e4974f1c3f05d498a3d43750a0ac2bba8a1c24ad2eef368"
+    },
+    {
+      "file": "stills/cut-1440-0.png",
+      "sha256": "0d34f63d3b6741a2b973e3385f62c9034b7c000bdbdc663a17ee8b278ceea56e"
+    },
+    {
+      "file": "stills/cut-1440-1000.png",
+      "sha256": "175f1960fd9e8d99120747f12ae33c6e360f0a2d7547d8e89867953095986c2c"
+    },
+    {
+      "file": "stills/cut-1440-250.png",
+      "sha256": "e36636c96ed6e7c72da263b722ceb3b80b45e4d2d2322498628ade626b7f160d"
+    },
+    {
+      "file": "stills/cut-1440-400.png",
+      "sha256": "953d1c98d54876789f33709280b4b3d10e0db776bc46c1ded10e118a28e64da2"
+    },
+    {
+      "file": "stills/cut-1440-500.png",
+      "sha256": "8ef0eb253eef834b64c9477f61bd6cd961c020921742087d07502808c7e5ac28"
+    },
+    {
+      "file": "stills/cut-1440-600.png",
+      "sha256": "7f0d03899377d48a800924c61e1fb1b27d79bf67d546e7f54d14663f0506600f"
+    },
+    {
+      "file": "stills/cut-1440-750.png",
+      "sha256": "6687851b86685e50ec7b61d0131f73315c9461fee40686dcbbbd32115f010a40"
+    },
+    {
+      "file": "stills/cut-1440-900.png",
+      "sha256": "19673bef929ba5e582c89ce1a4453e5f752f30db24027c1bc55efebec4a3d42a"
+    },
+    {
+      "file": "stills/cut-320-0.png",
+      "sha256": "894f9b9075e3ae7686deabd6b4bd15a3c16d9dd616a589222b65aef12452a4e4"
+    },
+    {
+      "file": "stills/cut-320-1000.png",
+      "sha256": "329b9e5a6319666bfe7b0261865162c46ee33c079168c97f3395828b1bbb2a65"
+    },
+    {
+      "file": "stills/cut-320-250.png",
+      "sha256": "894f9b9075e3ae7686deabd6b4bd15a3c16d9dd616a589222b65aef12452a4e4"
+    },
+    {
+      "file": "stills/cut-320-400.png",
+      "sha256": "ffdfbdd57d0233239f692cbca628cbce576a3fbd84614f89b7f6ed7a46b076ab"
+    },
+    {
+      "file": "stills/cut-320-500.png",
+      "sha256": "0f73641c6fd44b9ffdfc322abb0a6344293a95c89a5676b7d65886282f993a84"
+    },
+    {
+      "file": "stills/cut-320-600.png",
+      "sha256": "2d2f97e062236bf501efaaffada06220f3f415a6262f4b8a2866048544e8de2c"
+    },
+    {
+      "file": "stills/cut-320-750.png",
+      "sha256": "473b452e9c2e2dee6c499e4b748eb6880137941c4baff1b59cde3d11885e2d4c"
+    },
+    {
+      "file": "stills/cut-320-900.png",
+      "sha256": "329b9e5a6319666bfe7b0261865162c46ee33c079168c97f3395828b1bbb2a65"
+    },
+    {
+      "file": "stills/cut-390-0.png",
+      "sha256": "4917f4e617e8b8f7e618ed71620d98045fea7708abf339794ecd7ded2869e583"
+    },
+    {
+      "file": "stills/cut-390-1000.png",
+      "sha256": "3dc8f0e9508f80e917f569e46490cfc1c0921a2c586b3374d077c7d8e51c2cd6"
+    },
+    {
+      "file": "stills/cut-390-250.png",
+      "sha256": "4917f4e617e8b8f7e618ed71620d98045fea7708abf339794ecd7ded2869e583"
+    },
+    {
+      "file": "stills/cut-390-400.png",
+      "sha256": "1dd22b7bed55902c99ef78f1b3bc622c5d4d2c8a09cf7de51e4ed181336e3c0d"
+    },
+    {
+      "file": "stills/cut-390-500.png",
+      "sha256": "d41754d0061255841c5b0bcdd96fd2ded7e2cb95c4c9ccfff1b6e8cb5f7ac634"
+    },
+    {
+      "file": "stills/cut-390-600.png",
+      "sha256": "5b3f555d394f0824a17895fe239247c3488e65e52592e38e344ac3a8402b193a"
+    },
+    {
+      "file": "stills/cut-390-750.png",
+      "sha256": "ef89b36ecd69693d8b85d3c1e2b3b9730aa7605b7e664a286f9da65a0778ae25"
+    },
+    {
+      "file": "stills/cut-390-900.png",
+      "sha256": "b910eb1c3674f2381a4604656f87e3581b2feaadacb1e9ad837597d4839000ad"
+    },
+    {
+      "file": "stills/cut-768-0.png",
+      "sha256": "e6f6963b720d41f05b0d1bc5f122c7910682ba038c233ee6402375275ae6454d"
+    },
+    {
+      "file": "stills/cut-768-1000.png",
+      "sha256": "cd1f4720b62852ec9d350ffcb80a7e035fa2c227dfa4f0420f672304f0b726ac"
+    },
+    {
+      "file": "stills/cut-768-250.png",
+      "sha256": "e6f6963b720d41f05b0d1bc5f122c7910682ba038c233ee6402375275ae6454d"
+    },
+    {
+      "file": "stills/cut-768-400.png",
+      "sha256": "89a37e7fbd5e177cd0fbe96853c06f4ebe3b16dfc58a6491c8535e6e8a0d152f"
+    },
+    {
+      "file": "stills/cut-768-500.png",
+      "sha256": "52634f63bdc5e536e7303174b019f53c422022fdf8d3c178d6d23bb5b66356b0"
+    },
+    {
+      "file": "stills/cut-768-600.png",
+      "sha256": "cb12f6e23d4abb077f9a380b205a465ce62f0494e9c1e128d9c51543cab06a36"
+    },
+    {
+      "file": "stills/cut-768-750.png",
+      "sha256": "5ed7bb0963f61eb1e7260a1cbb39695dc3f7d939817ed3337a12665ef20b690f"
+    },
+    {
+      "file": "stills/cut-768-900.png",
+      "sha256": "c7a8a3bb4d7a897f491eb4542b972e9d62f17f43340f9a9fe6de5052dd199ba4"
+    },
+    {
+      "file": "stills/oldA-1440-0.png",
+      "sha256": "7f7f7895f29b7fbac96b0ad86c09c9251f1ba0ecdba9910b044397b549ea5c15"
+    },
+    {
+      "file": "stills/oldA-1440-1000.png",
+      "sha256": "3324cf35fd699760f6051f8267b8a9d9184665d59df29882ee33a821c1b77af3"
+    },
+    {
+      "file": "stills/oldA-1440-250.png",
+      "sha256": "bc1cb70c8f78eeea024ccab76dad9e8975cb6f50a939bc67690af46cd77d7293"
+    },
+    {
+      "file": "stills/oldA-1440-400.png",
+      "sha256": "b827a6f64b6ea221196be91f013bf118b0322cf9fd2b3cae60a90062193716e5"
+    },
+    {
+      "file": "stills/oldA-1440-500.png",
+      "sha256": "6b96fdd271b3b2945e36d2ee9fa68dba6e670b14d108831b3f5c72bb58db080e"
+    },
+    {
+      "file": "stills/oldA-1440-600.png",
+      "sha256": "6c75fc73ab0f4dd9642ecdce3c7541a18e4ccb91b19e22eb19b609a1bfc35d26"
+    },
+    {
+      "file": "stills/oldA-1440-750.png",
+      "sha256": "feb0874bdfeb5e778056f6132747d24bd311e2f966fddfe0d7a4375ee722a1b4"
+    },
+    {
+      "file": "stills/oldA-1440-900.png",
+      "sha256": "3324cf35fd699760f6051f8267b8a9d9184665d59df29882ee33a821c1b77af3"
+    },
+    {
+      "file": "stills/oldA-320-0.png",
+      "sha256": "f0506cf462e71348cb07b4f7ba46addf70d0c12c9d420e88883355174c935cd0"
+    },
+    {
+      "file": "stills/oldA-320-1000.png",
+      "sha256": "16dfeda5eb9c848ae9598f8dba073ccc68d2710ed432890fd318cd474bbf9de7"
+    },
+    {
+      "file": "stills/oldA-320-250.png",
+      "sha256": "6e244d510e782b31b922b551aa6bf5ed3078c513c4fd78317491e83b955b17a4"
+    },
+    {
+      "file": "stills/oldA-320-400.png",
+      "sha256": "a07b8bc17850c6adca9163c270641cee665aadd2468845c55449175e317cc876"
+    },
+    {
+      "file": "stills/oldA-320-500.png",
+      "sha256": "fd83298ce96fec8841abf773db97a50582df7fe76377a34b4f4f9cbe2a9f3587"
+    },
+    {
+      "file": "stills/oldA-320-600.png",
+      "sha256": "cdf117f111d5de0e56bd694dea7db5c0c13cb204e6731f3f0c3258b55974ef23"
+    },
+    {
+      "file": "stills/oldA-320-750.png",
+      "sha256": "e379b1b1d76520d82e3023619dbb6fc84a13e9e16a64fc1e375d7c3b250e05d0"
+    },
+    {
+      "file": "stills/oldA-320-900.png",
+      "sha256": "16dfeda5eb9c848ae9598f8dba073ccc68d2710ed432890fd318cd474bbf9de7"
+    },
+    {
+      "file": "stills/oldA-390-0.png",
+      "sha256": "9e844e4933f61465406488adc0c6df59683f1b2801293bbdf3f0d15cad662f95"
+    },
+    {
+      "file": "stills/oldA-390-1000.png",
+      "sha256": "18e525c86112e56bc75f4e8b397252c8ebab2d0a82c7d0dcc319a9885ae8bcbf"
+    },
+    {
+      "file": "stills/oldA-390-250.png",
+      "sha256": "8001fe38675478af257afce64e08c63f515153e8f51f6539f1e609e6f4b9c943"
+    },
+    {
+      "file": "stills/oldA-390-400.png",
+      "sha256": "7f2f35474ec6dcbd40c23ac3e65b0ad1adbb0bbf59409b4b0189475cb1f484d1"
+    },
+    {
+      "file": "stills/oldA-390-500.png",
+      "sha256": "e3900c36bfd65f7bba1a35b3c8bd69cd083ee3cdd833df66b7885c0e3f30fa1e"
+    },
+    {
+      "file": "stills/oldA-390-600.png",
+      "sha256": "09cb69dd2ef31462debf95fd5a77ec20d49087c571a41069bcba943f10a65301"
+    },
+    {
+      "file": "stills/oldA-390-750.png",
+      "sha256": "3e5e197dea3b4b281b3f9c72456f3e2db7a2f59c05e4af1d3f28eb824b1a43a9"
+    },
+    {
+      "file": "stills/oldA-390-900.png",
+      "sha256": "18e525c86112e56bc75f4e8b397252c8ebab2d0a82c7d0dcc319a9885ae8bcbf"
+    },
+    {
+      "file": "stills/oldA-768-0.png",
+      "sha256": "221a3510444ac9abb1fc7e0aeb3545c19555de41e281df1860fcba98af7327cc"
+    },
+    {
+      "file": "stills/oldA-768-1000.png",
+      "sha256": "a5658c9b9ab934621b5adb6b64d276fa5a9b363353386503f643763a8d1d1803"
+    },
+    {
+      "file": "stills/oldA-768-250.png",
+      "sha256": "8e8b5280d4a94537862e164c2e5fb955246a9afa2a3534bdfb0b38a0069c333d"
+    },
+    {
+      "file": "stills/oldA-768-400.png",
+      "sha256": "f464be06511729e79ad07743dff85da8dae8923dcb55c5527b2df7d9f50a8664"
+    },
+    {
+      "file": "stills/oldA-768-500.png",
+      "sha256": "a352eb590e6e2c0adec911badb4bc7ccf181fd8c021b7ee5193ed17a36ae1c0a"
+    },
+    {
+      "file": "stills/oldA-768-600.png",
+      "sha256": "bbbf8710b4d49641e47f1a77b27e1e72d5997289963e8645a61148155a63c3e5"
+    },
+    {
+      "file": "stills/oldA-768-750.png",
+      "sha256": "730c4a621fff8c93306345de004ad2912ed7bcf6d65fda6c38b70534a566a9cb"
+    },
+    {
+      "file": "stills/oldA-768-900.png",
+      "sha256": "a5658c9b9ab934621b5adb6b64d276fa5a9b363353386503f643763a8d1d1803"
+    }
+  ]
+}

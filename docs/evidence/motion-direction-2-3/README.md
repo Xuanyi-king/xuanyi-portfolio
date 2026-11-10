@@ -1,3 +1,5 @@
+> 新一轮：[The Passing Curve · Director’s Cut证据](../passing-curve/README.md)。旧A/B证据仍保留。
+
 # Motion Direction 2.3 · 真实实验
 
 正式页面仍选择2.2；这里是未通过集成门槛的导演研究。实验入口 `/lab/motion-direction/`，noindex，可Play/Pause/Restart/拖动进度，或切换原生滚动。
