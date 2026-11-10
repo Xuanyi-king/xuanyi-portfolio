@@ -1,0 +1,1406 @@
+{
+  "baseline": "75a1e19fe63206c348548b3cfe969355499f7713",
+  "baselineSource": "Exact git archive built in isolation",
+  "sourceCommit": "d85da9d4a825300b26f752b74af6a00b0bfb4d2c",
+  "cpuThrottle": 4,
+  "runs": 3,
+  "reports": {
+    "before": [
+      {
+        "round": 1,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 11200000,
+        "heapAfterThreeVisitsAndGCRequest": 11200000,
+        "metrics": {
+          "lcp": 364,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 48
+            },
+            {
+              "name": "click",
+              "duration": 48
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 24
+            },
+            {
+              "name": "pointerup",
+              "duration": 24
+            },
+            {
+              "name": "click",
+              "duration": 24
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 80
+            },
+            {
+              "name": "click",
+              "duration": 80
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 147.09999999403954,
+              "duration": 174
+            },
+            {
+              "start": 402.09999999403954,
+              "duration": 126
+            },
+            {
+              "start": 534.5,
+              "duration": 155
+            },
+            {
+              "start": 870.5999999940395,
+              "duration": 69
+            },
+            {
+              "start": 1342.3999999910593,
+              "duration": 152
+            },
+            {
+              "start": 3183.5,
+              "duration": 252
+            },
+            {
+              "start": 5341.79999999702,
+              "duration": 146
+            },
+            {
+              "start": 7463.899999991059,
+              "duration": 137
+            },
+            {
+              "start": 9614.20000000298,
+              "duration": 97
+            }
+          ]
+        },
+        "frames": {
+          "count": 426,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.30000000000018,
+          "p99Ms": 50.100000000000364,
+          "over50ms": 6
+        },
+        "largestObservedInteractionMs": 80,
+        "heapAfterActions": 11200000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 1,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10600000,
+        "heapAfterThreeVisitsAndGCRequest": 10600000,
+        "metrics": {
+          "lcp": 200,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 104
+            },
+            {
+              "name": "pointerup",
+              "duration": 104
+            },
+            {
+              "name": "click",
+              "duration": 104
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 94.29999999701977,
+              "duration": 90
+            },
+            {
+              "start": 230.1000000089407,
+              "duration": 93
+            },
+            {
+              "start": 342.6000000089407,
+              "duration": 491
+            },
+            {
+              "start": 1017.2999999970198,
+              "duration": 72
+            },
+            {
+              "start": 1240.7999999970198,
+              "duration": 156
+            },
+            {
+              "start": 2523.2999999970198,
+              "duration": 224
+            },
+            {
+              "start": 2748.5,
+              "duration": 53
+            },
+            {
+              "start": 3090.2999999970198,
+              "duration": 51
+            },
+            {
+              "start": 4681.5,
+              "duration": 169
+            },
+            {
+              "start": 6837.79999999702,
+              "duration": 119
+            }
+          ]
+        },
+        "frames": {
+          "count": 249,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 49.90000000000009,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 104,
+        "heapAfterActions": 10600000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 0
+      },
+      {
+        "round": 2,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10000000,
+        "heapAfterThreeVisitsAndGCRequest": 10000000,
+        "metrics": {
+          "lcp": 196,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 48
+            },
+            {
+              "name": "click",
+              "duration": 48
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 24
+            },
+            {
+              "name": "pointerup",
+              "duration": 24
+            },
+            {
+              "name": "click",
+              "duration": 24
+            },
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 72
+            },
+            {
+              "name": "click",
+              "duration": 72
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 78.70000000298023,
+              "duration": 82
+            },
+            {
+              "start": 180.70000000298023,
+              "duration": 86
+            },
+            {
+              "start": 324.40000000596046,
+              "duration": 79
+            },
+            {
+              "start": 446.79999999701977,
+              "duration": 164
+            },
+            {
+              "start": 815.2999999970198,
+              "duration": 77
+            },
+            {
+              "start": 956.9000000059605,
+              "duration": 219
+            },
+            {
+              "start": 1239.5999999940395,
+              "duration": 155
+            },
+            {
+              "start": 3078,
+              "duration": 91
+            }
+          ]
+        },
+        "frames": {
+          "count": 430,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.40000000000009,
+          "over50ms": 1
+        },
+        "largestObservedInteractionMs": 72,
+        "heapAfterActions": 10000000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 2,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 11200000,
+        "heapAfterThreeVisitsAndGCRequest": 11200000,
+        "metrics": {
+          "lcp": 184,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 64
+            },
+            {
+              "name": "pointerup",
+              "duration": 64
+            },
+            {
+              "name": "click",
+              "duration": 88
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 70.59999999403954,
+              "duration": 97
+            },
+            {
+              "start": 210.5,
+              "duration": 107
+            },
+            {
+              "start": 357.29999999701977,
+              "duration": 165
+            },
+            {
+              "start": 694,
+              "duration": 82
+            },
+            {
+              "start": 929.2000000029802,
+              "duration": 157
+            },
+            {
+              "start": 1110,
+              "duration": 221
+            },
+            {
+              "start": 3175.5,
+              "duration": 101
+            },
+            {
+              "start": 5257.70000000298,
+              "duration": 178
+            }
+          ]
+        },
+        "frames": {
+          "count": 246,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.399999999999636,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 88,
+        "heapAfterActions": 11200000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 0
+      },
+      {
+        "round": 3,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 11200000,
+        "heapAfterThreeVisitsAndGCRequest": 11200000,
+        "metrics": {
+          "lcp": 288,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 24
+            },
+            {
+              "name": "pointerup",
+              "duration": 24
+            },
+            {
+              "name": "click",
+              "duration": 24
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 56
+            },
+            {
+              "name": "click",
+              "duration": 56
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 120.09999999403954,
+              "duration": 124
+            },
+            {
+              "start": 301.3999999910593,
+              "duration": 98
+            },
+            {
+              "start": 425.19999998807907,
+              "duration": 153
+            },
+            {
+              "start": 736,
+              "duration": 61
+            },
+            {
+              "start": 930.0999999940395,
+              "duration": 137
+            },
+            {
+              "start": 3757.2999999970198,
+              "duration": 117
+            },
+            {
+              "start": 8097.5999999940395,
+              "duration": 64
+            }
+          ]
+        },
+        "frames": {
+          "count": 417,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.80000000000109,
+          "p99Ms": 49.90000000000009,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 56,
+        "heapAfterActions": 11200000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 3,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10600000,
+        "heapAfterThreeVisitsAndGCRequest": 10600000,
+        "metrics": {
+          "lcp": 240,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 72
+            },
+            {
+              "name": "pointerup",
+              "duration": 72
+            },
+            {
+              "name": "click",
+              "duration": 72
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 76.80000001192093,
+              "duration": 150
+            },
+            {
+              "start": 241.5,
+              "duration": 169
+            },
+            {
+              "start": 602.8000000119209,
+              "duration": 111
+            },
+            {
+              "start": 910.7000000029802,
+              "duration": 53
+            },
+            {
+              "start": 1114.800000011921,
+              "duration": 174
+            }
+          ]
+        },
+        "frames": {
+          "count": 248,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.29999999999973,
+          "over50ms": 0
+        },
+        "largestObservedInteractionMs": 72,
+        "heapAfterActions": 10600000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 0
+      }
+    ],
+    "after": [
+      {
+        "round": 1,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10600000,
+        "heapAfterThreeVisitsAndGCRequest": 10600000,
+        "metrics": {
+          "lcp": 236,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 56
+            },
+            {
+              "name": "pointerup",
+              "duration": 56
+            },
+            {
+              "name": "click",
+              "duration": 56
+            },
+            {
+              "name": "pointerdown",
+              "duration": 24
+            },
+            {
+              "name": "pointerup",
+              "duration": 24
+            },
+            {
+              "name": "click",
+              "duration": 24
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 88
+            },
+            {
+              "name": "click",
+              "duration": 88
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 85.59999999403954,
+              "duration": 111
+            },
+            {
+              "start": 255.8999999910593,
+              "duration": 83
+            },
+            {
+              "start": 405.59999999403954,
+              "duration": 173
+            },
+            {
+              "start": 739.5,
+              "duration": 279
+            },
+            {
+              "start": 1195.7999999970198,
+              "duration": 150
+            },
+            {
+              "start": 2865.5,
+              "duration": 106
+            },
+            {
+              "start": 4947.699999988079,
+              "duration": 100
+            },
+            {
+              "start": 7032.399999991059,
+              "duration": 62
+            },
+            {
+              "start": 8244.59999999404,
+              "duration": 52
+            }
+          ]
+        },
+        "frames": {
+          "count": 424,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.29999999999927,
+          "p99Ms": 66.69999999999891,
+          "over50ms": 5
+        },
+        "largestObservedInteractionMs": 88,
+        "heapAfterActions": 10600000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 1,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 11900000,
+        "heapAfterThreeVisitsAndGCRequest": 11900000,
+        "metrics": {
+          "lcp": 252,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 112
+            },
+            {
+              "name": "pointerup",
+              "duration": 112
+            },
+            {
+              "name": "click",
+              "duration": 112
+            },
+            {
+              "name": "pointerdown",
+              "duration": 88
+            },
+            {
+              "name": "pointerup",
+              "duration": 88
+            },
+            {
+              "name": "click",
+              "duration": 88
+            },
+            {
+              "name": "pointerdown",
+              "duration": 56
+            },
+            {
+              "name": "pointerup",
+              "duration": 56
+            },
+            {
+              "name": "click",
+              "duration": 56
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 83.09999999403954,
+              "duration": 151
+            },
+            {
+              "start": 289.59999999403954,
+              "duration": 326
+            },
+            {
+              "start": 819.2999999970198,
+              "duration": 75
+            },
+            {
+              "start": 1022.0999999940395,
+              "duration": 131
+            },
+            {
+              "start": 2463,
+              "duration": 102
+            },
+            {
+              "start": 6631.70000000298,
+              "duration": 98
+            }
+          ]
+        },
+        "frames": {
+          "count": 247,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 33.399999999999636,
+          "over50ms": 1
+        },
+        "largestObservedInteractionMs": 112,
+        "heapAfterActions": 11900000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 0
+      },
+      {
+        "round": 2,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10000000,
+        "heapAfterThreeVisitsAndGCRequest": 10000000,
+        "metrics": {
+          "lcp": 332,
+          "cls": 0.00000861625514403292,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 72
+            },
+            {
+              "name": "click",
+              "duration": 72
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 140.1000000089407,
+              "duration": 146
+            },
+            {
+              "start": 307.5,
+              "duration": 91
+            },
+            {
+              "start": 433.80000001192093,
+              "duration": 165
+            },
+            {
+              "start": 777.6000000089407,
+              "duration": 61
+            },
+            {
+              "start": 967.2000000029802,
+              "duration": 143
+            },
+            {
+              "start": 1496.800000011921,
+              "duration": 190
+            },
+            {
+              "start": 8382.60000000894,
+              "duration": 55
+            }
+          ]
+        },
+        "frames": {
+          "count": 428,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.19999999999982,
+          "p99Ms": 49.90000000000009,
+          "over50ms": 4
+        },
+        "largestObservedInteractionMs": 72,
+        "heapAfterActions": 10000000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 2,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10600000,
+        "heapAfterThreeVisitsAndGCRequest": 10600000,
+        "metrics": {
+          "lcp": 276,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 168
+            },
+            {
+              "name": "pointerup",
+              "duration": 168
+            },
+            {
+              "name": "click",
+              "duration": 168
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 69.5,
+              "duration": 184
+            },
+            {
+              "start": 316.3999999910593,
+              "duration": 161
+            },
+            {
+              "start": 896.8999999910593,
+              "duration": 480
+            },
+            {
+              "start": 3095.2999999970198,
+              "duration": 81
+            },
+            {
+              "start": 5150.79999999702,
+              "duration": 93
+            }
+          ]
+        },
+        "frames": {
+          "count": 245,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.30000000000018,
+          "over50ms": 2
+        },
+        "largestObservedInteractionMs": 168,
+        "heapAfterActions": 10600000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          }
+        ],
+        "videoSources": 0
+      },
+      {
+        "round": 3,
+        "viewport": "1440x900",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10000000,
+        "heapAfterThreeVisitsAndGCRequest": 10000000,
+        "metrics": {
+          "lcp": 256,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 24
+            },
+            {
+              "name": "pointerup",
+              "duration": 24
+            },
+            {
+              "name": "click",
+              "duration": 24
+            },
+            {
+              "name": "pointerdown",
+              "duration": 32
+            },
+            {
+              "name": "pointerup",
+              "duration": 32
+            },
+            {
+              "name": "click",
+              "duration": 32
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 72
+            },
+            {
+              "name": "click",
+              "duration": 72
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 92.8999999910593,
+              "duration": 122
+            },
+            {
+              "start": 288.29999999701977,
+              "duration": 99
+            },
+            {
+              "start": 401.5,
+              "duration": 148
+            },
+            {
+              "start": 702.5,
+              "duration": 78
+            },
+            {
+              "start": 944.3999999910593,
+              "duration": 124
+            },
+            {
+              "start": 1213.699999988079,
+              "duration": 243
+            },
+            {
+              "start": 3387.7999999970198,
+              "duration": 155
+            },
+            {
+              "start": 5545.199999988079,
+              "duration": 94
+            }
+          ]
+        },
+        "frames": {
+          "count": 426,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 33.29999999999927,
+          "p99Ms": 50,
+          "over50ms": 4
+        },
+        "largestObservedInteractionMs": 72,
+        "heapAfterActions": 10000000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          }
+        ],
+        "videoSources": 1
+      },
+      {
+        "round": 3,
+        "viewport": "390x844",
+        "browser": "145.0.7632.6",
+        "cpuThrottle": 4,
+        "heapBefore": 10600000,
+        "heapAfterThreeVisitsAndGCRequest": 10600000,
+        "metrics": {
+          "lcp": 212,
+          "cls": 0,
+          "events": [
+            {
+              "name": "pointerdown",
+              "duration": 88
+            },
+            {
+              "name": "pointerup",
+              "duration": 88
+            },
+            {
+              "name": "click",
+              "duration": 88
+            },
+            {
+              "name": "pointerdown",
+              "duration": 40
+            },
+            {
+              "name": "pointerup",
+              "duration": 40
+            },
+            {
+              "name": "click",
+              "duration": 40
+            },
+            {
+              "name": "pointerdown",
+              "duration": 48
+            },
+            {
+              "name": "pointerup",
+              "duration": 48
+            },
+            {
+              "name": "click",
+              "duration": 48
+            }
+          ],
+          "longTasks": [
+            {
+              "start": 100.1000000089407,
+              "duration": 96
+            },
+            {
+              "start": 233.70000000298023,
+              "duration": 79
+            },
+            {
+              "start": 319.5,
+              "duration": 332
+            },
+            {
+              "start": 864.6000000089407,
+              "duration": 98
+            },
+            {
+              "start": 1099.9000000059605,
+              "duration": 157
+            },
+            {
+              "start": 2584.4000000059605,
+              "duration": 85
+            },
+            {
+              "start": 4641.20000000298,
+              "duration": 57
+            },
+            {
+              "start": 6694.600000008941,
+              "duration": 51
+            }
+          ]
+        },
+        "frames": {
+          "count": 246,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "p99Ms": 33.30000000000018,
+          "over50ms": 1
+        },
+        "largestObservedInteractionMs": 88,
+        "heapAfterActions": 10600000,
+        "images": [
+          {
+            "name": "/covers/router.svg",
+            "bytes": 2402
+          },
+          {
+            "name": "/covers/film.svg",
+            "bytes": 2328
+          },
+          {
+            "name": "/covers/zhihu-real.jpg",
+            "bytes": 137735
+          },
+          {
+            "name": "/projects/multiverse-experience-reveal.jpg",
+            "bytes": 97781
+          }
+        ],
+        "videoSources": 0
+      }
+    ]
+  },
+  "note": "Alternating normal runs on one host. Trace overhead excluded. Short local samples, not physical-device results or field INP."
+}

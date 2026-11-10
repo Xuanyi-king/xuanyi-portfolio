@@ -1,0 +1,2 @@
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+Living Identity: 1 browser/viewport combinations passed, forward/reverse, brand alignment, history, reduced motion.

@@ -1,0 +1,46 @@
+
+> xuanyi-curiosity@1.0.0 check:browser
+> node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs && node scripts/check-canvas.mjs && node scripts/check-response.mjs
+
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+{
+  "passed": 12,
+  "checks": [
+    "1440x900 layout, living curves, keyboard focus",
+    "home scroll composition, readable project titles, no eager video request",
+    "hover, named scene, detail, browser back, explicit return, real project media",
+    "Lab drag/anchor <1px, keyboard increments, Escape, presets, reset",
+    "768x1024 layout",
+    "390x844 layout, touch capture/cancel/anchor",
+    "375x812 layout",
+    "320x740 layout",
+    "SplitText 3 SPA exit/return cycles restore exact original HTML, no nested residue",
+    "reduced motion: static text, no SplitText wrappers, direct Lab state",
+    "1500ms delayed JS: title never moved behind its mask after first paint",
+    "no-JS readable brand, complete static surface, native detail/return; repeat visit quiet"
+  ],
+  "errors": [],
+  "evidence": "/workspace/xuanyi-portfolio/artifacts/browser/chromium"
+}
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+chromium 145.0.7632.6: 7 groups passed
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+firefox 146.0.1: 7 groups passed
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+webkit 26.0: 7 groups passed
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Resizing recalculates the handoff destination
+    at file:///workspace/xuanyi-portfolio/scripts/check-identity.mjs:342:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

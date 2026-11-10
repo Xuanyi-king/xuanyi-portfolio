@@ -1,0 +1,481 @@
+{
+  "scope": "One normal 4xCPU sample per variant/viewport, no recording/profiler, not physical devices/field INP. Paint not instrumented here; homepage comparison has raw traces.",
+  "reports": [
+    {
+      "variant": "A",
+      "width": 1440,
+      "height": 900,
+      "cpu": 4,
+      "samples": 459,
+      "p50": 16.699999999999818,
+      "p95": 66.60000000000036,
+      "p99": 100,
+      "over50": 30,
+      "ScriptDurationMs": 953.746,
+      "LayoutDurationMs": 435.5,
+      "RecalcStyleDurationMs": 4500.241000000001,
+      "TaskDurationMs": 8439.842,
+      "longTasks": [
+        {
+          "start": 100,
+          "duration": 118
+        },
+        {
+          "start": 332.5,
+          "duration": 287
+        },
+        {
+          "start": 624.9000000059605,
+          "duration": 66
+        },
+        {
+          "start": 964.2999999970198,
+          "duration": 126
+        },
+        {
+          "start": 1253.9000000059605,
+          "duration": 732
+        },
+        {
+          "start": 1988.9000000059605,
+          "duration": 62
+        },
+        {
+          "start": 2123.2000000029802,
+          "duration": 182
+        },
+        {
+          "start": 2569.2999999970198,
+          "duration": 53
+        },
+        {
+          "start": 2893.5,
+          "duration": 87
+        },
+        {
+          "start": 2990.6000000089407,
+          "duration": 125
+        },
+        {
+          "start": 3125.2000000029802,
+          "duration": 94
+        },
+        {
+          "start": 3222.7999999970198,
+          "duration": 98
+        },
+        {
+          "start": 3324.2999999970198,
+          "duration": 91
+        },
+        {
+          "start": 3419,
+          "duration": 77
+        },
+        {
+          "start": 3499.1000000089407,
+          "duration": 70
+        },
+        {
+          "start": 3569.9000000059605,
+          "duration": 250
+        },
+        {
+          "start": 3830.2999999970198,
+          "duration": 66
+        },
+        {
+          "start": 3898.9000000059605,
+          "duration": 61
+        },
+        {
+          "start": 3962.2000000029802,
+          "duration": 62
+        },
+        {
+          "start": 4027.1000000089407,
+          "duration": 55
+        },
+        {
+          "start": 4089.1000000089407,
+          "duration": 87
+        },
+        {
+          "start": 4179.29999999702,
+          "duration": 65
+        },
+        {
+          "start": 4277,
+          "duration": 76
+        },
+        {
+          "start": 4405.100000008941,
+          "duration": 50
+        },
+        {
+          "start": 4455.79999999702,
+          "duration": 54
+        },
+        {
+          "start": 4559.600000008941,
+          "duration": 63
+        },
+        {
+          "start": 4625.29999999702,
+          "duration": 88
+        },
+        {
+          "start": 4715.5,
+          "duration": 84
+        },
+        {
+          "start": 4800.9000000059605,
+          "duration": 77
+        },
+        {
+          "start": 4953.70000000298,
+          "duration": 55
+        },
+        {
+          "start": 5051.100000008941,
+          "duration": 95
+        },
+        {
+          "start": 5149.600000008941,
+          "duration": 74
+        },
+        {
+          "start": 5225.29999999702,
+          "duration": 66
+        },
+        {
+          "start": 5292.70000000298,
+          "duration": 106
+        },
+        {
+          "start": 5887.600000008941,
+          "duration": 80
+        },
+        {
+          "start": 6208.5,
+          "duration": 107
+        },
+        {
+          "start": 8278.79999999702,
+          "duration": 71
+        },
+        {
+          "start": 10454.5,
+          "duration": 60
+        }
+      ],
+      "lcp": 248,
+      "cls": 0,
+      "interactiveLongTasks": [
+        {
+          "start": 2893.5,
+          "duration": 87
+        },
+        {
+          "start": 2990.6000000089407,
+          "duration": 125
+        },
+        {
+          "start": 3125.2000000029802,
+          "duration": 94
+        },
+        {
+          "start": 3222.7999999970198,
+          "duration": 98
+        },
+        {
+          "start": 3324.2999999970198,
+          "duration": 91
+        },
+        {
+          "start": 3419,
+          "duration": 77
+        },
+        {
+          "start": 3499.1000000089407,
+          "duration": 70
+        },
+        {
+          "start": 3569.9000000059605,
+          "duration": 250
+        },
+        {
+          "start": 3830.2999999970198,
+          "duration": 66
+        },
+        {
+          "start": 3898.9000000059605,
+          "duration": 61
+        },
+        {
+          "start": 3962.2000000029802,
+          "duration": 62
+        },
+        {
+          "start": 4027.1000000089407,
+          "duration": 55
+        },
+        {
+          "start": 4089.1000000089407,
+          "duration": 87
+        },
+        {
+          "start": 4179.29999999702,
+          "duration": 65
+        },
+        {
+          "start": 4277,
+          "duration": 76
+        },
+        {
+          "start": 4405.100000008941,
+          "duration": 50
+        },
+        {
+          "start": 4455.79999999702,
+          "duration": 54
+        },
+        {
+          "start": 4559.600000008941,
+          "duration": 63
+        },
+        {
+          "start": 4625.29999999702,
+          "duration": 88
+        },
+        {
+          "start": 4715.5,
+          "duration": 84
+        },
+        {
+          "start": 4800.9000000059605,
+          "duration": 77
+        },
+        {
+          "start": 4953.70000000298,
+          "duration": 55
+        },
+        {
+          "start": 5051.100000008941,
+          "duration": 95
+        },
+        {
+          "start": 5149.600000008941,
+          "duration": 74
+        },
+        {
+          "start": 5225.29999999702,
+          "duration": 66
+        },
+        {
+          "start": 5292.70000000298,
+          "duration": 106
+        },
+        {
+          "start": 5887.600000008941,
+          "duration": 80
+        },
+        {
+          "start": 6208.5,
+          "duration": 107
+        },
+        {
+          "start": 8278.79999999702,
+          "duration": 71
+        },
+        {
+          "start": 10454.5,
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "width": 1440,
+      "height": 900,
+      "cpu": 4,
+      "samples": 580,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000018,
+      "p99": 33.400000000000546,
+      "over50": 3,
+      "ScriptDurationMs": 1003.663,
+      "LayoutDurationMs": 399.38599999999997,
+      "RecalcStyleDurationMs": 4312.117,
+      "TaskDurationMs": 7808.5650000000005,
+      "longTasks": [
+        {
+          "start": 188.79999999701977,
+          "duration": 113
+        },
+        {
+          "start": 313.20000000298023,
+          "duration": 167
+        },
+        {
+          "start": 697.9000000059605,
+          "duration": 78
+        },
+        {
+          "start": 899.4000000059605,
+          "duration": 75
+        },
+        {
+          "start": 2120.2000000029802,
+          "duration": 143
+        },
+        {
+          "start": 4161.5,
+          "duration": 88
+        },
+        {
+          "start": 6225,
+          "duration": 89
+        }
+      ],
+      "lcp": 328,
+      "cls": 0,
+      "interactiveLongTasks": [
+        {
+          "start": 2120.2000000029802,
+          "duration": 143
+        },
+        {
+          "start": 4161.5,
+          "duration": 88
+        },
+        {
+          "start": 6225,
+          "duration": 89
+        }
+      ]
+    },
+    {
+      "variant": "A",
+      "width": 390,
+      "height": 844,
+      "cpu": 4,
+      "samples": 617,
+      "p50": 16.699999999999818,
+      "p95": 16.800000000000182,
+      "p99": 33.40000000000009,
+      "over50": 4,
+      "ScriptDurationMs": 956.925,
+      "LayoutDurationMs": 361.92199999999997,
+      "RecalcStyleDurationMs": 3954.725,
+      "TaskDurationMs": 7316.715,
+      "longTasks": [
+        {
+          "start": 56.599999994039536,
+          "duration": 170
+        },
+        {
+          "start": 249.40000000596046,
+          "duration": 100
+        },
+        {
+          "start": 401.79999999701977,
+          "duration": 51
+        },
+        {
+          "start": 456.90000000596046,
+          "duration": 146
+        },
+        {
+          "start": 816.5999999940395,
+          "duration": 82
+        },
+        {
+          "start": 2161.2000000029802,
+          "duration": 146
+        },
+        {
+          "start": 4206.79999999702,
+          "duration": 61
+        },
+        {
+          "start": 6256.79999999702,
+          "duration": 118
+        },
+        {
+          "start": 8308.70000000298,
+          "duration": 86
+        }
+      ],
+      "lcp": 364,
+      "cls": 0,
+      "interactiveLongTasks": [
+        {
+          "start": 2161.2000000029802,
+          "duration": 146
+        },
+        {
+          "start": 4206.79999999702,
+          "duration": 61
+        },
+        {
+          "start": 6256.79999999702,
+          "duration": 118
+        },
+        {
+          "start": 8308.70000000298,
+          "duration": 86
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "width": 390,
+      "height": 844,
+      "cpu": 4,
+      "samples": 604,
+      "p50": 16.699999999999818,
+      "p95": 16.80000000000109,
+      "p99": 33.5,
+      "over50": 3,
+      "ScriptDurationMs": 983.499,
+      "LayoutDurationMs": 400.68199999999996,
+      "RecalcStyleDurationMs": 4271.473999999999,
+      "TaskDurationMs": 7783.693,
+      "longTasks": [
+        {
+          "start": 93.09999999403954,
+          "duration": 110
+        },
+        {
+          "start": 253.69999998807907,
+          "duration": 158
+        },
+        {
+          "start": 645.2999999970198,
+          "duration": 150
+        },
+        {
+          "start": 4041.0999999940395,
+          "duration": 177
+        },
+        {
+          "start": 6143.899999991059,
+          "duration": 53
+        }
+      ],
+      "lcp": 224,
+      "cls": 0,
+      "interactiveLongTasks": [
+        {
+          "start": 4041.0999999940395,
+          "duration": 177
+        },
+        {
+          "start": 6143.899999991059,
+          "duration": 53
+        }
+      ]
+    }
+  ]
+}

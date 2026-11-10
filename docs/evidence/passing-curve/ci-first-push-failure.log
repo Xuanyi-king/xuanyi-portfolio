@@ -1,0 +1,66 @@
+verify	Run npm run check:browser	﻿2026-11-10T13:38:42.8741486Z ##[group]Run npm run check:browser
+verify	Run npm run check:browser	2026-11-10T13:38:42.8741692Z [36;1mnpm run check:browser[0m
+verify	Run npm run check:browser	2026-11-10T13:38:42.8757055Z shell: /usr/bin/bash -e {0}
+verify	Run npm run check:browser	2026-11-10T13:38:42.8757197Z env:
+verify	Run npm run check:browser	2026-11-10T13:38:42.8757321Z   BROWSER_EVIDENCE_DIR: artifacts/browser
+verify	Run npm run check:browser	2026-11-10T13:38:42.8757468Z ##[endgroup]
+verify	Run npm run check:browser	2026-11-10T13:38:42.9370915Z 
+verify	Run npm run check:browser	2026-11-10T13:38:42.9371580Z > xuanyi-curiosity@1.0.0 check:browser
+verify	Run npm run check:browser	2026-11-10T13:38:42.9372514Z > node scripts/check-browser.mjs && node scripts/check-cross-browser.mjs && node scripts/check-identity.mjs && node scripts/check-canvas.mjs && node scripts/check-response.mjs
+verify	Run npm run check:browser	2026-11-10T13:38:42.9373109Z 
+verify	Run npm run check:browser	2026-11-10T13:39:57.2168184Z {
+verify	Run npm run check:browser	2026-11-10T13:39:57.2168542Z   "passed": 12,
+verify	Run npm run check:browser	2026-11-10T13:39:57.2169353Z   "checks": [
+verify	Run npm run check:browser	2026-11-10T13:39:57.2169616Z     "1440x900 layout, living curves, keyboard focus",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2170119Z     "home scroll composition, readable project titles, no eager video request",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2170599Z     "hover, named scene, detail, browser back, explicit return, real project media",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2171114Z     "Lab drag/anchor <1px, keyboard increments, Escape, presets, reset",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2171427Z     "768x1024 layout",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2171661Z     "390x844 layout, touch capture/cancel/anchor",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2171898Z     "375x812 layout",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2172068Z     "320x740 layout",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2172399Z     "SplitText 3 SPA exit/return cycles restore exact original HTML, no nested residue",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2173102Z     "reduced motion: static text, no SplitText wrappers, direct Lab state",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2173524Z     "1500ms delayed JS: title never moved behind its mask after first paint",
+verify	Run npm run check:browser	2026-11-10T13:39:57.2173999Z     "no-JS readable brand, complete static surface, native detail/return; repeat visit quiet"
+verify	Run npm run check:browser	2026-11-10T13:39:57.2174339Z   ],
+verify	Run npm run check:browser	2026-11-10T13:39:57.2174496Z   "errors": [],
+verify	Run npm run check:browser	2026-11-10T13:39:57.2174854Z   "evidence": "/home/runner/work/xuanyi-portfolio/xuanyi-portfolio/artifacts/browser/chromium"
+verify	Run npm run check:browser	2026-11-10T13:39:57.2175210Z }
+verify	Run npm run check:browser	2026-11-10T13:40:30.2131683Z chromium 145.0.7632.6: 7 groups passed
+verify	Run npm run check:browser	2026-11-10T13:41:03.4543362Z firefox 146.0.1: 7 groups passed
+verify	Run npm run check:browser	2026-11-10T13:41:41.9560873Z webkit 26.0: 7 groups passed
+verify	Run npm run check:browser	2026-11-10T13:44:39.3897238Z Living Identity: 12 browser/viewport combinations passed, forward/reverse, brand alignment, history, reduced motion.
+verify	Run npm run check:browser	2026-11-10T13:45:50.0373835Z chromium: Living Canvas four viewports, 100 cycles, gestures/longpress, restoration, resize, reduced and no-JS passed
+verify	Run npm run check:browser	2026-11-10T13:46:31.0820370Z firefox: Living Canvas four viewports, 100 cycles, gestures/longpress, restoration, resize, reduced and no-JS passed
+verify	Run npm run check:browser	2026-11-10T13:46:58.7323565Z node:internal/modules/run_main:107
+verify	Run npm run check:browser	2026-11-10T13:46:58.7323996Z     triggerUncaughtException(
+verify	Run npm run check:browser	2026-11-10T13:46:58.7324167Z     ^
+verify	Run npm run check:browser	2026-11-10T13:46:58.7324233Z 
+verify	Run npm run check:browser	2026-11-10T13:46:58.7324427Z AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+verify	Run npm run check:browser	2026-11-10T13:46:58.7324921Z + actual - expected
+verify	Run npm run check:browser	2026-11-10T13:46:58.7325511Z 
+verify	Run npm run check:browser	2026-11-10T13:46:58.7325730Z + [
+verify	Run npm run check:browser	2026-11-10T13:46:58.7328438Z +   '/127.0.0.1:4176/work/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7329343Z +   '/127.0.0.1:4176/notes/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7330070Z +   '/127.0.0.1:4176/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7330629Z +   '/127.0.0.1:4176/about/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.'
+verify	Run npm run check:browser	2026-11-10T13:46:58.7331011Z + ]
+verify	Run npm run check:browser	2026-11-10T13:46:58.7331180Z - []
+verify	Run npm run check:browser	2026-11-10T13:46:58.7331280Z 
+verify	Run npm run check:browser	2026-11-10T13:46:58.7331615Z     at file:///home/runner/work/xuanyi-portfolio/xuanyi-portfolio/scripts/check-canvas.mjs:519:18 {
+verify	Run npm run check:browser	2026-11-10T13:46:58.7332125Z   generatedMessage: true,
+verify	Run npm run check:browser	2026-11-10T13:46:58.7332409Z   code: 'ERR_ASSERTION',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7332680Z   actual: [
+verify	Run npm run check:browser	2026-11-10T13:46:58.7333086Z     '/127.0.0.1:4176/work/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7334103Z     '/127.0.0.1:4176/notes/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7334656Z     '/127.0.0.1:4176/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7335245Z     '/127.0.0.1:4176/about/__next._tree.txt?_rsc=oKAU0XsVPaq08fpO due to access control checks.'
+verify	Run npm run check:browser	2026-11-10T13:46:58.7335639Z   ],
+verify	Run npm run check:browser	2026-11-10T13:46:58.7335819Z   expected: [],
+verify	Run npm run check:browser	2026-11-10T13:46:58.7336046Z   operator: 'deepStrictEqual',
+verify	Run npm run check:browser	2026-11-10T13:46:58.7336279Z   diff: 'simple'
+verify	Run npm run check:browser	2026-11-10T13:46:58.7336470Z }
+verify	Run npm run check:browser	2026-11-10T13:46:58.7336560Z 
+verify	Run npm run check:browser	2026-11-10T13:46:58.7336654Z Node.js v24.22.2
+verify	Run npm run check:browser	2026-11-10T13:46:58.7569486Z ##[error]Process completed with exit code 1.

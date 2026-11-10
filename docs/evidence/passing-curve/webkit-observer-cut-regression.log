@@ -1,0 +1,5 @@
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+webkit 1440 passed
+webkit 768 passed
+webkit 390 passed
+webkit 320 passed

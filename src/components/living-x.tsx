@@ -124,7 +124,9 @@ export function LivingX({
       request: (fn) => requestAnimationFrame(fn),
       cancel: (id) => cancelAnimationFrame(id),
     });
-    controller.current = engine;
+    // A deterministic study has no spring clock; the same renderer remains the writer.
+    if (drive?.direct) engine.dispose();
+    controller.current = drive?.direct ? null : engine;
     let disposed = false;
     let intro: ReturnType<typeof playIdentityIntro> | undefined;
     const complete = () => {
@@ -133,6 +135,10 @@ export function LivingX({
       owner.complete();
     };
     const preference = () => {
+      if (drive?.direct) {
+        if (media.matches) owner.paint([0, 0, 0, 0]);
+        return;
+      }
       if (media.matches) {
         // Discard an early pointer before the static preference settles immediately.
         owner.input(() => engine.release());
@@ -160,13 +166,17 @@ export function LivingX({
     preference();
     const unbindDrive = drive?.subscribe((force) =>
       owner.input(() => {
+        if (drive?.direct) {
+          if (!document.hidden) owner.paint(media.matches ? [0, 0, 0, 0] : [force, force * .32, -force * .8, -force * .2]);
+          return;
+        }
         if (media.matches || document.hidden) return engine.release();
         engine.pull(0, force, force * 0.32);
         engine.pull(1, -force * 0.8, -force * 0.2);
       }),
     );
     const visibility = () => {
-      if (drive && document.hidden) owner.input(() => engine.release());
+      if (drive && !drive.direct && document.hidden) owner.input(() => engine.release());
     };
     const surface = play ? el : (el.closest(".hero") ?? el);
     const hover = (event: Event) => {

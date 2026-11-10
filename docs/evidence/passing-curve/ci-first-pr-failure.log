@@ -1,0 +1,51 @@
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	﻿2026-11-10T13:51:18.4135536Z ##[group]Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4136217Z [36;1mnode node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &[0m
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4136642Z [36;1mserver_pid=$![0m
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4136878Z [36;1mtrap 'kill "$server_pid"' EXIT[0m
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4137133Z [36;1mnpm run check:passing[0m
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4137389Z [36;1mnpm run record:passing[0m
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4158504Z shell: /usr/bin/bash -e {0}
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4158676Z env:
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4158823Z   BROWSER_BASE_URL: http://localhost:4187
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4158988Z ##[endgroup]
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4890389Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4894325Z > xuanyi-curiosity@1.0.0 check:passing
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4895249Z > node scripts/check-passing.mjs
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:18.4896159Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:31.1125786Z chromium 1440 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:43.2931611Z chromium 768 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:51:57.5600600Z chromium 390 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:52:12.1758120Z chromium 320 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:52:24.3126207Z firefox 1440 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:52:35.3325340Z firefox 768 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:52:46.3173333Z firefox 390 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:52:57.1012410Z firefox 320 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:12.8464593Z webkit 1440 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:25.2935028Z webkit 768 passed
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2726986Z node:internal/modules/run_main:107
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2727728Z     triggerUncaughtException(
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2728553Z     ^
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2728847Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2729404Z AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2730215Z + actual - expected
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2730487Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2730643Z + [
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2731018Z +   '/localhost:4187/lab/ due to access control checks.',
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2731381Z +   '/localhost:4187/now/ due to access control checks.'
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2731773Z + ]
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2732056Z - []
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2732361Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2732806Z     at file:///home/runner/work/xuanyi-portfolio/xuanyi-portfolio/scripts/check-passing.mjs:48:10 {
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2733384Z   generatedMessage: true,
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2733749Z   code: 'ERR_ASSERTION',
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2734118Z   actual: [
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2734459Z     '/localhost:4187/lab/ due to access control checks.',
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2734763Z     '/localhost:4187/now/ due to access control checks.'
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2735001Z   ],
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2735266Z   expected: [],
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2735528Z   operator: 'deepStrictEqual',
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2735798Z   diff: 'simple'
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2736029Z }
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2736116Z 
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2736243Z Node.js v24.22.2
+verify	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &	2026-11-10T13:53:37.2952795Z ##[error]Process completed with exit code 1.

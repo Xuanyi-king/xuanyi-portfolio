@@ -1,0 +1,297 @@
+{
+  "source": "453caa478e157bcf7e4264903c729d1d6ba8c878 exact untouched export",
+  "cpu": 4,
+  "reports": [
+    {
+      "ablation": "normal",
+      "traced": false,
+      "p50": 16.699999999999818,
+      "p95": 33.40000000000009,
+      "p99": 66.59999999999991,
+      "over50": 8,
+      "mutations": {
+        "path": 1456,
+        "style": 2001
+      },
+      "ScriptDurationMs": 1078.859,
+      "LayoutDurationMs": 374.75600000000003,
+      "RecalcStyleDurationMs": 4337.763,
+      "TaskDurationMs": 8200.786999999998
+    },
+    {
+      "ablation": "profile",
+      "traced": true,
+      "p50": 16.700000000000273,
+      "p95": 33.400000000000546,
+      "p99": 50.100000000000364,
+      "over50": 5,
+      "mutations": {
+        "path": 1296,
+        "style": 1600
+      },
+      "ScriptDurationMs": 1164.6740000000002,
+      "LayoutDurationMs": 432.998,
+      "RecalcStyleDurationMs": 4339.63,
+      "TaskDurationMs": 8715.883000000002,
+      "analysis": {
+        "interactiveMs": 10828.23,
+        "frames": 0,
+        "mainTaskMs": 8724.014000000076,
+        "layerizeMs": 465.9839999999997,
+        "layerizePerFrameMs": null,
+        "styleMs": 4331.580999999994,
+        "layoutMs": 406.2510000000001,
+        "paintMs": 1106.283000000001,
+        "longTasks": [
+          {
+            "atMs": 255.815,
+            "durationMs": 58.108
+          },
+          {
+            "atMs": 415.503,
+            "durationMs": 51.367
+          },
+          {
+            "atMs": 1731.745,
+            "durationMs": 64.759
+          },
+          {
+            "atMs": 3018.986,
+            "durationMs": 67.717
+          },
+          {
+            "atMs": 6809.135,
+            "durationMs": 59.359
+          }
+        ],
+        "hotCpuSamples": [
+          {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 7318.015000000016
+          },
+          {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 2140.8740000000003
+          },
+          {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 191.55399999999995
+          },
+          {
+            "functionName": "setProperty",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 153.50000000000003
+          },
+          {
+            "functionName": "a",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25747,
+            "selfMs": 139.474
+          },
+          {
+            "functionName": "v",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/1x6-5___8r9-_.js",
+            "lineNumber": 0,
+            "columnNumber": 822,
+            "selfMs": 119.93399999999998
+          },
+          {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 119.18900000000002
+          },
+          {
+            "functionName": "o",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25773,
+            "selfMs": 104.50600000000001
+          },
+          {
+            "functionName": "requestAnimationFrame",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 93.60200000000003
+          },
+          {
+            "functionName": "set value",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 62.41599999999999
+          },
+          {
+            "functionName": "b",
+            "scriptId": "12",
+            "url": "http://localhost:4189/_next/static/chunks/1x6-5___8r9-_.js",
+            "lineNumber": 0,
+            "columnNumber": 1920,
+            "selfMs": 27.625
+          },
+          {
+            "functionName": "u",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26065,
+            "selfMs": 24.096000000000007
+          },
+          {
+            "functionName": "",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26129,
+            "selfMs": 20.918
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14558,
+            "selfMs": 18.361999999999995
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://localhost:4189/_next/static/chunks/1w528xpecwlc6.js",
+            "lineNumber": 2,
+            "columnNumber": 14529,
+            "selfMs": 16.539
+          },
+          {
+            "functionName": "h",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 27015,
+            "selfMs": 13.546
+          },
+          {
+            "functionName": "fetch",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1,
+            "selfMs": 12.463000000000001
+          },
+          {
+            "functionName": "ey",
+            "scriptId": "10",
+            "url": "http://localhost:4189/_next/static/chunks/3hcg696yt7n09.js",
+            "lineNumber": 1,
+            "columnNumber": 22399,
+            "selfMs": 11.66
+          },
+          {
+            "functionName": "l",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 25808,
+            "selfMs": 10.646
+          },
+          {
+            "functionName": "",
+            "scriptId": "11",
+            "url": "http://localhost:4189/_next/static/chunks/21raq32kwlcz2.js",
+            "lineNumber": 0,
+            "columnNumber": 26885,
+            "selfMs": 8.534
+          }
+        ],
+        "note": "Nested category durations are not additive. Tracing/CPU profiling add overhead; compare normal runs separately. This is not field INP or physical-device FPS."
+      }
+    },
+    {
+      "ablation": "no-guide",
+      "traced": false,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000018,
+      "p99": 33.40000000000009,
+      "over50": 2,
+      "mutations": {
+        "path": 1760,
+        "style": 2194
+      },
+      "ScriptDurationMs": 984.5629999999999,
+      "LayoutDurationMs": 351.424,
+      "RecalcStyleDurationMs": 4204.256,
+      "TaskDurationMs": 7635.3369999999995
+    },
+    {
+      "ablation": "no-x",
+      "traced": false,
+      "p50": 16.699999999999818,
+      "p95": 16.800000000000182,
+      "p99": 33.399999999999636,
+      "over50": 1,
+      "mutations": {
+        "path": 2112,
+        "style": 2219
+      },
+      "ScriptDurationMs": 1034.2800000000002,
+      "LayoutDurationMs": 292.438,
+      "RecalcStyleDurationMs": 4203.298,
+      "TaskDurationMs": 7581.778
+    },
+    {
+      "ablation": "no-parent-perspective",
+      "traced": false,
+      "p50": 16.700000000000273,
+      "p95": 66.69999999999891,
+      "p99": 100,
+      "over50": 30,
+      "mutations": {
+        "path": 1504,
+        "style": 1219
+      },
+      "ScriptDurationMs": 1224.841,
+      "LayoutDurationMs": 446.8260000000001,
+      "RecalcStyleDurationMs": 4767.005,
+      "TaskDurationMs": 8793.412
+    },
+    {
+      "ablation": "root-vars-frozen",
+      "traced": false,
+      "p50": 16.699999999999818,
+      "p95": 16.800000000000182,
+      "p99": 50,
+      "over50": 6,
+      "mutations": {
+        "path": 1829,
+        "style": 12
+      },
+      "ScriptDurationMs": 1059.587,
+      "LayoutDurationMs": 402.001,
+      "RecalcStyleDurationMs": 293.023,
+      "TaskDurationMs": 3554.3099999999995
+    }
+  ]
+}

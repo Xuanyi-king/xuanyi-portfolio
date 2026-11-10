@@ -1,3 +1,4 @@
+import { watchPageErrors } from './page-errors.mjs';
 import { chromium, firefox, webkit } from "playwright";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
@@ -148,7 +149,7 @@ try {
         const errors = [];
         const p = await c.newPage();
         p.setDefaultTimeout(15000);
-        p.on("pageerror", (e) => errors.push(e.message));
+        const fetchDiagnostics = await watchPageErrors(p, name, errors, base);
         try {
           await p.goto(base);
           await ready(p);
@@ -338,6 +339,15 @@ try {
           });
           await delay(p, 400);
           await position(p, 1);
+          // Functional alignment must observe the browser's refresh, not race a fixed sleep.
+          const resizeWaiting = Date.now();
+          await p.waitForFunction(() => {
+            const a = document.querySelector('.hero-artwork').getBoundingClientRect();
+            const n = document.querySelector('.wordmark > svg').getBoundingClientRect();
+            return Math.abs(a.x + a.width / 2 - n.x - n.width / 2) < 2 &&
+              Math.abs(a.y + a.height / 2 - n.y - n.height / 2) < 2;
+          }, undefined, { timeout: 5000 });
+          const resizeSettleMs = Date.now() - resizeWaiting;
           const resized = await snapshot(p);
           assert.ok(
             Math.abs(resized.center[0] - resized.target[0]) < 2 &&
@@ -352,6 +362,9 @@ try {
           await position(p, 0.4);
           await p.emulateMedia({ reducedMotion: "reduce" });
           await delay(p, 250);
+          const preferenceWaiting = Date.now();
+          await p.waitForFunction(() => getComputedStyle(document.querySelector('.hero-artwork')).transform === 'none', undefined, { timeout: 5000 });
+          const preferenceSettleMs = Date.now() - preferenceWaiting;
           assert.equal(
             await p
               .locator(".hero-artwork")
@@ -369,8 +382,11 @@ try {
             navAligned: true,
             reducedMotion: true,
             resize: true,
+            resizeSettleMs,
+            preferenceSettleMs,
             ctaClear: true,
             errors,
+            fetchDiagnostics,
           });
         } catch (error) {
           await p.screenshot({ path: path.join(dir, `${label}-failure.png`) });

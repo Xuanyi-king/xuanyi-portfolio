@@ -1,0 +1,2 @@
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+webkit: Living Canvas four viewports, 100 cycles, gestures/longpress, restoration, resize, reduced and no-JS passed

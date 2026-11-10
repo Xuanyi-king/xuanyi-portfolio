@@ -1,0 +1,23 @@
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Reduced motion removes folding transforms
++ actual - expected
+
++ 'matrix(0.697923, 0.017134, -0.017134, 0.697923, -152.966003, 142.167999)'
+- 'none'
+
+    at file:///workspace/xuanyi-portfolio/scripts/check-identity.mjs:355:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'matrix(0.697923, 0.017134, -0.017134, 0.697923, -152.966003, 142.167999)',
+  expected: 'none',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
