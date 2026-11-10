@@ -37,6 +37,9 @@ function prepare() {
       (_match, quote, folder) => quote + base + "/" + folder + "/");
     text = text.replace(/url\(\s*\/(fonts|projects|covers|brand)\//g,
       (_match, folder) => "url(" + base + "/" + folder + "/");
+    // BackLink is a custom component that renders a native anchor (not next/link).
+    text = text.replace(/(<BackLink\b[^>]*?\bhref\s*=\s*)(["'])\/(?!\/|xuanyi-portfolio\/)/g,
+      (_match, start, quote) => start + quote + base + "/");
     // Only native anchors need prefixing. Next.js Link already handles basePath.
     text = text.replace(/(<a\b[^>]*?\bhref\s*=\s*)(["'])\/(?!\/|xuanyi-portfolio\/)/g,
       (_match, start, quote) => start + quote + base + "/");
