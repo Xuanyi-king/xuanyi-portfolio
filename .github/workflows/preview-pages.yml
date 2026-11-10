@@ -1,0 +1,60 @@
+name: XUANYI 2.3 Independent Preview (GitHub Pages)
+on:
+  push:
+    branches:
+      - preview/xuanyi-2-3
+
+concurrency:
+  group: xuanyi-isolated-preview
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Prepare preview-only URL rewriting
+        run: node scripts/prepare-pages-preview.mjs prepare
+      - name: Build Next.js static export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_PREVIEW_BASE_PATH: /xuanyi-portfolio
+      - name: Stamp version and prevent search indexing
+        run: node scripts/prepare-pages-preview.mjs finalize
+        env:
+          PREVIEW_SOURCE_SHA: 31222d9a6140ec84574156dddd13d6179d9343cf
+      - name: Verify preview paths and static assets
+        run: node scripts/prepare-pages-preview.mjs verify
+      - name: Upload portable preview build
+        uses: actions/upload-artifact@v4
+        with:
+          name: xuanyi-preview-static
+          path: out/
+          retention-days: 14
+      - name: Package GitHub Pages preview
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: out/
+
+  deploy:
+    runs-on: ubuntu-24.04
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish independent preview (requires Pages source = GitHub Actions)
+        id: deployment
+        uses: actions/deploy-pages@v4
