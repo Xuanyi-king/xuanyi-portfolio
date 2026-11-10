@@ -10,7 +10,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -47,6 +47,16 @@ jobs:
           npm run measure:direction
         env:
           BROWSER_BASE_URL: http://localhost:4188
+      - run: |
+          node node_modules/serve/build/main.js out -l 4187 > /tmp/passing-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          npm run check:passing
+          npm run record:passing
+        env:
+          BROWSER_BASE_URL: http://localhost:4187
+      - run: npm run compare:passing
+        name: Compare exact 2.2, original A and The Passing Curve in three alternating rounds
       - run: npm run measure:canvas
       - run: npm run check:strict
       - run: npm run compare:canvas

@@ -16,7 +16,10 @@
     "check:strict": "node scripts/check-strict.mjs",
     "check:direction": "node scripts/check-direction.mjs",
     "record:direction": "node scripts/record-direction.mjs",
-    "measure:direction": "node scripts/measure-direction.mjs"
+    "measure:direction": "node scripts/measure-direction.mjs",
+    "check:passing": "node scripts/check-passing.mjs",
+    "record:passing": "node scripts/record-passing.mjs",
+    "compare:passing": "node scripts/compare-passing.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
