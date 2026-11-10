@@ -5,5 +5,5 @@ async function serve(out,port){const log=await fs.open(`${dir}/server-${port}.lo
 try{
  const baseline=await source('75a1e19fe63206c348548b3cfe969355499f7713',4191,'baseline'),old=await source('453caa478e157bcf7e4264903c729d1d6ba8c878',4189,'oldA'),current=process.env.BROWSER_BASE_URL??await serve(path.resolve('out'),4187);
  const env={...process.env,PASSING_BASELINE_URL:baseline,PASSING_OLD_URL:old,BROWSER_BASE_URL:current};
- for(const script of ['capture-passing-comparison','measure-passing']){console.log(script);const r=await exec(process.execPath,['scripts/'+script+'.mjs'],{env,maxBuffer:16*1024*1024});await fs.writeFile(`${dir}/${script}.log`,r.stdout+r.stderr)}
+ for(const script of ['capture-passing-comparison','audit-passing','measure-passing']){console.log(script);const r=await exec(process.execPath,['scripts/'+script+'.mjs'],{env,maxBuffer:16*1024*1024});await fs.writeFile(`${dir}/${script}.log`,r.stdout+r.stderr)}
 }finally{for(const child of servers)child.kill();for(const folder of temporary)await fs.rm(folder,{recursive:true,force:true})}

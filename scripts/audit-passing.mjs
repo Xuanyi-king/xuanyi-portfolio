@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import { analyzeCanvasTrace } from './lib/canvas-trace.mjs';
-const base=process.env.BROWSER_BASE_URL??'http://localhost:4189';
+const base=process.env.PASSING_OLD_URL??process.env.BROWSER_BASE_URL??'http://localhost:4189';
 const dir='artifacts/browser/passing-curve/audit';await fs.mkdir(dir,{recursive:true});
 console.log('launch');const browser=await chromium.launch(),reports=[];console.log('launched');
 for(const ablation of ['normal','profile','no-guide','no-x','no-parent-perspective','root-vars-frozen']){
