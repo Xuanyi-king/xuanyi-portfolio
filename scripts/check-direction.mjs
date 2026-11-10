@@ -1,3 +1,4 @@
+import { watchPageErrors } from './page-errors.mjs';
 import {chromium,firefox,webkit} from 'playwright';
 import fs from 'node:fs/promises';
 import {spawn} from 'node:child_process';
@@ -11,7 +12,7 @@ for(const [engine,browser] of Object.entries({chromium,firefox,webkit})){
  if(process.env.BROWSER_ENGINES&&!process.env.BROWSER_ENGINES.split(',').includes(engine))continue;
  const b=await browser.launch();
  for(const [w,h] of [[1440,900],[768,1024],[390,844],[320,740]]){
-  const c=await b.newContext({viewport:{width:w,height:h},...(engine==='chromium'?{recordVideo:{dir:folder+'/video',size:{width:w,height:h}}}:{})});const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
+  const c=await b.newContext({viewport:{width:w,height:h},...(engine==='chromium'?{recordVideo:{dir:folder+'/video',size:{width:w,height:h}}}:{})});const p=await c.newPage();const errors=[];const fetchDiagnostics=await watchPageErrors(p,engine,errors,base);
   await p.goto(base+'/lab/motion-direction/');await p.evaluate(()=>document.fonts.ready);
   for(const v of ['A · Continuous Thread','B · Spatial Unfolding']){
    await p.getByRole('button',{name:v,exact:true}).click();
@@ -27,7 +28,7 @@ for(const [engine,browser] of Object.entries({chromium,firefox,webkit})){
   }
   await p.getByRole('button',{name:'真实滚动模式',exact:true}).click();await p.mouse.wheel(0,600);await p.waitForTimeout(250);await p.mouse.wheel(0,-600);await p.waitForTimeout(250);
   await p.emulateMedia({reducedMotion:'reduce'});await p.getByRole('button',{name:'切回导演预演',exact:true}).click();await p.getByRole('button',{name:'Restart',exact:true}).click();await p.getByRole('button',{name:'Play',exact:true}).click();await p.waitForTimeout(200);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),'0');
-  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);reports.push({engine,w,h,pause:true,reduced:true,errors});
+  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);reports.push({engine,w,h,pause:true,reduced:true,errors,fetchDiagnostics});
   const video=p.video();await c.close();if(video)await video.saveAs(`${folder}/${engine}-${w}-interaction.webm`);
  }
  await b.close();

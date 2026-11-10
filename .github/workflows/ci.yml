@@ -23,6 +23,8 @@ jobs:
       - run: npm run build
       - run: npm run check:export
       - run: npx playwright install --with-deps chromium firefox webkit
+      - run: node scripts/check-page-errors.mjs
+        name: Verify real exceptions and rejections remain blocking
       - run: node scripts/check-cross-browser.mjs
         name: WebKit narrow layout smoke
         env:

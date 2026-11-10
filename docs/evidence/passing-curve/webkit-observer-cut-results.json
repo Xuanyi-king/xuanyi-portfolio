@@ -1,0 +1,150 @@
+[
+  {
+    "engine": "webkit",
+    "w": 1440,
+    "h": 900,
+    "frames": [
+      0,
+      250,
+      400,
+      500,
+      600,
+      750,
+      900,
+      1000
+    ],
+    "bounds": {
+      "clear": true,
+      "inside": true,
+      "title": true,
+      "interactive": true
+    },
+    "pause": true,
+    "reduced": true,
+    "reverse": true,
+    "stop": true,
+    "detailReturn": true,
+    "drag": true,
+    "scrollSettleMs": [
+      563,
+      19,
+      149,
+      122,
+      85
+    ],
+    "overflow": false,
+    "errors": [],
+    "fetchDiagnostics": []
+  },
+  {
+    "engine": "webkit",
+    "w": 768,
+    "h": 1024,
+    "frames": [
+      0,
+      250,
+      400,
+      500,
+      600,
+      750,
+      900,
+      1000
+    ],
+    "bounds": {
+      "clear": true,
+      "inside": true,
+      "title": true,
+      "interactive": true
+    },
+    "pause": true,
+    "reduced": true,
+    "reverse": true,
+    "stop": true,
+    "detailReturn": true,
+    "drag": true,
+    "scrollSettleMs": [
+      300,
+      180,
+      51,
+      153,
+      299
+    ],
+    "overflow": false,
+    "errors": [],
+    "fetchDiagnostics": []
+  },
+  {
+    "engine": "webkit",
+    "w": 390,
+    "h": 844,
+    "frames": [
+      0,
+      250,
+      400,
+      500,
+      600,
+      750,
+      900,
+      1000
+    ],
+    "bounds": {
+      "clear": true,
+      "inside": true,
+      "title": true,
+      "interactive": true
+    },
+    "pause": true,
+    "reduced": true,
+    "reverse": true,
+    "stop": true,
+    "detailReturn": true,
+    "drag": true,
+    "scrollSettleMs": [
+      104,
+      121,
+      130,
+      121,
+      221
+    ],
+    "overflow": false,
+    "errors": [],
+    "fetchDiagnostics": []
+  },
+  {
+    "engine": "webkit",
+    "w": 320,
+    "h": 740,
+    "frames": [
+      0,
+      250,
+      400,
+      500,
+      600,
+      750,
+      900,
+      1000
+    ],
+    "bounds": {
+      "clear": true,
+      "inside": true,
+      "title": true,
+      "interactive": true
+    },
+    "pause": true,
+    "reduced": true,
+    "reverse": true,
+    "stop": true,
+    "detailReturn": true,
+    "drag": true,
+    "scrollSettleMs": [
+      93,
+      75,
+      29,
+      58,
+      152
+    ],
+    "overflow": false,
+    "errors": [],
+    "fetchDiagnostics": []
+  }
+]

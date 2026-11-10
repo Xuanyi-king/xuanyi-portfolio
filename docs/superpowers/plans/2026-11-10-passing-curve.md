@@ -32,7 +32,7 @@ Files: scripts/check-passing.mjs, scripts/record-passing.mjs, docs/evidence/pass
 Files: scripts/measure-passing.mjs, .github/workflows/ci.yml, docs/motion-direction-2-3/directors-cut/.
 - [x] Exact2.2 / oldA / cut in three alternating rounds, desktop/mobile4×CPU same scroll/drag sequence; independent trace and CPU profile.
 - [x] Record all RAF percentiles, >50, longtasks, main/style/layout/paint/layerize/LCP/CLS. No selective round reporting.
-- [ ] Independent whole-change review; fix significant findings and rerun affected checks. Run required original regressions.
+- [x] Independent whole-change review; fix significant findings and rerun affected checks. Run required original regressions.
 - [x] Decide all six adoption gates; leave homepage intact if any unproven. Publish evidence, append verified identity commits, update existing Draft PR and check latest Actions.
 
 ## Execution ledger
@@ -40,3 +40,5 @@ Files: scripts/measure-passing.mjs, .github/workflows/ci.yml, docs/motion-direct
 Dedicated fresh task clone used in place on existing PR4 branch; no pre-existing user changes. Exact2.2 rebuilt with its own npm ci after Turbopack rejected a symlinked dependency directory. Never substituted a baseline. Initial profiler overlapped setup; excluded from acceptance and retained separately. Four reviewer findings reproduced/fixed; state+tablet checks observed RED→GREEN. Final 12/12 engine/viewport checks,61/61 unit tests, typecheck, production build and12-route export passed before implementation commit. Native phone omits cross-region guide intentionally; this weakens adoption case and is disclosed. Source implementation frozen for clean performance/film runs.
 
 Final evidence: six films/558 inspected8fps samples; first-paint flash found and fixed RED→GREEN, films regenerated. Clean normal18+director12+profile6 samples completed on3d0a4d9 with dirty=false. Desktop improves; mobile third-roundP99=66.7ms retained. Art/no-full-native-phone-curve and tail risk keep production2.2. Original identity test had two fixed-delay races, isolated current/exact2.2 cases passed; readiness waits retain original2px/none assertions and final12 cases passed. Existing PR publication/Actions state is recorded online in PR4.
+
+Final CI follow-up: both93f2cf0 runs failed on WebKit native same-origin Fetch Inspector diagnostics, not a proven uncaught JS exception.24-round DOM+Inspector reproduction and3-engine exception/rejection/forged-text sentinels are retained. Test-only observer records native diagnostics separately and keeps real DOM errors fatal. Await latest-head full CI; production decision remains unchanged.

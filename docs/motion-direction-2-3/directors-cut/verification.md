@@ -4,7 +4,7 @@
 
 ## Browser checks
 
-本轮本机完整跑过Chromium145 / Firefox146 / WebKit26 ×1440×900、768×1024、390×844、320×740的12组。之后完整影片发现首帧Gallery闪现，补充SSR禁用JS的初始状态断言并修正，再跑Chromium四视口全部通过；最终提交的全部引擎重跑结果以PR最新CI Artifact为准，不把前一版本的12组当成最后markup的原始JSON。
+本轮本机完整跑过Chromium145 / Firefox146 / WebKit26 ×1440×900、768×1024、390×844、320×740的12组。之后完整影片发现首帧Gallery闪现，补充SSR禁用JS的初始状态断言并修正；修正后再完整跑过三引擎×四视口12组，[最终网页源码本机日志](../../evidence/passing-curve/three-engine-post-film.log)保留。最终测试观测修正后的全部引擎结果以PR最新CI Artifact为准。
 
 [三引擎原始通过日志](../../evidence/passing-curve/three-engine-pre-film.log)；[影片修正后的本机Chromium4组](../../evidence/passing-curve/local-chromium-results.json)。CI执行同一脚本，会输出最新12组passing-curve/browser-results.json。
 
@@ -36,3 +36,16 @@
 第一次原回归在Chromium320→390 resize的2px对齐断言失败，第二次在WebKit动态减少运动后的transform=none断言失败。[首次失败](../../evidence/passing-curve/original-regression-first-failure.log) · [第二次失败](../../evidence/passing-curve/original-regression-second-failure.log)。同一诊断脚本隔离执行当前首页与精确2.2的窄屏resize，以及精确2.2的WebKit桌面偏好切换，均通过；相关业务源码无本轮diff。
 
 原测试以180/250ms固定等待后读取状态，完整软件浏览器流程中会先于刷新/偏好清理完成。只改回归等待条件：5秒上限内等待真实目标对齐/transform清除，再执行原来的2px与none断言；没有放宽容差、跳过引擎或改变正式首页业务代码。等待时间也写入结果，不能拿它当作延迟性能通过。修改后[原首页12组完整回归](../../evidence/passing-curve/homepage-identity-results.json)通过，[原始日志](../../evidence/passing-curve/homepage-identity-final.log)保留。独立正常性能测试在修改测试等待之前已经完成，网页代码仍是同一3d0a4d9。
+
+
+## 首次最终CI的WebKit诊断（保留失败，不改网页绕过）
+
+93f2cf0的两次CI失败：[PR run 42826217386](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/42826217386)在Cut WebKit390的errors断言，[push run 42826205925](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/42826205925)在原Canvas WebKit的errors断言。[原始PR日志](../../evidence/passing-curve/ci-first-pr-failure.log)和[push日志](../../evidence/passing-curve/ci-first-push-failure.log)保留。不是把两次失败描述为通过。
+
+实际诊断：在当前静态网页上快速离页/返回24轮，WebKit产生62条“Fetch API cannot load 同源URL due to access control checks”，但独立DOM监听的window.error和unhandledrejection均为0；它们与pagehide/路由预取发生在一起。[完整日志](../../evidence/passing-curve/webkit-prefetch-dom-diagnostic.log)。精确2.2的较慢隔离流程未复现，不能据此断言其绝不会发生。
+
+Playwright1.58.2的webkit/wkPage.js `_onConsoleMessage`将Inspector中level=error、source=javascript的全部消息转为pageerror，包含这些原生Fetch诊断。测试新增独立DOM error/rejection通道，所有真实异常继续失败；仅识别WebKit、精确原生文本/名称/stack首行、同源URL的诊断，完整记录到fetchDiagnostics，不当作未捕获JS异常。跨域、TypeError及其余pageerror仍失败。没有preventDefault，没有修改网站请求、禁用预取、增加CORS头或关闭浏览器安全检查。
+
+[实际三浏览器故意抛错验证](../../evidence/passing-curve/page-errors-sentinels.log)证明普通throw、Promise.reject、下一文档throw，以及伪装成同样原生文本/stack的真实throw都仍被DOM通道捕获并进入失败数组。WebKit在data文档把消息隐藏为Script error也仍失败。CI先执行这些哨兵再运行功能回归；真实导航、详情返回、页面可操作性断言全部保留。
+
+原Canvas本机曾出现一次WebKit桌面15秒settle超时；精确2.2桌面隔离通过，当前WebKit四视口/100cycles完整重跑也通过。[重跑日志](../../evidence/passing-curve/legacy-canvas-webkit-rerun.log)。它和CI Fetch诊断是不同问题；不删除初次失败、不宣称已证明所有环境无时序长尾。网页源码及正常性能样本未因此改变。

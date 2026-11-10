@@ -1,0 +1,19 @@
+
+> xuanyi-curiosity@1.0.0 check:passing
+> node scripts/check-passing.mjs
+
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+chromium 1440 passed
+chromium 768 passed
+chromium 390 passed
+chromium 320 passed
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+firefox 1440 passed
+firefox 768 passed
+firefox 390 passed
+firefox 320 passed
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+webkit 1440 passed
+webkit 768 passed
+webkit 390 passed
+webkit 320 passed

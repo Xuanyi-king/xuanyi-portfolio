@@ -1,3 +1,4 @@
+import { watchPageErrors } from './page-errors.mjs';
 import { chromium, firefox, webkit } from "playwright";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
@@ -148,7 +149,7 @@ try {
         const errors = [];
         const p = await c.newPage();
         p.setDefaultTimeout(15000);
-        p.on("pageerror", (e) => errors.push(e.message));
+        const fetchDiagnostics = await watchPageErrors(p, name, errors, base);
         try {
           await p.goto(base);
           await ready(p);
@@ -385,6 +386,7 @@ try {
             preferenceSettleMs,
             ctaClear: true,
             errors,
+            fetchDiagnostics,
           });
         } catch (error) {
           await p.screenshot({ path: path.join(dir, `${label}-failure.png`) });

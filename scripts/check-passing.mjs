@@ -1,3 +1,4 @@
+import { watchPageErrors } from './page-errors.mjs';
 import {chromium,firefox,webkit} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -9,7 +10,7 @@ for(const [engine,type] of Object.entries({chromium,firefox,webkit})){
  const b=await type.launch();
  try{const staticContext=await b.newContext({javaScriptEnabled:false}),staticPage=await staticContext.newPage();await staticPage.goto(base+'/lab/motion-direction/');assert.equal(await staticPage.locator('.direction-portal').evaluate(el=>getComputedStyle(el).visibility),'hidden','SSR does not flash Gallery over the hero');await staticContext.close();for(const [w,h] of [[1440,900],[768,1024],[390,844],[320,740]]){
   if(process.env.PASSING_WIDTH&&Number(process.env.PASSING_WIDTH)!==w)continue;
-  const c=await b.newContext({viewport:{width:w,height:h}}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+  const c=await b.newContext({viewport:{width:w,height:h}}),p=await c.newPage(),errors=[];const fetchDiagnostics=await watchPageErrors(p,engine,errors,base);
   await p.goto(base+'/lab/motion-direction/');await p.evaluate(()=>document.fonts.ready);await p.getByRole('button',{name:'Director’s Cut · The Passing Curve',exact:true}).click();
   for(const n of frames){await scrub(p,n);await p.waitForTimeout(90);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),String(n/1000));if(w===768&&n===600){const overlap=await p.locator('.direction-stage').evaluate(el=>{const a=el.querySelector('.direction-intro'),b=el.querySelector('[data-gallery-active=true] .project-meta'),x=a.getBoundingClientRect(),y=b.getBoundingClientRect();return +getComputedStyle(a).opacity>.1&&+getComputedStyle(b).opacity>.1&&x.right>y.left&&x.left<y.right&&x.bottom>y.top&&x.top<y.bottom});assert.equal(overlap,false,'tablet Intro must leave the project reading plane');}if(engine==='chromium'){await p.evaluate(()=>scrollTo({top:0,behavior:'instant'}));const clip=await p.locator('.direction-stage').boundingBox();await p.screenshot({fullPage:true,clip,path:`${dir}/stills/cut-${w}-${n}.png`});}}
   const bounds=await p.locator('.direction-stage').evaluate(el=>{const active=el.querySelector('[data-gallery-active=true]'),tags=active.querySelector('.tags').getBoundingClientRect(),meta=active.querySelector('.project-meta').getBoundingClientRect(),controls=el.querySelector('.gallery-controls').getBoundingClientRect(),canvas=el.getBoundingClientRect();return {clear:tags.bottom+4<=controls.top,inside:controls.bottom<=canvas.bottom,title:meta.left>=canvas.left&&meta.right<=canvas.right,interactive:!el.querySelector('.direction-portal').inert}});assert.ok(Object.values(bounds).every(Boolean),JSON.stringify({w,bounds}));
@@ -45,7 +46,7 @@ for(const [engine,type] of Object.entries({chromium,firefox,webkit})){
   await p.setViewportSize({width:w+3,height:h});await p.waitForTimeout(120);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await p.emulateMedia({reducedMotion:'reduce'});await goto(.5);assert.ok(await p.locator('.direction-mark').evaluate(el=>getComputedStyle(el).visibility==='visible'),JSON.stringify({w,progress:await p.locator('.direction-stage').getAttribute('data-progress'),mark:await p.locator('.direction-mark').getAttribute('style')}));
   await p.getByRole('button',{name:'切回导演预演',exact:true}).click();await p.getByRole('button',{name:'Restart',exact:true}).click();await p.getByRole('button',{name:'Play',exact:true}).click();await p.waitForTimeout(120);assert.equal(await p.locator('.direction-stage').getAttribute('data-progress'),'0');
-  assert.deepEqual(errors,[]);reports.push({engine,w,h,frames,bounds,pause:true,reduced:true,reverse:true,stop:true,detailReturn:true,drag:true,scrollSettleMs:settleTimes,overflow:false,errors});console.log(engine,w,'passed');await c.close();
+  assert.deepEqual(errors,[]);reports.push({engine,w,h,frames,bounds,pause:true,reduced:true,reverse:true,stop:true,detailReturn:true,drag:true,scrollSettleMs:settleTimes,overflow:false,errors,fetchDiagnostics});console.log(engine,w,'passed');await c.close();
  }
  }finally{await b.close();}
 }
