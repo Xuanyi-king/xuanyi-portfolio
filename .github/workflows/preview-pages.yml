@@ -52,7 +52,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: xuanyi-preview-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Publish independent preview (requires Pages source = GitHub Actions)
