@@ -18,6 +18,7 @@ export function frameFor(
   count: number,
   width: number,
   reduced = false,
+  spatial: 'standard' | 'sky' = 'standard',
 ) {
   const distance = signedDistance(index, position, count),
     a = Math.abs(distance),
@@ -37,11 +38,11 @@ export function frameFor(
   return {
     distance,
     x: reduced ? 0 : distance * gallerySpacing(width),
-    y: reduced ? 0 : a * (width <= 760 ? 18 : 28),
-    z: reduced ? 0 : -Math.pow(a, 0.9) * (width <= 760 ? 180 : 240),
+    y: reduced ? 0 : a * (width <= 760 ? 18 : 28) * (spatial==='sky'?.6:1),
+    z: reduced ? 0 : -Math.pow(a, 0.9) * (width <= 760 ? 180 : 240) * (spatial==='sky'?.82:1),
     yaw: reduced
       ? 0
-      : Math.max(-62, Math.min(62, -distance * (width <= 760 ? 25 : 34))),
+      : Math.max(-62, Math.min(62, -distance * (width <= 760 ? 25 : 34))) * (spatial==='sky'?.6:1),
     scale: reduced ? 1 : Math.max(0.65, 1 - a * 0.12),
     opacity,
     zIndex: 1000 - Math.round(a * 100),

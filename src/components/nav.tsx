@@ -6,6 +6,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { XMark } from "./x-mark";
 export function Navigation() {
   const path = usePathname();
+  const sky=path.startsWith('/lab/sky-edition');
+  const skyHref=(href:string)=>sky&&['/','/work','/notes','/about'].includes(href)?`/lab/sky-edition${href==='/'?'/':href+'/'}`:href;
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +44,7 @@ export function Navigation() {
   }, [open]);
   return (
     <header className="site-header">
-      <Link href="/" className="wordmark" aria-label="xuanyi. 首页">
+      <Link href={skyHref('/')} className="wordmark" aria-label="xuanyi. 首页">
         <XMark compact profile={path.startsWith('/lab/sky-edition') ? path.includes('cloud-silk')?'cloud':'sky' : 'sculpted'} />
         <span>
           xuanyi<span className="logo-period">.</span>
@@ -56,8 +58,8 @@ export function Navigation() {
         ].map(([label, href]) => (
           <Link
             key={href}
-            href={href}
-            aria-current={path.startsWith(href) ? "page" : undefined}
+            href={skyHref(href)}
+            aria-current={path.startsWith(skyHref(href)) ? "page" : undefined}
           >
             {label}
             <span />
@@ -99,7 +101,7 @@ export function Navigation() {
             ["Lab", "/lab"],
             ["Now", "/now"],
           ].map(([label, href], i) => (
-            <Link key={href} href={href}>
+            <Link key={href} href={skyHref(href)}>
               <small>0{i + 1}</small>
               {label}
               <ArrowUpRight />
