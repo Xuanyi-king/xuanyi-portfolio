@@ -1,0 +1,232 @@
+[
+  {
+    "frozen": false,
+    "p95": 33.30000000000018,
+    "delta": {
+      "LayoutDuration": 0.043924,
+      "RecalcStyleDuration": 0.030141,
+      "DevToolsCommandDuration": 0.0009330000000000033,
+      "ScriptDuration": 0.648034,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.98156,
+      "TaskOtherDuration": 0.258528
+    },
+    "top": [
+      {
+        "function": "(idle)",
+        "url": "",
+        "hits": 1406
+      },
+      {
+        "function": "(program)",
+        "url": "",
+        "hits": 264
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 170
+      },
+      {
+        "function": "setAttribute",
+        "url": "",
+        "hits": 48
+      },
+      {
+        "function": "(garbage collector)",
+        "url": "",
+        "hits": 35
+      },
+      {
+        "function": "d",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 26
+      },
+      {
+        "function": "c",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 21
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 19
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/0c1qia6syj9gs.js",
+        "hits": 19
+      },
+      {
+        "function": "T",
+        "url": "http://localhost:4187/_next/static/chunks/10vtm4753_fzu.js",
+        "hits": 19
+      },
+      {
+        "function": "p",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 14
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 12
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 10
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 9
+      },
+      {
+        "function": "h",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 8
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 8
+      },
+      {
+        "function": "setAttribute",
+        "url": "",
+        "hits": 7
+      },
+      {
+        "function": "getAttribute",
+        "url": "",
+        "hits": 4
+      },
+      {
+        "function": "setAttribute",
+        "url": "",
+        "hits": 4
+      },
+      {
+        "function": "p",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 3
+      }
+    ]
+  },
+  {
+    "frozen": true,
+    "p95": 16.799999999999955,
+    "delta": {
+      "LayoutDuration": 0,
+      "RecalcStyleDuration": 0.006804,
+      "DevToolsCommandDuration": 0.0006589999999999999,
+      "ScriptDuration": 0.509076,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.607783,
+      "TaskOtherDuration": 0.091244
+    },
+    "top": [
+      {
+        "function": "(idle)",
+        "url": "",
+        "hits": 1728
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 237
+      },
+      {
+        "function": "(program)",
+        "url": "",
+        "hits": 63
+      },
+      {
+        "function": "(garbage collector)",
+        "url": "",
+        "hits": 27
+      },
+      {
+        "function": "p",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 23
+      },
+      {
+        "function": "d",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 22
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 20
+      },
+      {
+        "function": "c",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 19
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 14
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 13
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 11
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 11
+      },
+      {
+        "function": "h",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 9
+      },
+      {
+        "function": "",
+        "url": "http://localhost:4187/_next/static/chunks/0c1qia6syj9gs.js",
+        "hits": 5
+      },
+      {
+        "function": "p",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 4
+      },
+      {
+        "function": "f",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 3
+      },
+      {
+        "function": "s",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 3
+      },
+      {
+        "function": "T",
+        "url": "http://localhost:4187/_next/static/chunks/10vtm4753_fzu.js",
+        "hits": 3
+      },
+      {
+        "function": "V",
+        "url": "http://localhost:4187/_next/static/chunks/0c1qia6syj9gs.js",
+        "hits": 2
+      },
+      {
+        "function": "i",
+        "url": "http://localhost:4187/_next/static/chunks/1lmmryp28oqou.js",
+        "hits": 2
+      }
+    ]
+  }
+]

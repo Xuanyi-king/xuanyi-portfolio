@@ -1,0 +1,49 @@
+name: Sky Edition review
+on:
+  push:
+    branches: [feat/xuanyi-sky-edition]
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/sky-*.test.ts'
+      - 'scripts/*sky*.mjs'
+      - '.github/workflows/sky-edition.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sky-review-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  sky:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run check:export
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: |
+          node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &
+          sky_pid=$!
+          trap 'kill "$sky_pid"' EXIT
+          node scripts/check-sky.mjs
+          node scripts/check-sky-copy.mjs
+          node scripts/check-sky-touch.mjs
+          node scripts/record-sky.mjs
+        env:
+          SKY_ENGINES: webkit,chromium,firefox
+          SKY_EVIDENCE_DIR: artifacts/sky
+          SKY_FILM_DIR: artifacts/sky/films
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sky-edition-review
+          path: artifacts/sky
+          retention-days: 14

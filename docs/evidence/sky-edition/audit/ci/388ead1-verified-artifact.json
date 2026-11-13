@@ -1,0 +1,12 @@
+{
+  "run": 43336881471,
+  "sourceCommit": "388ead1698be796dcd93539937cccb14ffbc31fc",
+  "artifact": 13997009935,
+  "bytes": 39389265,
+  "sha256": "3dbc7847d8014e74e54104f3d8b6052967164c0f6436940b7d1c3e5be7a23722",
+  "downloadedDigestMatches": true,
+  "zipCRC": true,
+  "cases": 12,
+  "errors": 0,
+  "films": 2
+}

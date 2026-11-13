@@ -15,6 +15,7 @@ import { silkSurface, type SurfaceProfile } from "@/motion/surface";
 import { playIdentityIntro } from "@/motion/identity-intro";
 import type { XDrive } from "@/motion/gallery-response";
 import { createCompactPoseGate } from "@/motion/compact-pose";
+import { skySurface, type SkyProfile } from '@/motion/sky-surface';
 const rest = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
 export function LivingX({
   play = false,
@@ -33,7 +34,7 @@ export function LivingX({
   material?: "sculpted" | "translucent";
   compact?: boolean;
   drive?: XDrive;
-  profile?: SurfaceProfile;
+  profile?: SurfaceProfile | SkyProfile;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const controller = useRef<ReturnType<typeof createLivingSpring> | null>(null);
@@ -87,6 +88,13 @@ export function LivingX({
     const lights =
       svg.querySelectorAll<SVGLinearGradientElement>("[data-light]");
     const compactPose = createCompactPoseGate();
+    const sky = profile==='cloud'||profile==='sky';
+    const skyNodes = sky ? [0,1].map(i=>({
+      outlines:el.querySelectorAll<SVGPathElement>(`[data-sky-outline="${i}"]`),
+      rim:el.querySelector<SVGPathElement>(`[data-sky-rim="${i}"]`),
+      bands:[...el.querySelectorAll<SVGPathElement>(`[data-sky-band^="${i}-"]`)],
+      lights:[...el.querySelectorAll<SVGLinearGradientElement>(`[data-sky-light^="${i}-"]`)].map(g=>[...g.querySelectorAll('stop')]),
+    })) : [];
     const render = (input: readonly number[]) => {
       const values = compact ? compactPose(input) : input;
       if (!values) return;
@@ -103,6 +111,19 @@ export function LivingX({
         button.style.top = `${anchor.y / 5}%`;
       });
       geometry.curves.forEach((curve, i) => {
+        if(profile==='cloud'||profile==='sky') {
+          const s=skySurface(curve,i,profile,compact),nodes=skyNodes[i];
+          nodes.outlines.forEach(p=>p.setAttribute('d',s.outline));
+          nodes.rim?.setAttribute('d',s.rim);
+          s.bands.forEach((b,j)=>{
+            nodes.bands[j].setAttribute('d',b.d);
+            b.stops.forEach((color,k)=>{
+              const stop=nodes.lights[j][k];
+              if(stop.getAttribute('stop-color')!==color)stop.setAttribute('stop-color',color);
+            });
+          });
+          return;
+        }
         const s = silkSurface(curve, i, compact, profile);
         surfaceNodes[i].forEach(({ key, nodes }) =>
           nodes.forEach((path) => path.setAttribute("d", s[key])),
