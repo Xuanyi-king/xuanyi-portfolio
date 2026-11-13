@@ -1,0 +1,37 @@
+
+│
+●   codex  Agent detected — installing non-interactively
+│
+◇  Source: https://github.com/Leonxlnx/taste-skill.git
+│
+◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◒  Cloning repository…...◐  Cloning repository…...◓  Cloning repository…...◑  Cloning repository…...◒  Cloning repository…...◐  Cloning repository…...◓  Cloning repository…...◑  Cloning repository…...◒  Cloning repository…...◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◒  Cloning repository…..◐  Cloning repository…...◓  Cloning repository…...◑  Cloning repository…...◒  Cloning repository…...◐  Cloning repository…...◓  Cloning repository…...◑  Cloning repository…...◒  Cloning repository…...◐  Cloning repository…...◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository….◇  Repository cloned
+│
+◇  Found 1 skill
+│
+●  Selected 1 skill: design-taste-frontend
+
+│
+◇  Installation Summary ───────────────────╮
+│                                          │
+│                                          │
+│  Taste Skill                             │
+│                                          │
+│  ./.agents/skills/design-taste-frontend  │
+│    universal: Codex                      │
+│                                          │
+├──────────────────────────────────────────╯
+│
+◒  Installing skills…◐  Installing skills…◓  Installing skills…◑  Installing skills…◒  Installing skills…◐  Installing skills…◓  Installing skills…◑  Installing skills…◇  Installation complete
+
+│
+◇  Installed 1 skill ──────────────────────────╮
+│                                              │
+│                                              │
+│  Taste Skill                                 │
+│  ✓ design-taste-frontend (copied)            │
+│    → ./.agents/skills/design-taste-frontend  │
+│                                              │
+├──────────────────────────────────────────────╯
+
+│
+└  Done!  Review skills before use; they run with full agent permissions.

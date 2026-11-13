@@ -20,3 +20,6 @@ id_ed25519
 artifacts/browser/
 /artifacts/
 /docs/evidence/sky-edition/films/raw/
+
+# Project-local agent tools are restored from skills-lock.json, not vendored.
+/.agents/skills/

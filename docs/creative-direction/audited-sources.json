@@ -1,0 +1,39 @@
+{
+  "cli": "skills@1.8.1",
+  "codex": "0.167.0-alpha.4",
+  "baseline": "922da015ffe1677c4ebc55a4702d7905bc9c6803",
+  "sources": [
+    {
+      "name": "design-taste-frontend",
+      "repository": "https://github.com/Leonxlnx/taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "skillDirectory": "skills/taste-skill",
+      "status": "installed",
+      "skillSha256": "0c7a5852a5217be79cab422c6d58329b776f0c25bd6da8a7a01707ce75be6206"
+    },
+    {
+      "name": "prototype",
+      "repository": "https://github.com/mattpocock/skills",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "skillDirectory": "skills/engineering/prototype",
+      "status": "installed",
+      "skillSha256": "714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3"
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "repository": "https://github.com/vercel-labs/agent-skills",
+      "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "skillDirectory": "skills/react-best-practices",
+      "status": "installed",
+      "skillSha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355"
+    },
+    {
+      "name": "impeccable",
+      "repository": "https://github.com/pbakaus/impeccable",
+      "commit": "c4cd1924c389f68d37c687d9c2bbf13f12547c41",
+      "skillDirectory": "plugin/skills/impeccable",
+      "status": "blocked-security",
+      "skillSha256": "1ac7074ba6f184c455cb5bb291e76a9b2fe17a90479c070fd35708c24920e81f"
+    }
+  ]
+}

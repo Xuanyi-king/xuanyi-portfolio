@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-11-13T10:28:12.018286+00:00",
+  "installedSkills": [
+    "design-taste-frontend",
+    "prototype",
+    "vercel-react-best-practices"
+  ],
+  "filesVerified": 1710,
+  "hashesMatch": true,
+  "websiteAndDependenciesUnchanged": true,
+  "impeccableInstalled": false,
+  "codexDiscovery": "3 repo skills enabled; no parse errors; hooks empty",
+  "freshRestoreMatches": true,
+  "localReportLinksChecked": 139,
+  "missingLinks": [],
+  "toolSyntaxChecks": 6,
+  "conceptSvgParsedAndRendered": true,
+  "gitHead": "922da015ffe1677c4ebc55a4702d7905bc9c6803",
+  "branch": "chore/creative-direction-baseline",
+  "worktreeChanges": [
+    "?? .agents/",
+    "?? docs/creative-direction/",
+    "?? skills-lock.json"
+  ],
+  "productBuildAndTests": "not run; product code and dependencies unchanged",
+  "tastePerf": "completed; FAIL preserved; not an all-pass result",
+  "abcPrototypes": "planned, not implemented",
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

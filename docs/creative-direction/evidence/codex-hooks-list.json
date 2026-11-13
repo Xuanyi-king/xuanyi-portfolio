@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "result": {
+    "data": [
+      {
+        "cwd": "/workspace/xuanyi-portfolio",
+        "hooks": [],
+        "warnings": [],
+        "errors": []
+      }
+    ]
+  }
+}

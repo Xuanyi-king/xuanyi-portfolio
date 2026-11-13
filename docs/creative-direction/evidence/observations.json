@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-11-13T10:09:56.493Z",
+  "browser": "156.0.8078.79",
+  "views": [
+    {
+      "label": "live-desktop",
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+      "width": 1440,
+      "height": 1000,
+      "errors": []
+    },
+    {
+      "label": "live-mobile",
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+      "width": 390,
+      "height": 844,
+      "errors": []
+    },
+    {
+      "label": "reference-desktop",
+      "url": "https://haoqi.design/",
+      "width": 1440,
+      "height": 1000,
+      "errors": []
+    }
+  ]
+}
