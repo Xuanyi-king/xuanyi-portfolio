@@ -75,7 +75,8 @@ for(const engineName of engines){
   await page.setViewportSize({width:width===320?390:width,height});await page.waitForTimeout(200);
   assert.equal(await page.locator('.sky-page').getAttribute('data-sky-progress'),'0.0000');
   if(width<=760){await page.getByRole('button',{name:'打开导航'}).click();assert.equal(await page.locator('#mobile-menu').getAttribute('aria-hidden'),'false');await page.keyboard.press('Escape');}
-  await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(100);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.waitForFunction(()=>matchMedia('(prefers-reduced-motion: reduce)').matches&&document.querySelector('.sky-sculpture').style.transform===''&&document.querySelector('.gallery-viewport').style.clipPath==='');
   assert.equal(await page.locator('.sky-sculpture').evaluate(el=>el.style.transform),'');
   assert.equal(await page.locator('.gallery-viewport').evaluate(el=>el.style.clipPath),'');
   await page.screenshot({path:`${dir}/${engineName}-${width}-reduced.png`});
