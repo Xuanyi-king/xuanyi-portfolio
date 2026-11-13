@@ -38,7 +38,7 @@ jobs:
           node scripts/check-sky-touch.mjs
           node scripts/record-sky.mjs
         env:
-          SKY_ENGINES: chromium,firefox,webkit
+          SKY_ENGINES: webkit,chromium,firefox
           SKY_EVIDENCE_DIR: artifacts/sky
           SKY_FILM_DIR: artifacts/sky/films
       - uses: actions/upload-artifact@v4

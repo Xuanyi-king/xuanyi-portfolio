@@ -20,3 +20,9 @@ Product source is05259b8. Two real Playwright WebM recordings cover the final de
 The measured effect-rejection decision and all unfavorable earlier performance runs are in [performance.md](performance.md). Screenshots in `static/` are the earlier static acceptance checkpointadf2f0a; `final/` and final films are the delivered pose-only implementation. Camera-specific rim/shadow and tip seams remain disclosed limitations.
 
 No PR was merged, no remote history rewritten, no existing preview deployment changed. New commits use API-verified Xuanyi-king author/committer identity; account association is checked again after push.
+
+## First remote run retained
+
+On515bab1 both [PR Sky CI43334439881](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43334439881) and [push Sky CI43334357156](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43334357156) passed install/unit/types/build/export and all8 Chromium/Firefox cases, then failed WebKit1440 pointer-pose assertion. They are not passes. The first failure log is retained in `docs/evidence/sky-edition/audit/ci/515bab1-webkit-pointer.log`.
+
+A rootless local WebKit runtime was subsequently assembled from official configured Debian package sources into scratch (no system/sudo changes); its full four-viewport Sky matrix passes. A custom launcher preserves the local library path because the official MiniBrowser wrapper replaces LD_LIBRARY_PATH. Host package validation is skipped only for that scratch launcher; actual WebKit runs with the real libraries and normal browser security. This enables local investigation but does not invalidate the independent CI failure. Additional native-event/pose diagnostics are being captured without weakening the failed assertion.

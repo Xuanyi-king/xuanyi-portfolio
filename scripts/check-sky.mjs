@@ -8,7 +8,7 @@ const dir=process.env.SKY_EVIDENCE_DIR||'docs/evidence/sky-edition/final';
 await fs.mkdir(dir,{recursive:true});
 const report=[];
 for(const engineName of engines){
- const browser=await ({chromium,firefox,webkit})[engineName].launch({headless:true});
+ const browser=await ({chromium,firefox,webkit})[engineName].launch({headless:true,...(engineName==='webkit'&&process.env.SKY_WEBKIT_EXECUTABLE_PATH?{executablePath:process.env.SKY_WEBKIT_EXECUTABLE_PATH}:{})});
  for(const [width,height] of [[1440,900],[768,1024],[390,844],[320,740]]){
   const errors=[];
   const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,hasTouch:width<=760});
@@ -26,10 +26,18 @@ for(const engineName of engines){
   await page.screenshot({path:`${dir}/${engineName}-${width}-hero.png`});
   const rest=await page.locator('[data-sky-band="0-10"]').first().getAttribute('d');
   if(width>760){
+   await page.evaluate(()=>{
+    globalThis.skyPointerLog=[];
+    for(const type of ['pointermove','pointerleave','pointerenter'])document.addEventListener(type,event=>{
+     if(globalThis.skyPointerLog.length<20)globalThis.skyPointerLog.push({type,target:event.target.className,pointerType:event.pointerType,x:event.clientX,y:event.clientY});
+    },true);
+   });
    const poseRest=await page.locator('.sky-pose').evaluate(el=>getComputedStyle(el).transform);
    await page.mouse.move(width*.85,320);await page.waitForTimeout(600);
    assert.equal(await page.locator('[data-sky-band="0-10"]').first().getAttribute('d'),rest,'accepted mesh stays cached');
-   assert.notEqual(await page.locator('.sky-pose').evaluate(el=>getComputedStyle(el).transform),poseRest,'pointer changes spatial pose');
+   const pointerPose=await page.locator('.sky-pose').evaluate(el=>getComputedStyle(el).transform);
+   if(pointerPose===poseRest)console.error('POINTER_DIAGNOSTICS',JSON.stringify(await page.evaluate(()=>({events:globalThis.skyPointerLog,hit:document.elementFromPoint(innerWidth*.85,320)?.className,hidden:document.hidden,reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,progress:document.querySelector('.sky-page').dataset.skyProgress,inline:document.querySelector('.sky-pose').style.cssText,rx:document.querySelector('.sky-pose')._gsap?.rotationX,ry:document.querySelector('.sky-pose')._gsap?.rotationY}))));
+   assert.notEqual(pointerPose,poseRest,'pointer changes spatial pose');
    await page.screenshot({path:`${dir}/${engineName}-${width}-pointer.png`});
    await page.mouse.move(0,0);
   }else{
