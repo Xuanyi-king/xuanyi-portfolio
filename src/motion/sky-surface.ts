@@ -19,13 +19,16 @@ function line(points: Point[], move = true) {
 const polygon = (a: Point[], b: Point[]) => `${line(a)}L${xy(b.at(-1)!)}${line([...b].reverse(),false)}Z`;
 
 /** A sampled 3D ruled surface, orthographic camera and rough diffuse light.
- * SVG is the display medium. Geometry, normals and thickness exist in 3D;
- * we deliberately do not ship a scene engine or claim volumetric transmission.
+ * SVG is the display medium. The curved faces and normals are computed in 3D;
+ * the thin edge and contact shadow are camera-specific projected approximations.
+ * This is not a scene engine and does not claim volumetric transmission.
  */
 export function skySurface(curve: Point[], index: number, profile: SkyProfile, compact = false) {
   const steps=compact?14:36, count=compact?6:22;
   const [a,b,c,d]=curve;
-  const at=(t:number,u:number):Vector=>{
+  const rows=new Map<number,{x:number;y:number;dx:number;dy:number;length:number;width:number;twist:number;z:number}>();
+  const row=(t:number)=>{
+    const cached=rows.get(t);if(cached)return cached;
     const v=1-t;
     const x=v*v*v*a.x+3*v*v*t*b.x+3*v*t*t*c.x+t*t*t*d.x;
     const y=v*v*v*a.y+3*v*v*t*b.y+3*v*t*t*c.y+t*t*t*d.y;
@@ -34,12 +37,22 @@ export function skySurface(curve: Point[], index: number, profile: SkyProfile, c
     const length=Math.hypot(dx,dy)||1;
     const width=profile==='cloud'?34+10*Math.sin(Math.PI*t):29+8*Math.sin(Math.PI*t)**2;
     const twist=(index===0?1:-1)*(profile==='cloud'?.48:.92)*Math.sin(Math.PI*(t*1.65-.3));
+    const value={x,y,dx,dy,length,width,twist,z:(index===0?-11:14)+Math.sin(Math.PI*t)*(profile==='cloud'?21:36)};
+    rows.set(t,value);return value;
+  };
+  const at=(t:number,u:number):Vector=>{
+    const {x,y,dx,dy,length,width,twist,z:depth}=row(t);
     const across=width*u*Math.cos(twist);
-    const z=(index===0?-11:14)+Math.sin(Math.PI*t)*(profile==='cloud'?21:36)+width*u*Math.sin(twist)+width*(profile==='cloud'?.4:.2)*(1-u*u);
+    const z=depth+width*u*Math.sin(twist)+width*(profile==='cloud'?.4:.2)*(1-u*u);
     return {x:x-dy/length*across,y:y+dx/length*across,z};
   };
   const project=(p:Vector):Point=>({x:250+(p.x-250)*.976+p.z*.218,y:250+(p.y-250)*.984-p.z*.178});
-  const samples=(u:number)=>Array.from({length:steps+1},(_,i)=>project(at(i/steps,u)));
+  const sides=new Map<number,Point[]>();
+  const samples=(u:number)=>{
+    const cached=sides.get(u);if(cached)return cached;
+    const value=Array.from({length:steps+1},(_,i)=>project(at(i/steps,u)));
+    sides.set(u,value);return value;
+  };
   const strip=(u:number,v:number)=>polygon(samples(u),samples(v));
   const light=unit({x:-.35,y:-.5,z:.85});
   const shade=(t:number,u:number)=>{

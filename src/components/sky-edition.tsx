@@ -12,10 +12,11 @@ import { bindSkyHero } from '@/motion/sky-hero';
 export function SkyEdition({variant='sky',study=false,note}:{variant?:SkyProfile;study?:boolean;note?:Pick<Note,'slug'|'title'|'date'|'category'>}) {
   const root=useRef<HTMLDivElement>(null);
   const bridge=useMemo(()=>{
-    const listeners=new Set<(force:number)=>void>();let last=0;
-    return {subscribe(fn:(force:number)=>void){listeners.add(fn);fn(last);return()=>{listeners.delete(fn)}},emit(force:number){if(force===last)return;last=force;listeners.forEach(fn=>fn(force))}};
+    // Keep the accepted sculpture at rest; motion belongs to its spatial pose.
+    // Per-frame mesh deformation was visually unnecessary and failed the CPU check.
+    return {direct:true,subscribe(fn:(force:number)=>void){fn(0);return()=>{}}};
   },[]);
-  useEffect(()=>{if(!study)return bindSkyHero(root.current!,bridge.emit)},[study,bridge]);
+  useEffect(()=>{if(!study)return bindSkyHero(root.current!)},[study]);
   return <div ref={root} className={`sky-page sky-${variant}`} data-sky-static={String(study)}>
     <div className="sky-lab-bar"><span>DESIGN STUDY / 03 — SKYLIGHT</span><span>{study?`${variant==='cloud'?'A · Cloud Silk':'B · Sky Ribbon'} · 静态视觉原型`:'3D Sky Edition · 视觉预览'}</span><a href="/">现有版本 ↗</a></div>
     <section className="sky-hero" aria-labelledby="sky-title">
