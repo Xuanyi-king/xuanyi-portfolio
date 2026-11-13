@@ -14,6 +14,12 @@ const expected = [
   "lab",
   "lab/canvas-study",
   "lab/motion-direction",
+  "lab/sky-edition",
+  "lab/sky-edition/cloud-silk",
+  "lab/sky-edition/sky-ribbon",
+  "lab/sky-edition/work",
+  "lab/sky-edition/notes",
+  "lab/sky-edition/about",
   "now",
 ];
 let count = 0;

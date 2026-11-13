@@ -24,10 +24,12 @@ export function LivingGallery({
   projects,
   rail = false,
   restoreCss = false,
+  spatial = 'standard',
 }: {
   projects: Project[];
   rail?: boolean;
   restoreCss?: boolean;
+  spatial?: 'standard' | 'sky';
 }) {
   const root = useRef<HTMLDivElement>(null),
     stage = useRef<HTMLDivElement>(null),
@@ -71,6 +73,7 @@ export function LivingGallery({
               projects.length,
               width,
               media.matches,
+              spatial,
             );
             card.style.transform = frameTransform(f);
             card.style.opacity = String(f.opacity);
@@ -145,7 +148,7 @@ export function LivingGallery({
       media.removeEventListener("change", preference);
       document.removeEventListener("visibilitychange", visibility);
     };
-  }, [projects.length, response]);
+  }, [projects.length, response, spatial]);
   if (!projects.length) return <p>新的作品正在酝酿。</p>;
   const current = projects[active] ?? projects[0];
   return (
@@ -193,7 +196,7 @@ export function LivingGallery({
           aria-label="The Living Gallery，左右方向键切换作品"
         >
           {projects.map((project, i) => {
-            const f = frameFor(i, 0, projects.length, 1440);
+            const f = frameFor(i, 0, projects.length, 1440, false, spatial);
             const initial = {
               "--initial-distance": restoreCss
                 ? `var(--gallery-d${i},${f.distance})`
@@ -273,7 +276,7 @@ export function LivingGallery({
         </button>
         <div className="gallery-status">
           <div className="gallery-response" aria-hidden="true">
-            <LivingX drive={response} compact />
+            <LivingX drive={response} compact profile={spatial==='sky'?'sky':'sculpted'} />
           </div>
           <div className="gallery-counter">
             <span>{String(active + 1).padStart(2, "0")}</span>

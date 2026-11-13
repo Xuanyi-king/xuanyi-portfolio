@@ -1,6 +1,8 @@
 import { useId } from "react";
 import { ribbonGeometry } from "@/motion/geometry";
 import { silkSurface, type SurfaceProfile } from "@/motion/surface";
+import { SkyXMark } from './sky-x-mark';
+import type { SkyProfile } from '@/motion/sky-surface';
 
 export function XMark({
   className = "",
@@ -13,9 +15,10 @@ export function XMark({
   decorative?: boolean;
   compact?: boolean;
   material?: "sculpted" | "translucent";
-  profile?: SurfaceProfile;
+  profile?: SurfaceProfile | SkyProfile;
 }) {
   const id = useId().replace(/:/g, "");
+  if(profile==='cloud'||profile==='sky') return <SkyXMark profile={profile} compact={compact} className={className} decorative={decorative}/>;
   const geometry = ribbonGeometry({ x: 0, y: 0 }, { x: 0, y: 0 });
   const surfaces = geometry.curves.map((curve, i) =>
     silkSurface(curve, i, compact, profile),

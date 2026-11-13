@@ -1,4 +1,4 @@
-name: XUANYI 2.3 Independent Preview (GitHub Pages)
+name: XUANYI Sky Ribbon Preview (GitHub Pages)
 on:
   push:
     branches:
@@ -30,7 +30,7 @@ jobs:
       - name: Stamp version and prevent search indexing
         run: node scripts/prepare-pages-preview.mjs finalize
         env:
-          PREVIEW_SOURCE_SHA: 31222d9a6140ec84574156dddd13d6179d9343cf
+          PREVIEW_SOURCE_SHA: ac6fe8cd0ef2b30634f8e6f6c3721eaa48702826
       - name: Verify preview paths and static assets
         run: node scripts/prepare-pages-preview.mjs verify
       - name: Upload portable preview build

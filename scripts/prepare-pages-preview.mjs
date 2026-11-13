@@ -65,7 +65,7 @@ function finalize() {
   writeFileSync(path.join(out, "robots.txt"), "User-agent: *\nDisallow: /\n");
   writeFileSync(path.join(out, ".nojekyll"), "");
   writeFileSync(path.join(out, "preview-version.json"), JSON.stringify({
-    purpose: "independent XUANYI 2.3 preview",
+    purpose: "independent XUANYI Sky Ribbon (PR #5) preview",
     source_sha: process.env.PREVIEW_SOURCE_SHA || "unknown",
     preview_build_sha: process.env.GITHUB_SHA || "local",
     pages_base_path: base,
@@ -76,10 +76,11 @@ function finalize() {
 function verify() {
   const out = path.join(root, "out");
   const routes = ["index.html","work/index.html","notes/index.html","about/index.html",
-    "lab/index.html","lab/motion-direction/index.html"];
+    "lab/index.html","lab/motion-direction/index.html","lab/sky-edition/index.html","lab/sky-edition/sky-ribbon/index.html"];
   for (const route of routes) assert(existsSync(path.join(out, route)), "Missing exported route: " + route);
   const home = readFileSync(path.join(out, "index.html"), "utf8");
   assert(home.includes(base + "/_next/"), "Missing prefixed Next.js assets in homepage");
+  assert(home.includes("Sky Ribbon") && home.includes("Curiosity"), "Preview homepage did not show Sky Ribbon");
   assert(home.includes('name="xuanyi-preview-commit"'), "Preview version marker absent");
   for (const htmlFile of walk(out).filter((f) => f.endsWith(".html"))) {
     const html = readFileSync(htmlFile, "utf8");

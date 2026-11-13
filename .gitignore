@@ -18,3 +18,5 @@ id_ed25519
 
 # CI-only browser artifacts
 artifacts/browser/
+/artifacts/
+/docs/evidence/sky-edition/films/raw/
