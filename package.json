@@ -19,7 +19,8 @@
     "measure:direction": "node scripts/measure-direction.mjs",
     "check:passing": "node scripts/check-passing.mjs",
     "record:passing": "node scripts/record-passing.mjs",
-    "compare:passing": "node scripts/compare-passing.mjs"
+    "compare:passing": "node scripts/compare-passing.mjs",
+    "prototype": "next dev --hostname 0.0.0.0"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

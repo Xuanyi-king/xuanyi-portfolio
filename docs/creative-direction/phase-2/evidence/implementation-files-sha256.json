@@ -1,0 +1,14 @@
+{
+  "src/app/lab/creative-direction/prototype.css": "9c39bc8acc6f34f77960311c3a39981a266af1a9ccae2f1783b441c70a04014e",
+  "src/app/lab/creative-direction/variant-c.css": "8c5990d82e9940112dd92cbe7936ef781492561dd1fbffe9a4f54882d803cebe",
+  "src/app/lab/creative-direction/page.tsx": "0bf3176f88e877c6d00887be992d81ad566ec5f79ef277229305d678cec62d90",
+  "src/app/lab/creative-direction/variant-a.css": "e7f76adaf2bab0af4f8cbd45e964e85aae5c7d5fea867ae4783256d70a677ba4",
+  "src/app/lab/creative-direction/variant-b.tsx": "5dffe34e5457d70b9ff84a3c6cdeea6312cf5bdf9e5c3050986f97f474d7f072",
+  "src/app/lab/creative-direction/prototype.tsx": "06f9b5f0dae9e1e8005769847d6ecab9f9cd5c74b204e086e30ae3173301382f",
+  "src/app/lab/creative-direction/sculpture.tsx": "dd84f67f98f46404a707734cbfa8be6308640da5c06ce0de1a9b5ef1bf12750e",
+  "src/app/lab/creative-direction/variant-c.tsx": "1c9b4287cbd4dc50f932d8375e95a35825d90f4a29d8e1e53d19ad5e72e0377c",
+  "src/app/lab/creative-direction/variant-b.css": "6ac99d45ca2d2f0bcb1650ac8a64d21956865e6bc08edfc2ab68fc417a421574",
+  "src/app/lab/creative-direction/variant-a.tsx": "6e157c97c03dc7b292d980b4e5f1889ea4ab0ae838b773de50f06ae94001f4e2",
+  "src/app/lab/creative-direction/sculpture-renderer.ts": "67d80c5e0fb952ee7af9174cc79e2e2efeff46282d7b824919c409b04f6fadff",
+  "package.json": "b71eb4c0b744fc09ffccf04218c0b2ee890fa8d2a564afc4669f7b8c609e9bb9"
+}

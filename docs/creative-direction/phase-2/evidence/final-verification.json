@@ -1,0 +1,41 @@
+{
+  "verifiedAt": "2026-11-13T12:40:05.722871+00:00",
+  "baseAuditCommit": "613f4d892545b502bd46978b8abbdde9e3d023fb",
+  "branch": "experiment/creative-direction-abc",
+  "build": "successful static export, log retained",
+  "typecheck": "passed",
+  "existingUnitTests": {
+    "passed": 67,
+    "failed": 0
+  },
+  "existingExportContentRoutes": 18,
+  "browserMatrix": {
+    "passedCases": 12,
+    "chromiumRealWebGL": 6,
+    "firefoxStaticFallback": 6,
+    "uncaughtJSErrors": 0,
+    "abortedRequestsRetained": 6,
+    "webkit": "blocked by host libraries; not tested"
+  },
+  "supplementalInteractionChecks": 9,
+  "finalBInertRecheck": "passed",
+  "nonRecordingPerformanceSamples": 48,
+  "performanceBudget": "A/B not passed; see performance.md",
+  "films": {
+    "count": 6,
+    "hashAndSize": "verified"
+  },
+  "sourceHashes": "all matched",
+  "portableZip": {
+    "crc": "passed",
+    "hash": "matched",
+    "localReviewHTTP": 200
+  },
+  "stagedTextSecretPatternScan": {
+    "files": 43,
+    "matches": 0,
+    "scope": "common token/private-key patterns; not a universal secret detector"
+  },
+  "formalHomepageProjectDataComponentsDependenciesDeployment": "unchanged relative to audit commit",
+  "remainingLimitations": "See verification.md; no production readiness claim"
+}

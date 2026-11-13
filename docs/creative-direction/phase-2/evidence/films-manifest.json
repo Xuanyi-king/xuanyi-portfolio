@@ -1,0 +1,50 @@
+[
+  {
+    "file": "films/A-1440.webm",
+    "width": 1440,
+    "height": 900,
+    "durationSeconds": 18.44,
+    "bytes": 2368243,
+    "sha256": "ac357bbbe54270d145ada80e85f97559046f05a1f4040c462fc40b5a95eafd38"
+  },
+  {
+    "file": "films/A-390.webm",
+    "width": 390,
+    "height": 844,
+    "durationSeconds": 12.56,
+    "bytes": 1213939,
+    "sha256": "e5a5b24fb422a71a7e76fb2571098e08ac45b8b62e2d180f068d7aa984de2981"
+  },
+  {
+    "file": "films/B-1440.webm",
+    "width": 1440,
+    "height": 900,
+    "durationSeconds": 19.28,
+    "bytes": 2252046,
+    "sha256": "55f6cf4f7e2ee0e62581334eb8e1613b964a90cc8507046884b493fdc8f67221"
+  },
+  {
+    "file": "films/B-390.webm",
+    "width": 390,
+    "height": 844,
+    "durationSeconds": 13.48,
+    "bytes": 1022171,
+    "sha256": "acef0ddfa80921c107e73beac87c2bbcf8ca990d37a40477685f03c20eba30b4"
+  },
+  {
+    "file": "films/C-1440.webm",
+    "width": 1440,
+    "height": 900,
+    "durationSeconds": 14.52,
+    "bytes": 2222385,
+    "sha256": "b37c662446565b862437241d01a7211754034813e83be95e3e93d389cbf66825"
+  },
+  {
+    "file": "films/C-390.webm",
+    "width": 390,
+    "height": 844,
+    "durationSeconds": 11.84,
+    "bytes": 1145186,
+    "sha256": "63f22d78f2248990c83bb2e37c9b29add81b9a9d298a3f6ffb1b12c16e1d5e11"
+  }
+]
