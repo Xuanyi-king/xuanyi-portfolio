@@ -1,0 +1,112 @@
+{
+  "recordedAt": "2026-11-13T12:21:56.369Z",
+  "checks": [
+    {
+      "engine": "chromium",
+      "variant": "A",
+      "renderer": "true",
+      "idleRendering": "mesh sleeps",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 119,
+        "created": 2,
+        "lost": 1
+      },
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "variant": "B",
+      "renderer": "true",
+      "idleRendering": "mesh sleeps",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 128,
+        "created": 2,
+        "lost": 1
+      },
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "variant": "C",
+      "renderer": "true",
+      "idleRendering": "mesh sleeps",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 187,
+        "created": 2,
+        "lost": 1
+      },
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width320": "all variants no horizontal overflow"
+    },
+    {
+      "engine": "firefox",
+      "variant": "A",
+      "renderer": "fallback",
+      "idleRendering": "static fallback, mesh not verified",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 0,
+        "created": 0,
+        "lost": 0
+      },
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "variant": "B",
+      "renderer": "fallback",
+      "idleRendering": "static fallback, mesh not verified",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 0,
+        "created": 0,
+        "lost": 0
+      },
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "variant": "C",
+      "renderer": "fallback",
+      "idleRendering": "static fallback, mesh not verified",
+      "keyboard": true,
+      "runtimeReducedMotion": true,
+      "urlSwitch": true,
+      "detailAndBack": true,
+      "lifecycle": {
+        "draws": 0,
+        "created": 0,
+        "lost": 0
+      },
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width320": "all variants no horizontal overflow"
+    },
+    {
+      "noJavaScript": "real work index link present"
+    }
+  ]
+}

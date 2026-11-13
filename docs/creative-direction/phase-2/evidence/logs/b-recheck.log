@@ -1,0 +1,4 @@
+{"variant":"B","width":1440,"engine":"chromium","passed":true,"renderer":"true"}
+{"variant":"B","width":390,"engine":"chromium","passed":true,"renderer":"true"}
+{"variant":"B","width":1440,"engine":"firefox","passed":true,"renderer":"fallback"}
+{"variant":"B","width":390,"engine":"firefox","passed":true,"renderer":"fallback"}

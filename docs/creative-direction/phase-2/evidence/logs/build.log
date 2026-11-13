@@ -1,0 +1,50 @@
+
+> xuanyi-curiosity@1.0.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 132ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1193ms
+  Running TypeScript ...
+  Finished TypeScript in 4.8s ...
+  Collecting page data using 2 workers ...
+  Generating static pages using 2 workers (0/25) ...
+  Generating static pages using 2 workers (6/25)
+  Generating static pages using 2 workers (12/25)
+  Generating static pages using 2 workers (18/25)
+✓ Generating static pages using 2 workers (25/25) in 1678ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /icon.svg
+├ ○ /lab
+├ ○ /lab/canvas-study
+├ ○ /lab/creative-direction
+├ ○ /lab/motion-direction
+├ ○ /lab/sky-edition
+├ ○ /lab/sky-edition/about
+├ ○ /lab/sky-edition/cloud-silk
+├ ○ /lab/sky-edition/notes
+├ ○ /lab/sky-edition/sky-ribbon
+├ ○ /lab/sky-edition/work
+├ ○ /notes
+├   /notes/[slug]
+│ └ ● /notes/making-xuanyi
+├ ○ /now
+├ ○ /robots.txt
+├ ○ /rss.xml
+├ ○ /sitemap.xml
+├ ○ /work
+└   /work/[slug]
+  ├ ● /work/adaptive-router
+  ├ ● /work/knowledge-film
+  └ ● /work/zhihu-multiverse
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)

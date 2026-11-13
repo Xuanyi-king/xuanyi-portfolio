@@ -1,0 +1,5 @@
+
+> xuanyi-curiosity@1.0.0 check:export
+> node scripts/check-export.mjs
+
+Export verified: 18 content routes, internal links, assets, TOC, highlighted code, SEO, RSS, sitemap and 404.
