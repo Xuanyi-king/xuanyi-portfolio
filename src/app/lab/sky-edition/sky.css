@@ -16,6 +16,7 @@ body:has(.sky-page,.sky-content) .wordmark{color:#253f55}
 .sky-title-wrap>.sky-eyebrow{letter-spacing:.17em;font-size:12px}
 .sky-page h1{font-family:var(--display);font-size:clamp(80px,8.6vw,132px);font-weight:400;letter-spacing:-.065em;line-height:.96;margin:0}
 .sky-page h1 em{font-weight:400;color:#4c7c9f}
+.sky-page h1 em,.sky-page h2 em{font-family:var(--display)}
 .sky-sculpture{position:absolute;left:50%;top:10px;width:50%;aspect-ratio:1;pointer-events:none;z-index:1}
 .sky-pose{height:100%;width:100%;transform:rotate(-11deg);transform-origin:50% 50%}
 .sky-fold,.sky-pose>svg,.sky-pose .living-x,.sky-pose .x-mark{height:100%;width:100%;overflow:visible}

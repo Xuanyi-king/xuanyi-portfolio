@@ -19,6 +19,8 @@ for(const engineName of engines){
   await page.waitForTimeout(300);
   assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow');
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+  const headlineFonts=await page.evaluate(()=>({title:getComputedStyle(document.querySelector('#sky-title')).fontFamily,em:getComputedStyle(document.querySelector('#sky-title em')).fontFamily}));
+  assert.equal(headlineFonts.em,headlineFonts.title,'Sky headline uses the bundled family for its italic');
   const geometry=await page.evaluate(()=>{
    const h=document.querySelector('.sky-hero'),header=document.querySelector('.site-header');
    return {start:Math.max(0,h.getBoundingClientRect().top+scrollY-header.getBoundingClientRect().bottom),distance:Math.min(660,h.offsetHeight*.86)};
