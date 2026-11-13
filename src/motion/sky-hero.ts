@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import { createLivingSpring } from './living-spring';
 import type { FoldMetrics } from './folding';
 import { skyFrame, skyTransport } from './sky-transition';
 import { pointerTilt } from './pointer-geometry';
@@ -17,11 +17,15 @@ export function bindSkyHero(root:HTMLElement) {
   const icon=document.querySelector<SVGSVGElement>('.wordmark>svg')!;
   const media=matchMedia('(prefers-reduced-motion: reduce)');
   let raf:number|null=null,metrics:FoldMetrics,disposed=false,progress=0;
-  const context=gsap.context(()=>{},root);
-  let rx:ReturnType<typeof gsap.quickTo>|undefined,ry:ReturnType<typeof gsap.quickTo>|undefined;
+  const restAngle=root.classList.contains('sky-cloud')?-8:-11;
+  // A numerical spring owns the complete pose matrix. Avoid DOM rotation-cache
+  // decomposition and long-lived paused tweens; the SVG mesh remains cached.
+  const poseSpring=createLivingSpring(values=>{
+    pose.style.transform=`perspective(1100px) rotate(${restAngle}deg) rotateX(${(values[1]*.6).toFixed(4)}deg) rotateY(${(values[0]*.8).toFixed(4)}deg)`;
+  },{request:fn=>requestAnimationFrame(fn),cancel:id=>cancelAnimationFrame(id)});
   const clear=()=>{
     for(const el of [sculpture,fold,shadow,atmosphere,heading,viewport,caption])el.removeAttribute('style');
-    gsap.set(pose,{clearProps:'transform'});root.dataset.skyProgress='0';
+    pose.style.removeProperty('transform');root.dataset.skyProgress='0';
   };
   const measure=()=>{
     sculpture.style.transform='none';
@@ -47,28 +51,24 @@ export function bindSkyHero(root:HTMLElement) {
   };
   const schedule=()=>{if(raf===null&&!media.matches&&!document.hidden)raf=requestAnimationFrame(draw)};
   const resize=()=>{if(media.matches)return;measure();schedule()};
-  const resetPointer=()=>{rx?.(0);ry?.(0);schedule()};
+  const resetPointer=()=>{poseSpring.release();schedule()};
   const pointer=(event:PointerEvent)=>{
     if(media.matches||progress>.55||event.pointerType==='touch')return;
     const t=pointerTilt(event.clientX,event.clientY,hero.getBoundingClientRect());
-    rx?.(t.y*.6);ry?.(t.x*.8);
+    poseSpring.pull(0,t.x,t.y);
   };
   const touch=(event:PointerEvent)=>{
     if(event.pointerType!=='touch'||media.matches||progress>.2||(event.target as Element).closest('a,button'))return;
-    rx?.(-1);
+    poseSpring.pull(0,0,-1.67);
   };
   const setup=()=>{
-    rx?.tween.kill();ry?.tween.kill();context.revert();
+    poseSpring.setReduced(true);poseSpring.release();
     if(raf!==null)cancelAnimationFrame(raf);raf=null;clear();
     if(media.matches)return;
-    context.add(()=>{
-      gsap.set(pose,{rotationX:0,rotationY:0,transformPerspective:1100});
-      rx=gsap.quickTo(pose,'rotationX',{duration:.85,ease:'power2.out'});
-      ry=gsap.quickTo(pose,'rotationY',{duration:.85,ease:'power2.out'});
-    });
+    poseSpring.setReduced(false);
     measure();draw();
   };
-  const visibility=()=>{if(document.hidden){if(raf!==null)cancelAnimationFrame(raf);raf=null;resetPointer()}else resize()};
+  const visibility=()=>{if(document.hidden){if(raf!==null)cancelAnimationFrame(raf);raf=null;poseSpring.setReduced(true);poseSpring.release()}else {poseSpring.setReduced(media.matches);resize()}};
   setup();
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',resize,{passive:true});
   hero.addEventListener('pointermove',pointer);hero.addEventListener('pointerleave',resetPointer);hero.addEventListener('pointercancel',resetPointer);
@@ -81,6 +81,6 @@ export function bindSkyHero(root:HTMLElement) {
     hero.removeEventListener('pointermove',pointer);hero.removeEventListener('pointerleave',resetPointer);hero.removeEventListener('pointercancel',resetPointer);
     hero.removeEventListener('pointerdown',touch);hero.removeEventListener('pointerup',resetPointer);
     media.removeEventListener('change',setup);document.removeEventListener('visibilitychange',visibility);
-    rx?.tween.kill();ry?.tween.kill();context.revert();clear();
+    poseSpring.dispose();clear();
   };
 }

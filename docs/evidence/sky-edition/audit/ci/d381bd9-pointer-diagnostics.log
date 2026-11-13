@@ -1,0 +1,31 @@
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	﻿2026-11-13T00:18:20.5348077Z ##[group]Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5349021Z [36;1mnode node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5349385Z [36;1msky_pid=$![0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5349594Z [36;1mtrap 'kill "$sky_pid"' EXIT[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5349835Z [36;1mnode scripts/check-sky.mjs[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5350069Z [36;1mnode scripts/check-sky-copy.mjs[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5350320Z [36;1mnode scripts/check-sky-touch.mjs[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5350564Z [36;1mnode scripts/record-sky.mjs[0m
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5367734Z shell: /usr/bin/bash -e {0}
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5367951Z env:
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5368139Z   SKY_ENGINES: webkit,chromium,firefox
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5368597Z   SKY_EVIDENCE_DIR: artifacts/sky
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5368830Z   SKY_FILM_DIR: artifacts/sky/films
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:20.5369050Z ##[endgroup]
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0405019Z POINTER_DIAGNOSTICS {"events":[{"type":"pointerenter","target":"","pointerType":"mouse","x":1224,"y":320},{"type":"pointerenter","target":"","pointerType":"mouse","x":1224,"y":320},{"type":"pointerenter","target":"","pointerType":"mouse","x":1224,"y":320},{"type":"pointerenter","target":"sky-page sky-sky","pointerType":"mouse","x":1224,"y":320},{"type":"pointerenter","target":"sky-hero","pointerType":"mouse","x":1224,"y":320},{"type":"pointerenter","target":"sky-hero-inner","pointerType":"mouse","x":1224,"y":320},{"type":"pointermove","target":"sky-hero-inner","pointerType":"mouse","x":1224,"y":320}],"hit":"sky-hero-inner","hidden":false,"reduced":false,"progress":"0.0000","inline":"translate: none; rotate: none; scale: none; transform: perspective(1100px) rotate(-11.00003deg);","rx":"0deg","ry":"0deg"}
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0420311Z node:internal/modules/run_main:107
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0420852Z     triggerUncaughtException(
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0421444Z     ^
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0421620Z 
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0421941Z AssertionError [ERR_ASSERTION]: pointer changes spatial pose
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0422703Z     at file:///home/runner/work/xuanyi-portfolio/xuanyi-portfolio/scripts/check-sky.mjs:40:11 {
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0423298Z   generatedMessage: false,
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0423607Z   code: 'ERR_ASSERTION',
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0424164Z   actual: 'matrix3d(0.981627, -0.19081, 0, 0, 0.19081, 0.981627, 0, 0, 0, 0, 1, -0.000909, 0, 0, 0, 1)',
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0424961Z   expected: 'matrix3d(0.981627, -0.19081, 0, 0, 0.19081, 0.981627, 0, 0, 0, 0, 1, -0.000909, 0, 0, 0, 1)',
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0425518Z   operator: 'notStrictEqual',
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0425864Z   diff: 'simple'
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0426120Z }
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0426252Z 
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0426366Z Node.js v24.22.2
+sky	Run node node_modules/serve/build/main.js out -l 4187 > /tmp/sky-server.log 2>&1 &	2026-11-13T00:18:29.0580129Z ##[error]Process completed with exit code 1.
