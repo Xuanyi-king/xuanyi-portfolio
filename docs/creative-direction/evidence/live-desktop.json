@@ -1,0 +1,176 @@
+{
+  "title": "Sky Ribbon — XUANYI 3D Sky Edition Preview",
+  "text": "跳转到主要内容\nxuanyi.\nWork\nNotes\nAbout\nGitHub\n（新标签页打开）\nDESIGN STUDY / 03 — SKYLIGHT\n3D Sky Edition · 视觉预览\n现有版本 ↗\nXUANYI / 玄屹\nA PRACTICE IN THINKING & MAKING\n\n代码里的理性，创作里的好奇。\n\nCuriosity\ntakes shape.\n\n把好奇心，做成看得见的作品。\n\n你好，我是玄屹。\n在 AI 工具与知识影像之间，\n用代码构建，用设计表达。\n\n探索作品\n沿途的手记\n↗\n01 / THE SHAPE OF CURIOSITY\nSky Ribbon\n晴空里的好奇心\n向下，让想法轻轻展开\n好奇，自有形状。\nSKYLIGHT / 2026\n\n01 / SELECTED WORK\n\nIdeas, out\nin the open.\n\n一些想法的落地，\n也是下一次探索的开始。\n\n好奇，无限延展。\n左右拖动，或用方向键探索 ↔\n\nDSH ADAPTIVE ROUTER\n真实设置页 · 局部\n\n智能路由 · 模式与候选模型\n\n概念封面\n\n01 /\n工具与系统\n2026\n\nDSH Adaptive Router\n\n为 DeepSeek Harness 构建的轻量原生插件，让任务、模型与推理档位形成更清楚的连接。\n\nTypeScript\nDSH Plugin\nZod\nVIBE KNOWLEDGE FILM\n真实成片节选\n\n地图是一种选择。 / ATLAS\n\n概念封面\n\n02 /\n创意编程\n2026\n\nVibe Knowledge Film\n\n以字幕、程序动画和视觉类比组织知识，把解释变成可以观看的过程。\n\nPython\nCanvas\nFFmpeg\n知乎平行宇宙\n真实界面 / ARCHIVE\n\n03 /\n交互体验\n2026\n\n知乎平行宇宙\n\n从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。\n\nTypeScript\nReact\nAI Workflow\n01\n/ 03\n\n第 1 个，共 3 个作品：DSH Adaptive Router\n\n从工具到影像，每一个项目都是一种提问。\n所有作品 03 ↗\n\n02 / A LITTLE INTRODUCTION\n\nA little logic.\nA little wonder.\n\n好奇，是一切的起点。我喜欢把「如果可以呢」，\n慢慢变成「原来真的可以」。\n\n我把对模型选择的疑问做成插件，用程序动画解释地图的取舍，\n也尝试让真实经历成为可探索的故事。\n\n认识一下\n\n03 / NOTES ALONG THE WAY\n\nRoom for thought.\n制作手记 · 2026-11-05\n好奇的形状：这个网站的第一笔\n读这篇手记 ↗\n\nA GOOD CONVERSATION STARTS WITH CURIOSITY.\n\n保持好奇，也保持联系。\nHave a little\ncuriosity?*\nSay hello\non GitHub\nxuanyi.\n\n© 2026 玄屹 · 用好奇心制作\n\nLab ↗\nNow ↗\nRSS ↗\nGitHub ↗\n（新标签页打开）\n↑",
+  "scrollHeight": 3440,
+  "sections": [
+    {
+      "id": "",
+      "class": "sky-hero",
+      "y": 146,
+      "h": 740
+    },
+    {
+      "id": "sky-work",
+      "class": "sky-work",
+      "y": 886,
+      "h": 1196
+    },
+    {
+      "id": "",
+      "class": "sky-about",
+      "y": 2082.1875,
+      "h": 547
+    },
+    {
+      "id": "",
+      "class": "sky-notes",
+      "y": 2628.75,
+      "h": 323
+    }
+  ],
+  "headings": [
+    {
+      "text": "Curiosity takes shape.",
+      "font": "\"Xuanyi Editorial\", Georgia, \"Noto Serif SC\", \"Songti SC\", serif",
+      "size": "123.84px"
+    },
+    {
+      "text": "Ideas, outin the open.",
+      "font": "\"Xuanyi Editorial\", Georgia, \"Noto Serif SC\", \"Songti SC\", serif",
+      "size": "72px"
+    },
+    {
+      "text": "A little logic.A little wonder.",
+      "font": "\"Xuanyi Editorial\", Georgia, \"Noto Serif SC\", \"Songti SC\", serif",
+      "size": "72px"
+    },
+    {
+      "text": "Room for thought.",
+      "font": "\"Xuanyi Editorial\", Georgia, \"Noto Serif SC\", \"Songti SC\", serif",
+      "size": "50px"
+    },
+    {
+      "text": "Have a littlecuriosity?*",
+      "font": "Manrope, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif",
+      "size": "100px"
+    }
+  ],
+  "links": [
+    {
+      "text": "跳转到主要内容",
+      "href": "#main-content"
+    },
+    {
+      "text": "xuanyi.",
+      "href": "/xuanyi-portfolio/"
+    },
+    {
+      "text": "Work",
+      "href": "/xuanyi-portfolio/work/"
+    },
+    {
+      "text": "Notes",
+      "href": "/xuanyi-portfolio/notes/"
+    },
+    {
+      "text": "About",
+      "href": "/xuanyi-portfolio/about/"
+    },
+    {
+      "text": "GitHub\n（新标签页打开）",
+      "href": "https://github.com/xuanyi-king"
+    },
+    {
+      "text": "01Work",
+      "href": "/xuanyi-portfolio/work/"
+    },
+    {
+      "text": "02Notes",
+      "href": "/xuanyi-portfolio/notes/"
+    },
+    {
+      "text": "03About",
+      "href": "/xuanyi-portfolio/about/"
+    },
+    {
+      "text": "04Lab",
+      "href": "/xuanyi-portfolio/lab/"
+    },
+    {
+      "text": "05Now",
+      "href": "/xuanyi-portfolio/now/"
+    },
+    {
+      "text": "GitHub ↗",
+      "href": "https://github.com/xuanyi-king"
+    },
+    {
+      "text": "现有版本 ↗",
+      "href": "/xuanyi-portfolio/"
+    },
+    {
+      "text": "探索作品",
+      "href": "#sky-work"
+    },
+    {
+      "text": "沿途的手记\n↗",
+      "href": "/xuanyi-portfolio/lab/sky-edition/notes/"
+    },
+    {
+      "text": "向下，让想法轻轻展开",
+      "href": "#sky-work"
+    },
+    {
+      "text": "DSH ADAPTIVE ROUTER\n真实设置页 · 局部\n\n智能路由 · 模式与候选模型\n\n概念封面\n\n01 /\n工具与系统\n2026\n\nDSH Adaptive Router\n\n为 DeepSeek Harness 构建的轻量原生插件，让任务、模型与推理档位形成更清楚的连接。\n\nTypeScript\nDSH Plugin\nZod",
+      "href": "/xuanyi-portfolio/work/adaptive-router/"
+    },
+    {
+      "text": "VIBE KNOWLEDGE FILM\n真实成片节选\n\n地图是一种选择。 / ATLAS\n\n概念封面\n\n02 /\n创意编程\n2026\n\nVibe Knowledge Film\n\n以字幕、程序动画和视觉类比组织知识，把解释变成可以观看的过程。\n\nPython\nCanvas\nFFmpeg",
+      "href": "/xuanyi-portfolio/work/knowledge-film/"
+    },
+    {
+      "text": "知乎平行宇宙\n真实界面 / ARCHIVE\n\n03 /\n交互体验\n2026\n\n知乎平行宇宙\n\n从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。\n\nTypeScript\nReact\nAI Workflow",
+      "href": "/xuanyi-portfolio/work/zhihu-multiverse/"
+    },
+    {
+      "text": "所有作品 03 ↗",
+      "href": "/xuanyi-portfolio/lab/sky-edition/work/"
+    },
+    {
+      "text": "认识一下",
+      "href": "/xuanyi-portfolio/lab/sky-edition/about/"
+    },
+    {
+      "text": "制作手记 · 2026-11-05\n好奇的形状：这个网站的第一笔\n读这篇手记 ↗",
+      "href": "/xuanyi-portfolio/notes/making-xuanyi/"
+    },
+    {
+      "text": "Say hello\non GitHub",
+      "href": "https://github.com/xuanyi-king"
+    },
+    {
+      "text": "xuanyi.",
+      "href": "/xuanyi-portfolio/"
+    },
+    {
+      "text": "Lab ↗",
+      "href": "/xuanyi-portfolio/lab/"
+    },
+    {
+      "text": "Now ↗",
+      "href": "/xuanyi-portfolio/now/"
+    },
+    {
+      "text": "RSS ↗",
+      "href": "/xuanyi-portfolio/rss.xml"
+    },
+    {
+      "text": "GitHub ↗\n（新标签页打开）",
+      "href": "https://github.com/xuanyi-king"
+    },
+    {
+      "text": "↑",
+      "href": "#top"
+    }
+  ]
+}

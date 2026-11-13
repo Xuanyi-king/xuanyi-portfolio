@@ -1,0 +1,54 @@
+
+perf xuanyi-king.github.io/xuanyi-portfolio/ @ 1440px
+  PASS  host CPU load (before/after)               1/0 %
+  PASS  total transfer                             812.5 KiB      html 95K  css 15.9K  js 226.9K  font 78.9K  img 269.3K  other 126.5K
+  PASS  requests                                   46             38 by load
+  PASS  images bytes                               269.3 KiB      5 files
+  PASS  largest image                              134.8 KiB      covers/zhihu-real.jpg
+  WARN  JS parsed                                  675.8 KiB      14 files, 226.9K gz
+  PASS  CSS                                        15.9 KiB       2 files
+  PASS  font families                              2              Xuanyi Editorial, Manrope
+  PASS  font files                                 3              78.9K
+  PASS  font bytes                                 78.9 KiB
+  PASS  images without width+height                0
+  PASS  below-fold images not lazy                 0
+  WARN  oversized images (natural > 2.2x shown)    3              film.svg 1200px for 467; zhihu-real.jpg 1440px for 411; multiverse-experience-reveal.jpg 1440px for 411
+  PASS  WebGL live at load                         0
+  PASS  WebGL live at bottom                       0
+  PASS  WebGL peak live                            0              0 contexts made in all
+  PASS  long tasks                                 2              runs 3, 2..5, max 168ms
+  PASS  blocking time                              101 ms         runs 3, 60..225 ms; at load 101ms
+  PASS  FCP (CPU, relative)                        416 ms         runs 3, 368..1484
+  PASS  LCP (CPU, relative)                        416 ms         runs 3, 368..1484, h1
+  PASS  layout shift                               0.010          runs 3, 0.007..0.010; at load 0.010
+  PASS  modules loaded, never mounted              0
+  FAIL  broken requests                            6              xuanyi-portfolio/, work/, notes/
+  PASS  page height                                3.8 screens    DOM 1188 nodes
+
+perf xuanyi-king.github.io/xuanyi-portfolio/ @ 390px
+  PASS  host CPU load (before/after)               1/0 %
+  PASS  total transfer                             809.5 KiB      html 94.7K  css 15.9K  js 227.1K  font 79K  img 269.2K  other 123.7K
+  PASS  requests                                   45             44 by load
+  PASS  images bytes                               269.2 KiB      5 files
+  PASS  largest image                              134.7 KiB      covers/zhihu-real.jpg
+  WARN  JS parsed                                  675.8 KiB      14 files, 227.1K gz
+  PASS  CSS                                        15.9 KiB       2 files
+  PASS  font families                              2              Xuanyi Editorial, Manrope
+  PASS  font files                                 3              79K
+  PASS  font bytes                                 79 KiB
+  PASS  images without width+height                0
+  PASS  below-fold images not lazy                 0
+  FAIL  oversized images (natural > 2.2x shown)    4              router.svg 1200px for 302; film.svg 1200px for 237; zhihu-real.jpg 1440px for 209
+  PASS  WebGL live at load                         0
+  PASS  WebGL live at bottom                       0
+  PASS  WebGL peak live                            0              0 contexts made in all
+  PASS  long tasks                                 2              runs 3, 1..2, max 69ms
+  PASS  blocking time                              21 ms          runs 3, 2..37 ms; at load 21ms
+  PASS  FCP (CPU, relative)                        332 ms         runs 3, 264..508
+  PASS  LCP (CPU, relative)                        332 ms         runs 3, 264..508, h1
+  PASS  layout shift                               0.000          runs 3, 0.000..0.000; at load 0.000
+  PASS  modules loaded, never mounted              0
+  FAIL  broken requests                            6              xuanyi-portfolio/, work/, notes/
+  PASS  page height                                3.5 screens    DOM 1188 nodes
+
+SUMMARY xuanyi-king.github.io/xuanyi-portfolio/: 3 FAIL, 3 WARN  -> FAIL

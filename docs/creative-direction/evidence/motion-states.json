@@ -1,0 +1,81 @@
+[
+  {
+    "y": 0,
+    "progress": "0.0000",
+    "sculpture": "transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(0deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 140,
+    "progress": "0.1571",
+    "sculpture": "transform: translate3d(0px, 42.96px, 0px) rotate(0deg) scale(0.95295); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(0deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 280,
+    "progress": "0.3771",
+    "sculpture": "transform: translate3d(-124.22px, 103.1px, 0px) rotate(1.13deg) scale(0.72899); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(11.67deg) rotateY(-17.51deg) rotate(2.08deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 420,
+    "progress": "0.5971",
+    "sculpture": "transform: translate3d(-490.13px, 151.6px, 0px) rotate(4.45deg) scale(0.35653); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(11.37deg) rotateY(-17.05deg) rotate(5.99deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 560,
+    "progress": "0.8171",
+    "sculpture": "transform: translate3d(-859.28px, 189.79px, 0px) rotate(7.8deg) scale(0.11097); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(8deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 700,
+    "progress": "1.0000",
+    "sculpture": "transform: translate3d(-991px, 213.4px, 0px) rotate(9deg) scale(0.04722); opacity: 0;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(8deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 560,
+    "progress": "0.8171",
+    "sculpture": "transform: translate3d(-859.28px, 189.79px, 0px) rotate(7.8deg) scale(0.11097); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(8deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 280,
+    "progress": "0.3771",
+    "sculpture": "transform: translate3d(-124.22px, 103.1px, 0px) rotate(1.13deg) scale(0.72899); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(11.67deg) rotateY(-17.51deg) rotate(2.08deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "y": 0,
+    "progress": "0.0000",
+    "sculpture": "transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1); opacity: 1;",
+    "fold": "transform: perspective(1100px) rotateX(0deg) rotateY(0deg) rotate(0deg);",
+    "pose": "transform: perspective(1100px) rotate(-11deg) rotateX(0deg) rotateY(0deg);"
+  },
+  {
+    "text": "好奇，无限延展。\n左右拖动，或用方向键探索 ↔\n\nDSH ADAPTIVE ROUTER\n真实设置页 · 局部\n\n智能路由 · 模式与候选模型\n\n概念封面\n\n01 /\n工具与系统\n2026\n\nDSH Adaptive Router\n\n为 DeepSeek Harness 构建的轻量原生插件，让任务、模型与推理档位形成更清楚的连接。\n\nTypeScript\nDSH Plugin\nZod\nVIBE KNOWLEDGE FILM\n真实成片节选\n\n地图是一种选择。 / ATLAS\n\n概念封面\n\n02 /\n创意编程\n2026\n\nVibe Knowledge Film\n\n以字幕、程序动画和视觉类比组织知识，把解释变成可以观看的过程。\n\nPython\nCanvas\nFFmpeg\n知乎平行宇宙\n真实界面 / ARCHIVE\n\n03 /\n交互体验\n2026\n\n知乎平行宇宙\n\n从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。\n\nTypeScript\nReact\nAI Workflow\n02\n/ 03\n\n第 2 个，共 3 个作品：Vibe Knowledge Film"
+  },
+  {
+    "text": "好奇，无限延展。\n左右拖动，或用方向键探索 ↔\n\nDSH ADAPTIVE ROUTER\n真实设置页 · 局部\n\n智能路由 · 模式与候选模型\n\n概念封面\n\n01 /\n工具与系统\n2026\n\nDSH Adaptive Router\n\n为 DeepSeek Harness 构建的轻量原生插件，让任务、模型与推理档位形成更清楚的连接。\n\nTypeScript\nDSH Plugin\nZod\nVIBE KNOWLEDGE FILM\n真实成片节选\n\n地图是一种选择。 / ATLAS\n\n概念封面\n\n02 /\n创意编程\n2026\n\nVibe Knowledge Film\n\n以字幕、程序动画和视觉类比组织知识，把解释变成可以观看的过程。\n\nPython\nCanvas\nFFmpeg\n知乎平行宇宙\n真实界面 / ARCHIVE\n\n03 /\n交互体验\n2026\n\n知乎平行宇宙\n\n从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。\n\nTypeScript\nReact\nAI Workflow\n03\n/ 03\n\n第 3 个，共 3 个作品：知乎平行宇宙"
+  },
+  {
+    "text": "好奇，无限延展。\n左右拖动，或用方向键探索 ↔\n\nDSH ADAPTIVE ROUTER\n真实设置页 · 局部\n\n智能路由 · 模式与候选模型\n\n概念封面\n\n01 /\n工具与系统\n2026\n\nDSH Adaptive Router\n\n为 DeepSeek Harness 构建的轻量原生插件，让任务、模型与推理档位形成更清楚的连接。\n\nTypeScript\nDSH Plugin\nZod\nVIBE KNOWLEDGE FILM\n真实成片节选\n\n地图是一种选择。 / ATLAS\n\n概念封面\n\n02 /\n创意编程\n2026\n\nVibe Knowledge Film\n\n以字幕、程序动画和视觉类比组织知识，把解释变成可以观看的过程。\n\nPython\nCanvas\nFFmpeg\n知乎平行宇宙\n真实界面 / ARCHIVE\n\n03 /\n交互体验\n2026\n\n知乎平行宇宙\n\n从可核验的真实经历出发，探索另一种知识与交互叙事的连接方式。\n\nTypeScript\nReact\nAI Workflow\n01\n/ 03\n\n第 1 个，共 3 个作品：DSH Adaptive Router"
+  },
+  {
+    "detailUrl": "https://xuanyi-king.github.io/xuanyi-portfolio/work/adaptive-router/"
+  },
+  {},
+  {
+    "reducedProgress": "0"
+  }
+]

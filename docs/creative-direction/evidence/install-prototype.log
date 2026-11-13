@@ -1,0 +1,42 @@
+
+│
+●   codex  Agent detected — installing non-interactively
+│
+◇  Source: https://github.com/mattpocock/skills.git
+│
+◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◇  Repository cloned
+│
+[SKILLS_SKILL_SKIPPED] ⚠ Skipped /tmp/skills-8MEQLU/skills/in-progress/software-factory/SKILL.md — YAML parse error: Nested mappings are not allowed in compact mappings at line 2, column 14:
+
+description: Shared language for designing a software factory: the tasks it run…
+             ^
+
+◇  Found 38 skills
+│
+●  Selected 1 skill: prototype
+
+│
+◇  Installation Summary ───────╮
+│                              │
+│                              │
+│  Mattpocock Skills           │
+│                              │
+│  ./.agents/skills/prototype  │
+│    universal: Codex          │
+│                              │
+├──────────────────────────────╯
+│
+◇  Installation complete
+
+│
+◇  Installed 1 skill ──────────────╮
+│                                  │
+│                                  │
+│  Mattpocock Skills               │
+│  ✓ prototype (copied)            │
+│    → ./.agents/skills/prototype  │
+│                                  │
+├──────────────────────────────────╯
+
+│
+└  Done!  Review skills before use; they run with full agent permissions.

@@ -1,0 +1,71 @@
+{
+  "network": [
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/work/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/about/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/notes/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/about/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/work/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/notes/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/work/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/notes/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://xuanyi-king.github.io/xuanyi-portfolio/about/",
+      "type": "fetch",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "detail": {
+    "url": "https://xuanyi-king.github.io/xuanyi-portfolio/work/adaptive-router/",
+    "title": "DSH Adaptive Router · XUANYI",
+    "returnLabel": [
+      "01/ 03"
+    ]
+  }
+}

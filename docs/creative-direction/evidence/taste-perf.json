@@ -1,0 +1,304 @@
+{
+ "page": "https://xuanyi-king.github.io/xuanyi-portfolio/",
+ "partial": false,
+ "results": [
+  {
+   "w": 1440,
+   "rows": [
+    {
+     "name": "host CPU load (before/after)",
+     "value": "1/0 %",
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "total transfer",
+     "value": "812.5 KiB",
+     "verdict": "PASS",
+     "note": "html 95K  css 15.9K  js 226.9K  font 78.9K  img 269.3K  other 126.5K"
+    },
+    {
+     "name": "requests",
+     "value": 46,
+     "verdict": "PASS",
+     "note": "38 by load"
+    },
+    {
+     "name": "images bytes",
+     "value": "269.3 KiB",
+     "verdict": "PASS",
+     "note": "5 files"
+    },
+    {
+     "name": "largest image",
+     "value": "134.8 KiB",
+     "verdict": "PASS",
+     "note": "covers/zhihu-real.jpg"
+    },
+    {
+     "name": "JS parsed",
+     "value": "675.8 KiB",
+     "verdict": "WARN",
+     "note": "14 files, 226.9K gz"
+    },
+    {
+     "name": "CSS",
+     "value": "15.9 KiB",
+     "verdict": "PASS",
+     "note": "2 files"
+    },
+    {
+     "name": "font families",
+     "value": 2,
+     "verdict": "PASS",
+     "note": "Xuanyi Editorial, Manrope"
+    },
+    {
+     "name": "font files",
+     "value": 3,
+     "verdict": "PASS",
+     "note": "78.9K"
+    },
+    {
+     "name": "font bytes",
+     "value": "78.9 KiB",
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "images without width+height",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "below-fold images not lazy",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "oversized images (natural > 2.2x shown)",
+     "value": 3,
+     "verdict": "WARN",
+     "note": "film.svg 1200px for 467; zhihu-real.jpg 1440px for 411; multiverse-experience-reveal.jpg 1440px for 411"
+    },
+    {
+     "name": "WebGL live at load",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "WebGL live at bottom",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "WebGL peak live",
+     "value": 0,
+     "verdict": "PASS",
+     "note": "0 contexts made in all"
+    },
+    {
+     "name": "long tasks",
+     "value": 2,
+     "verdict": "PASS",
+     "note": "runs 3, 2..5, max 168ms"
+    },
+    {
+     "name": "blocking time",
+     "value": "101 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 60..225 ms; at load 101ms"
+    },
+    {
+     "name": "FCP (CPU, relative)",
+     "value": "416 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 368..1484"
+    },
+    {
+     "name": "LCP (CPU, relative)",
+     "value": "416 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 368..1484, h1"
+    },
+    {
+     "name": "layout shift",
+     "value": "0.010",
+     "verdict": "PASS",
+     "note": "runs 3, 0.007..0.010; at load 0.010"
+    },
+    {
+     "name": "modules loaded, never mounted",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "broken requests",
+     "value": 6,
+     "verdict": "FAIL",
+     "note": "xuanyi-portfolio/, work/, notes/"
+    },
+    {
+     "name": "page height",
+     "value": "3.8 screens",
+     "verdict": "PASS",
+     "note": "DOM 1188 nodes"
+    }
+   ]
+  },
+  {
+   "w": 390,
+   "rows": [
+    {
+     "name": "host CPU load (before/after)",
+     "value": "1/0 %",
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "total transfer",
+     "value": "809.5 KiB",
+     "verdict": "PASS",
+     "note": "html 94.7K  css 15.9K  js 227.1K  font 79K  img 269.2K  other 123.7K"
+    },
+    {
+     "name": "requests",
+     "value": 45,
+     "verdict": "PASS",
+     "note": "44 by load"
+    },
+    {
+     "name": "images bytes",
+     "value": "269.2 KiB",
+     "verdict": "PASS",
+     "note": "5 files"
+    },
+    {
+     "name": "largest image",
+     "value": "134.7 KiB",
+     "verdict": "PASS",
+     "note": "covers/zhihu-real.jpg"
+    },
+    {
+     "name": "JS parsed",
+     "value": "675.8 KiB",
+     "verdict": "WARN",
+     "note": "14 files, 227.1K gz"
+    },
+    {
+     "name": "CSS",
+     "value": "15.9 KiB",
+     "verdict": "PASS",
+     "note": "2 files"
+    },
+    {
+     "name": "font families",
+     "value": 2,
+     "verdict": "PASS",
+     "note": "Xuanyi Editorial, Manrope"
+    },
+    {
+     "name": "font files",
+     "value": 3,
+     "verdict": "PASS",
+     "note": "79K"
+    },
+    {
+     "name": "font bytes",
+     "value": "79 KiB",
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "images without width+height",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "below-fold images not lazy",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "oversized images (natural > 2.2x shown)",
+     "value": 4,
+     "verdict": "FAIL",
+     "note": "router.svg 1200px for 302; film.svg 1200px for 237; zhihu-real.jpg 1440px for 209"
+    },
+    {
+     "name": "WebGL live at load",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "WebGL live at bottom",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "WebGL peak live",
+     "value": 0,
+     "verdict": "PASS",
+     "note": "0 contexts made in all"
+    },
+    {
+     "name": "long tasks",
+     "value": 2,
+     "verdict": "PASS",
+     "note": "runs 3, 1..2, max 69ms"
+    },
+    {
+     "name": "blocking time",
+     "value": "21 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 2..37 ms; at load 21ms"
+    },
+    {
+     "name": "FCP (CPU, relative)",
+     "value": "332 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 264..508"
+    },
+    {
+     "name": "LCP (CPU, relative)",
+     "value": "332 ms",
+     "verdict": "PASS",
+     "note": "runs 3, 264..508, h1"
+    },
+    {
+     "name": "layout shift",
+     "value": "0.000",
+     "verdict": "PASS",
+     "note": "runs 3, 0.000..0.000; at load 0.000"
+    },
+    {
+     "name": "modules loaded, never mounted",
+     "value": 0,
+     "verdict": "PASS",
+     "note": ""
+    },
+    {
+     "name": "broken requests",
+     "value": 6,
+     "verdict": "FAIL",
+     "note": "xuanyi-portfolio/, work/, notes/"
+    },
+    {
+     "name": "page height",
+     "value": "3.5 screens",
+     "verdict": "PASS",
+     "note": "DOM 1188 nodes"
+    }
+   ]
+  }
+ ]
+}
