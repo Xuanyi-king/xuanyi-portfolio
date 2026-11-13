@@ -1,0 +1,42 @@
+[
+  {
+    "film": "skylight-1440.webm",
+    "sheet": "skylight-1440-01.jpg",
+    "from": 0.0,
+    "through": 8.75,
+    "samples": 36,
+    "fps": 4
+  },
+  {
+    "film": "skylight-1440.webm",
+    "sheet": "skylight-1440-02.jpg",
+    "from": 9.0,
+    "through": 17.75,
+    "samples": 36,
+    "fps": 4
+  },
+  {
+    "film": "skylight-1440.webm",
+    "sheet": "skylight-1440-03.jpg",
+    "from": 18.0,
+    "through": 23.25,
+    "samples": 22,
+    "fps": 4
+  },
+  {
+    "film": "skylight-390.webm",
+    "sheet": "skylight-390-01.jpg",
+    "from": 0.0,
+    "through": 8.75,
+    "samples": 36,
+    "fps": 4
+  },
+  {
+    "film": "skylight-390.webm",
+    "sheet": "skylight-390-02.jpg",
+    "from": 9.0,
+    "through": 17.5,
+    "samples": 35,
+    "fps": 4
+  }
+]

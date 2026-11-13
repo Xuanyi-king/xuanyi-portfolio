@@ -1,0 +1,36 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "file": "docs/evidence/sky-edition/films/skylight-1440.webm",
+    "events": [
+      "static hero hold",
+      "pointer pose and release",
+      "native scroll handoff and hold",
+      "reverse handoff",
+      "actual gallery drag",
+      "gallery next control",
+      "native detail",
+      "native back restores gallery",
+      "return to quiet hero"
+    ],
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "file": "docs/evidence/sky-edition/films/skylight-390.webm",
+    "events": [
+      "static hero hold",
+      "touch sculpture, no capture",
+      "native scroll handoff and hold",
+      "reverse handoff",
+      "actual gallery drag",
+      "gallery next control",
+      "native detail",
+      "native back restores gallery",
+      "return to quiet hero"
+    ],
+    "errors": []
+  }
+]

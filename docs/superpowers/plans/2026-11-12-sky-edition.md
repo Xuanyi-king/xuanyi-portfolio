@@ -18,20 +18,20 @@ No merge, no rewrite, no scroll interception, no new runtime dependency; product
 - Prototype routes must be noindex and clearly separate from production.
 
 ### Task 1: Static geometry and A/B art
-- [ ] Preserve baseline production build and capture exact source/old preview.
-- [ ] Add sky surface numeric tests for finite, closed geometry, distinct A/B and compact budget; run RED.
-- [ ] Add src/motion/sky-surface.ts and src/components/sky-x-mark.tsx; bridge via optional LivingX profile. Default geometry unchanged.
-- [ ] Create static candidate routes and scoped src/app/lab/sky-edition/sky.css.
-- [ ] Capture actual desktop/mobile candidates, inspect them, write the art decision.
+- [x] Preserve baseline production build and capture exact source/old preview.
+- [x] Add sky surface numeric tests for finite, closed geometry, distinct A/B and compact budget; run RED.
+- [x] Add src/motion/sky-surface.ts and src/components/sky-x-mark.tsx; bridge via optional LivingX profile. Default geometry unchanged.
+- [x] Create static candidate routes and scoped src/app/lab/sky-edition/sky.css.
+- [x] Capture actual desktop/mobile candidates, inspect them, write the art decision.
 
 ### Task 2: Selected experience
-- [ ] Only after Task 1 static decision, connect pointer and native scroll motion in src/components/sky-edition.tsx.
-- [ ] Use original LivingGallery with an optional quieter spatial profile; preserve default behavior.
-- [ ] Finish airy editorial content preview and navigation identity inside the Lab scope.
-- [ ] Verify reversal, resize, detail return, touch, keyboard, reduced/no JS.
+- [x] Only after Task 1 static decision, connect pointer and native scroll motion in src/components/sky-edition.tsx.
+- [x] Use original LivingGallery with an optional quieter spatial profile; preserve default behavior.
+- [x] Finish airy editorial content preview and navigation identity inside the Lab scope.
+- [x] Verify reversal, resize, detail return, touch, keyboard, reduced/no JS.
 
 ### Task 3: Evidence and delivery
-- [ ] Capture old/new hero, interaction, gallery, mobile and desktop comparisons and full browser films.
-- [ ] Run unit tests, typecheck, build, export checks and targeted browser regressions; inspect recordings as decoded sequences and disclose playback limits.
-- [ ] Review implementation, fix material findings, document limits and replacement recommendation.
-- [ ] Commit using API-verified Xuanyi-king identity, push new branch, open Draft PR against 2.3. Leave PRs #1–#4 and live deployments unchanged.
+- [x] Capture old/new hero, interaction, gallery, mobile and desktop comparisons and full browser films.
+- [x] Run unit tests, typecheck, build, export checks and targeted browser regressions; inspect recordings as decoded sequences and disclose playback limits.
+- [x] Review implementation, fix material findings, document limits and replacement recommendation.
+- [x] Commit using API-verified Xuanyi-king identity, push new branch, open Draft PR against 2.3. Leave PRs #1–#4 and live deployments unchanged.
