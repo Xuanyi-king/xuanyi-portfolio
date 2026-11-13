@@ -1,36 +1,20 @@
 # Verification record
 
-Final product checks were run after removing continuous Hero mesh deformation and correcting the phone path.
+Product source: **388ead1**. The latest commits after it update test readiness and evidence, not the application tree.
 
-- `npm test`: **67/67 pass**. Original61 retained; new tests cover finite/closed/depth geometry at extreme forces, different A/B materials, compact complexity, reversible handoff, gentler spatial profile and safe mobile margin. A temporary precision-gate experiment had68 passing tests but was discarded;67 is the delivered suite.
-- `npm run typecheck`: pass.
-- `npm run build`: pass; static export includes the six new Sky routes without changing original routes.
-- `npm run check:export`: **18 content routes**, links, assets, metadata, project scene sources, TOC, code highlighting, RSS and sitemap pass.
-- Original `check-browser.mjs`: **12 checks pass**, zero runtime errors. Covers homepage/Lab/detail/back, keyboard, named scenes, real media, delayed JS, no JS, reduced motion, SplitText restoration and original viewport layouts.
-- Original `check-identity.mjs`: **8 combinations pass** across available Chromium/Firefox, including original forward/reverse/brand alignment/history/reduced motion.
-- Final `SKY_ENGINES=chromium,firefox node scripts/check-sky.mjs`: **8 engine/viewport cases pass**, each covering1440/768/390/320, no overflow, pointer pose on desktop, touch input on phone, five progress positions plus reverse, Gallery controls/keyboard, native detail/back, resize and reduced-motion change. Runtime errors0; native fetch diagnostics0. Full no-JS captures at1440/390 for both engines.
-- `node scripts/check-sky-copy.mjs`: pass at320/390 and eight intermediate progress states, comparing actual painted SVG bounds against actual rendered text-line rectangles. Initial RED reproduced the independently observed overlap; a second320px RED caught residual contact before final GREEN.
-- `node scripts/check-sky-touch.mjs`: pass. Actual CDP vertical touch moves document≈146px with project delta0; horizontal touch moves Gallery≈one project. No wheel substitution for this check.
-- `git diff --check`: pass.
+- Local `npm test`:67/67, original61 retained. Types, production build and export checks pass;18 content routes retain links, media sources, TOC, highlighted code, RSS, sitemap and SEO.
+- Original Chromium homepage/Lab regression:12 checks passed. Original Living Identity:8 available-engine/viewport cases passed. Default production profiles/controllers remain unchanged.
+- Local final three-engine matrix covers WebKit/Chromium/Firefox ×1440/768/390/320, no overflow, native pointer tilt/return, cached mesh, reversible scroll positions, Gallery controls/keyboard, native detail/back, resize, reduced-motion and no JS. Full captures and JSON are in the evidence index.
+- The actual painted-X vs rendered-text-line check passes at320/390 across eight intermediate positions. Actual CDP touch keeps vertical scrolling separate from horizontal project navigation.
+- [Sky CI43336881471](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43336881471), product388ead1, **passed** all steps including67 tests, build/export,12 browser cases, native touch/copy checks and two films. Its39,389,265-byte artifact13997009935 was downloaded, ZIP-checked and SHA256-verified against `3dbc7847d8014e74e54104f3d8b6052967164c0f6436940b7d1c3e5be7a23722`. Extracted JSON confirms12 cases/zero runtime errors and two completed films.
+- This single CI success is not presented as universal stability. Repeats on0d5536e failed the fixed-delay pointer check before a pose frame was visible. The stricter final test observes an actual first pose frame, a nonzero3D tilt and its return to rest, exact native-scroll arrival, and reduced-motion reset. It preserves the same functional assertions instead of assuming100/220/600ms completion. Latest-head remote status is reported in the final PR handoff.
+- Complete CI desktop/phone films and all5 contact sheets/155 samples were actually inspected. This is4fps composition/continuity inspection, not original-speed playback acceptance or a physical-device claim.
+- Final numerical-spring performance sampling is independent of recording; all raw slow experiments and final rounds are retained in performance.md. No field INP, thermal or universal60FPS assertion.
 
-Local WebKit was actually attempted. It could not launch because libgtk4, graphene, harfbuzz-icu, manette, hyphen, woff and GLES shared libraries are absent. There is no available sudo/system-package helper. A user-local package download attempt also failed to find package metadata. This is an environment blocker, not a Safari pass. The new Sky review workflow installs official Playwright dependencies on Ubuntu24.04 and attempts the three-engine matrix plus touch/copy checks and films; remote status is reported separately.
+## Environment and failure history
 
-Product source is05259b8. Two real Playwright WebM recordings cover the final desktop and phone experience. Raw movies are retained with hashes and decoded contact sheets; all5 sheets/165 sampled frames were actually inspected. Frame sequence inspection checks composition, visible stops, forward/reverse transport and native detail return, but does not establish original-speed timing quality. No real-time playback acceptance, physical phone or field-performance claim is made.
+WebKit initially could not launch because shared libraries were missing and no sudo/system package helper was available. Official configured Debian package indexes/debs were downloaded into scratch and extracted into a user-owned library directory. A scratch launcher preserves the library path because the bundled MiniBrowser wrapper replaces it. Host package discovery is bypassed only for that custom rootless launcher; actual browser execution, library loading and normal browser security remain active. The standard CI launcher uses official Playwright system dependencies with no such override.
 
-The measured effect-rejection decision and all unfavorable earlier performance runs are in [performance.md](performance.md). Screenshots in `static/` are the earlier static acceptance checkpointadf2f0a; `final/` and final films are the delivered pose-only implementation. Camera-specific rim/shadow and tip seams remain disclosed limitations.
+The original static/motion source on515bab1 failed both remote Sky runs at WebKit1440 pointer response; d381bd9 diagnostics confirmed the native event target, visible page, no reduced-motion and progress0 while its DOM tween stayed at0deg. The numerical spring simplifies ownership but later repeats showed that attributing the failure solely to GSAP was insufficient. All logs are retained under `audit/ci/`, including the0d5536e repetition. A local fixed100ms reduced-motion check and a fixed220ms reverse-scroll check also raced actual browser state; observation-based checks keep the same exact endpoint/cleared-style requirements.
 
-No PR was merged, no remote history rewritten, no existing preview deployment changed. New commits use API-verified Xuanyi-king author/committer identity; account association is checked again after push.
-
-## First remote run retained
-
-On515bab1 both [PR Sky CI43334439881](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43334439881) and [push Sky CI43334357156](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43334357156) passed install/unit/types/build/export and all8 Chromium/Firefox cases, then failed WebKit1440 pointer-pose assertion. They are not passes. The first failure log is retained in `docs/evidence/sky-edition/audit/ci/515bab1-webkit-pointer.log`.
-
-A rootless local WebKit runtime was subsequently assembled from official configured Debian package sources into scratch (no system/sudo changes); its full four-viewport Sky matrix passes. A custom launcher preserves the local library path because the official MiniBrowser wrapper replaces LD_LIBRARY_PATH. Host package validation is skipped only for that scratch launcher; actual WebKit runs with the real libraries and normal browser security. This enables local investigation but does not invalidate the independent CI failure. Additional native-event/pose diagnostics are being captured without weakening the failed assertion.
-
-## Numeric pose driver
-
-On d381bd9, [PR43335819297](https://github.com/Xuanyi-king/xuanyi-portfolio/actions/runs/43335819297) and its push run still failed the unchanged pointer assertion. Native diagnostics show the pointer entering the correct Hero, pointerType mouse, visible page, reduced=false, progress0, but the DOM rotation tween remains at0deg. Local Debian WebKit did not reproduce that inert tween; the exact GSAP/WebKit timing interaction is not claimed to be fully explained.
-
-The pose driver now reuses `createLivingSpring` with numerical values and one explicit CSS transform writer. It avoids the paused DOM rotation tween/cache path, retains cached SVG artwork and stops RAF at rest. The actual interaction assertion is unchanged. Local WebKit all4 viewports pass with this driver;67 unit tests, types, build/export pass. Remote verification remains separate.
-
-Preference verification now waits for the actual reduced-motion reset condition before making the same exact empty-transform/clip assertions. A100ms fixed delay was insufficient in one local headless WebKit pass. The condition was not loosened, and pointer/mesh/error assertions remain unchanged. The environment later restarted during evidence capture; capture was restarted after local preview servers were restored.
+No PR was merged, no history rewritten and no deployment changed. Verified Xuanyi-king Author/Committer identity and post-push GitHub account association are maintained. Exact replacement readiness remains an art/product decision; the recommendation is still to keep this as a Draft Lab.

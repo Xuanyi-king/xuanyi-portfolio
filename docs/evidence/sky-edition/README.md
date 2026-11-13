@@ -14,6 +14,8 @@ Standalone renderer exports: [Cloud Silk SVG](prototypes/cloud-silk.svg) · [Sky
 - `old-site-1440.png` is an access-limited sign-in page, **not a successful old-site capture**. Actual old/new reference is local2.2 and `github-preview-1440.png`.
 - Static acceptance source: commitadf2f0a. Candidate A remains archived; only B enters the selected experience.
 
+Final Hero old/new: [desktop](final/hero-comparison-1440.jpg) · [phone](final/hero-comparison-390.jpg).
+
 Gallery old/new boards: [desktop](final/gallery-comparison-1440.jpg) · [phone](final/gallery-comparison-390.jpg).
 
 ## Selected browser states
@@ -30,7 +32,7 @@ Gallery old/new boards: [desktop](final/gallery-comparison-1440.jpg) · [phone](
 | About | [1440](final/about-1440.png) | [390](final/about-390.png) |
 | Notes | [1440](final/notes-1440.png) | [390](final/notes-390.png) |
 
-The `final/` folder includes Firefox,768/320px, reduced-motion and no-JS captures. [Verification JSON](final/verification.json), [native touch results](final/touch.json). [Pre-fix phone overlap](audit/mobile-overlap-before.png) is retained as a failure reference; it is superseded by final captures.
+The `final/` folder includes WebKit/Chromium/Firefox,768/320px, reduced-motion and no-JS captures. Product source is388ead1. [Verification JSON](final/verification.json), [native touch results](final/touch.json). [Pre-fix phone overlap](audit/mobile-overlap-before.png) is retained as a failure reference; it is superseded by final captures.
 
 ## Real browser films
 
@@ -39,7 +41,7 @@ The `final/` folder includes Firefox,768/320px, reduced-motion and no-JS capture
 - [Recorded actions and runtime errors](films/recordings.json)
 - Complete decoded frame contact sheets are under `films/contact/` with a [manifest](films/contact/manifest.json), timestamps and [inspection record](films/contact/review.md). They inspect gross motion/composition only, not original-speed playback or subframe fluidity.
 
-The films include a quiet Hero, pointer/touch response, native forward and reverse scroll, actual Gallery drag, next control, native project detail/back, and return to Hero. They were recorded separately from performance sampling.
+The delivered films come from successful CI43336881471 on product388ead1; the full downloaded artifact digest was verified. The films include a quiet Hero, pointer/touch response, native forward and reverse scroll, actual Gallery drag, next control, native project detail/back, and return to Hero. They were recorded separately from performance sampling.
 
 ## Decision and measured limits
 

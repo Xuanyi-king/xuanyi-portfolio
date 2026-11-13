@@ -5,7 +5,8 @@
     "from": 0.0,
     "through": 8.75,
     "samples": 36,
-    "fps": 4
+    "fps": 4,
+    "sourceRun": 43336881471
   },
   {
     "film": "skylight-1440.webm",
@@ -13,15 +14,17 @@
     "from": 9.0,
     "through": 17.75,
     "samples": 36,
-    "fps": 4
+    "fps": 4,
+    "sourceRun": 43336881471
   },
   {
     "film": "skylight-1440.webm",
     "sheet": "skylight-1440-03.jpg",
     "from": 18.0,
-    "through": 23.25,
-    "samples": 22,
-    "fps": 4
+    "through": 21.0,
+    "samples": 13,
+    "fps": 4,
+    "sourceRun": 43336881471
   },
   {
     "film": "skylight-390.webm",
@@ -29,14 +32,16 @@
     "from": 0.0,
     "through": 8.75,
     "samples": 36,
-    "fps": 4
+    "fps": 4,
+    "sourceRun": 43336881471
   },
   {
     "film": "skylight-390.webm",
     "sheet": "skylight-390-02.jpg",
     "from": 9.0,
-    "through": 17.5,
-    "samples": 35,
-    "fps": 4
+    "through": 17.25,
+    "samples": 34,
+    "fps": 4,
+    "sourceRun": 43336881471
   }
 ]

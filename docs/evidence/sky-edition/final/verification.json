@@ -2,6 +2,50 @@
   "base": "http://localhost:4187",
   "report": [
     {
+      "engineName": "webkit",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "runtimeErrors": [],
+      "nativeDiagnostics": [],
+      "reverse": true,
+      "detailsBack": true,
+      "reduced": true
+    },
+    {
+      "engineName": "webkit",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "runtimeErrors": [],
+      "nativeDiagnostics": [],
+      "reverse": true,
+      "detailsBack": true,
+      "reduced": true
+    },
+    {
+      "engineName": "webkit",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "runtimeErrors": [],
+      "nativeDiagnostics": [],
+      "reverse": true,
+      "detailsBack": true,
+      "reduced": true
+    },
+    {
+      "engineName": "webkit",
+      "width": 320,
+      "height": 740,
+      "overflow": false,
+      "runtimeErrors": [],
+      "nativeDiagnostics": [],
+      "reverse": true,
+      "detailsBack": true,
+      "reduced": true
+    },
+    {
       "engineName": "chromium",
       "width": 1440,
       "height": 900,

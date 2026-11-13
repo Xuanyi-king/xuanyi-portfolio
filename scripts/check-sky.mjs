@@ -16,6 +16,7 @@ for(const engineName of engines){
   const nativeDiagnostics=await watchPageErrors(page,engineName,errors,base);
   await page.goto(base+'/lab/sky-edition/');await page.evaluate(()=>document.fonts.ready);
   await page.waitForSelector('.living-gallery[data-enhanced="true"]');
+  await page.waitForFunction(()=>document.querySelector('.sky-pose').style.transform.startsWith('perspective('));
   await page.waitForTimeout(300);
   assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow');
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
@@ -35,20 +36,23 @@ for(const engineName of engines){
     },true);
    });
    const poseRest=await page.locator('.sky-pose').evaluate(el=>getComputedStyle(el).transform);
-   await page.mouse.move(width*.85,320);await page.waitForTimeout(600);
+   await page.mouse.move(width*.85,320);
+   await page.waitForFunction(()=>{const m=new DOMMatrixReadOnly(getComputedStyle(document.querySelector('.sky-pose')).transform);return Math.hypot(m.m13,m.m23,m.m31,m.m32)>.01},null,{timeout:5000});
    assert.equal(await page.locator('[data-sky-band="0-10"]').first().getAttribute('d'),rest,'accepted mesh stays cached');
    const pointerPose=await page.locator('.sky-pose').evaluate(el=>getComputedStyle(el).transform);
    if(pointerPose===poseRest)console.error('POINTER_DIAGNOSTICS',JSON.stringify(await page.evaluate(()=>({events:globalThis.skyPointerLog,hit:document.elementFromPoint(innerWidth*.85,320)?.className,hidden:document.hidden,reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,progress:document.querySelector('.sky-page').dataset.skyProgress,inline:document.querySelector('.sky-pose').style.cssText,rx:document.querySelector('.sky-pose')._gsap?.rotationX,ry:document.querySelector('.sky-pose')._gsap?.rotationY}))));
    assert.notEqual(pointerPose,poseRest,'pointer changes spatial pose');
    await page.screenshot({path:`${dir}/${engineName}-${width}-pointer.png`});
    await page.mouse.move(0,0);
+   await page.waitForFunction(()=>{const m=new DOMMatrixReadOnly(getComputedStyle(document.querySelector('.sky-pose')).transform);return Math.hypot(m.m13,m.m23,m.m31,m.m32)<.0001},null,{timeout:5000});
   }else{
    await page.touchscreen.tap(width*.6,450);await page.waitForTimeout(300);
   }
   const poses=[];
   for(const p of [0,.25,.5,.75,1,.75,.5,.25,0]){
-   await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),geometry.start+geometry.distance*p);
-   await page.waitForTimeout(220);
+   const target=Math.round(geometry.start+geometry.distance*p);
+   await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),target);
+   await page.waitForFunction(({target,p})=>Math.abs(scrollY-target)<.05&&Math.abs(+document.querySelector('.sky-page').dataset.skyProgress-p)<.005,{target,p},{timeout:5000});
    const actual=+(await page.locator('.sky-page').getAttribute('data-sky-progress'));
    assert.ok(Math.abs(actual-p)<.005,`progress ${width} ${p} ${actual}`);
    const transform=await page.locator('.sky-sculpture').evaluate(el=>el.style.transform);
